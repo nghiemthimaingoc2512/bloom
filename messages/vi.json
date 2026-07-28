@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "title": "Bloom — Lớn lên thật đẹp.",
+    "description": "Bloom là khu vườn phát triển bản thân. Mỗi nỗ lực ý nghĩa là một hạt giống. Mỗi giờ tập trung giúp khu vườn của bạn nở hoa."
+  },
+  "nav": {
+    "home": "Khu vườn",
+    "board": "Bảng Tập Trung",
+    "analytics": "Vườn Tuần Này",
+    "store": "Cửa Hàng Ước Mơ",
+    "memory": "Vườn Ký Ức"
+  },
+  "home": {
+    "welcomeBack": "Chào mừng bạn trở lại.",
+    "gardenWaiting": "Khu vườn của bạn vẫn luôn chờ đợi. Hãy cùng nhau lớn lên thật đẹp.",
+    "balance": "Bloom Balance hôm nay",
+    "streak": "Chuỗi ngày hiện tại",
+    "tasks": "Việc hôm nay",
+    "remaining": "Còn lại",
+    "focusHours": "Giờ tập trung hôm nay",
+    "gardenState": "Khu vườn hiện tại",
+    "blooming": "đang nở",
+    "wilting": "hơi héo",
+    "fading": "phai nhạt",
+    "days": "ngày"
+  },
+  "companion": {
+    "great": [
+      "Hôm nay bạn đã gieo thêm những bông hoa mới. Mỗi bước nhỏ bạn hoàn thành đang lặng lẽ tạo nên tương lai bạn mơ ước. 🌸",
+      "Khu vườn của bạn lớn lên vì bạn đã giữ lời hứa với chính mình. Sự kiên định đang trở thành sức mạnh lớn nhất của bạn. 🌷",
+      "Hôm nay bạn dành phần lớn thời gian để tạo ra thay vì tiêu thụ. Sự kỷ luật lặng lẽ đó tạo nên những cuộc đời đẹp đẽ. 🌿"
+    ],
+    "okay": [
+      "Bạn đã có mặt hôm nay, và đó là điều quan trọng nhất. Khu vườn kiên nhẫn, và bạn cũng vậy. 🌿",
+      "Một ngày nhẹ nhàng vẫn là một ngày tốt. Nghỉ ngơi cũng là một phần của sự phát triển. 🌱"
+    ],
+    "low": [
+      "Hôm nay khá yên tĩnh, và điều đó không sao cả. Khu vườn vẫn ở đây, kiên nhẫn chờ bạn. ☁️",
+      "Có những ngày dành để nghỉ ngơi thay vì nở hoa. Hãy quay lại khi bạn đã sẵn sàng. 🌥️"
+    ]
+  },
+  "reflection": {
+    "unlocked": "Suy Ngẫm Hôm Nay",
+    "subtitle": "Bạn đã cố gắng hôm nay. Hãy viết vài dòng cho chính mình trong tương lai.",
+    "placeholder": "Gửi tôi của tương lai...",
+    "save": "Gieo suy ngẫm này",
+    "mood": "Hôm nay bạn cảm thấy thế nào?",
+    "perfectTitle": "Ngày Nở Rộ Hoàn Hảo",
+    "perfectSubtitle": "Mọi việc đều hoàn thành. Khu vườn hôm nay rực rỡ hơn."
+  },
+  "momentum": {
+    "title": "Nguyên Tắc Động Lực",
+    "subtitle": "Những nhắc nhở nhẹ nhàng, không bao giờ là trừng phạt.",
+    "preview": "Xem trước một ngày yên tĩnh",
+    "quietMessage": "Đã yên tĩnh một chút rồi. Không sao cả — khu vườn chỉ đang nghỉ ngơi, chờ bạn quay lại.",
+    "rule1": "Một ngày nghỉ ngơi chỉ khiến khu vườn dịu lại đôi chút — không gì hơn.",
+    "rule2": "Vài ngày yên tĩnh liên tiếp, cánh hoa sẽ rơi chậm rãi. Chúng luôn mọc lại."
+  },
+  "board": {
+    "title": "Bảng Tập Trung",
+    "subtitle": "Không phải danh sách việc cần làm. Đây là nơi ý định lớn lên thành kết quả.",
+    "newFocus": "Tạo Focus mới",
+    "purpose": "Mục đích",
+    "purposeHint": "Điều này quan trọng vì sao?",
+    "category": "Danh mục",
+    "priority": "Ưu tiên",
+    "stakeholders": "Người liên quan",
+    "startDate": "Ngày bắt đầu",
+    "deadline": "Hạn chót",
+    "estimatedDuration": "Thời lượng dự kiến",
+    "expectedOutput": "Kết quả mong đợi",
+    "notes": "Ghi chú",
+    "steps": "Các bước",
+    "addStep": "Thêm bước",
+    "create": "Gieo Focus này",
+    "cancel": "Huỷ",
+    "title": "Tiêu đề",
+    "minutes": "phút",
+    "reward": "Phần thưởng",
+    "empty": "Bảng của bạn đang yên tĩnh. Hãy gieo Focus đầu tiên để bắt đầu.",
+    "encourageNew": [
+      "Những bước nhỏ tạo nên cuộc đời đẹp đẽ.",
+      "Mỗi bông hoa đều bắt đầu từ một hạt giống.",
+      "Bạn đang xây dựng tương lai của mình."
+    ],
+    "encourageDone": [
+      "Hãy ăn mừng chiến thắng nhỏ hôm nay.",
+      "Bạn vừa nuôi dưỡng thêm một bông hoa.",
+      "Sự tiến bộ luôn đẹp đẽ."
+    ]
+  },
+  "categories": {
+    "create": { "label": "Create", "desc": "Tạo ra giá trị" },
+    "grow": { "label": "Grow", "desc": "Học tập, sức khoẻ, kỹ năng" },
+    "enjoy": { "label": "Enjoy", "desc": "Nghỉ ngơi, chăm sóc bản thân" },
+    "consume": { "label": "Consume", "desc": "Lướt mạng, giải trí thụ động" }
+  },
+  "priorities": {
+    "high": "Cao",
+    "medium": "Vừa",
+    "low": "Thấp"
+  },
+  "analytics": {
+    "title": "Tổng Kết Vườn Tuần",
+    "focusHours": "Giờ tập trung",
+    "balanceEarned": "Bloom Balance kiếm được",
+    "balanceLost": "Bloom Balance đã mất",
+    "streak": "Chuỗi ngày hiện tại",
+    "longestStreak": "Chuỗi dài nhất",
+    "completionRate": "Tỷ lệ hoàn thành",
+    "avgFocus": "Trung bình mỗi ngày",
+    "strongestCategory": "Danh mục mạnh nhất",
+    "suggestionLabel": "Gợi ý nhẹ nhàng cho tuần sau",
+    "suggestion": "Hãy thử thêm một khoảnh khắc Grow — chỉ mười phút yên tĩnh cũng đáng giá.",
+    "hoursByDay": "Giờ tập trung theo ngày",
+    "timeByCategory": "Thời gian của bạn đã dùng vào đâu"
+  },
+  "store": {
+    "title": "Cửa Hàng Ước Mơ",
+    "subtitle": "Dùng Bloom Balance cho những khoảnh khắc đáng sống.",
+    "unlocked": "Đã mở khoá",
+    "locked": "Chưa mở · tiếp tục cố gắng",
+    "redeem": "Đổi",
+    "redeemed": "Tận hưởng khoảnh khắc này 🎉",
+    "items": {
+      "coffee": "Cà Phê Sáng Tạo",
+      "networking": "Sự Kiện Kết Nối",
+      "movie": "Đêm Xem Phim",
+      "music": "Đêm Âm Nhạc",
+      "travel": "Ngày Du Lịch"
+    }
+  },
+  "memory": {
+    "title": "Vườn Ký Ức",
+    "subtitle": "Mỗi suy ngẫm trở thành một bông hoa. Theo thời gian, đây là câu chuyện của bạn.",
+    "empty": "Chưa có gì ở đây — rồi sẽ sớm nở hoa.",
+    "tasksCompleted": "việc hoàn thành"
+  },
+  "settings": {
+    "language": "Ngôn ngữ",
+    "theme": "Giao diện",
+    "light": "Sáng",
+    "dark": "Tối"
+  },
+  "common": {
+    "close": "Đóng",
+    "delete": "Xoá"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "title": "Bloom — Grow beautifully.",
+    "description": "Bloom is a personal growth garden. Every meaningful effort plants a seed. Every focused hour helps your garden bloom."
+  },
+  "nav": {
+    "home": "Garden",
+    "board": "Focus Board",
+    "analytics": "Weekly Garden",
+    "store": "Dream Store",
+    "memory": "Memory Garden"
+  },
+  "home": {
+    "welcomeBack": "Welcome back.",
+    "gardenWaiting": "Your garden has been waiting for you. Let's grow beautifully together.",
+    "balance": "Today's Bloom Balance",
+    "streak": "Current Streak",
+    "tasks": "Today's Tasks",
+    "remaining": "Remaining",
+    "focusHours": "Focus Hours Today",
+    "gardenState": "Current Bloom Garden",
+    "blooming": "blooming",
+    "wilting": "wilting",
+    "fading": "fading",
+    "days": "days"
+  },
+  "companion": {
+    "great": [
+      "Today you planted new blooms. Every small step you completed is quietly shaping the future you dream of. 🌸",
+      "Your garden grew because you kept your promises to yourself. Consistency is becoming your greatest strength. 🌷",
+      "You spent most of today creating rather than consuming. That quiet discipline is what makes beautiful lives bloom. 🌿"
+    ],
+    "okay": [
+      "You showed up today, and that's what matters most. Your garden is patient, and so are you. 🌿",
+      "A gentle day is still a good day. Rest is part of growing too. 🌱"
+    ],
+    "low": [
+      "It's quiet today, and that's alright. Your garden will still be here, waiting patiently for you. ☁️",
+      "Some days are for resting roots, not growing petals. Come back whenever you're ready. 🌥️"
+    ]
+  },
+  "reflection": {
+    "unlocked": "Today's Reflection",
+    "subtitle": "You've shown up today. Write a small message to your future self.",
+    "placeholder": "Dear future me...",
+    "save": "Plant this reflection",
+    "mood": "How did today feel?",
+    "perfectTitle": "Perfect Bloom Day",
+    "perfectSubtitle": "Every task, complete. Your garden glows a little brighter today."
+  },
+  "momentum": {
+    "title": "Momentum Rules",
+    "subtitle": "Gentle nudges, never punishments.",
+    "preview": "Preview a quiet day",
+    "quietMessage": "It's been quiet for a little while. That's alright — your garden simply rests, waiting for you.",
+    "rule1": "A day of rest gently softens your garden — nothing more.",
+    "rule2": "A few quiet days in a row, and petals fall slowly. They always grow back."
+  },
+  "board": {
+    "title": "Focus Board",
+    "subtitle": "Not a to-do list. A place where intentions grow into outcomes.",
+    "newFocus": "New Focus",
+    "purpose": "Purpose",
+    "purposeHint": "Why does this matter?",
+    "category": "Category",
+    "priority": "Priority",
+    "stakeholders": "Stakeholders",
+    "startDate": "Start Date",
+    "deadline": "Deadline",
+    "estimatedDuration": "Estimated Duration",
+    "expectedOutput": "Expected Output",
+    "notes": "Notes",
+    "steps": "Checklist Steps",
+    "addStep": "Add step",
+    "create": "Plant this Focus",
+    "cancel": "Cancel",
+    "title": "Title",
+    "minutes": "min",
+    "reward": "Reward",
+    "empty": "Your board is quiet right now. Plant your first Focus to begin.",
+    "encourageNew": [
+      "Small steps create beautiful lives.",
+      "Every bloom starts as a seed.",
+      "You are building your future."
+    ],
+    "encourageDone": [
+      "Celebrate today's small victory.",
+      "You nurtured another bloom.",
+      "Progress is beautiful."
+    ]
+  },
+  "categories": {
+    "create": { "label": "Create", "desc": "Build value" },
+    "grow": { "label": "Grow", "desc": "Learning, health, skills" },
+    "enjoy": { "label": "Enjoy", "desc": "Rest, self-care, experiences" },
+    "consume": { "label": "Consume", "desc": "Passive scrolling, entertainment" }
+  },
+  "priorities": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "analytics": {
+    "title": "Weekly Garden Review",
+    "focusHours": "Focus Hours",
+    "balanceEarned": "Bloom Balance Earned",
+    "balanceLost": "Bloom Balance Lost",
+    "streak": "Current Streak",
+    "longestStreak": "Longest Streak",
+    "completionRate": "Task Completion Rate",
+    "avgFocus": "Average Daily Focus",
+    "strongestCategory": "Strongest Category",
+    "suggestionLabel": "A gentle suggestion for next week",
+    "suggestion": "Try adding one more Grow moment — even ten quiet minutes counts.",
+    "hoursByDay": "Focus Hours by Day",
+    "timeByCategory": "Where your hours went"
+  },
+  "store": {
+    "title": "Dream Store",
+    "subtitle": "Spend your Bloom Balance on moments worth living for.",
+    "unlocked": "Unlocked",
+    "locked": "Locked · keep growing",
+    "redeem": "Redeem",
+    "redeemed": "Enjoy this moment 🎉",
+    "items": {
+      "coffee": "Contrast Coffee",
+      "networking": "Networking Event",
+      "movie": "Movie Night",
+      "music": "Music Night",
+      "travel": "Travel Day"
+    }
+  },
+  "memory": {
+    "title": "Memory Garden",
+    "subtitle": "Every reflection becomes a flower. Over time, this becomes your story.",
+    "empty": "Nothing here yet — it will bloom soon.",
+    "tasksCompleted": "tasks completed"
+  },
+  "settings": {
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "common": {
+    "close": "Close",
+    "delete": "Delete"
+  }
+}
