@@ -8,10 +8,42 @@
     "board": "Focus Board",
     "analytics": "Weekly Garden",
     "store": "Rewards",
-    "memory": "Memory Garden"
+    "memory": "Memory Garden",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "onboarding": {
+    "welcomeTitle": "Welcome to Bloom 🌸",
+    "step1Question": "What should we call you?",
+    "namePlaceholder": "Your name",
+    "step2Question": "What is one hour of your focused work worth?",
+    "step2Hint": "This becomes the foundation of your Bloom Balance, rewards, and charts. You can change it anytime in Settings.",
+    "customValue": "Custom Value",
+    "customValuePlaceholder": "Enter your own amount",
+    "step3Question": "What are you growing?",
+    "step4Title": "Choose your look",
+    "back": "Back",
+    "continue": "Continue",
+    "getStarted": "Get Started",
+    "growthAreas": {
+      "career": "Career",
+      "study": "Study",
+      "business": "Business",
+      "fitness": "Fitness",
+      "language": "Language Learning",
+      "creativity": "Creativity",
+      "personalGrowth": "Personal Growth"
+    },
+    "themes": {
+      "pink": "Bloom Pink",
+      "sage": "Sage Green",
+      "lavender": "Lavender",
+      "midnight": "Midnight",
+      "pearl": "Pearl"
+    }
   },
   "home": {
-    "welcomeBack": "Welcome back",
+    "welcomeBack": "Welcome back, {name}",
     "gardenWaiting": "Every focused hour compounds into real progress.",
     "gardenEmpty": "Your garden is empty - complete a focus to plant your first flower.",
     "balance": "Today's Bloom Balance",
@@ -26,6 +58,7 @@
     "days": "days"
   },
   "companion": {
+    "save": "Save quote",
     "quotes": [
       "May you win the battles you never tell anyone about.",
       "Believe you are enough.",
@@ -122,7 +155,65 @@
       "Success isn't owned, it's leased - and rent is due every day.",
       "Be so consistent that people can set their watch by your effort.",
       "You are capable of things your past self couldn't imagine."
-    ]
+    ],
+    "quotesByArea": {
+      "career": [
+        "Every great career is built by people who kept showing up on the boring days.",
+        "Your reputation is the sum of promises you kept when no one was watching.",
+        "Master the fundamentals before you chase the title.",
+        "The best career move is becoming someone worth promoting.",
+        "Ask for the feedback that stings - it's the fastest way up.",
+        "Ten years from now, this ordinary Tuesday is where it started."
+      ],
+      "study": [
+        "Understanding beats memorizing every single time.",
+        "The hardest chapter is usually the one that teaches you the most.",
+        "Study like the exam is tomorrow and your future depends on it - because it does.",
+        "Every page you finish is a page your past self couldn't.",
+        "Confusion is just the first draft of understanding.",
+        "You don't need more hours. You need fewer distractions."
+      ],
+      "business": [
+        "Every empire started as someone's stubborn idea.",
+        "Customers don't remember your pitch. They remember how you made them feel.",
+        "Ship the imperfect version today over the perfect version never.",
+        "Revenue solves most problems. Focus solves revenue.",
+        "The market rewards people who show up consistently, not just cleverly.",
+        "Your first version is supposed to be embarrassing. Ship it anyway."
+      ],
+      "fitness": [
+        "The workout you don't want to do is usually the one you need most.",
+        "Strength is built in the rep after you wanted to stop.",
+        "Your body keeps the score of every day you showed up.",
+        "Consistency will beat intensity in the long run, every time.",
+        "Rest is part of the training, not a break from it.",
+        "The best workout plan is the one you'll actually do again tomorrow."
+      ],
+      "language": [
+        "Every awkward sentence you speak today is fluency being built.",
+        "You don't need to be fluent to start - you need to start to become fluent.",
+        "Mistakes are just how your brain learns the shape of a new language.",
+        "Ten new words a day is thousands a year.",
+        "Speak badly on purpose - it's the fastest way to speak well by accident.",
+        "The gap between you and fluency is just repetition."
+      ],
+      "creativity": [
+        "The first draft is supposed to be bad. That's what drafts are for.",
+        "Creativity is just connecting things nobody bothered to connect yet.",
+        "Make something today, even if it's small and no one sees it.",
+        "Your taste is ahead of your skill - that gap is exactly where growth happens.",
+        "Done is the engine that makes more good work possible.",
+        "The blank page fears a person who shows up daily."
+      ],
+      "personalGrowth": [
+        "Growth is just a thousand small, boring choices in the same direction.",
+        "You are not behind - you are exactly where your effort has taken you.",
+        "Becoming who you want to be starts with what you do today, not someday.",
+        "The person you're trying to become is built in ordinary moments like this one.",
+        "Healing and growing rarely feel dramatic while they're happening.",
+        "Small, honest progress beats big, abandoned plans."
+      ]
+    }
   },
   "reflection": {
     "unlocked": "Today's Reflection",
@@ -244,13 +335,75 @@
     "title": "Memory Garden",
     "subtitle": "Every reflection becomes a flower. Over time, this becomes your story.",
     "empty": "Your reflections will appear here once you complete a day.",
-    "tasksCompleted": "tasks completed"
+    "tasksCompleted": "tasks completed",
+    "like": "Like",
+    "favorite": "Favorite"
   },
   "settings": {
+    "title": "Settings",
+    "subtitle": "Make Bloom feel like yours.",
+    "profileSection": "Profile",
+    "displayName": "Display Name",
+    "hourlyValueSection": "Hourly Value",
+    "hourlyValueHint": "This is the foundation of your Bloom Balance, rewards, and charts.",
+    "modeDirect": "Enter directly",
+    "modeSalary": "Calculate from salary",
+    "monthlySalary": "Monthly Salary",
+    "workingDaysPerMonth": "Working Days per Month",
+    "workingHoursPerDay": "Working Hours per Day",
+    "computedHourlyValue": "Your hourly value",
+    "growthAreasSection": "What you're growing",
+    "appearanceSection": "Appearance",
     "language": "Language",
     "theme": "Theme",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "save": "Save",
+    "saved": "Settings saved"
+  },
+  "profile": {
+    "joined": "Joined",
+    "level": "Level",
+    "xpToNext": "{remaining} XP to Level {next}",
+    "currentStreak": "Current Streak",
+    "longestStreak": "Longest Streak",
+    "lifetimeFocusHours": "Lifetime Focus Hours",
+    "lifetimeBalance": "Lifetime Bloom Balance",
+    "flowersCollected": "Flowers Collected",
+    "challengesCompleted": "Challenges Completed",
+    "achievements": "Achievements",
+    "badges": "Badges",
+    "recentActivity": "Recent Activity",
+    "noActivity": "Nothing yet - complete a focus to start your story.",
+    "comingSoon": "Coming soon",
+    "editProfile": "Edit Profile",
+    "savedQuotes": "Saved Quotes",
+    "noSavedQuotes": "Quotes you save from your daily companion will show up here.",
+    "removeQuote": "Remove from saved"
+  },
+  "share": {
+    "title": "Share",
+    "share": "Share",
+    "copyImage": "Copy Image",
+    "copied": "Copied!",
+    "copyFailed": "Couldn't copy",
+    "download": "Download",
+    "streakEyebrow": "Streak",
+    "streakHeadline": "{days}-Day Streak",
+    "streakLabel": "days",
+    "todayEyebrow": "Today's Achievement",
+    "todayHeadline": "Nice work today",
+    "sessionsLabel": "Focus Sessions",
+    "hoursLabel": "Focus Hours",
+    "balanceLabel": "Created",
+    "weeklyEyebrow": "Weekly Review",
+    "weeklyHeadline": "This Week in Bloom",
+    "topCategoryLabel": "Top Category",
+    "bestDayLabel": "Best Day",
+    "longestSessionLabel": "Longest Session",
+    "shareStreak": "Share streak",
+    "shareToday": "Share today",
+    "shareWeekly": "Share this week"
   },
   "common": {
     "close": "Close",

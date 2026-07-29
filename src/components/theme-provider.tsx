@@ -3,20 +3,27 @@
 import * as React from "react";
 
 export type Theme = "light" | "dark";
+export type Palette = "pink" | "sage" | "lavender" | "midnight" | "pearl";
+
+export const PALETTES: Palette[] = ["pink", "sage", "lavender", "midnight", "pearl"];
 
 interface ThemeContextValue {
   theme: Theme;
   resolvedTheme: Theme;
   setTheme: (theme: Theme) => void;
+  palette: Palette;
+  setPalette: (palette: Palette) => void;
 }
 
-const STORAGE_KEY = "theme";
+const MODE_STORAGE_KEY = "theme";
+const PALETTE_STORAGE_KEY = "bloom-palette";
 
 const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined);
 
-// Theme lives on the DOM (a class on <html>, set synchronously pre-hydration
-// by the theme-init script) rather than in React state, so components read
-// it through useSyncExternalStore - this keeps server and first-client-paint
+// Both the light/dark mode and the color palette live on the DOM (a class
+// and an attribute on <html>, set synchronously pre-hydration by the
+// theme-init script) rather than in React state, so components read them
+// through useSyncExternalStore - this keeps server and first-client-paint
 // snapshots aligned (via getServerSnapshot) with no hydration mismatch, and
 // needs no setState-in-effect to stay in sync after that.
 const listeners = new Set<() => void>();
@@ -26,21 +33,31 @@ function subscribe(listener: () => void) {
   return () => listeners.delete(listener);
 }
 
-function getSnapshot(): Theme {
+function getModeSnapshot(): Theme {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
-function getServerSnapshot(): Theme {
+function getModeServerSnapshot(): Theme {
   return "light";
 }
 
+function getPaletteSnapshot(): Palette {
+  const attr = document.documentElement.getAttribute("data-theme");
+  return (PALETTES as string[]).includes(attr ?? "") ? (attr as Palette) : "pink";
+}
+
+function getPaletteServerSnapshot(): Palette {
+  return "pink";
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const theme = React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const theme = React.useSyncExternalStore(subscribe, getModeSnapshot, getModeServerSnapshot);
+  const palette = React.useSyncExternalStore(subscribe, getPaletteSnapshot, getPaletteServerSnapshot);
 
   const setTheme = React.useCallback((next: Theme) => {
     document.documentElement.classList.toggle("dark", next === "dark");
     try {
-      window.localStorage.setItem(STORAGE_KEY, next);
+      window.localStorage.setItem(MODE_STORAGE_KEY, next);
     } catch {
       // localStorage may be unavailable (private browsing, etc). Theme still
       // applies for the current session, it just won't persist.
@@ -48,9 +65,23 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     listeners.forEach((listener) => listener());
   }, []);
 
+  const setPalette = React.useCallback((next: Palette) => {
+    if (next === "pink") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", next);
+    }
+    try {
+      window.localStorage.setItem(PALETTE_STORAGE_KEY, next);
+    } catch {
+      // localStorage may be unavailable (private browsing, etc).
+    }
+    listeners.forEach((listener) => listener());
+  }, []);
+
   const value = React.useMemo<ThemeContextValue>(
-    () => ({ theme, resolvedTheme: theme, setTheme }),
-    [theme, setTheme]
+    () => ({ theme, resolvedTheme: theme, setTheme, palette, setPalette }),
+    [theme, setTheme, palette, setPalette]
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

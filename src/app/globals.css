@@ -7,10 +7,11 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
-  /* Bloom palette - premium pink */
+  /* Bloom Pink - the default palette */
   --color-cream: #fff5f8;
   --color-blush: #ffe5ef;
   --color-petal: #f7c8d8;
+  --color-rose-light: #ff7fb5;
   --color-rose: #f54f93;
   --color-rose-deep: #e73c84;
   --color-ink: #2f2f2f;
@@ -19,6 +20,45 @@
   /* dark mode surface */
   --color-night: #1b1218;
   --color-night-card: #251920;
+}
+
+/* Every palette below only overrides the accent + wash tokens above -
+   every component keeps using bg-rose / text-rose-deep / border-petal /
+   etc., so switching themes never requires touching component code. */
+[data-theme="sage"] {
+  --color-cream: #f6faf4;
+  --color-blush: #e8f0e6;
+  --color-petal: #c9dcc5;
+  --color-rose-light: #83a888;
+  --color-rose: #5f8567;
+  --color-rose-deep: #47694e;
+}
+
+[data-theme="lavender"] {
+  --color-cream: #f8f6fd;
+  --color-blush: #ede8fa;
+  --color-petal: #d7ccf0;
+  --color-rose-light: #a996d9;
+  --color-rose: #8b7bc2;
+  --color-rose-deep: #6c5aa8;
+}
+
+[data-theme="midnight"] {
+  --color-cream: #f4f5fc;
+  --color-blush: #e5e8fa;
+  --color-petal: #c6cbef;
+  --color-rose-light: #7c8ade;
+  --color-rose: #5d6fc4;
+  --color-rose-deep: #4453a3;
+}
+
+[data-theme="pearl"] {
+  --color-cream: #faf9f5;
+  --color-blush: #f4f1ea;
+  --color-petal: #e3ddce;
+  --color-rose-light: #bba98a;
+  --color-rose: #a08b6f;
+  --color-rose-deep: #83704f;
 }
 
 .dark {
@@ -33,6 +73,7 @@ body {
   background-attachment: fixed;
   color: var(--color-ink);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark body {
@@ -52,9 +93,10 @@ body {
 .glass {
   background: color-mix(in srgb, white 90%, transparent);
   border: 1px solid color-mix(in srgb, var(--color-petal) 55%, transparent);
-  box-shadow: 0 1px 2px rgba(214, 41, 112, 0.04), 0 10px 28px -16px rgba(214, 41, 112, 0.18);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--color-rose-deep) 4%, transparent),
+    0 10px 28px -16px color-mix(in srgb, var(--color-rose-deep) 18%, transparent);
   backdrop-filter: blur(20px);
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease, background-color 0.3s ease;
 }
 
 .dark .glass {
@@ -67,28 +109,29 @@ body {
 .glass-hover:hover {
   transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--color-rose) 40%, transparent);
-  box-shadow: 0 4px 10px rgba(214, 41, 112, 0.06), 0 20px 36px -18px rgba(214, 41, 112, 0.28);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--color-rose-deep) 6%, transparent),
+    0 20px 36px -18px color-mix(in srgb, var(--color-rose-deep) 28%, transparent);
 }
 
 .dark .glass-hover:hover {
   box-shadow: 0 20px 36px -18px rgba(0, 0, 0, 0.6);
 }
 
-/* rich pink gradient, used for the hero and primary accents */
+/* rich gradient, used for the hero and primary accents */
 .gradient-primary {
-  background: linear-gradient(135deg, #ff7fb5, #f54f93);
+  background: linear-gradient(135deg, var(--color-rose-light), var(--color-rose));
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ff7fb5, #f54f93);
+  background: linear-gradient(135deg, var(--color-rose-light), var(--color-rose));
   color: white;
-  box-shadow: 0 8px 20px -8px rgba(245, 79, 147, 0.6);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-rose) 60%, transparent);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, opacity 0.2s ease, background 0.3s ease;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 12px 24px -8px rgba(245, 79, 147, 0.65);
+  box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--color-rose) 65%, transparent);
 }
 
 .btn-primary:active:not(:disabled) {
@@ -105,12 +148,12 @@ body {
   background: white;
   color: var(--color-rose-deep);
   border: 1px solid var(--color-petal);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.3s ease;
 }
 
 .btn-secondary:hover {
   border-color: var(--color-rose);
-  box-shadow: 0 6px 16px -8px rgba(245, 79, 147, 0.3);
+  box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--color-rose) 30%, transparent);
   transform: translateY(-1px);
 }
 

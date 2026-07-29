@@ -21,8 +21,8 @@ export function formatVND(amount: number): string {
   return `${rounded.toLocaleString("en-US")}₫`;
 }
 
-export function minutesToReward(minutes: number): number {
-  return (minutes / 60) * REWARD_PER_HOUR;
+export function minutesToReward(minutes: number, hourlyValue: number = REWARD_PER_HOUR): number {
+  return (minutes / 60) * hourlyValue;
 }
 
 export function pickRandom<T>(items: T[]): T {

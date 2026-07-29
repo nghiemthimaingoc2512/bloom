@@ -16,9 +16,9 @@ interface DraftStep {
   reward: number;
 }
 
-function newDraftStep(): DraftStep {
+function newDraftStep(hourlyValue: number): DraftStep {
   const estimatedMinutes = 30;
-  return { id: uid(), title: "", estimatedMinutes, reward: minutesToReward(estimatedMinutes) };
+  return { id: uid(), title: "", estimatedMinutes, reward: minutesToReward(estimatedMinutes, hourlyValue) };
 }
 
 export function FocusDialog({
@@ -36,6 +36,7 @@ export function FocusDialog({
   const addFocus = useBloomStore((s) => s.addFocus);
   const updateFocus = useBloomStore((s) => s.updateFocus);
   const showToast = useBloomStore((s) => s.showToast);
+  const hourlyValue = useBloomStore((s) => s.hourlyValue.hourlyValue);
   const encourageNew = t.raw("encourageNew") as string[];
 
   const [title, setTitle] = React.useState(focus?.title ?? "");
@@ -55,7 +56,7 @@ export function FocusDialog({
         title: c.title,
         estimatedMinutes: c.estimatedMinutes,
         reward: c.reward,
-      })) ?? [newDraftStep()]
+      })) ?? [newDraftStep(hourlyValue)]
   );
 
   function reset() {
@@ -69,7 +70,7 @@ export function FocusDialog({
     setStakeholders("");
     setExpectedOutput("");
     setNotes("");
-    setSteps([newDraftStep()]);
+    setSteps([newDraftStep(hourlyValue)]);
   }
 
   function updateStep(id: string, patch: Partial<DraftStep>) {
@@ -224,7 +225,7 @@ export function FocusDialog({
               ))}
             </div>
             <button
-              onClick={() => setSteps((s) => [...s, newDraftStep()])}
+              onClick={() => setSteps((s) => [...s, newDraftStep(hourlyValue)])}
               className="text-xs text-rose mt-2 flex items-center gap-1"
             >
               <Plus size={13} /> {t("addStep")}

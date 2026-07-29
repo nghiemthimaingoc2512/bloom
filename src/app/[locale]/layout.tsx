@@ -6,20 +6,24 @@ import Script from "next/script";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BloomProvider } from "@/components/bloom-provider";
-import { Nav } from "@/components/bloom/nav";
 import { Toaster } from "@/components/bloom/toaster";
 import "../globals.css";
 
-// Applies the persisted theme class before hydration so there's no flash of
-// the wrong theme. Runs via next/script (strategy="beforeInteractive"),
-// which Next.js injects outside normal React child reconciliation - a plain
-// <script> element rendered as JSX would not execute on client re-renders.
+// Applies the persisted light/dark mode and color palette before hydration
+// so there's no flash of the wrong theme. Runs via next/script
+// (strategy="beforeInteractive"), which Next.js injects outside normal React
+// child reconciliation - a plain <script> element rendered as JSX would not
+// execute on client re-renders.
 const THEME_INIT_SCRIPT = `
 (function () {
   try {
-    var stored = localStorage.getItem("theme");
-    if (stored === "dark") {
+    var mode = localStorage.getItem("theme");
+    if (mode === "dark") {
       document.documentElement.classList.add("dark");
+    }
+    var palette = localStorage.getItem("bloom-palette");
+    if (palette && palette !== "pink") {
+      document.documentElement.setAttribute("data-theme", palette);
     }
   } catch (e) {}
 })();
@@ -79,10 +83,7 @@ export default async function LocaleLayout({
       <body className="antialiased" suppressHydrationWarning>
         <NextIntlClientProvider>
           <ThemeProvider>
-            <Nav />
-            <main className="max-w-5xl mx-auto px-5 pb-20 pt-2">
-              <BloomProvider>{children}</BloomProvider>
-            </main>
+            <BloomProvider>{children}</BloomProvider>
             <Toaster />
           </ThemeProvider>
         </NextIntlClientProvider>

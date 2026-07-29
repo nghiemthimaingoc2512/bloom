@@ -1,8 +1,9 @@
 "use client";
 
-import { Flower2 } from "lucide-react";
+import { Flower2, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { useBloomStore } from "@/lib/store";
 import { LanguageToggle } from "./language-toggle";
 import { ThemeToggle } from "./theme-toggle";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,7 @@ import { cn } from "@/lib/utils";
 export function Nav() {
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const displayName = useBloomStore((s) => s.displayName);
 
   const tabs = [
     { href: "/", label: t("home") },
@@ -18,6 +20,8 @@ export function Nav() {
     { href: "/store", label: t("store") },
     { href: "/memory", label: t("memory") },
   ];
+
+  const initial = displayName.trim().charAt(0).toUpperCase() || "🌸";
 
   return (
     <header className="max-w-5xl mx-auto px-5 pt-8">
@@ -34,6 +38,20 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <LanguageToggle />
           <ThemeToggle />
+          <Link
+            href="/settings"
+            aria-label={t("settings")}
+            className="grid place-items-center w-9 h-9 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush/60 transition-all"
+          >
+            <Settings size={16} />
+          </Link>
+          <Link
+            href="/profile"
+            aria-label={t("profile")}
+            className="grid place-items-center w-9 h-9 rounded-full gradient-primary text-white text-xs font-semibold shadow-sm shadow-rose/20"
+          >
+            {initial}
+          </Link>
         </div>
       </div>
 

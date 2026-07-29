@@ -2,6 +2,20 @@ export type Category = "create" | "grow" | "enjoy" | "consume";
 export type Priority = "high" | "medium" | "low";
 export type FlowerStage = "bloom" | "wilt" | "fade";
 export type FlowerKind = "tulip" | "sakura";
+export type HourlyValueMode = "direct" | "salary";
+export type GrowthArea = "career" | "study" | "business" | "fitness" | "language" | "creativity" | "personalGrowth";
+
+export interface HourlyValueSettings {
+  mode: HourlyValueMode;
+  /** The resolved hourly value in VND, always present and always what
+   *  reward calculations use - `monthlySalary`/`workingDaysPerMonth`/
+   *  `workingHoursPerDay` are only kept so the salary form can be
+   *  re-opened pre-filled; they don't feed calculations directly. */
+  hourlyValue: number;
+  monthlySalary?: number;
+  workingDaysPerMonth?: number;
+  workingHoursPerDay?: number;
+}
 export type RewardIcon =
   | "coffee"
   | "movie"
@@ -68,6 +82,14 @@ export interface MemoryEntry {
   mood: string;
   completedTasks: number;
   bloomLevel: FlowerStage;
+  liked: boolean;
+  favorited: boolean;
+}
+
+export interface SavedQuote {
+  id: string;
+  text: string;
+  savedAt: string;
 }
 
 export interface DayRecord {
@@ -79,6 +101,13 @@ export interface DayRecord {
 }
 
 export interface BloomState {
+  displayName: string;
+  joinedAt: string | null;
+  onboardingCompleted: boolean;
+  growthAreas: GrowthArea[];
+  hourlyValue: HourlyValueSettings;
+  lifetimeBalanceEarned: number;
+  lifetimeFocusMinutes: number;
   streak: number;
   longestStreak: number;
   lastActiveDate: string | null;
@@ -87,6 +116,7 @@ export interface BloomState {
   redemptions: Redemption[];
   garden: GardenFlower[];
   memory: MemoryEntry[];
+  savedQuotes: SavedQuote[];
   history: DayRecord[];
   reflectedToday: boolean;
 }

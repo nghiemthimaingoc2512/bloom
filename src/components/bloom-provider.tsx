@@ -2,10 +2,13 @@
 
 import * as React from "react";
 import { useBloomStore } from "@/lib/store";
+import { Nav } from "@/components/bloom/nav";
+import { Onboarding } from "@/components/bloom/onboarding";
 
 export function BloomProvider({ children }: { children: React.ReactNode }) {
   const hydrate = useBloomStore((s) => s.hydrate);
   const hydrated = useBloomStore((s) => s.hydrated);
+  const onboardingCompleted = useBloomStore((s) => s.onboardingCompleted);
 
   React.useEffect(() => {
     void hydrate();
@@ -20,5 +23,16 @@ export function BloomProvider({ children }: { children: React.ReactNode }) {
     );
   }
 
-  return <>{children}</>;
+  // Gate the entire app shell - not just the page content - behind
+  // onboarding, so there's no nav route that can bypass it.
+  if (!onboardingCompleted) {
+    return <Onboarding />;
+  }
+
+  return (
+    <>
+      <Nav />
+      <main className="max-w-5xl mx-auto px-5 pb-20 pt-2">{children}</main>
+    </>
+  );
 }

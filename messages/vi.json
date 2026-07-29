@@ -8,10 +8,42 @@
     "board": "Bảng Tập Trung",
     "analytics": "Vườn Tuần Này",
     "store": "Phần Thưởng",
-    "memory": "Vườn Ký Ức"
+    "memory": "Vườn Ký Ức",
+    "profile": "Hồ Sơ",
+    "settings": "Cài Đặt"
+  },
+  "onboarding": {
+    "welcomeTitle": "Chào mừng đến với Bloom 🌸",
+    "step1Question": "Chúng tôi nên gọi bạn là gì?",
+    "namePlaceholder": "Tên của bạn",
+    "step2Question": "Một giờ tập trung làm việc của bạn đáng giá bao nhiêu?",
+    "step2Hint": "Đây là nền tảng cho Bloom Balance, phần thưởng và biểu đồ của bạn. Bạn có thể thay đổi bất cứ lúc nào trong Cài Đặt.",
+    "customValue": "Giá Trị Tuỳ Chỉnh",
+    "customValuePlaceholder": "Nhập số tiền của riêng bạn",
+    "step3Question": "Bạn đang phát triển điều gì?",
+    "step4Title": "Chọn giao diện của bạn",
+    "back": "Quay lại",
+    "continue": "Tiếp tục",
+    "getStarted": "Bắt Đầu",
+    "growthAreas": {
+      "career": "Sự nghiệp",
+      "study": "Học tập",
+      "business": "Kinh doanh",
+      "fitness": "Thể chất",
+      "language": "Học ngôn ngữ",
+      "creativity": "Sáng tạo",
+      "personalGrowth": "Phát triển bản thân"
+    },
+    "themes": {
+      "pink": "Bloom Pink",
+      "sage": "Sage Green",
+      "lavender": "Lavender",
+      "midnight": "Midnight",
+      "pearl": "Pearl"
+    }
   },
   "home": {
-    "welcomeBack": "Chào mừng bạn trở lại",
+    "welcomeBack": "Chào mừng bạn trở lại, {name}",
     "gardenWaiting": "Mỗi giờ tập trung đều cộng dồn thành tiến bộ thực sự.",
     "gardenEmpty": "Khu vườn của bạn đang trống - hoàn thành một Focus để gieo bông hoa đầu tiên.",
     "balance": "Bloom Balance hôm nay",
@@ -26,6 +58,7 @@
     "days": "ngày"
   },
   "companion": {
+    "save": "Lưu câu nói",
     "quotes": [
       "Mong bạn thắng những trận chiến mà bạn chưa từng kể với ai.",
       "Hãy tin rằng bạn đủ tốt.",
@@ -122,7 +155,65 @@
       "Thành công không phải sở hữu, mà là thuê - và tiền thuê phải trả mỗi ngày.",
       "Hãy đều đặn đến mức người khác có thể canh giờ theo nỗ lực của bạn.",
       "Bạn có khả năng làm những điều mà phiên bản trước đây của bạn không thể tưởng tượng."
-    ]
+    ],
+    "quotesByArea": {
+      "career": [
+        "Mọi sự nghiệp lớn đều được xây bởi những người kiên trì xuất hiện cả trong những ngày nhàm chán.",
+        "Danh tiếng của bạn là tổng của những lời hứa bạn giữ khi không ai nhìn thấy.",
+        "Hãy vững nền tảng trước khi theo đuổi chức danh.",
+        "Bước tiến sự nghiệp tốt nhất là trở thành người xứng đáng được thăng tiến.",
+        "Hãy xin những phản hồi khiến bạn khó chịu - đó là cách nhanh nhất để tiến lên.",
+        "Mười năm nữa nhìn lại, ngày thứ Ba bình thường này chính là điểm khởi đầu."
+      ],
+      "study": [
+        "Hiểu bản chất luôn tốt hơn học thuộc lòng.",
+        "Chương khó nhất thường là chương dạy bạn nhiều nhất.",
+        "Học như thể kỳ thi là ngày mai và tương lai của bạn phụ thuộc vào đó - vì đúng là như vậy.",
+        "Mỗi trang bạn hoàn thành là một trang mà bản thân trước đây của bạn chưa từng làm được.",
+        "Bối rối chỉ là bản nháp đầu tiên của sự thấu hiểu.",
+        "Bạn không cần thêm giờ học. Bạn cần bớt xao nhãng."
+      ],
+      "business": [
+        "Mọi đế chế đều bắt đầu từ một ý tưởng cứng đầu của ai đó.",
+        "Khách hàng không nhớ bài thuyết trình của bạn. Họ nhớ cảm giác bạn mang lại.",
+        "Hãy ra mắt phiên bản chưa hoàn hảo hôm nay, thay vì phiên bản hoàn hảo không bao giờ có.",
+        "Doanh thu giải quyết phần lớn vấn đề. Sự tập trung tạo ra doanh thu.",
+        "Thị trường thưởng cho những người kiên trì xuất hiện, không chỉ những người khôn khéo.",
+        "Phiên bản đầu tiên vốn dĩ nên khiến bạn ngại ngùng. Cứ ra mắt nó."
+      ],
+      "fitness": [
+        "Buổi tập bạn không muốn làm thường là buổi tập bạn cần nhất.",
+        "Sức mạnh được xây từ hiệp tập sau khi bạn muốn dừng lại.",
+        "Cơ thể bạn ghi nhớ mọi ngày bạn đã cố gắng.",
+        "Sự kiên trì luôn thắng cường độ về lâu dài.",
+        "Nghỉ ngơi là một phần của luyện tập, không phải là nghỉ khỏi nó.",
+        "Kế hoạch tập luyện tốt nhất là kế hoạch bạn thực sự sẽ làm lại vào ngày mai."
+      ],
+      "language": [
+        "Mỗi câu nói vụng về hôm nay chính là sự trôi chảy đang được xây dựng.",
+        "Bạn không cần giỏi để bắt đầu - bạn cần bắt đầu để trở nên giỏi.",
+        "Sai lầm chỉ là cách não bạn học hình dạng của một ngôn ngữ mới.",
+        "Mười từ mới mỗi ngày là hàng nghìn từ mỗi năm.",
+        "Hãy nói sai một cách chủ động - đó là cách nhanh nhất để nói đúng một cách tình cờ.",
+        "Khoảng cách giữa bạn và sự trôi chảy chỉ là sự lặp lại."
+      ],
+      "creativity": [
+        "Bản nháp đầu tiên vốn dĩ nên tệ. Đó là lý do nó được gọi là bản nháp.",
+        "Sáng tạo chỉ là kết nối những điều mà chưa ai buồn kết nối.",
+        "Hãy tạo ra điều gì đó hôm nay, dù nhỏ bé và không ai nhìn thấy.",
+        "Gu thẩm mỹ của bạn đi trước kỹ năng của bạn - khoảng cách đó chính là nơi sự phát triển xảy ra.",
+        "Hoàn thành là động cơ giúp tạo ra nhiều tác phẩm tốt hơn.",
+        "Trang giấy trắng e ngại người xuất hiện mỗi ngày."
+      ],
+      "personalGrowth": [
+        "Sự trưởng thành chỉ là hàng ngàn lựa chọn nhỏ, nhàm chán, cùng một hướng.",
+        "Bạn không hề chậm trễ - bạn đang ở đúng nơi mà nỗ lực của bạn đưa bạn đến.",
+        "Trở thành người bạn muốn bắt đầu từ việc bạn làm hôm nay, không phải một ngày nào đó.",
+        "Con người bạn đang cố trở thành được xây từ những khoảnh khắc bình thường như thế này.",
+        "Chữa lành và trưởng thành hiếm khi cảm thấy kịch tính trong lúc nó đang diễn ra.",
+        "Tiến bộ nhỏ và chân thật luôn thắng những kế hoạch lớn bị bỏ dở."
+      ]
+    }
   },
   "reflection": {
     "unlocked": "Suy Ngẫm Hôm Nay",
@@ -244,13 +335,75 @@
     "title": "Vườn Ký Ức",
     "subtitle": "Mỗi suy ngẫm trở thành một bông hoa. Theo thời gian, đây là câu chuyện của bạn.",
     "empty": "Những suy ngẫm của bạn sẽ xuất hiện ở đây sau khi bạn hoàn thành một ngày.",
-    "tasksCompleted": "việc hoàn thành"
+    "tasksCompleted": "việc hoàn thành",
+    "like": "Thích",
+    "favorite": "Yêu thích"
   },
   "settings": {
+    "title": "Cài Đặt",
+    "subtitle": "Biến Bloom thành không gian của riêng bạn.",
+    "profileSection": "Hồ Sơ",
+    "displayName": "Tên Hiển Thị",
+    "hourlyValueSection": "Giá Trị Giờ Làm",
+    "hourlyValueHint": "Đây là nền tảng cho Bloom Balance, phần thưởng và biểu đồ của bạn.",
+    "modeDirect": "Nhập trực tiếp",
+    "modeSalary": "Tính từ lương",
+    "monthlySalary": "Lương Hàng Tháng",
+    "workingDaysPerMonth": "Số Ngày Làm Việc Mỗi Tháng",
+    "workingHoursPerDay": "Số Giờ Làm Việc Mỗi Ngày",
+    "computedHourlyValue": "Giá trị giờ làm của bạn",
+    "growthAreasSection": "Bạn đang phát triển điều gì",
+    "appearanceSection": "Giao Diện",
     "language": "Ngôn ngữ",
     "theme": "Giao diện",
     "light": "Sáng",
-    "dark": "Tối"
+    "dark": "Tối",
+    "save": "Lưu",
+    "saved": "Đã lưu cài đặt"
+  },
+  "profile": {
+    "joined": "Tham gia",
+    "level": "Cấp độ",
+    "xpToNext": "Còn {remaining} XP để lên Cấp {next}",
+    "currentStreak": "Chuỗi ngày hiện tại",
+    "longestStreak": "Chuỗi dài nhất",
+    "lifetimeFocusHours": "Tổng Giờ Tập Trung",
+    "lifetimeBalance": "Tổng Bloom Balance",
+    "flowersCollected": "Hoa Đã Thu Thập",
+    "challengesCompleted": "Thử Thách Đã Hoàn Thành",
+    "achievements": "Thành Tựu",
+    "badges": "Huy Hiệu",
+    "recentActivity": "Hoạt Động Gần Đây",
+    "noActivity": "Chưa có gì ở đây - hoàn thành một Focus để bắt đầu câu chuyện của bạn.",
+    "comingSoon": "Sắp ra mắt",
+    "editProfile": "Sửa Hồ Sơ",
+    "savedQuotes": "Câu Nói Đã Lưu",
+    "noSavedQuotes": "Những câu nói bạn lưu từ người bạn đồng hành hằng ngày sẽ xuất hiện ở đây.",
+    "removeQuote": "Bỏ lưu"
+  },
+  "share": {
+    "title": "Chia Sẻ",
+    "share": "Chia sẻ",
+    "copyImage": "Sao Chép Ảnh",
+    "copied": "Đã sao chép!",
+    "copyFailed": "Không thể sao chép",
+    "download": "Tải Xuống",
+    "streakEyebrow": "Chuỗi Ngày",
+    "streakHeadline": "Chuỗi {days} Ngày",
+    "streakLabel": "ngày",
+    "todayEyebrow": "Thành Tựu Hôm Nay",
+    "todayHeadline": "Làm tốt lắm hôm nay",
+    "sessionsLabel": "Phiên Tập Trung",
+    "hoursLabel": "Giờ Tập Trung",
+    "balanceLabel": "Đã Tạo",
+    "weeklyEyebrow": "Tổng Kết Tuần",
+    "weeklyHeadline": "Tuần Này Trong Bloom",
+    "topCategoryLabel": "Danh Mục Nổi Bật",
+    "bestDayLabel": "Ngày Tốt Nhất",
+    "longestSessionLabel": "Phiên Dài Nhất",
+    "shareStreak": "Chia sẻ chuỗi ngày",
+    "shareToday": "Chia sẻ hôm nay",
+    "shareWeekly": "Chia sẻ tuần này"
   },
   "common": {
     "close": "Đóng",

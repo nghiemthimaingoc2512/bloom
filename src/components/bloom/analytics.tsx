@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import {
   Bar,
   BarChart,
@@ -12,13 +13,15 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Clock, Flame, Sparkles, TrendingUp } from "lucide-react";
+import { Clock, Flame, Share2, Sparkles, TrendingUp } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { useTranslations } from "next-intl";
 import { useBloomBalance, useBloomStore } from "@/lib/store";
 import { formatVND, todayKey } from "@/lib/utils";
 import { CATEGORY_CHART_COLOR } from "@/lib/category-meta";
 import { categoryMinutesTotal } from "@/lib/reward-engine";
+import { ShareCardDialog } from "./share-card-dialog";
+import type { ShareCardContent } from "@/lib/share-card";
 import type { Category } from "@/lib/types";
 import { useShallow } from "zustand/react/shallow";
 
@@ -37,8 +40,11 @@ function Card({ icon, label, value }: { icon: React.ReactNode; label: string; va
 export function Analytics() {
   const t = useTranslations("analytics");
   const tCat = useTranslations("categories");
+  const tShare = useTranslations("share");
   const { resolvedTheme } = useTheme();
   const dark = resolvedTheme === "dark";
+  const [shareOpen, setShareOpen] = React.useState(false);
+  const [shareContent, setShareContent] = React.useState<ShareCardContent | null>(null);
 
   const { streak, longestStreak, focuses, history } = useBloomStore(
     useShallow((s) => ({
@@ -75,13 +81,43 @@ export function Analytics() {
 
   const strongest = pieData.length > 0 ? [...pieData].sort((a, b) => b.value - a.value)[0].key : undefined;
 
+  const bestDay = weekData.reduce((best, d) => (d.hours > best.hours ? d : best), weekData[0]);
+  const longestSessionMinutes = Math.max(
+    0,
+    ...focuses.flatMap((f) => f.checklist.filter((c) => c.done).map((c) => c.estimatedMinutes))
+  );
+
+  function shareWeekly() {
+    setShareContent({
+      eyebrow: tShare("weeklyEyebrow"),
+      emoji: "📈",
+      headline: tShare("weeklyHeadline"),
+      stats: [
+        { label: t("focusHours"), value: `${weekHours.toFixed(1)}h` },
+        { label: t("balanceEarned"), value: formatVND(balance) },
+        ...(strongest ? [{ label: tShare("topCategoryLabel"), value: tCat(`${strongest}.label`) }] : []),
+        { label: tShare("bestDayLabel"), value: bestDay.day },
+        { label: tShare("longestSessionLabel"), value: `${longestSessionMinutes}m` },
+      ],
+    });
+    setShareOpen(true);
+  }
+
   return (
     <div className="space-y-6">
-      <div>
-        <div className="text-xl font-display font-medium">{t("title")}</div>
-        <div className="text-sm text-ink-soft mt-0.5">
-          {t("suggestionLabel")} - {t("suggestion")}
+      <div className="flex items-start justify-between gap-3 flex-wrap">
+        <div>
+          <div className="text-xl font-display font-medium">{t("title")}</div>
+          <div className="text-sm text-ink-soft mt-0.5">
+            {t("suggestionLabel")} - {t("suggestion")}
+          </div>
         </div>
+        <button
+          onClick={shareWeekly}
+          className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium"
+        >
+          <Share2 size={13} /> {tShare("shareWeekly")}
+        </button>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -101,7 +137,7 @@ export function Analytics() {
               <XAxis dataKey="day" tick={{ fontSize: 12, fill: dark ? "#a8a29e" : "#78716c" }} axisLine={false} tickLine={false} />
               <YAxis hide />
               <Tooltip cursor={{ fill: "rgba(245,79,147,0.08)" }} contentStyle={{ borderRadius: 12, border: "none", fontSize: 12 }} formatter={(v) => [`${v}h`, ""]} />
-              <Bar dataKey="hours" radius={[8, 8, 8, 8]} fill="#f54f93" label={{ position: "top", fontSize: 11, fill: dark ? "#e7e5e4" : "#57534e" }} />
+              <Bar dataKey="hours" radius={[8, 8, 8, 8]} fill="var(--color-rose)" label={{ position: "top", fontSize: 11, fill: dark ? "#e7e5e4" : "#57534e" }} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -144,6 +180,8 @@ export function Analytics() {
           </div>
         </div>
       )}
+
+      <ShareCardDialog open={shareOpen} onOpenChange={setShareOpen} content={shareContent} />
     </div>
   );
 }
