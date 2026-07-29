@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BloomProvider } from "@/components/bloom-provider";
@@ -10,10 +9,14 @@ import { Toaster } from "@/components/bloom/toaster";
 import "../globals.css";
 
 // Applies the persisted light/dark mode and color palette before hydration
-// so there's no flash of the wrong theme. Runs via next/script
-// (strategy="beforeInteractive"), which Next.js injects outside normal React
-// child reconciliation - a plain <script> element rendered as JSX would not
-// execute on client re-renders.
+// so there's no flash of the wrong theme. Rendered below as a plain inline
+// <script> straight from this Server Component (not next/script's <Script>,
+// which is itself a client component - React hydrates it and warns that an
+// inline, src-less script "rendered on the client" won't re-execute). A
+// literal <script> emitted by a Server Component instead becomes static SSR
+// HTML with no client-side counterpart to hydrate, so the browser just
+// parses and runs it inline while streaming the page, before React's client
+// bundle even loads - earlier than "beforeInteractive" would have run it.
 const THEME_INIT_SCRIPT = `
 (function () {
   try {
@@ -76,9 +79,7 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <Script id="theme-init" strategy="beforeInteractive">
-          {THEME_INIT_SCRIPT}
-        </Script>
+        <script id="theme-init" dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <NextIntlClientProvider>
