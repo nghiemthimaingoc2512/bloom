@@ -36,3 +36,15 @@ export function computeLevel(totalFocusMinutes: number): LevelProgress {
     totalXp: totalFocusMinutes,
   };
 }
+
+export type LevelTitleKey = "sprout" | "sapling" | "bloom" | "gardenKeeper" | "gardenMaster";
+
+/** A small Duolingo-style flourish - returns a translation key, not display
+ *  text, so callers resolve it through next-intl for both locales. */
+export function levelTitleKey(level: number): LevelTitleKey {
+  if (level < 5) return "sprout";
+  if (level < 10) return "sapling";
+  if (level < 20) return "bloom";
+  if (level < 35) return "gardenKeeper";
+  return "gardenMaster";
+}

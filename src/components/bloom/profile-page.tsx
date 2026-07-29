@@ -1,11 +1,23 @@
 "use client";
 
-import { Award, Clock, Flame, Flower2, Heart, Sparkles, Trophy } from "lucide-react";
+import * as React from "react";
+import { Award, Clock, Flame, Flower2, Heart, Share2, Sparkles, Trophy } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useBloomStore } from "@/lib/store";
 import { useShallow } from "zustand/react/shallow";
-import { computeLevel } from "@/lib/leveling";
+import { computeLevel, levelTitleKey } from "@/lib/leveling";
+import { evaluateAchievements, type Rarity } from "@/lib/achievements";
+import { computeWrapped } from "@/lib/bloom-wrapped";
 import { formatVND } from "@/lib/utils";
+import { ShareCardDialog } from "./share-card-dialog";
+import type { ShareCardContent } from "@/lib/share-card";
+
+const RARITY_STYLES: Record<Rarity, string> = {
+  common: "bg-stone-100 text-stone-500 dark:bg-white/5",
+  rare: "bg-blush text-rose-deep",
+  epic: "bg-purple-100 text-purple-600 dark:bg-purple-950/30 dark:text-purple-300",
+  legendary: "gradient-primary text-white shadow-md shadow-rose/25",
+};
 
 function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: React.ReactNode }) {
   return (
@@ -21,16 +33,23 @@ function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string
 
 export function ProfilePage() {
   const t = useTranslations("profile");
+  const tAch = useTranslations("achievements");
+  const tCat = useTranslations("categories");
   const locale = useLocale();
+  const [shareOpen, setShareOpen] = React.useState(false);
+  const [shareContent, setShareContent] = React.useState<ShareCardContent | null>(null);
 
   const {
     displayName,
     joinedAt,
     streak,
     longestStreak,
+    focuses,
     garden,
     memory,
+    redemptions,
     savedQuotes,
+    history,
     lifetimeBalanceEarned,
     lifetimeFocusMinutes,
     toggleSavedQuote,
@@ -40,14 +59,21 @@ export function ProfilePage() {
       joinedAt: s.joinedAt,
       streak: s.streak,
       longestStreak: s.longestStreak,
+      focuses: s.focuses,
       garden: s.garden,
       memory: s.memory,
+      redemptions: s.redemptions,
       savedQuotes: s.savedQuotes,
+      history: s.history,
       lifetimeBalanceEarned: s.lifetimeBalanceEarned,
       lifetimeFocusMinutes: s.lifetimeFocusMinutes,
       toggleSavedQuote: s.toggleSavedQuote,
     }))
   );
+
+  const achievementState = { focuses, garden, memory, redemptions, savedQuotes, streak, longestStreak, lifetimeFocusMinutes, lifetimeBalanceEarned };
+  const achievements = evaluateAchievements(achievementState);
+  const unlockedCount = achievements.filter((a) => a.unlocked).length;
 
   const { level, currentLevelXp, xpForNextLevel } = computeLevel(lifetimeFocusMinutes);
   const levelPct = xpForNextLevel > 0 ? Math.min(100, Math.round((currentLevelXp / xpForNextLevel) * 100)) : 0;
@@ -56,6 +82,28 @@ export function ProfilePage() {
   const joinedLabel = joinedAt
     ? new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric" }).format(new Date(joinedAt))
     : "-";
+
+  function shareWrapped() {
+    const wrapped = computeWrapped({ ...achievementState, history });
+    setShareContent({
+      eyebrow: `Bloom Wrapped ${wrapped.year}`,
+      emoji: "🌸",
+      headline: t("wrappedHeadline", { year: wrapped.year }),
+      stats: [
+        { label: t("wrappedFocusHours"), value: `${wrapped.totalFocusHours.toFixed(1)}h` },
+        { label: t("wrappedBalance"), value: formatVND(wrapped.balanceCreated) },
+        { label: t("wrappedFlowers"), value: String(wrapped.flowersBloomed) },
+        { label: t("wrappedStreak"), value: String(wrapped.longestStreak) },
+        ...(wrapped.favoriteCategory
+          ? [{ label: t("wrappedFavoriteCategory"), value: tCat(`${wrapped.favoriteCategory}.label`) }]
+          : []),
+        ...(wrapped.topAchievementId
+          ? [{ label: t("wrappedTopAchievement"), value: tAch(`${wrapped.topAchievementId}.name`) }]
+          : []),
+      ],
+    });
+    setShareOpen(true);
+  }
 
   return (
     <div className="space-y-8">
@@ -71,7 +119,7 @@ export function ProfilePage() {
           <div className="mt-3">
             <div className="flex items-center justify-between text-xs text-ink-soft mb-1">
               <span>
-                {t("level")} {level}
+                {t("level")} {level} · {t(`levelTitle.${levelTitleKey(level)}`)}
               </span>
               <span className="font-mono">
                 {currentLevelXp}/{xpForNextLevel}
@@ -93,12 +141,36 @@ export function ProfilePage() {
         <StatCard icon={<Trophy size={16} className="text-amber-500" />} label={t("challengesCompleted")} value={0} />
       </div>
 
+      <div className="rounded-[28px] p-7 gradient-primary text-white flex items-center justify-between gap-4 flex-wrap shadow-lg shadow-rose/25">
+        <div>
+          <div className="text-lg font-display font-medium">🌸 {t("wrappedTitle", { year: new Date().getFullYear() })}</div>
+          <div className="text-sm opacity-90 mt-0.5">{t("wrappedSubtitle")}</div>
+        </div>
+        <button
+          onClick={shareWrapped}
+          className="bg-white text-rose-deep flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium shrink-0"
+        >
+          <Share2 size={14} /> {t("viewWrapped")}
+        </button>
+      </div>
+
       <div className="rounded-2xl glass p-6">
         <div className="flex items-center gap-2 mb-4">
           <Award size={16} className="text-amber-400" />
           <div className="font-medium text-sm">{t("achievements")}</div>
+          <span className="text-xs text-ink-soft ml-auto font-mono">
+            {unlockedCount}/{achievements.length}
+          </span>
         </div>
-        <div className="text-sm text-ink-soft text-center py-8">{t("comingSoon")}</div>
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+          {achievements.map((a) => (
+            <div key={a.id} className={`flex flex-col items-center text-center gap-1.5 ${a.unlocked ? "" : "opacity-40 grayscale"}`}>
+              <span className={`grid place-items-center w-12 h-12 rounded-2xl text-xl ${RARITY_STYLES[a.rarity]}`}>{a.emoji}</span>
+              <div className="text-[11px] font-medium leading-tight">{tAch(`${a.id}.name`)}</div>
+              <div className="text-[9px] uppercase tracking-wide text-ink-soft">{tAch(`rarity.${a.rarity}`)}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="rounded-2xl glass p-6">
@@ -144,6 +216,8 @@ export function ProfilePage() {
           </div>
         )}
       </div>
+
+      <ShareCardDialog open={shareOpen} onOpenChange={setShareOpen} content={shareContent} />
     </div>
   );
 }

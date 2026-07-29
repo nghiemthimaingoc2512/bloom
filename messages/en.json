@@ -379,7 +379,45 @@
     "editProfile": "Edit Profile",
     "savedQuotes": "Saved Quotes",
     "noSavedQuotes": "Quotes you save from your daily companion will show up here.",
-    "removeQuote": "Remove from saved"
+    "removeQuote": "Remove from saved",
+    "levelTitle": {
+      "sprout": "Sprout",
+      "sapling": "Sapling",
+      "bloom": "Bloom",
+      "gardenKeeper": "Garden Keeper",
+      "gardenMaster": "Garden Master"
+    },
+    "wrappedTitle": "Bloom Wrapped {year}",
+    "wrappedSubtitle": "Your year in focus, ready to share.",
+    "viewWrapped": "View My Wrapped",
+    "wrappedHeadline": "Bloom Wrapped {year}",
+    "wrappedFocusHours": "Focus Hours",
+    "wrappedBalance": "Balance Created",
+    "wrappedFlowers": "Flowers Bloomed",
+    "wrappedStreak": "Longest Streak",
+    "wrappedFavoriteCategory": "Favorite Category",
+    "wrappedTopAchievement": "Top Achievement"
+  },
+  "achievements": {
+    "rarity": {
+      "common": "Common",
+      "rare": "Rare",
+      "epic": "Epic",
+      "legendary": "Legendary"
+    },
+    "firstFocus": { "name": "First Focus", "desc": "Create your first Focus" },
+    "firstFlower": { "name": "First Flower", "desc": "Bloom your first flower" },
+    "firstReflection": { "name": "First Reflection", "desc": "Write your first daily reflection" },
+    "firstReward": { "name": "First Reward", "desc": "Redeem your first reward" },
+    "quoteCollector": { "name": "Quote Collector", "desc": "Save 5 quotes" },
+    "streak7": { "name": "7-Day Streak", "desc": "Reach a 7-day streak" },
+    "hours10": { "name": "10 Focus Hours", "desc": "Log 10 lifetime focus hours" },
+    "flowers10": { "name": "Blooming Garden", "desc": "Grow 10 flowers" },
+    "memoryKeeper": { "name": "Memory Keeper", "desc": "Favorite 3 reflections" },
+    "balance1m": { "name": "First Million", "desc": "Earn 1,000,000d in Bloom Balance" },
+    "streak30": { "name": "30-Day Streak", "desc": "Reach a 30-day streak" },
+    "hours100": { "name": "100 Focus Hours", "desc": "Log 100 lifetime focus hours" },
+    "balance10m": { "name": "Ten Million Club", "desc": "Earn 10,000,000d in Bloom Balance" }
   },
   "share": {
     "title": "Share",

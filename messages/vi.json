@@ -379,7 +379,45 @@
     "editProfile": "Sửa Hồ Sơ",
     "savedQuotes": "Câu Nói Đã Lưu",
     "noSavedQuotes": "Những câu nói bạn lưu từ người bạn đồng hành hằng ngày sẽ xuất hiện ở đây.",
-    "removeQuote": "Bỏ lưu"
+    "removeQuote": "Bỏ lưu",
+    "levelTitle": {
+      "sprout": "Mầm Non",
+      "sapling": "Cây Con",
+      "bloom": "Nở Rộ",
+      "gardenKeeper": "Người Giữ Vườn",
+      "gardenMaster": "Bậc Thầy Làm Vườn"
+    },
+    "wrappedTitle": "Bloom Wrapped {year}",
+    "wrappedSubtitle": "Một năm tập trung của bạn, sẵn sàng để chia sẻ.",
+    "viewWrapped": "Xem Wrapped Của Tôi",
+    "wrappedHeadline": "Bloom Wrapped {year}",
+    "wrappedFocusHours": "Giờ Tập Trung",
+    "wrappedBalance": "Balance Đã Tạo",
+    "wrappedFlowers": "Hoa Đã Nở",
+    "wrappedStreak": "Chuỗi Dài Nhất",
+    "wrappedFavoriteCategory": "Danh Mục Yêu Thích",
+    "wrappedTopAchievement": "Thành Tựu Nổi Bật"
+  },
+  "achievements": {
+    "rarity": {
+      "common": "Phổ Biến",
+      "rare": "Hiếm",
+      "epic": "Sử Thi",
+      "legendary": "Huyền Thoại"
+    },
+    "firstFocus": { "name": "Focus Đầu Tiên", "desc": "Tạo Focus đầu tiên của bạn" },
+    "firstFlower": { "name": "Bông Hoa Đầu Tiên", "desc": "Nở bông hoa đầu tiên của bạn" },
+    "firstReflection": { "name": "Suy Ngẫm Đầu Tiên", "desc": "Viết suy ngẫm hằng ngày đầu tiên" },
+    "firstReward": { "name": "Phần Thưởng Đầu Tiên", "desc": "Đổi phần thưởng đầu tiên của bạn" },
+    "quoteCollector": { "name": "Người Sưu Tầm Câu Nói", "desc": "Lưu 5 câu nói" },
+    "streak7": { "name": "Chuỗi 7 Ngày", "desc": "Đạt chuỗi 7 ngày" },
+    "hours10": { "name": "10 Giờ Tập Trung", "desc": "Ghi nhận 10 giờ tập trung trọn đời" },
+    "flowers10": { "name": "Khu Vườn Nở Rộ", "desc": "Trồng 10 bông hoa" },
+    "memoryKeeper": { "name": "Người Giữ Ký Ức", "desc": "Yêu thích 3 suy ngẫm" },
+    "balance1m": { "name": "Triệu Đầu Tiên", "desc": "Kiếm được 1.000.000₫ Bloom Balance" },
+    "streak30": { "name": "Chuỗi 30 Ngày", "desc": "Đạt chuỗi 30 ngày" },
+    "hours100": { "name": "100 Giờ Tập Trung", "desc": "Ghi nhận 100 giờ tập trung trọn đời" },
+    "balance10m": { "name": "Câu Lạc Bộ 10 Triệu", "desc": "Kiếm được 10.000.000₫ Bloom Balance" }
   },
   "share": {
     "title": "Chia Sẻ",
