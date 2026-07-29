@@ -82,10 +82,10 @@ export function NewFocusDialog({ open, onOpenChange }: { open: boolean; onOpenCh
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogTitle className="font-medium mb-4">{t("newFocus")}</DialogTitle>
-        <div className="space-y-3">
+        <DialogTitle className="text-lg font-display font-medium mb-5">{t("newFocus")}</DialogTitle>
+        <div className="space-y-4">
           <div>
-            <Label>{t("title")}</Label>
+            <Label>{t("titleField")}</Label>
             <Input value={title} onChange={(e) => setTitle(e.target.value)} />
           </div>
           <div>
@@ -146,7 +146,7 @@ export function NewFocusDialog({ open, onOpenChange }: { open: boolean; onOpenCh
               {steps.map((s) => (
                 <div key={s.id} className="flex gap-2 items-center">
                   <Input
-                    placeholder={t("title")}
+                    placeholder={t("titleField")}
                     value={s.title}
                     onChange={(e) => updateStep(s.id, { title: e.target.value })}
                     className="flex-1"
@@ -171,11 +171,11 @@ export function NewFocusDialog({ open, onOpenChange }: { open: boolean; onOpenCh
             </button>
           </div>
         </div>
-        <div className="flex justify-end gap-2 mt-5">
-          <button onClick={() => onOpenChange(false)} className="px-4 py-2 rounded-full text-sm text-ink-soft">
+        <div className="flex justify-end gap-2 mt-6">
+          <button onClick={() => onOpenChange(false)} className="btn-secondary px-4 py-2.5 rounded-full text-sm font-medium">
             {t("cancel")}
           </button>
-          <button onClick={submit} className="px-5 py-2 rounded-full bg-rose text-white text-sm hover:bg-rose-deep transition">
+          <button onClick={submit} className="btn-primary px-5 py-2.5 rounded-full text-sm font-medium">
             {t("create")}
           </button>
         </div>

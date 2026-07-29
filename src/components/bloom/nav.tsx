@@ -20,13 +20,15 @@ export function Nav() {
   ];
 
   return (
-    <header className="max-w-5xl mx-auto px-5 pt-6">
-      <div className="flex items-center justify-between mb-6">
-        <Link href="/" className="flex items-center gap-2">
-          <Flower2 className="text-rose" size={26} />
+    <header className="max-w-5xl mx-auto px-5 pt-8">
+      <div className="flex items-center justify-between mb-8">
+        <Link href="/" className="flex items-center gap-3">
+          <span className="grid place-items-center w-10 h-10 rounded-2xl gradient-primary text-white shadow-lg shadow-rose/25">
+            <Flower2 size={20} />
+          </span>
           <div>
-            <div className="font-display text-xl tracking-tight leading-none">Bloom</div>
-            <div className="text-[11px] text-ink-soft">Grow beautifully.</div>
+            <div className="font-display text-xl font-medium tracking-tight leading-none">Bloom</div>
+            <div className="text-[11px] text-ink-soft mt-0.5">Grow beautifully</div>
           </div>
         </Link>
         <div className="flex items-center gap-2">
@@ -43,10 +45,10 @@ export function Nav() {
               key={tab.href}
               href={tab.href}
               className={cn(
-                "px-4 py-2 rounded-full text-sm whitespace-nowrap transition border",
+                "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all",
                 active
-                  ? "bg-rose text-white border-rose shadow-sm shadow-rose/30"
-                  : "glass text-ink-soft hover:text-rose-deep"
+                  ? "gradient-primary text-white shadow-md shadow-rose/25"
+                  : "text-ink-soft hover:text-rose-deep hover:bg-blush/60"
               )}
             >
               {tab.label}

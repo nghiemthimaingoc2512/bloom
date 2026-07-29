@@ -1,5 +1,5 @@
-import { DreamStore } from "@/components/bloom/dream-store";
+import { RewardStore } from "@/components/bloom/reward-store";
 
 export default function StorePage() {
-  return <DreamStore />;
+  return <RewardStore />;
 }

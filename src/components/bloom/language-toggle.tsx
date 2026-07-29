@@ -17,7 +17,7 @@ export function LanguageToggle() {
   return (
     <button
       onClick={toggle}
-      className="flex items-center gap-1 text-xs px-3 py-1.5 rounded-full glass text-ink-soft hover:text-rose-deep transition"
+      className="flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush/60 transition-all"
       aria-label="Toggle language"
     >
       <Languages size={13} /> {locale === "en" ? "EN" : "VI"}

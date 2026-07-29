@@ -61,7 +61,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ThemeProvider>
             <Nav />
-            <main className="max-w-5xl mx-auto px-5 pb-16 pt-6">
+            <main className="max-w-5xl mx-auto px-5 pb-20 pt-2">
               <BloomProvider>{children}</BloomProvider>
             </main>
             <Toaster />

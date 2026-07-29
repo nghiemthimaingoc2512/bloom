@@ -14,22 +14,38 @@ export function GardenHero() {
   const fading = garden.filter((f) => f.stage === "fade").length;
 
   return (
-    <div className="relative overflow-hidden rounded-3xl glass p-6">
-      <div className="flex items-start justify-between mb-2 gap-4">
+    <div className="relative overflow-hidden rounded-[28px] p-7 md:p-10 border border-petal/50 shadow-[0_24px_64px_-28px_rgba(214,41,112,0.4)] bg-gradient-to-br from-white via-blush/60 to-petal/30 dark:from-night-card dark:via-night dark:to-night">
+      <div className="pointer-events-none absolute -top-24 -right-20 w-72 h-72 rounded-full bg-rose/25 blur-[100px]" />
+      <div className="pointer-events-none absolute -bottom-24 -left-16 w-64 h-64 rounded-full bg-[#FF7FB5]/25 blur-[90px]" />
+
+      <div className="relative flex items-start justify-between gap-4 mb-8">
         <div>
-          <div className="text-lg font-display">{t("welcomeBack")}</div>
-          <div className="text-sm text-ink-soft max-w-md">{t("gardenWaiting")}</div>
+          <div className="text-[12px] uppercase tracking-[0.16em] text-rose-deep font-semibold mb-2">
+            {t("welcomeBack")}
+          </div>
+          <h1 className="text-2xl md:text-[28px] font-display font-medium tracking-tight text-ink leading-snug max-w-md">
+            {t("gardenWaiting")}
+          </h1>
         </div>
-        <Sparkles className="text-amber-300 shrink-0" size={22} />
+        <span className="shrink-0 grid place-items-center w-12 h-12 rounded-2xl gradient-primary text-white shadow-lg shadow-rose/30">
+          <Sparkles size={20} />
+        </span>
       </div>
-      <div className="flex flex-wrap items-end gap-1 justify-center py-4">
-        {garden.map((f, i) => (
-          <Flower key={f.id} stage={f.stage} kind={f.kind} delay={i * 0.03} />
-        ))}
-      </div>
-      <div className="text-center text-xs text-ink-soft">
-        {t("gardenState")}: {blooming} {t("blooming")} · {wilting} {t("wilting")} · {fading} {t("fading")}
-      </div>
+
+      {garden.length > 0 ? (
+        <>
+          <div className="relative flex flex-wrap items-end gap-1 justify-center py-4">
+            {garden.map((f, i) => (
+              <Flower key={f.id} stage={f.stage} kind={f.kind} delay={i * 0.03} />
+            ))}
+          </div>
+          <div className="relative text-center text-xs text-ink-soft mt-2">
+            {t("gardenState")}: {blooming} {t("blooming")} · {wilting} {t("wilting")} · {fading} {t("fading")}
+          </div>
+        </>
+      ) : (
+        <div className="relative text-center py-12 text-sm text-ink-soft">{t("gardenEmpty")}</div>
+      )}
     </div>
   );
 }

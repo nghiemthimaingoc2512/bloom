@@ -2,6 +2,17 @@ export type Category = "create" | "grow" | "enjoy" | "consume";
 export type Priority = "high" | "medium" | "low";
 export type FlowerStage = "bloom" | "wilt" | "fade";
 export type FlowerKind = "tulip" | "sakura";
+export type RewardIcon =
+  | "coffee"
+  | "movie"
+  | "travel"
+  | "book"
+  | "spa"
+  | "dinner"
+  | "music"
+  | "shopping"
+  | "heart"
+  | "gift";
 
 export interface ChecklistStep {
   id: string;
@@ -23,6 +34,14 @@ export interface Focus {
   expectedOutput: string;
   notes: string;
   checklist: ChecklistStep[];
+  createdAt: string;
+}
+
+export interface Reward {
+  id: string;
+  name: string;
+  cost: number;
+  icon: RewardIcon;
   createdAt: string;
 }
 
@@ -56,6 +75,7 @@ export interface BloomState {
   longestStreak: number;
   lastActiveDate: string | null;
   focuses: Focus[];
+  rewards: Reward[];
   garden: GardenFlower[];
   memory: MemoryEntry[];
   history: DayRecord[];

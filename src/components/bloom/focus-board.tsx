@@ -13,24 +13,24 @@ export function FocusBoard() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div>
-          <div className="text-lg font-display">{t("title")}</div>
-          <div className="text-sm text-ink-soft">{t("subtitle")}</div>
+          <div className="text-xl font-display font-medium">{t("title")}</div>
+          <div className="text-sm text-ink-soft mt-0.5">{t("subtitle")}</div>
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="flex items-center gap-1 px-4 py-2 rounded-full bg-rose text-white text-sm hover:bg-rose-deep transition"
+          className="btn-primary flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium"
         >
           <Plus size={15} /> {t("newFocus")}
         </button>
       </div>
 
       {focuses.length === 0 ? (
-        <div className="text-sm text-ink-soft text-center py-16 rounded-2xl glass">{t("empty")}</div>
+        <div className="text-sm text-ink-soft text-center py-20">{t("empty")}</div>
       ) : (
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-5">
           {focuses.map((f) => (
             <FocusCard key={f.id} focus={f} />
           ))}

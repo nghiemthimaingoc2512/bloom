@@ -37,19 +37,19 @@ export function FocusCard({ focus }: { focus: Focus }) {
   }
 
   return (
-    <div className="rounded-2xl glass p-5">
-      <div className="flex items-start justify-between mb-1">
+    <div className="rounded-2xl glass glass-hover p-6">
+      <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-2">
           <span className={`p-1.5 rounded-lg ${CATEGORY_BG[focus.category]}`}>
             <Icon size={14} />
           </span>
-          <span className="text-xs text-ink-soft">{tCat(`${focus.category}.label`)}</span>
+          <span className="text-xs text-ink-soft font-medium">{tCat(`${focus.category}.label`)}</span>
         </div>
         {pct >= 100 && <Sparkles size={16} className="text-amber-400" />}
       </div>
-      <div className="font-medium">{focus.title}</div>
-      {focus.purpose && <div className="text-xs text-ink-soft mb-3">{focus.purpose}</div>}
-      <div className="w-full h-1.5 rounded-full bg-stone-200/50 overflow-hidden mb-3 mt-2">
+      <div className="font-medium tracking-tight">{focus.title}</div>
+      {focus.purpose && <div className="text-xs text-ink-soft mb-3 mt-0.5">{focus.purpose}</div>}
+      <div className="w-full h-1.5 rounded-full bg-petal/30 overflow-hidden mb-4 mt-3">
         <motion.div className={`h-full ${barColor}`} initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.5 }} />
       </div>
       <div className="space-y-1.5">
@@ -57,13 +57,15 @@ export function FocusCard({ focus }: { focus: Focus }) {
           <button
             key={c.id}
             onClick={() => handleToggle(c.id)}
-            className={`w-full flex items-center justify-between text-sm px-3 py-2 rounded-xl border transition text-left ${
-              c.done ? "border-green-200 bg-green-50/60 text-stone-400 line-through" : "border-blush hover:border-rose"
+            className={`w-full flex items-center justify-between text-sm px-3.5 py-2.5 rounded-xl border transition-all text-left ${
+              c.done
+                ? "border-green-200/70 bg-green-50/60 text-stone-400 line-through dark:bg-green-950/10 dark:border-green-800/30"
+                : "border-petal/60 hover:border-rose hover:bg-blush/25"
             }`}
           >
             <span className="flex items-center gap-2">
               <span
-                className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
+                className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
                   c.done ? "bg-green-400 border-green-400" : "border-stone-300"
                 }`}
               >

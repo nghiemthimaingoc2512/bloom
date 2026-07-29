@@ -9,7 +9,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="flex items-center gap-1 text-xs px-3 py-1.5 rounded-full glass text-ink-soft hover:text-rose-deep transition"
+      className="grid place-items-center w-9 h-9 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush/60 transition-all"
       aria-label="Toggle theme"
     >
       <Sun size={13} className="hidden dark:block" />

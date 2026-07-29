@@ -5,103 +5,24 @@ import type {
   Focus,
   FlowerKind,
   GardenFlower,
+  Reward,
 } from "./types";
 import { bloomRepository } from "./storage";
 import { emptyCategoryMinutes, minutesToReward, todayKey, uid } from "./utils";
 
-function seedGarden(): GardenFlower[] {
-  const kinds: FlowerKind[] = ["tulip", "sakura"];
-  const stages: GardenFlower["stage"][] = [
-    "bloom",
-    "bloom",
-    "bloom",
-    "bloom",
-    "bloom",
-    "wilt",
-    "bloom",
-    "fade",
-  ];
-  return stages.map((stage, i) => ({
-    id: uid(),
-    stage,
-    kind: kinds[i % 2],
-    plantedAt: todayKey(),
-  }));
-}
-
-function seedFocuses(): Focus[] {
-  const now = new Date().toISOString();
-  return [
-    {
-      id: uid(),
-      title: "Ship the Bloom landing page",
-      purpose: "Give people a beautiful reason to start growing.",
-      startDate: null,
-      deadline: null,
-      estimatedDuration: "2h",
-      priority: "high",
-      stakeholders: "",
-      category: "create",
-      expectedOutput: "A live, polished landing page.",
-      notes: "",
-      createdAt: now,
-      checklist: [
-        { id: uid(), title: "Sketch the garden hero", estimatedMinutes: 45, done: true },
-        { id: uid(), title: "Build the focus board UI", estimatedMinutes: 60, done: true },
-        { id: uid(), title: "Polish animations", estimatedMinutes: 30, done: false },
-      ],
-    },
-    {
-      id: uid(),
-      title: "Morning run + stretch",
-      purpose: "A body that moves is a mind that grows.",
-      startDate: null,
-      deadline: null,
-      estimatedDuration: "45m",
-      priority: "medium",
-      stakeholders: "",
-      category: "grow",
-      expectedOutput: "Feeling clear-headed and awake.",
-      notes: "",
-      createdAt: now,
-      checklist: [
-        { id: uid(), title: "5km run", estimatedMinutes: 30, done: true },
-        { id: uid(), title: "Stretch routine", estimatedMinutes: 15, done: false },
-      ],
-    },
-    {
-      id: uid(),
-      title: "Tea with an old friend",
-      purpose: "Connection is part of a beautiful life.",
-      startDate: null,
-      deadline: null,
-      estimatedDuration: "1h",
-      priority: "low",
-      stakeholders: "",
-      category: "enjoy",
-      expectedOutput: "A warm afternoon, well spent.",
-      notes: "",
-      createdAt: now,
-      checklist: [{ id: uid(), title: "Coffee catch-up", estimatedMinutes: 60, done: false }],
-    },
-  ];
-}
-
 function defaultState(): BloomState {
   return {
-    balance: 480_000,
-    streak: 6,
-    longestStreak: 11,
-    lastActiveDate: todayKey(),
-    focuses: seedFocuses(),
-    garden: seedGarden(),
-    memory: [
-      { id: uid(), date: "Jul 21", quote: "Small, steady, and kind to myself.", mood: "🌤️", completedTasks: 2, bloomLevel: "bloom" },
-      { id: uid(), date: "Jul 24", quote: "Every step counted today, even the tiny ones.", mood: "🌸", completedTasks: 3, bloomLevel: "bloom" },
-    ],
+    balance: 0,
+    streak: 0,
+    longestStreak: 0,
+    lastActiveDate: null,
+    focuses: [],
+    rewards: [],
+    garden: [],
+    memory: [],
     history: [],
     reflectedToday: false,
-    categoryMinutes: { create: 75, grow: 30, enjoy: 0, consume: 20 },
+    categoryMinutes: emptyCategoryMinutes(),
   };
 }
 
@@ -119,6 +40,9 @@ interface BloomStore extends BloomState {
   toggleStep: (focusId: string, stepId: string) => void;
   submitReflection: (quote: string, mood: string) => { perfect: boolean };
   redeem: (cost: number) => boolean;
+  addReward: (reward: Omit<Reward, "id" | "createdAt">) => void;
+  updateReward: (id: string, patch: Partial<Omit<Reward, "id" | "createdAt">>) => void;
+  deleteReward: (id: string) => void;
   clearLastReward: () => void;
   showToast: (message: string) => void;
 }
@@ -261,6 +185,31 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
       return next;
     });
     return true;
+  },
+
+  addReward: (reward) => {
+    const newReward: Reward = { ...reward, id: uid(), createdAt: new Date().toISOString() };
+    set((s) => {
+      const next = { ...s, rewards: [...s.rewards, newReward] };
+      persist(next);
+      return next;
+    });
+  },
+
+  updateReward: (id, patch) => {
+    set((s) => {
+      const next = { ...s, rewards: s.rewards.map((r) => (r.id === id ? { ...r, ...patch } : r)) };
+      persist(next);
+      return next;
+    });
+  },
+
+  deleteReward: (id) => {
+    set((s) => {
+      const next = { ...s, rewards: s.rewards.filter((r) => r.id !== id) };
+      persist(next);
+      return next;
+    });
   },
 
   clearLastReward: () => set({ lastReward: null }),
