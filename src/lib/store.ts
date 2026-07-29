@@ -2,6 +2,7 @@ import { create } from "zustand";
 import type {
   BloomState,
   Category,
+  FeedbackEntry,
   Focus,
   FlowerKind,
   GardenFlower,
@@ -36,6 +37,8 @@ function defaultState(): BloomState {
     savedQuotes: [],
     history: [],
     reflectedToday: false,
+    feedback: [],
+    betaBannerDismissed: false,
   };
 }
 
@@ -92,6 +95,8 @@ interface BloomStore extends BloomState {
   toggleMemoryFavorited: (id: string) => void;
   clearLastReward: () => void;
   showToast: (message: string) => void;
+  submitFeedback: (entry: Omit<FeedbackEntry, "id" | "submittedAt">) => void;
+  dismissBetaBanner: () => void;
 }
 
 let saveTimer: ReturnType<typeof setTimeout> | null = null;
@@ -370,6 +375,23 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
   },
 
   clearLastReward: () => set({ lastReward: null }),
+
+  submitFeedback: (entry) => {
+    const newEntry: FeedbackEntry = { ...entry, id: uid(), submittedAt: new Date().toISOString() };
+    set((s) => {
+      const next = { ...s, feedback: [...s.feedback, newEntry] };
+      persist(next);
+      return next;
+    });
+  },
+
+  dismissBetaBanner: () => {
+    set((s) => {
+      const next = { ...s, betaBannerDismissed: true };
+      persist(next);
+      return next;
+    });
+  },
 }));
 
 /** Bloom Balance, derived fresh from the store on every read - see

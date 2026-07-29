@@ -1,6 +1,6 @@
 "use client";
 
-import { Flower2, Settings } from "lucide-react";
+import { Flower2, Info, Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useBloomStore } from "@/lib/store";
@@ -38,6 +38,13 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <LanguageToggle />
           <ThemeToggle />
+          <Link
+            href="/about"
+            aria-label={t("about")}
+            className="grid place-items-center w-9 h-9 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush/60 transition-all"
+          >
+            <Info size={16} />
+          </Link>
           <Link
             href="/settings"
             aria-label={t("settings")}

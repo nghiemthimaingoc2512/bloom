@@ -10,7 +10,28 @@
     "store": "Phần Thưởng",
     "memory": "Vườn Ký Ức",
     "profile": "Hồ Sơ",
-    "settings": "Cài Đặt"
+    "settings": "Cài Đặt",
+    "about": "Giới Thiệu"
+  },
+  "about": {
+    "title": "Bloom",
+    "tagline": "Lớn lên thật đẹp.",
+    "description": "Bloom là nền tảng năng suất kiểu trò chơi hoá, giúp mọi người biến thời gian tập trung thành phần thưởng ý nghĩa, thói quen bền vững và sự trưởng thành cá nhân.",
+    "whyTitle": "Vì sao chọn Bloom?",
+    "whyIntro": "Bloom được thiết kế để giúp bạn:",
+    "why1": "Giữ sự tập trung",
+    "why2": "Xây dựng những thói quen ý nghĩa",
+    "why3": "Nhìn thấy tiến bộ của mình",
+    "why4": "Ăn mừng những thành tựu",
+    "why5": "Tự thưởng cho bản thân một cách có chủ đích",
+    "why6": "Trưởng thành đều đặn theo thời gian",
+    "philosophyTitle": "Triết Lý Cốt Lõi",
+    "philosophyBody": "Những hành động nhỏ cộng dồn thành kết quả phi thường. Bloom khuyến khích sự đều đặn hơn là sự hoàn hảo.",
+    "visionTitle": "Tầm Nhìn Sản Phẩm",
+    "visionBody": "Biến thời gian tập trung thành tiến bộ nhìn thấy được, những thành tựu ý nghĩa và một cộng đồng luôn ủng hộ bạn.",
+    "statusTitle": "Trạng Thái Hiện Tại",
+    "statusBadge": "🌸 Bloom hiện đang trong giai đoạn Beta.",
+    "statusBody": "Chúng tôi không ngừng cải thiện sản phẩm dựa trên phản hồi thực tế từ người dùng."
   },
   "onboarding": {
     "welcomeTitle": "Chào mừng đến với Bloom 🌸",
@@ -443,6 +464,33 @@
     "shareStreak": "Chia sẻ chuỗi ngày",
     "shareToday": "Chia sẻ hôm nay",
     "shareWeekly": "Chia sẻ tuần này"
+  },
+  "feedback": {
+    "trigger": "Góp Ý Cải Thiện",
+    "title": "Góp Ý Cải Thiện",
+    "subtitle": "Phản hồi của bạn giúp định hình tương lai của Bloom.",
+    "ratingLabel": "Đánh Giá Chung",
+    "likedLabel": "Bạn thích điều gì?",
+    "likedPlaceholder": "Cho chúng tôi biết điều gì đang hoạt động tốt...",
+    "confusingLabel": "Điều gì khiến bạn bối rối?",
+    "confusingPlaceholder": "Điều gì đó chưa rõ ràng...",
+    "featureLabel": "Bạn muốn thấy tính năng nào?",
+    "featurePlaceholder": "Cứ mơ lớn một chút...",
+    "bugLabel": "Báo Lỗi (không bắt buộc)",
+    "bugPlaceholder": "Mô tả điều gì đã xảy ra không đúng...",
+    "emailLabel": "Email (không bắt buộc)",
+    "emailPlaceholder": "ban@example.com",
+    "emailHint": "Nếu bạn muốn chúng tôi liên hệ lại.",
+    "submit": "Gửi Phản Hồi",
+    "cancel": "Huỷ",
+    "thankYouTitle": "Cảm ơn bạn đã giúp Bloom lớn lên 🌸",
+    "thankYouBody": "Phản hồi của bạn giúp chúng tôi xây dựng trải nghiệm tốt hơn cho tất cả mọi người.",
+    "close": "Đóng"
+  },
+  "beta": {
+    "badge": "Beta",
+    "message": "Bloom hiện đang trong giai đoạn Beta. Chúng tôi rất mong nhận được phản hồi của bạn để cùng định hình tương lai của Bloom.",
+    "dismiss": "Đóng"
   },
   "common": {
     "close": "Đóng",

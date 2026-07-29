@@ -92,6 +92,17 @@ export interface SavedQuote {
   savedAt: string;
 }
 
+export interface FeedbackEntry {
+  id: string;
+  rating: number;
+  liked: string;
+  confusing: string;
+  featureRequest: string;
+  bug: string;
+  email: string;
+  submittedAt: string;
+}
+
 export interface DayRecord {
   date: string; // YYYY-MM-DD
   focusMinutes: number;
@@ -119,4 +130,6 @@ export interface BloomState {
   savedQuotes: SavedQuote[];
   history: DayRecord[];
   reflectedToday: boolean;
+  feedback: FeedbackEntry[];
+  betaBannerDismissed: boolean;
 }

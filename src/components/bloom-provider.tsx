@@ -4,6 +4,8 @@ import * as React from "react";
 import { useBloomStore } from "@/lib/store";
 import { Nav } from "@/components/bloom/nav";
 import { Onboarding } from "@/components/bloom/onboarding";
+import { BetaBanner } from "@/components/bloom/beta-banner";
+import { FeedbackLauncher } from "@/components/bloom/feedback-launcher";
 
 export function BloomProvider({ children }: { children: React.ReactNode }) {
   const hydrate = useBloomStore((s) => s.hydrate);
@@ -31,8 +33,10 @@ export function BloomProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <BetaBanner />
       <Nav />
       <main className="max-w-5xl mx-auto px-5 pb-20 pt-2">{children}</main>
+      <FeedbackLauncher />
     </>
   );
 }

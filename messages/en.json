@@ -10,7 +10,28 @@
     "store": "Rewards",
     "memory": "Memory Garden",
     "profile": "Profile",
-    "settings": "Settings"
+    "settings": "Settings",
+    "about": "About"
+  },
+  "about": {
+    "title": "Bloom",
+    "tagline": "Grow beautifully.",
+    "description": "Bloom is a gamified productivity platform that helps people transform focused work into meaningful rewards, sustainable habits, and personal growth.",
+    "whyTitle": "Why Bloom?",
+    "whyIntro": "Bloom is designed to help you:",
+    "why1": "Stay focused",
+    "why2": "Build meaningful habits",
+    "why3": "Visualize progress",
+    "why4": "Celebrate achievements",
+    "why5": "Reward yourself intentionally",
+    "why6": "Grow consistently over time",
+    "philosophyTitle": "Core Philosophy",
+    "philosophyBody": "Small actions compound into extraordinary results. Bloom encourages consistency rather than perfection.",
+    "visionTitle": "Product Vision",
+    "visionBody": "Transform focused work into visible progress, meaningful achievements, and a supportive community.",
+    "statusTitle": "Current Status",
+    "statusBadge": "🌸 Bloom is currently in Beta.",
+    "statusBody": "We are continuously improving the product based on real user feedback."
   },
   "onboarding": {
     "welcomeTitle": "Welcome to Bloom 🌸",
@@ -443,6 +464,33 @@
     "shareStreak": "Share streak",
     "shareToday": "Share today",
     "shareWeekly": "Share this week"
+  },
+  "feedback": {
+    "trigger": "Suggest Improvement",
+    "title": "Suggest an Improvement",
+    "subtitle": "Your feedback helps shape what Bloom becomes.",
+    "ratingLabel": "Overall Rating",
+    "likedLabel": "What did you like?",
+    "likedPlaceholder": "Tell us what's working well...",
+    "confusingLabel": "What was confusing?",
+    "confusingPlaceholder": "Anything that felt unclear...",
+    "featureLabel": "What feature would you love to see?",
+    "featurePlaceholder": "Dream a little...",
+    "bugLabel": "Report a Bug (optional)",
+    "bugPlaceholder": "Describe what went wrong...",
+    "emailLabel": "Email (optional)",
+    "emailPlaceholder": "you@example.com",
+    "emailHint": "If you'd like us to follow up with you.",
+    "submit": "Submit Feedback",
+    "cancel": "Cancel",
+    "thankYouTitle": "Thank you for helping Bloom grow 🌸",
+    "thankYouBody": "Your feedback helps us build a better experience for everyone.",
+    "close": "Close"
+  },
+  "beta": {
+    "badge": "Beta",
+    "message": "Bloom is currently in Beta. We'd love your feedback to help shape the future of Bloom.",
+    "dismiss": "Dismiss"
   },
   "common": {
     "close": "Close",

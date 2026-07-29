@@ -9,6 +9,7 @@ import { useTheme, PALETTES, PALETTE_META } from "@/components/theme-provider";
 import { computeHourlyValue } from "@/lib/hourly-value";
 import { formatVND } from "@/lib/utils";
 import { Input, Label } from "@/components/ui/field";
+import { FeedbackDialog } from "@/components/bloom/feedback-dialog";
 import type { GrowthArea, HourlyValueMode } from "@/lib/types";
 
 const GROWTH_AREAS: GrowthArea[] = [
@@ -24,6 +25,7 @@ const GROWTH_AREAS: GrowthArea[] = [
 export function SettingsPage() {
   const t = useTranslations("settings");
   const tOnboarding = useTranslations("onboarding");
+  const tFeedback = useTranslations("feedback");
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -42,6 +44,7 @@ export function SettingsPage() {
   const [monthlySalary, setMonthlySalary] = React.useState(String(hourlyValue.monthlySalary ?? ""));
   const [workingDays, setWorkingDays] = React.useState(String(hourlyValue.workingDaysPerMonth ?? 22));
   const [workingHours, setWorkingHours] = React.useState(String(hourlyValue.workingHoursPerDay ?? 8));
+  const [feedbackOpen, setFeedbackOpen] = React.useState(false);
 
   const previewHourlyValue = computeHourlyValue({
     mode,
@@ -220,6 +223,15 @@ export function SettingsPage() {
           </button>
         </div>
       </section>
+
+      <section className="rounded-2xl glass p-6 flex items-center justify-between gap-4">
+        <div className="font-medium text-sm">✨ {tFeedback("trigger")}</div>
+        <button onClick={() => setFeedbackOpen(true)} className="btn-secondary px-4 py-2 rounded-full text-xs font-medium shrink-0">
+          {tFeedback("trigger")}
+        </button>
+      </section>
+
+      <FeedbackDialog open={feedbackOpen} onOpenChange={setFeedbackOpen} />
     </div>
   );
 }
