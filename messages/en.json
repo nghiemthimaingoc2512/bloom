@@ -359,7 +359,8 @@
     "empty": "Your reflections will appear here once you complete a day.",
     "tasksCompleted": "tasks completed",
     "like": "Like",
-    "favorite": "Favorite"
+    "favorite": "Favorite",
+    "today": "Today"
   },
   "settings": {
     "title": "Settings",
@@ -494,6 +495,8 @@
   },
   "common": {
     "close": "Close",
-    "delete": "Delete"
+    "delete": "Delete",
+    "toggleTheme": "Toggle theme",
+    "selectLanguage": "Select language"
   }
 }

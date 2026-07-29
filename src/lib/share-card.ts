@@ -14,6 +14,11 @@ const MAX_STATS_PER_ROW = 3;
 // to the next font in the stack, per character, for anything an emoji font
 // doesn't cover (e.g. plain Latin text), so this is safe to combine with text.
 const EMOJI_FONT_STACK = "'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji'";
+// Appended after the web fonts so Latin text keeps rendering in
+// Fraunces/Inter exactly as before - canvas text falls back per-glyph
+// just like DOM text, so this only ever engages for CJK characters.
+const CJK_SANS_FALLBACK = "'Noto Sans SC', 'Noto Sans KR', 'Noto Sans JP', sans-serif";
+const CJK_SERIF_FALLBACK = "'Noto Serif SC', 'Noto Serif KR', 'Noto Serif JP', Georgia, serif";
 
 export interface ShareCardStat {
   label: string;
@@ -26,6 +31,17 @@ export interface ShareCardContent {
   headline: string;
   stats: ShareCardStat[];
 }
+
+/** Bloom's tagline, one per locale, for the share card footer - kept here
+ *  (rather than threaded through every caller) since it's the only piece
+ *  of card chrome that isn't already passed in via `content`. */
+const FOOTER_TAGLINE: Record<string, string> = {
+  en: "Grow beautifully",
+  vi: "Lớn lên thật đẹp",
+  zh: "美好生长",
+  ko: "아름답게 성장하세요",
+  ja: "美しく成長する",
+};
 
 function roundRectPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   ctx.beginPath();
@@ -87,7 +103,7 @@ function chunk<T>(items: T[], size: number): T[][] {
   return rows;
 }
 
-export async function renderShareCard(content: ShareCardContent): Promise<HTMLCanvasElement> {
+export async function renderShareCard(content: ShareCardContent, locale = "en"): Promise<HTMLCanvasElement> {
   if (typeof document !== "undefined" && "fonts" in document) {
     try {
       await document.fonts.ready;
@@ -144,11 +160,11 @@ export async function renderShareCard(content: ShareCardContent): Promise<HTMLCa
   ctx.fillText(content.emoji, WIDTH / 2, cardY + 220);
 
   ctx.fillStyle = "#e73c84";
-  ctx.font = "600 30px Inter, sans-serif";
+  ctx.font = `600 30px Inter, ${CJK_SANS_FALLBACK}`;
   ctx.fillText(content.eyebrow.toUpperCase(), WIDTH / 2, cardY + 290);
 
   ctx.fillStyle = "#2f2f2f";
-  ctx.font = "600 58px Fraunces, Georgia, serif";
+  ctx.font = `600 58px Fraunces, ${CJK_SERIF_FALLBACK}`;
   const maxTextWidth = cardW - 160;
   const headlineLines = wrapText(ctx, content.headline, maxTextWidth).slice(0, 6);
   const lineHeight = 72;
@@ -175,17 +191,18 @@ export async function renderShareCard(content: ShareCardContent): Promise<HTMLCa
         ctx.fillText(stat.value, cx, rowY);
 
         const label = stat.label.toUpperCase();
-        const labelSize = fitFontSize(ctx, label, available, 22, (s) => `500 ${s}px Inter, sans-serif`, 13);
-        ctx.font = `500 ${labelSize}px Inter, sans-serif`;
+        const labelSize = fitFontSize(ctx, label, available, 22, (s) => `500 ${s}px Inter, ${CJK_SANS_FALLBACK}`, 13);
+        ctx.font = `500 ${labelSize}px Inter, ${CJK_SANS_FALLBACK}`;
         ctx.fillStyle = "#6b6b6b";
         ctx.fillText(label, cx, rowY + 42);
       });
     });
   }
 
+  const tagline = FOOTER_TAGLINE[locale] ?? FOOTER_TAGLINE.en;
   ctx.fillStyle = "#6b6b6b";
-  ctx.font = "500 26px Inter, sans-serif";
-  ctx.fillText("Grow beautifully · bloomdaily.com", WIDTH / 2, cardY + cardH - 60);
+  ctx.font = `500 26px Inter, "Noto Sans SC", "Noto Sans KR", "Noto Sans JP", sans-serif`;
+  ctx.fillText(`${tagline} · bloomdaily.com`, WIDTH / 2, cardY + cardH - 60);
 
   return canvas;
 }

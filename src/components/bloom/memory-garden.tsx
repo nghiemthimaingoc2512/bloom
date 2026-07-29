@@ -20,7 +20,7 @@ export function MemoryGarden() {
 
   function share(m: MemoryEntry) {
     setShareContent({
-      eyebrow: `Bloom · ${m.date}`,
+      eyebrow: `Bloom · ${m.date === "Today" ? t("today") : m.date}`,
       emoji: m.mood,
       headline: `"${m.quote}"`,
       stats: [{ label: t("tasksCompleted"), value: String(m.completedTasks) }],
@@ -41,7 +41,7 @@ export function MemoryGarden() {
           {memory.map((m) => (
             <div key={m.id} className="rounded-2xl glass glass-hover p-6 flex flex-col items-center text-center gap-2">
               <Flower stage={m.bloomLevel} kind={m.mood === "🌸" ? "sakura" : "tulip"} />
-              <div className="text-xs text-ink-soft mt-1">{m.date}</div>
+              <div className="text-xs text-ink-soft mt-1">{m.date === "Today" ? t("today") : m.date}</div>
               <div className="text-sm italic">&ldquo;{m.quote}&rdquo;</div>
               <div className="text-lg">{m.mood}</div>
               <div className="text-[11px] text-ink-soft">

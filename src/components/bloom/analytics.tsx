@@ -15,7 +15,7 @@ import {
 } from "recharts";
 import { Clock, Flame, Share2, Sparkles, TrendingUp } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useBloomBalance, useBloomStore } from "@/lib/store";
 import { formatVND, todayKey } from "@/lib/utils";
 import { CATEGORY_CHART_COLOR } from "@/lib/category-meta";
@@ -41,6 +41,7 @@ export function Analytics() {
   const t = useTranslations("analytics");
   const tCat = useTranslations("categories");
   const tShare = useTranslations("share");
+  const locale = useLocale();
   const { resolvedTheme } = useTheme();
   const dark = resolvedTheme === "dark";
   const [shareOpen, setShareOpen] = React.useState(false);
@@ -71,7 +72,7 @@ export function Analytics() {
     d.setDate(d.getDate() - (6 - i));
     const key = d.toISOString().slice(0, 10);
     const minutes = key === today ? todayMinutes : history.find((h) => h.date === key)?.focusMinutes ?? 0;
-    return { day: d.toLocaleDateString(undefined, { weekday: "short" }), hours: Number((minutes / 60).toFixed(1)) };
+    return { day: d.toLocaleDateString(locale, { weekday: "short" }), hours: Number((minutes / 60).toFixed(1)) };
   });
   const weekHours = weekData.reduce((s, d) => s + d.hours, 0);
 

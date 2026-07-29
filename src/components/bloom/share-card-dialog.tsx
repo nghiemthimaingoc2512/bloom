@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { renderShareCard, type ShareCardContent } from "@/lib/share-card";
 
@@ -15,6 +15,7 @@ export function ShareCardDialog({
   content: ShareCardContent | null;
 }) {
   const t = useTranslations("share");
+  const locale = useLocale();
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const [dataUrl, setDataUrl] = React.useState<string | null>(null);
   const [copyStatus, setCopyStatus] = React.useState<"idle" | "copied" | "error">("idle");
@@ -27,7 +28,7 @@ export function ShareCardDialog({
   React.useEffect(() => {
     if (!open || !content) return;
     let cancelled = false;
-    renderShareCard(content).then((canvas) => {
+    renderShareCard(content, locale).then((canvas) => {
       if (cancelled) return;
       canvasRef.current = canvas;
       setDataUrl(canvas.toDataURL("image/png"));
@@ -35,7 +36,7 @@ export function ShareCardDialog({
     return () => {
       cancelled = true;
     };
-  }, [open, content]);
+  }, [open, content, locale]);
 
   function toBlob(): Promise<Blob | null> {
     return new Promise((resolve) => {

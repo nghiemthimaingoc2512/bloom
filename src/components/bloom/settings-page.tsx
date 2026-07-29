@@ -1,15 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { Check, Languages, Moon, Sun } from "lucide-react";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { Check, Moon, Sun } from "lucide-react";
 import { useBloomStore } from "@/lib/store";
 import { useTheme, PALETTES, PALETTE_META } from "@/components/theme-provider";
 import { computeHourlyValue } from "@/lib/hourly-value";
 import { formatVND } from "@/lib/utils";
 import { Input, Label } from "@/components/ui/field";
 import { FeedbackDialog } from "@/components/bloom/feedback-dialog";
+import { LanguageToggle } from "@/components/bloom/language-toggle";
 import type { GrowthArea, HourlyValueMode } from "@/lib/types";
 
 const GROWTH_AREAS: GrowthArea[] = [
@@ -26,9 +26,6 @@ export function SettingsPage() {
   const t = useTranslations("settings");
   const tOnboarding = useTranslations("onboarding");
   const tFeedback = useTranslations("feedback");
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
 
   const displayName = useBloomStore((s) => s.displayName);
   const growthAreas = useBloomStore((s) => s.growthAreas);
@@ -73,10 +70,6 @@ export function SettingsPage() {
   function toggleGrowthArea(area: GrowthArea) {
     const next = growthAreas.includes(area) ? growthAreas.filter((a) => a !== area) : [...growthAreas, area];
     updateProfile({ growthAreas: next });
-  }
-
-  function toggleLanguage() {
-    router.replace(pathname, { locale: locale === "en" ? "vi" : "en" });
   }
 
   return (
@@ -215,12 +208,7 @@ export function SettingsPage() {
 
         <div className="flex items-center justify-between">
           <span className="text-sm text-ink-soft">{t("language")}</span>
-          <button
-            onClick={toggleLanguage}
-            className="btn-secondary flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium"
-          >
-            <Languages size={13} /> {locale === "en" ? "EN" : "VI"}
-          </button>
+          <LanguageToggle />
         </div>
       </section>
 

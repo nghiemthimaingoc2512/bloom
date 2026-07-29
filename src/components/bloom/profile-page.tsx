@@ -86,7 +86,7 @@ export function ProfilePage() {
   function shareWrapped() {
     const wrapped = computeWrapped({ ...achievementState, history });
     setShareContent({
-      eyebrow: `Bloom Wrapped ${wrapped.year}`,
+      eyebrow: t("wrappedTitle", { year: wrapped.year }),
       emoji: "🌸",
       headline: t("wrappedHeadline", { year: wrapped.year }),
       stats: [

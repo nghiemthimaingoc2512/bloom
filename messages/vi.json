@@ -359,7 +359,8 @@
     "empty": "Những suy ngẫm của bạn sẽ xuất hiện ở đây sau khi bạn hoàn thành một ngày.",
     "tasksCompleted": "việc hoàn thành",
     "like": "Thích",
-    "favorite": "Yêu thích"
+    "favorite": "Yêu thích",
+    "today": "Hôm nay"
   },
   "settings": {
     "title": "Cài Đặt",
@@ -494,6 +495,8 @@
   },
   "common": {
     "close": "Đóng",
-    "delete": "Xoá"
+    "delete": "Xoá",
+    "toggleTheme": "Chuyển giao diện sáng/tối",
+    "selectLanguage": "Chọn ngôn ngữ"
   }
 }
