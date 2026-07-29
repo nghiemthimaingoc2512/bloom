@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BloomProvider } from "@/components/bloom-provider";
 import { Toaster } from "@/components/bloom/toaster";
+import { Analytics } from "@vercel/analytics/react";
 import "../globals.css";
 
 // Applies the persisted light/dark mode and color palette before hydration
@@ -82,13 +83,14 @@ export default async function LocaleLayout({
         <script id="theme-init" dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="antialiased" suppressHydrationWarning>
-        <NextIntlClientProvider>
-          <ThemeProvider>
-            <BloomProvider>{children}</BloomProvider>
-            <Toaster />
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
+  <NextIntlClientProvider>
+    <ThemeProvider>
+      <BloomProvider>{children}</BloomProvider>
+      <Toaster />
+      <Analytics />
+    </ThemeProvider>
+  </NextIntlClientProvider>
+</body>
     </html>
   );
 }
