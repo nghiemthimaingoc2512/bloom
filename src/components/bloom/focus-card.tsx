@@ -1,14 +1,22 @@
 "use client";
 
-import { Check, Sparkles } from "lucide-react";
+import { Check, Pencil, Sparkles, Trash2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import type { Focus } from "@/lib/types";
 import { useBloomStore } from "@/lib/store";
-import { formatVND, minutesToReward, pickRandom } from "@/lib/utils";
+import { formatVND, pickRandom } from "@/lib/utils";
 import { CATEGORY_BG, CATEGORY_ICON } from "@/lib/category-meta";
 
-export function FocusCard({ focus }: { focus: Focus }) {
+export function FocusCard({
+  focus,
+  onEdit,
+  onDelete,
+}: {
+  focus: Focus;
+  onEdit: (focus: Focus) => void;
+  onDelete: (focus: Focus) => void;
+}) {
   const t = useTranslations("board");
   const tCat = useTranslations("categories");
   const toggleStep = useBloomStore((s) => s.toggleStep);
@@ -45,7 +53,23 @@ export function FocusCard({ focus }: { focus: Focus }) {
           </span>
           <span className="text-xs text-ink-soft font-medium">{tCat(`${focus.category}.label`)}</span>
         </div>
-        {pct >= 100 && <Sparkles size={16} className="text-amber-400" />}
+        <div className="flex items-center gap-2.5">
+          {pct >= 100 && <Sparkles size={16} className="text-amber-400" />}
+          <button
+            onClick={() => onEdit(focus)}
+            aria-label={t("edit")}
+            className="text-stone-300 hover:text-rose-deep transition-colors"
+          >
+            <Pencil size={13} />
+          </button>
+          <button
+            onClick={() => onDelete(focus)}
+            aria-label={t("delete")}
+            className="text-stone-300 hover:text-rose transition-colors"
+          >
+            <Trash2 size={13} />
+          </button>
+        </div>
       </div>
       <div className="font-medium tracking-tight">{focus.title}</div>
       {focus.purpose && <div className="text-xs text-ink-soft mb-3 mt-0.5">{focus.purpose}</div>}
@@ -74,7 +98,7 @@ export function FocusCard({ focus }: { focus: Focus }) {
               {c.title}
             </span>
             <span className="text-xs text-ink-soft shrink-0 ml-2">
-              {c.estimatedMinutes} {t("minutes")} · {formatVND(minutesToReward(c.estimatedMinutes))}
+              {c.estimatedMinutes} {t("minutes")} · {formatVND(c.reward)}
             </span>
           </button>
         ))}

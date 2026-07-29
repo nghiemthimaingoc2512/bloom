@@ -5,24 +5,36 @@ import type {
   Focus,
   FlowerKind,
   GardenFlower,
+  Redemption,
   Reward,
 } from "./types";
 import { bloomRepository } from "./storage";
+import { computeBalance } from "./reward-engine";
 import { emptyCategoryMinutes, minutesToReward, todayKey, uid } from "./utils";
 
 function defaultState(): BloomState {
   return {
-    balance: 0,
     streak: 0,
     longestStreak: 0,
     lastActiveDate: null,
     focuses: [],
     rewards: [],
+    redemptions: [],
     garden: [],
     memory: [],
     history: [],
     reflectedToday: false,
-    categoryMinutes: emptyCategoryMinutes(),
+  };
+}
+
+/** Backfills checklist steps saved before `reward` existed on them, so
+ *  loading old persisted data can never produce a NaN Bloom Balance. */
+function normalizeFocus(focus: Focus): Focus {
+  return {
+    ...focus,
+    checklist: focus.checklist.map((c) =>
+      typeof c.reward === "number" ? c : { ...c, reward: minutesToReward(c.estimatedMinutes) }
+    ),
   };
 }
 
@@ -37,9 +49,11 @@ interface BloomStore extends BloomState {
   toast: string | null;
   hydrate: () => Promise<void>;
   addFocus: (focus: Omit<Focus, "id" | "createdAt">) => void;
+  updateFocus: (id: string, patch: Partial<Omit<Focus, "id" | "createdAt">>) => void;
+  deleteFocus: (id: string) => void;
   toggleStep: (focusId: string, stepId: string) => void;
   submitReflection: (quote: string, mood: string) => { perfect: boolean };
-  redeem: (cost: number) => boolean;
+  redeem: (reward: Pick<Reward, "id" | "name" | "cost">) => boolean;
   addReward: (reward: Omit<Reward, "id" | "createdAt">) => void;
   updateReward: (id: string, patch: Partial<Omit<Reward, "id" | "createdAt">>) => void;
   deleteReward: (id: string) => void;
@@ -71,7 +85,12 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
 
   hydrate: async () => {
     const saved = await bloomRepository.load();
-    set({ ...(saved ?? defaultState()), hydrated: true });
+    // Merge over defaultState() rather than replacing it outright, so a
+    // state blob saved before a new field existed still gets a valid
+    // default for it instead of `undefined`, and normalize focuses saved
+    // before checklist steps carried their own `reward`.
+    const merged = { ...defaultState(), ...(saved ?? {}) };
+    set({ ...merged, focuses: merged.focuses.map(normalizeFocus), hydrated: true });
   },
 
   addFocus: (focus) => {
@@ -83,30 +102,44 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
     });
   },
 
+  updateFocus: (id, patch) => {
+    set((s) => {
+      const focuses = s.focuses.map((f) => (f.id === id ? { ...f, ...patch } : f));
+      const next = { ...s, focuses };
+      persist(next);
+      return next;
+    });
+  },
+
+  deleteFocus: (id) => {
+    set((s) => {
+      const next = { ...s, focuses: s.focuses.filter((f) => f.id !== id) };
+      persist(next);
+      return next;
+    });
+  },
+
   toggleStep: (focusId, stepId) => {
     set((s) => {
       let reward: RewardEvent | null = null;
-      let completedMinutes = 0;
       const focuses = s.focuses.map((f) => {
         if (f.id !== focusId) return f;
         const checklist = f.checklist.map((c) => {
           if (c.id !== stepId) return c;
           if (!c.done) {
-            reward = { amount: minutesToReward(c.estimatedMinutes), category: f.category };
-            completedMinutes = c.estimatedMinutes;
+            reward = { amount: c.reward, category: f.category };
           }
           return { ...c, done: !c.done };
         });
         return { ...f, checklist };
       });
 
-      let balance = s.balance;
+      // Bloom Balance and category minutes are derived from `focuses`
+      // (see reward-engine.ts), so toggling a step here never touches
+      // them directly - completing, undoing, or re-completing a step
+      // always immediately reflects the correct total, with no drift.
       let garden = s.garden;
-      let categoryMinutes = s.categoryMinutes;
       if (reward) {
-        const r = reward as RewardEvent;
-        balance = s.balance + r.amount;
-        categoryMinutes = { ...s.categoryMinutes, [r.category]: (s.categoryMinutes[r.category] ?? 0) + completedMinutes };
         const idx = garden.findIndex((f) => f.stage !== "bloom");
         if (idx !== -1) {
           garden = [...garden];
@@ -114,7 +147,7 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
         }
       }
 
-      const next = { ...s, focuses, balance, garden, categoryMinutes, lastReward: reward };
+      const next = { ...s, focuses, garden, lastReward: reward };
       persist(next);
       return next;
     });
@@ -148,6 +181,10 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
         },
         ...state.memory,
       ];
+      // The perfect-day bonus (and any future streak/achievement/challenge
+      // bonus or penalty) is appended to the bonus ledger as a dated entry
+      // rather than added to a running balance total - see
+      // reward-engine.ts's bonusLedgerTotal().
       const history = [
         {
           date: todayKey(),
@@ -166,7 +203,6 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
         memory,
         history,
         garden: [...state.garden, ...freshFlowers],
-        balance: perfect ? state.balance + 120_000 : state.balance,
         reflectedToday: true,
       };
       persist(next);
@@ -176,11 +212,19 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
     return { perfect };
   },
 
-  redeem: (cost) => {
+  redeem: (reward) => {
     const s = get();
-    if (s.balance < cost) return false;
+    const balance = computeBalance(s);
+    if (balance < reward.cost) return false;
     set((state) => {
-      const next = { ...state, balance: state.balance - cost };
+      const redemption: Redemption = {
+        id: uid(),
+        rewardId: reward.id,
+        rewardName: reward.name,
+        cost: reward.cost,
+        redeemedAt: new Date().toISOString(),
+      };
+      const next = { ...state, redemptions: [...state.redemptions, redemption] };
       persist(next);
       return next;
     });
@@ -214,3 +258,9 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
 
   clearLastReward: () => set({ lastReward: null }),
 }));
+
+/** Bloom Balance, derived fresh from the store on every read - see
+ *  reward-engine.ts for the formula. */
+export function useBloomBalance(): number {
+  return useBloomStore(computeBalance);
+}

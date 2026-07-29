@@ -2,7 +2,7 @@
 
 import { Check, Clock, Flame, Flower2, Leaf, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useBloomStore } from "@/lib/store";
+import { useBloomBalance, useBloomStore } from "@/lib/store";
 import { formatVND } from "@/lib/utils";
 import { AnimatedNumber } from "./animated-number";
 import { useShallow } from "zustand/react/shallow";
@@ -29,14 +29,14 @@ function Card({
 
 export function SummaryCards() {
   const t = useTranslations("home");
-  const { balance, streak, focuses, garden } = useBloomStore(
+  const { streak, focuses, garden } = useBloomStore(
     useShallow((s) => ({
-      balance: s.balance,
       streak: s.streak,
       focuses: s.focuses,
       garden: s.garden,
     }))
   );
+  const balance = useBloomBalance();
 
   const total = focuses.length;
   const completed = focuses.filter((f) => f.checklist.every((c) => c.done)).length;

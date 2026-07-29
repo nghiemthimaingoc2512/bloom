@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Lock, Pencil, Plus, Sparkles, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useBloomStore } from "@/lib/store";
+import { useBloomBalance, useBloomStore } from "@/lib/store";
 import { formatVND } from "@/lib/utils";
 import { REWARD_ICON, REWARD_TEMPLATES } from "@/lib/reward-meta";
 import type { Reward } from "@/lib/types";
@@ -11,7 +11,7 @@ import { NewRewardDialog } from "./new-reward-dialog";
 
 export function RewardStore() {
   const t = useTranslations("store");
-  const balance = useBloomStore((s) => s.balance);
+  const balance = useBloomBalance();
   const rewards = useBloomStore((s) => s.rewards);
   const redeem = useBloomStore((s) => s.redeem);
   const addReward = useBloomStore((s) => s.addReward);
@@ -32,7 +32,7 @@ export function RewardStore() {
   }
 
   function handleRedeem(reward: Reward) {
-    const ok = redeem(reward.cost);
+    const ok = redeem(reward);
     if (ok) showToast(`${t("redeemed")} · ${reward.name}`);
   }
 

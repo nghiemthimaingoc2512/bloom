@@ -13,11 +13,12 @@ import {
   YAxis,
 } from "recharts";
 import { Clock, Flame, Sparkles, TrendingUp } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 import { useTranslations } from "next-intl";
-import { useBloomStore } from "@/lib/store";
+import { useBloomBalance, useBloomStore } from "@/lib/store";
 import { formatVND, todayKey } from "@/lib/utils";
 import { CATEGORY_CHART_COLOR } from "@/lib/category-meta";
+import { categoryMinutesTotal } from "@/lib/reward-engine";
 import type { Category } from "@/lib/types";
 import { useShallow } from "zustand/react/shallow";
 
@@ -39,16 +40,16 @@ export function Analytics() {
   const { resolvedTheme } = useTheme();
   const dark = resolvedTheme === "dark";
 
-  const { balance, streak, longestStreak, focuses, categoryMinutes, history } = useBloomStore(
+  const { streak, longestStreak, focuses, history } = useBloomStore(
     useShallow((s) => ({
-      balance: s.balance,
       streak: s.streak,
       longestStreak: s.longestStreak,
       focuses: s.focuses,
-      categoryMinutes: s.categoryMinutes,
       history: s.history,
     }))
   );
+  const balance = useBloomBalance();
+  const categoryMinutes = categoryMinutesTotal(focuses);
 
   const total = focuses.length;
   const completed = focuses.filter((f) => f.checklist.every((c) => c.done)).length;
@@ -79,7 +80,7 @@ export function Analytics() {
       <div>
         <div className="text-xl font-display font-medium">{t("title")}</div>
         <div className="text-sm text-ink-soft mt-0.5">
-          {t("suggestionLabel")} — {t("suggestion")}
+          {t("suggestionLabel")} - {t("suggestion")}
         </div>
       </div>
 
@@ -139,7 +140,7 @@ export function Analytics() {
         <div className="rounded-2xl glass p-5">
           <div className="text-sm font-medium mb-1">{t("strongestCategory")}</div>
           <div className="text-sm text-rose-deep">
-            {tCat(`${strongest}.label`)} — {tCat(`${strongest}.desc`)}
+            {tCat(`${strongest}.label`)} - {tCat(`${strongest}.desc`)}
           </div>
         </div>
       )}

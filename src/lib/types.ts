@@ -18,6 +18,7 @@ export interface ChecklistStep {
   id: string;
   title: string;
   estimatedMinutes: number;
+  reward: number;
   done: boolean;
 }
 
@@ -45,6 +46,14 @@ export interface Reward {
   createdAt: string;
 }
 
+export interface Redemption {
+  id: string;
+  rewardId: string;
+  rewardName: string;
+  cost: number;
+  redeemedAt: string;
+}
+
 export interface GardenFlower {
   id: string;
   kind: FlowerKind;
@@ -70,15 +79,14 @@ export interface DayRecord {
 }
 
 export interface BloomState {
-  balance: number;
   streak: number;
   longestStreak: number;
   lastActiveDate: string | null;
   focuses: Focus[];
   rewards: Reward[];
+  redemptions: Redemption[];
   garden: GardenFlower[];
   memory: MemoryEntry[];
   history: DayRecord[];
   reflectedToday: boolean;
-  categoryMinutes: Record<Category, number>;
 }

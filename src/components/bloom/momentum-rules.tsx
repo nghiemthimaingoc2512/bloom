@@ -26,6 +26,8 @@ export function MomentumRules() {
       <ul className="text-xs text-ink-soft mt-3 space-y-1.5 list-disc list-inside">
         <li>{t("rule1")}</li>
         <li>{t("rule2")}</li>
+        <li>{t("rule3")}</li>
+        <li>{t("rule4")}</li>
       </ul>
       <AnimatePresence>
         {preview && (

@@ -6,7 +6,7 @@ import type { BloomState } from "./types";
  * works instantly with zero infrastructure. To migrate to Supabase later:
  *
  *   1. Implement `SupabaseBloomRepository` below (or in its own file) that
- *      satisfies the same `BloomRepository` interface — reading/writing
+ *      satisfies the same `BloomRepository` interface - reading/writing
  *      rows scoped to the authenticated user instead of a browser key.
  *   2. Swap the export at the bottom of this file.
  *
