@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Check, Languages, Moon, Sun } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useBloomStore } from "@/lib/store";
-import { useTheme, PALETTES, type Palette } from "@/components/theme-provider";
+import { useTheme, PALETTES, PALETTE_META } from "@/components/theme-provider";
 import { computeHourlyValue } from "@/lib/hourly-value";
 import { formatVND } from "@/lib/utils";
 import { Input, Label } from "@/components/ui/field";
@@ -20,14 +20,6 @@ const GROWTH_AREAS: GrowthArea[] = [
   "creativity",
   "personalGrowth",
 ];
-
-const PALETTE_SWATCH: Record<Palette, { emoji: string; from: string; to: string }> = {
-  pink: { emoji: "🌸", from: "#ff7fb5", to: "#f54f93" },
-  sage: { emoji: "🌿", from: "#83a888", to: "#5f8567" },
-  lavender: { emoji: "💜", from: "#a996d9", to: "#8b7bc2" },
-  midnight: { emoji: "🌙", from: "#7c8ade", to: "#5d6fc4" },
-  pearl: { emoji: "🤍", from: "#bba98a", to: "#a08b6f" },
-};
 
 export function SettingsPage() {
   const t = useTranslations("settings");
@@ -182,9 +174,9 @@ export function SettingsPage() {
 
       <section className="rounded-2xl glass p-6 space-y-4">
         <div className="font-medium text-sm">{t("appearanceSection")}</div>
-        <div className="grid sm:grid-cols-2 gap-2.5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
           {PALETTES.map((p) => {
-            const swatch = PALETTE_SWATCH[p];
+            const swatch = PALETTE_META[p];
             const active = palette === p;
             return (
               <button
@@ -201,7 +193,7 @@ export function SettingsPage() {
                 <span className="text-xs font-medium flex-1">
                   {swatch.emoji} {tOnboarding(`themes.${p}`)}
                 </span>
-                {active && <Check size={14} className="text-rose-deep" />}
+                {active && <Check size={14} className="text-rose-deep animate-[checkmark-pop_0.3s_cubic-bezier(0.34,1.56,0.64,1)]" />}
               </button>
             );
           })}

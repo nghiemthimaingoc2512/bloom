@@ -4,7 +4,7 @@ import * as React from "react";
 import { useTranslations } from "next-intl";
 import { Check, Flower2 } from "lucide-react";
 import { useBloomStore } from "@/lib/store";
-import { useTheme, PALETTES, type Palette } from "@/components/theme-provider";
+import { useTheme, PALETTES, PALETTE_META } from "@/components/theme-provider";
 import { HOURLY_VALUE_PRESETS } from "@/lib/hourly-value";
 import { formatVND } from "@/lib/utils";
 import type { GrowthArea } from "@/lib/types";
@@ -18,14 +18,6 @@ const GROWTH_AREAS: GrowthArea[] = [
   "creativity",
   "personalGrowth",
 ];
-
-const PALETTE_SWATCH: Record<Palette, { emoji: string; from: string; to: string }> = {
-  pink: { emoji: "🌸", from: "#ff7fb5", to: "#f54f93" },
-  sage: { emoji: "🌿", from: "#83a888", to: "#5f8567" },
-  lavender: { emoji: "💜", from: "#a996d9", to: "#8b7bc2" },
-  midnight: { emoji: "🌙", from: "#7c8ade", to: "#5d6fc4" },
-  pearl: { emoji: "🤍", from: "#bba98a", to: "#a08b6f" },
-};
 
 export function Onboarding() {
   const t = useTranslations("onboarding");
@@ -165,7 +157,7 @@ export function Onboarding() {
               <h1 className="text-lg font-display font-medium text-center">{t("step4Title")}</h1>
               <div className="grid grid-cols-1 gap-2.5">
                 {PALETTES.map((p) => {
-                  const swatch = PALETTE_SWATCH[p];
+                  const swatch = PALETTE_META[p];
                   const active = palette === p;
                   return (
                     <button
@@ -182,7 +174,7 @@ export function Onboarding() {
                       <span className="text-sm font-medium flex-1">
                         {swatch.emoji} {t(`themes.${p}`)}
                       </span>
-                      {active && <Check size={16} className="text-rose-deep" />}
+                      {active && <Check size={16} className="text-rose-deep animate-[checkmark-pop_0.3s_cubic-bezier(0.34,1.56,0.64,1)]" />}
                     </button>
                   );
                 })}

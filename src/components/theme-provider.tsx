@@ -3,9 +3,21 @@
 import * as React from "react";
 
 export type Theme = "light" | "dark";
-export type Palette = "pink" | "sage" | "lavender" | "midnight" | "pearl";
+export type Palette = "pink" | "lime" | "mango" | "island" | "indigo" | "cherryCola";
 
-export const PALETTES: Palette[] = ["pink", "sage", "lavender", "midnight", "pearl"];
+export const PALETTES: Palette[] = ["pink", "lime", "mango", "island", "indigo", "cherryCola"];
+
+/** Single source of truth for each palette's emoji + preview gradient, so
+ *  the onboarding flow and Settings page render identical swatches instead
+ *  of keeping their own copies in sync by hand. */
+export const PALETTE_META: Record<Palette, { emoji: string; from: string; to: string }> = {
+  pink: { emoji: "🌸", from: "#ff7fb5", to: "#f54f93" },
+  lime: { emoji: "💚", from: "#c3ea4f", to: "#558b2f" },
+  mango: { emoji: "🍊", from: "#ffad4f", to: "#b3650a" },
+  island: { emoji: "🏝️", from: "#95d8e6", to: "#0e6e7c" },
+  indigo: { emoji: "💜", from: "#c8c3ff", to: "#5b52d6" },
+  cherryCola: { emoji: "🍒", from: "#c2242f", to: "#9a0002" },
+};
 
 interface ThemeContextValue {
   theme: Theme;

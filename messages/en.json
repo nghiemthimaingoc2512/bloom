@@ -36,10 +36,11 @@
     },
     "themes": {
       "pink": "Bloom Pink",
-      "sage": "Sage Green",
-      "lavender": "Lavender",
-      "midnight": "Midnight",
-      "pearl": "Pearl"
+      "lime": "Lime Glow",
+      "mango": "Mango Orange",
+      "island": "Island Paradise",
+      "indigo": "Indigo",
+      "cherryCola": "Cherry Cola"
     }
   },
   "home": {

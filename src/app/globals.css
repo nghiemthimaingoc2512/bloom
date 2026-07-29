@@ -9,6 +9,7 @@
 
   /* Bloom Pink - the default palette */
   --color-cream: #fff5f8;
+  --color-surface: #ffffff;
   --color-blush: #ffe5ef;
   --color-petal: #f7c8d8;
   --color-rose-light: #ff7fb5;
@@ -22,48 +23,82 @@
   --color-night-card: #251920;
 }
 
+/* Tailwind's @theme block only keeps tokens an actual utility class (bg-*,
+   text-*, etc.) references somewhere, tree-shaking the rest - these extra
+   names exist purely as CSS custom properties (not Tailwind utilities yet),
+   so they're declared in a plain :root rule instead, which Tailwind passes
+   through untouched regardless of usage. Each aliases a token above rather
+   than duplicating its value, and follows it automatically per theme. */
+:root {
+  --color-card: var(--color-surface);
+  --color-secondary: var(--color-rose-light);
+  --color-accent: var(--color-rose-deep);
+  --color-border: var(--color-petal);
+  --color-hover: var(--color-rose-deep);
+  --color-selected: var(--color-blush);
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-ink-muted: #9b9b9b;
+}
+
 /* Every palette below only overrides the accent + wash tokens above -
    every component keeps using bg-rose / text-rose-deep / border-petal /
    etc., so switching themes never requires touching component code. */
-[data-theme="sage"] {
-  --color-cream: #f6faf4;
-  --color-blush: #e8f0e6;
-  --color-petal: #c9dcc5;
-  --color-rose-light: #83a888;
-  --color-rose: #5f8567;
-  --color-rose-deep: #47694e;
+[data-theme="lime"] {
+  --color-cream: #f8fbf0;
+  --color-surface: #fdfef9;
+  --color-blush: #eef7d9;
+  --color-petal: #d9eea8;
+  --color-rose-light: #c3ea4f;
+  --color-rose: #558b2f;
+  --color-rose-deep: #3f6b1f;
 }
 
-[data-theme="lavender"] {
-  --color-cream: #f8f6fd;
-  --color-blush: #ede8fa;
-  --color-petal: #d7ccf0;
-  --color-rose-light: #a996d9;
-  --color-rose: #8b7bc2;
-  --color-rose-deep: #6c5aa8;
+[data-theme="mango"] {
+  --color-cream: #fff8f0;
+  --color-surface: #fffcf8;
+  --color-blush: #ffedd8;
+  --color-petal: #fbd9ae;
+  --color-rose-light: #ffad4f;
+  --color-rose: #b3650a;
+  --color-rose-deep: #954f06;
 }
 
-[data-theme="midnight"] {
-  --color-cream: #f4f5fc;
-  --color-blush: #e5e8fa;
-  --color-petal: #c6cbef;
-  --color-rose-light: #7c8ade;
-  --color-rose: #5d6fc4;
-  --color-rose-deep: #4453a3;
+[data-theme="island"] {
+  --color-cream: #f3fbfc;
+  --color-surface: #f9fefe;
+  --color-blush: #e3f7fa;
+  --color-petal: #c7ebf0;
+  --color-rose-light: #95d8e6;
+  --color-rose: #0e6e7c;
+  --color-rose-deep: #0a5761;
 }
 
-[data-theme="pearl"] {
-  --color-cream: #faf9f5;
-  --color-blush: #f4f1ea;
-  --color-petal: #e3ddce;
-  --color-rose-light: #bba98a;
-  --color-rose: #a08b6f;
-  --color-rose-deep: #83704f;
+[data-theme="indigo"] {
+  --color-cream: #f8f7ff;
+  --color-surface: #fcfcff;
+  --color-blush: #edecff;
+  --color-petal: #dad6ff;
+  --color-rose-light: #c8c3ff;
+  --color-rose: #5b52d6;
+  --color-rose-deep: #453cb8;
+}
+
+[data-theme="cherryCola"] {
+  --color-cream: #fff6f6;
+  --color-surface: #fffafa;
+  --color-blush: #fbe3e5;
+  --color-petal: #f0c4c8;
+  --color-rose-light: #c2242f;
+  --color-rose: #9a0002;
+  --color-rose-deep: #7a0002;
 }
 
 .dark {
   --color-cream: var(--color-night);
   --color-ink-soft: #ab8f99;
+  --color-ink-muted: #8a7680;
 }
 
 body {
@@ -91,7 +126,7 @@ body {
 
 /* glass card, the recurring surface across Bloom */
 .glass {
-  background: color-mix(in srgb, white 90%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
   border: 1px solid color-mix(in srgb, var(--color-petal) 55%, transparent);
   box-shadow: 0 1px 2px color-mix(in srgb, var(--color-rose-deep) 4%, transparent),
     0 10px 28px -16px color-mix(in srgb, var(--color-rose-deep) 18%, transparent);
@@ -145,10 +180,10 @@ body {
 }
 
 .btn-secondary {
-  background: white;
+  background: var(--color-surface);
   color: var(--color-rose-deep);
   border: 1px solid var(--color-petal);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.3s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
 .btn-secondary:hover {
@@ -176,6 +211,14 @@ body {
   from {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.96);
+  }
+}
+
+/* subtle pop for the "this theme is selected" checkmark */
+@keyframes checkmark-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
   }
 }
 

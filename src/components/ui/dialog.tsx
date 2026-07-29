@@ -20,7 +20,7 @@ export function DialogContent({
         className={cn(
           "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
           "w-[92vw] max-w-lg max-h-[85vh] overflow-y-auto rounded-3xl p-7",
-          "bg-white border border-petal/50 shadow-[0_32px_80px_-24px_rgba(214,41,112,0.35)]",
+          "bg-surface border border-petal/50 shadow-[0_32px_80px_-24px_rgba(214,41,112,0.35)]",
           "dark:bg-night-card dark:border-white/10",
           "animate-[dialog-in_0.2s_ease-out]",
           className
