@@ -5,26 +5,24 @@
   },
   "nav": {
     "home": "오늘",
-    "board": "할 일",
-    "analytics": "통계",
-    "store": "보상",
+    "analytics": "대시보드",
     "memory": "일기",
     "profile": "프로필",
     "settings": "설정",
     "about": "소개",
-    "balance": "Bloom 잔액"
+    "balance": "번 금액"
   },
   "about": {
     "title": "Bloom",
     "tagline": "아름답게 성장하세요.",
-    "description": "Bloom은 집중한 노력을 의미 있는 보상, 지속 가능한 습관, 개인의 성장으로 바꿔주는 게이미피케이션 생산성 플랫폼입니다.",
+    "description": "Bloom은 집중한 시간을 눈에 보이는 진전, 지속 가능한 습관, 개인의 성장으로 바꾸는 게임형 생산성 앱입니다.",
     "whyTitle": "왜 Bloom일까요?",
     "whyIntro": "Bloom은 다음과 같은 것들을 돕기 위해 설계되었습니다:",
     "why1": "집중력 유지하기",
     "why2": "의미 있는 습관 만들기",
     "why3": "성장을 시각화하기",
     "why4": "성취를 축하하기",
-    "why5": "스스로에게 의도적으로 보상하기",
+    "why5": "집중한 시간의 가치 확인하기",
     "why6": "꾸준히 성장하기",
     "philosophyTitle": "핵심 철학",
     "philosophyBody": "작은 행동들이 모여 놀라운 결과를 만듭니다. Bloom은 완벽함보다 꾸준함을 응원합니다.",
@@ -64,7 +62,7 @@
       "slate": "슬레이트",
       "lavender": "라벤더"
     },
-    "intro": "할 일을 끝내고 잔액을 모아 정원을 가꾸고, 직접 고른 보상으로 바꿔 보세요.",
+    "intro": "할 일을 끝내고 집중한 시간의 가치를 확인하며 정원을 가꾸세요.",
     "customValueError": "1,000₫ 이상을 입력하세요.",
     "step3Hint": "원하는 만큼 고르세요. 오늘의 문구가 여기에 맞춰집니다.",
     "skip": "건너뛰기",
@@ -74,7 +72,7 @@
     "welcomeBack": "다시 오신 것을 환영해요, {name}님",
     "gardenWaiting": "집중한 시간은 모두 쌓입니다.",
     "gardenEmpty": "하루를 마치며 일기를 쓰면 첫 꽃이 심어집니다.",
-    "balance": "Bloom 잔액",
+    "balance": "집중으로 번 금액",
     "streak": "현재 연속 기록",
     "tasks": "오늘의 할 일",
     "remaining": "남은 단계",
@@ -85,13 +83,18 @@
     "fading": "희미해짐",
     "days": "일",
     "welcomeNew": "안녕하세요, {name}님",
-    "balanceNote": "보상용 가상 화폐이며 실제 돈이 아닙니다",
+    "balanceNote": "집중한 시간과 끝낸 일의 가치입니다. 실제 돈이 아닙니다.",
     "earnedToday": "오늘 획득",
     "stepsDone": "오늘 완료한 단계",
     "quietNotice": "한동안 조용했네요. 정원이 쉬면서 기다리고 있었어요.",
     "quietLost": "연속 기록 종료: -{amount}.",
     "lateNotice": "\"{title}\" 마감이 3일 넘게 지났습니다: -{amount}.",
-    "dismiss": "닫기"
+    "dismiss": "닫기",
+    "heroEmpty": "오늘 무엇을 끝낼까요?",
+    "heroLeft": "오늘 {count}단계 남았어요, 약 {time}",
+    "heroDone": "모두 끝냈어요. 정말 잘했어요!",
+    "quickPlaceholder": "할 일 입력, 예: 보고서 쓰기",
+    "moreOptions": "단계, 시간, 세부 정보 추가"
   },
   "companion": {
     "save": "문구 저장",
@@ -320,7 +323,7 @@
     "titlePlaceholder": "예: 3분기 보고서 끝내기",
     "titleRequired": "할 일 이름을 입력하세요.",
     "consumeHint": "수동적 시간은 기록되지만 잔액은 쌓이지 않습니다.",
-    "stepsHint": "보상은 시간과 시간당 가치({amount}/시간)로 자동 계산됩니다.",
+    "stepsHint": "금액은 시간과 시간당 가치({amount}/시간)로 자동 계산됩니다.",
     "stepField": "단계 이름",
     "singleStepHint": "비워 두면 30분짜리 단계 하나로 만들어집니다.",
     "minutesError": "{min}~{max}분으로 입력하세요.",
@@ -366,7 +369,7 @@
     "low": "낮음"
   },
   "analytics": {
-    "title": "통계",
+    "title": "최근 7일",
     "focusHours": "집중 시간",
     "balanceEarned": "이번 주 획득",
     "balanceLost": "이번 주 손실",
@@ -380,52 +383,6 @@
     "hoursByDay": "날짜별 집중 시간",
     "timeByCategory": "시간 분포",
     "noCategoryData": "단계를 끝내면 볼 수 있습니다."
-  },
-  "store": {
-    "title": "보상",
-    "subtitle": "노력할 만한 보상을 고르고 잔액으로 교환하세요.",
-    "newReward": "보상 추가",
-    "createReward": "새 보상",
-    "editReward": "보상 수정",
-    "rewardName": "보상 이름",
-    "rewardNamePlaceholder": "예: 친구와의 커피 타임",
-    "cost": "가격",
-    "icon": "아이콘",
-    "cancel": "취소",
-    "save": "저장",
-    "create": "보상 추가",
-    "edit": "수정",
-    "delete": "삭제",
-    "unlocked": "잠금 해제됨",
-    "locked": "잠김 · 계속 성장하세요",
-    "redeem": "교환",
-    "redeemed": "즐기세요",
-    "empty": "아직 보상이 없습니다. 직접 추가하거나 아래 아이디어를 고르세요.",
-    "inspiration": "시작 아이디어",
-    "inspirationSubtitle": "하나를 고른 뒤 추가하기 전에 이름과 가격을 직접 정하세요.",
-    "useTemplate": "사용하고 가격 정하기",
-    "templates": {
-      "coffee": "커피 데이트",
-      "movie": "영화의 밤",
-      "trip": "주말 여행",
-      "book": "책 한 권 사기",
-      "spa": "스파 데이",
-      "dinner": "근사한 저녁 식사"
-    },
-    "nameRequired": "보상 이름을 입력하세요.",
-    "costRequired": "0보다 큰 가격을 입력하세요.",
-    "costHint": "{amount}은(는) 집중 업무 약 {hours}시간에 해당합니다.",
-    "balanceLabel": "Bloom 잔액",
-    "balanceNote": "스스로에게 보상하는 가상 화폐이며 실제 돈이 아닙니다.",
-    "mine": "내 보상",
-    "ready": "교환 가능",
-    "need": "{amount} 더 필요",
-    "history": "교환 내역",
-    "suggestedPrice": "제안: {amount}",
-    "confirmRedeemTitle": "\"{name}\"을(를) 교환할까요?",
-    "confirmRedeemBody": "잔액에서 {amount}가 차감되어 {left}가 남습니다.",
-    "confirmDeleteTitle": "\"{name}\"을(를) 삭제할까요?",
-    "confirmDeleteBody": "목록에서 삭제됩니다. 교환 내역은 유지됩니다."
   },
   "memory": {
     "title": "일기",
@@ -461,7 +418,7 @@
     "dataSection": "내 데이터",
     "dataHint": "Bloom은 이 브라우저에만 저장됩니다.",
     "reset": "모든 데이터 삭제",
-    "resetConfirm": "할 일, 보상, 정원, 일기가 영구 삭제됩니다.",
+    "resetConfirm": "할 일, 정원, 일기가 영구 삭제됩니다.",
     "resetYes": "삭제",
     "resetNo": "유지"
   },
@@ -500,7 +457,7 @@
     "wrappedStreak": "최장 연속 기록",
     "wrappedFavoriteCategory": "가장 좋아한 카테고리",
     "wrappedTopAchievement": "최고의 업적",
-    "rewardsRedeemed": "교환한 보상"
+    "tasksFinished": "끝낸 할 일"
   },
   "achievements": {
     "rarity": {
@@ -520,10 +477,6 @@
     "firstReflection": {
       "name": "첫 회고",
       "desc": "첫 번째 일일 회고를 작성해보세요"
-    },
-    "firstReward": {
-      "name": "첫 보상",
-      "desc": "첫 번째 보상을 교환해보세요"
     },
     "quoteCollector": {
       "name": "문구 수집가",
@@ -630,5 +583,23 @@
     "androidStep2": "“홈 화면에 추가” 또는 “앱 설치”를 선택하세요",
     "desktopStep1": "Chrome 또는 Edge 주소창의 설치 아이콘을 클릭하세요",
     "desktopStep2": "휴대폰에서 Safari나 Chrome으로 이 사이트를 열고 홈 화면에 추가하세요"
+  },
+  "tutorial": {
+    "progress": "{current}/{total}단계",
+    "skip": "튜토리얼 건너뛰기",
+    "next": "다음",
+    "done": "알겠어요",
+    "tryIt": "지금 해 보세요",
+    "backToToday": "오늘로 돌아가기",
+    "addTitle": "첫 할 일을 추가하세요",
+    "addBody": "오늘 끝내고 싶은 일을 입력하고 할 일 추가를 누르세요.",
+    "tickTitle": "끝나면 체크하세요",
+    "tickBody": "이 단계를 누르면 완료되고 번 금액이 보입니다.",
+    "balanceTitle": "번 금액은 여기에 쌓여요",
+    "balanceBody": "단계를 끝낼 때마다 시간 × 시간당 가치가 쌓입니다. 실제 돈이 아니라 집중의 가치입니다.",
+    "dashboardTitle": "진행 상황 보기",
+    "dashboardBody": "대시보드에서 금액, 집중 시간, 연속 기록, 정원을 볼 수 있어요.",
+    "journalTitle": "하루 끝에 한 줄 남기기",
+    "journalBody": "단계를 끝낸 뒤 오늘 페이지에서 일기를 쓰면 꽃이 심어집니다. 지난 일기는 여기에 있어요."
   }
 }

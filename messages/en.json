@@ -5,26 +5,24 @@
   },
   "nav": {
     "home": "Today",
-    "board": "Tasks",
-    "analytics": "Stats",
-    "store": "Rewards",
+    "analytics": "Dashboard",
     "memory": "Journal",
     "profile": "Profile",
     "settings": "Settings",
     "about": "About",
-    "balance": "Bloom balance"
+    "balance": "Money earned"
   },
   "about": {
     "title": "Bloom",
     "tagline": "Grow beautifully.",
-    "description": "Bloom is a gamified productivity platform that helps people transform focused work into meaningful rewards, sustainable habits, and personal growth.",
+    "description": "Bloom is a gamified productivity app that turns focused work into visible progress, sustainable habits, and personal growth.",
     "whyTitle": "Why Bloom?",
     "whyIntro": "Bloom is designed to help you:",
     "why1": "Stay focused",
     "why2": "Build meaningful habits",
     "why3": "Visualize progress",
     "why4": "Celebrate achievements",
-    "why5": "Reward yourself intentionally",
+    "why5": "See what your focused time is worth",
     "why6": "Grow consistently over time",
     "philosophyTitle": "Core Philosophy",
     "philosophyBody": "Small actions compound into extraordinary results. Bloom encourages consistency rather than perfection.",
@@ -64,7 +62,7 @@
       "slate": "Slate",
       "lavender": "Lavender"
     },
-    "intro": "Finish tasks, earn a balance, grow a garden, and spend it on rewards you choose.",
+    "intro": "Finish tasks, see what your focused time is worth, and grow a garden along the way.",
     "customValueError": "Enter an amount of at least 1,000₫.",
     "step3Hint": "Pick any that fit. Your daily quotes will match them.",
     "skip": "Skip for now",
@@ -74,7 +72,7 @@
     "welcomeBack": "Welcome back, {name}",
     "gardenWaiting": "Every focused hour adds up.",
     "gardenEmpty": "Write a journal entry at the end of the day to plant your first flower.",
-    "balance": "Bloom balance",
+    "balance": "Money earned from your focus",
     "streak": "Current Streak",
     "tasks": "Today's tasks",
     "remaining": "Steps left",
@@ -85,13 +83,18 @@
     "fading": "fading",
     "days": "days",
     "welcomeNew": "Hi, {name}",
-    "balanceNote": "Play money for rewards, not real money",
+    "balanceNote": "What your focused time and finished tasks are worth. Not real money.",
     "earnedToday": "Earned today",
     "stepsDone": "steps done today",
     "quietNotice": "It has been quiet for a while. Your garden rested and is waiting for you.",
     "quietLost": "Streak ended: -{amount}.",
     "lateNotice": "\"{title}\" is over 3 days late: -{amount}.",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "heroEmpty": "What will you finish today?",
+    "heroLeft": "{count} steps left today, about {time}",
+    "heroDone": "Every step is done. Nice work!",
+    "quickPlaceholder": "Type a task, e.g. Finish the report",
+    "moreOptions": "Add steps, time and details"
   },
   "companion": {
     "save": "Save quote",
@@ -320,7 +323,7 @@
     "titlePlaceholder": "e.g. Finish the Q3 report",
     "titleRequired": "Give the task a name.",
     "consumeHint": "Passive time is logged but earns no balance.",
-    "stepsHint": "The reward is worked out from the time and your hourly value ({amount} per hour).",
+    "stepsHint": "What you earn is worked out from the time and your hourly value ({amount} per hour).",
     "stepField": "Step name",
     "singleStepHint": "Leave this blank and the task becomes one 30-minute step.",
     "minutesError": "Use {min} to {max} minutes.",
@@ -366,7 +369,7 @@
     "low": "Low"
   },
   "analytics": {
-    "title": "Stats",
+    "title": "Last 7 days",
     "focusHours": "Focus time",
     "balanceEarned": "Earned this week",
     "balanceLost": "Lost this week",
@@ -380,52 +383,6 @@
     "hoursByDay": "Focus time by day",
     "timeByCategory": "Where your time went",
     "noCategoryData": "Finish a step to see this."
-  },
-  "store": {
-    "title": "Rewards",
-    "subtitle": "Choose treats worth working for, then redeem them with your balance.",
-    "newReward": "Add reward",
-    "createReward": "New reward",
-    "editReward": "Edit reward",
-    "rewardName": "Reward name",
-    "rewardNamePlaceholder": "e.g. Coffee with a friend",
-    "cost": "Price",
-    "icon": "Icon",
-    "cancel": "Cancel",
-    "save": "Save",
-    "create": "Add reward",
-    "edit": "Edit",
-    "delete": "Delete",
-    "unlocked": "Unlocked",
-    "locked": "Locked · keep growing",
-    "redeem": "Redeem",
-    "redeemed": "Enjoy it",
-    "empty": "No rewards yet. Add your own or pick an idea below.",
-    "inspiration": "Ideas to start with",
-    "inspirationSubtitle": "Pick one, then set your own name and price before it is added.",
-    "useTemplate": "Use and set my price",
-    "templates": {
-      "coffee": "Coffee Date",
-      "movie": "Movie Night",
-      "trip": "Weekend Trip",
-      "book": "Buy a Book",
-      "spa": "Spa Day",
-      "dinner": "Nice Dinner Out"
-    },
-    "nameRequired": "Give the reward a name.",
-    "costRequired": "Enter a price above 0.",
-    "costHint": "{amount} is about {hours} hours of focused work.",
-    "balanceLabel": "Bloom balance",
-    "balanceNote": "Play money for rewarding yourself. It is not real money.",
-    "mine": "My rewards",
-    "ready": "Ready to redeem",
-    "need": "{amount} more to go",
-    "history": "Redeemed so far",
-    "suggestedPrice": "Suggested: {amount}",
-    "confirmRedeemTitle": "Redeem \"{name}\"?",
-    "confirmRedeemBody": "{amount} will come off your balance, leaving {left}.",
-    "confirmDeleteTitle": "Delete \"{name}\"?",
-    "confirmDeleteBody": "It will be removed from your list. Past redemptions stay in your history."
   },
   "memory": {
     "title": "Journal",
@@ -461,7 +418,7 @@
     "dataSection": "Your data",
     "dataHint": "Bloom is saved in this browser only.",
     "reset": "Delete all my data",
-    "resetConfirm": "Tasks, rewards, garden and journal will be gone for good.",
+    "resetConfirm": "Tasks, garden and journal will be gone for good.",
     "resetYes": "Yes, delete",
     "resetNo": "Keep my data"
   },
@@ -500,7 +457,7 @@
     "wrappedStreak": "Longest Streak",
     "wrappedFavoriteCategory": "Favorite Category",
     "wrappedTopAchievement": "Top Achievement",
-    "rewardsRedeemed": "Rewards redeemed"
+    "tasksFinished": "Tasks finished"
   },
   "achievements": {
     "rarity": {
@@ -520,10 +477,6 @@
     "firstReflection": {
       "name": "First Reflection",
       "desc": "Write your first daily reflection"
-    },
-    "firstReward": {
-      "name": "First Reward",
-      "desc": "Redeem your first reward"
     },
     "quoteCollector": {
       "name": "Quote Collector",
@@ -630,5 +583,23 @@
     "androidStep2": "Choose “Add to Home screen” or “Install app”",
     "desktopStep1": "In Chrome or Edge, click the install icon in the address bar",
     "desktopStep2": "On your phone, open this site in Safari or Chrome and add it to the home screen"
+  },
+  "tutorial": {
+    "progress": "Step {current} of {total}",
+    "skip": "Skip tutorial",
+    "next": "Next",
+    "done": "Got it",
+    "tryIt": "Try it now",
+    "backToToday": "Back to Today",
+    "addTitle": "Add your first task",
+    "addBody": "Type one thing you want to finish today, then press Add task.",
+    "tickTitle": "Tick it when it's done",
+    "tickBody": "Tap the step to mark it done. You will see the money it earned. Try it now.",
+    "balanceTitle": "Your money grows here",
+    "balanceBody": "Every finished step adds its time × your hourly value. It is not real money, just what your focus is worth.",
+    "dashboardTitle": "See your progress",
+    "dashboardBody": "The Dashboard shows your money, focus time, streak and garden.",
+    "journalTitle": "End the day with a note",
+    "journalBody": "After you finish a step, write a note on Today to plant flowers. Past notes live here in Journal."
   }
 }

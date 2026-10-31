@@ -5,26 +5,24 @@
   },
   "nav": {
     "home": "今日",
-    "board": "タスク",
-    "analytics": "統計",
-    "store": "ごほうび",
+    "analytics": "ダッシュボード",
     "memory": "日記",
     "profile": "プロフィール",
     "settings": "設定",
     "about": "Bloomについて",
-    "balance": "Bloom 残高"
+    "balance": "稼いだ金額"
   },
   "about": {
     "title": "Bloom",
     "tagline": "美しく成長する。",
-    "description": "Bloomは、集中した努力を意味のある報酬、持続可能な習慣、そして自己成長へと変えるゲーミフィケーション型の生産性プラットフォームです。",
+    "description": "Bloom は、集中した時間を目に見える進歩、続く習慣、個人の成長に変えるゲーム感覚の生産性アプリです。",
     "whyTitle": "なぜBloomなのか?",
     "whyIntro": "Bloomは、あなたが次のことを実現できるよう設計されています:",
     "why1": "集中力を保つ",
     "why2": "意味のある習慣を築く",
     "why3": "成長を可視化する",
     "why4": "達成を祝う",
-    "why5": "自分に意図的にご褒美をあげる",
+    "why5": "集中した時間の価値を知る",
     "why6": "着実に成長し続ける",
     "philosophyTitle": "コアフィロソフィー",
     "philosophyBody": "小さな行動の積み重ねが、やがて大きな成果になります。Bloomは完璧さよりも継続することを大切にします。",
@@ -64,7 +62,7 @@
       "slate": "スレート",
       "lavender": "ラベンダー"
     },
-    "intro": "タスクを終えて残高をため、庭を育て、自分で選んだごほうびと交換しましょう。",
+    "intro": "タスクを終え、集中した時間の価値を確かめながら庭を育てましょう。",
     "customValueError": "1,000₫ 以上を入力してください。",
     "step3Hint": "いくつでも選べます。毎日の言葉が選択に合わせて変わります。",
     "skip": "スキップ",
@@ -74,7 +72,7 @@
     "welcomeBack": "おかえりなさい、{name}さん",
     "gardenWaiting": "集中した時間はすべて積み重なります。",
     "gardenEmpty": "一日の終わりに日記を書くと、最初の花が咲きます。",
-    "balance": "Bloom 残高",
+    "balance": "集中で稼いだ金額",
     "streak": "現在の連続記録",
     "tasks": "今日のタスク",
     "remaining": "残りのステップ",
@@ -85,13 +83,18 @@
     "fading": "色あせ気味",
     "days": "日",
     "welcomeNew": "こんにちは、{name} さん",
-    "balanceNote": "ごほうび用の仮想通貨で、本物のお金ではありません",
+    "balanceNote": "集中した時間と終えたタスクの価値です。本物のお金ではありません。",
     "earnedToday": "今日の獲得",
     "stepsDone": "今日完了したステップ",
     "quietNotice": "しばらくぶりですね。庭は休みながら待っていました。",
     "quietLost": "連続が途切れました: -{amount}。",
     "lateNotice": "「{title}」は期限を 3 日超えました: -{amount}。",
-    "dismiss": "閉じる"
+    "dismiss": "閉じる",
+    "heroEmpty": "今日は何を終わらせますか？",
+    "heroLeft": "今日はあと {count} ステップ、約 {time}",
+    "heroDone": "すべて完了です。お疲れさま！",
+    "quickPlaceholder": "タスクを入力（例: レポートを書く）",
+    "moreOptions": "ステップ・時間・詳細を追加"
   },
   "companion": {
     "save": "この言葉を保存",
@@ -320,7 +323,7 @@
     "titlePlaceholder": "例: 第 3 四半期レポートを仕上げる",
     "titleRequired": "タスク名を入力してください。",
     "consumeHint": "受け身の時間は記録されますが、残高は増えません。",
-    "stepsHint": "報酬は時間と時間価値（{amount}/時）から自動で計算されます。",
+    "stepsHint": "金額は時間と時間価値（{amount}/時）から自動で計算されます。",
     "stepField": "ステップ名",
     "singleStepHint": "空欄の場合、30 分のステップ 1 つになります。",
     "minutesError": "{min}〜{max} 分で入力してください。",
@@ -366,7 +369,7 @@
     "low": "低"
   },
   "analytics": {
-    "title": "統計",
+    "title": "直近 7 日間",
     "focusHours": "集中時間",
     "balanceEarned": "今週の獲得",
     "balanceLost": "今週の損失",
@@ -380,52 +383,6 @@
     "hoursByDay": "日別の集中時間",
     "timeByCategory": "時間の使い道",
     "noCategoryData": "ステップを終えると表示されます。"
-  },
-  "store": {
-    "title": "ごほうび",
-    "subtitle": "頑張りたくなるごほうびを選び、残高で交換しましょう。",
-    "newReward": "ごほうびを追加",
-    "createReward": "新しいごほうび",
-    "editReward": "ごほうびを編集",
-    "rewardName": "ごほうびの名前",
-    "rewardNamePlaceholder": "例:友達とのコーヒータイム",
-    "cost": "価格",
-    "icon": "アイコン",
-    "cancel": "キャンセル",
-    "save": "保存",
-    "create": "ごほうびを追加",
-    "edit": "編集",
-    "delete": "削除",
-    "unlocked": "解除済み",
-    "locked": "未解除 · 成長を続けよう",
-    "redeem": "交換する",
-    "redeemed": "楽しんでください",
-    "empty": "まだありません。自分で追加するか、下のアイデアから選びましょう。",
-    "inspiration": "はじめのアイデア",
-    "inspirationSubtitle": "1 つ選び、追加する前に名前と価格を自分で決めましょう。",
-    "useTemplate": "使って価格を決める",
-    "templates": {
-      "coffee": "コーヒーデート",
-      "movie": "映画の夜",
-      "trip": "週末旅行",
-      "book": "本を一冊買う",
-      "spa": "スパの日",
-      "dinner": "素敵なディナー"
-    },
-    "nameRequired": "名前を入力してください。",
-    "costRequired": "0 より大きい価格を入力してください。",
-    "costHint": "{amount} は集中作業 約 {hours} 時間分です。",
-    "balanceLabel": "Bloom 残高",
-    "balanceNote": "自分へのごほうび用の仮想通貨で、本物のお金ではありません。",
-    "mine": "マイごほうび",
-    "ready": "交換できます",
-    "need": "あと {amount}",
-    "history": "交換履歴",
-    "suggestedPrice": "目安: {amount}",
-    "confirmRedeemTitle": "「{name}」を交換しますか？",
-    "confirmRedeemBody": "残高から {amount} を差し引き、残りは {left} です。",
-    "confirmDeleteTitle": "「{name}」を削除しますか？",
-    "confirmDeleteBody": "リストから削除します。交換履歴は残ります。"
   },
   "memory": {
     "title": "日記",
@@ -461,7 +418,7 @@
     "dataSection": "データ",
     "dataHint": "Bloom はこのブラウザにのみ保存されます。",
     "reset": "すべてのデータを削除",
-    "resetConfirm": "タスク、ごほうび、庭、日記が完全に消えます。",
+    "resetConfirm": "タスク、庭、日記が完全に消えます。",
     "resetYes": "削除する",
     "resetNo": "残す"
   },
@@ -500,7 +457,7 @@
     "wrappedStreak": "最長連続記録",
     "wrappedFavoriteCategory": "お気に入りのカテゴリー",
     "wrappedTopAchievement": "トップの実績",
-    "rewardsRedeemed": "交換したごほうび"
+    "tasksFinished": "完了したタスク"
   },
   "achievements": {
     "rarity": {
@@ -520,10 +477,6 @@
     "firstReflection": {
       "name": "はじめてのふりかえり",
       "desc": "最初の日々のふりかえりを書こう"
-    },
-    "firstReward": {
-      "name": "はじめてのリワード",
-      "desc": "最初のリワードを交換しよう"
     },
     "quoteCollector": {
       "name": "言葉のコレクター",
@@ -630,5 +583,23 @@
     "androidStep2": "「ホーム画面に追加」または「アプリをインストール」を選ぶ",
     "desktopStep1": "Chrome または Edge のアドレスバーにあるインストールアイコンをクリック",
     "desktopStep2": "スマホでは Safari か Chrome でこのサイトを開き、ホーム画面に追加"
+  },
+  "tutorial": {
+    "progress": "ステップ {current}/{total}",
+    "skip": "チュートリアルをスキップ",
+    "next": "次へ",
+    "done": "わかった",
+    "tryIt": "やってみましょう",
+    "backToToday": "今日に戻る",
+    "addTitle": "最初のタスクを追加",
+    "addBody": "今日終わらせたいことを入力し、「タスクを追加」を押してください。",
+    "tickTitle": "終わったらチェック",
+    "tickBody": "このステップをタップすると完了し、稼いだ金額が表示されます。",
+    "balanceTitle": "稼いだ金額はここに",
+    "balanceBody": "ステップを終えるたびに時間 × 時間価値が加算されます。本物のお金ではなく、集中の価値です。",
+    "dashboardTitle": "進み具合を見る",
+    "dashboardBody": "ダッシュボードで金額、集中時間、連続日数、庭を確認できます。",
+    "journalTitle": "一日の終わりに一言",
+    "journalBody": "ステップを終えたら「今日」で日記を書くと花が咲きます。過去の日記はここにあります。"
   }
 }

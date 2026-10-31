@@ -60,7 +60,7 @@ export function AiCompanion() {
       <span className="grid place-items-center w-9 h-9 rounded-xl gradient-primary text-white shrink-0">
         <Quote size={16} />
       </span>
-      <div className="text-sm font-medium text-ink flex-1">{message}</div>
+      <div className="text-base font-medium text-ink flex-1">{message}</div>
       <div className="flex items-center gap-2 shrink-0">
         <button
           onClick={() => toggleSavedQuote(message)}

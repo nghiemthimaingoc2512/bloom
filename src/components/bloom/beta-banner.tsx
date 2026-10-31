@@ -14,8 +14,8 @@ export function BetaBanner() {
   return (
     <div className="max-w-5xl mx-auto px-5 pt-4">
       <div className="glass rounded-2xl px-4 py-2.5 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 flex-wrap text-xs sm:text-sm">
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full gradient-primary text-white font-medium text-[11px] shrink-0">
+        <div className="flex items-center gap-2 flex-wrap text-sm sm:text-base">
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full gradient-primary text-white font-medium text-[13px] shrink-0">
             🌸 {t("badge")}
           </span>
           <span className="text-ink-soft">{t("message")}</span>

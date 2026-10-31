@@ -2,14 +2,45 @@
 
 import * as React from "react";
 import { useBloomStore } from "@/lib/store";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { Tutorial } from "@/components/bloom/tutorial";
 import { Nav } from "@/components/bloom/nav";
 import { Onboarding } from "@/components/bloom/onboarding";
 import { BetaBanner } from "@/components/bloom/beta-banner";
+
+const LAST_SCREEN_KEY = "bloom-last-screen";
+const OPENED_KEY = "bloom-opened";
+const RESTORABLE = ["/analytics", "/memory", "/profile", "/settings", "/about"];
 
 export function BloomProvider({ children }: { children: React.ReactNode }) {
   const hydrate = useBloomStore((s) => s.hydrate);
   const hydrated = useBloomStore((s) => s.hydrated);
   const onboardingCompleted = useBloomStore((s) => s.onboardingCompleted);
+  const tutorialDone = useBloomStore((s) => s.tutorialDone);
+  const pathname = usePathname();
+  const router = useRouter();
+  const checkedLastScreen = React.useRef(false);
+
+  // A fresh open of Bloom returns to the screen the person last used; moving
+  // around inside a session (including back to Today) is left alone.
+  React.useEffect(() => {
+    if (!hydrated || !onboardingCompleted) return;
+    try {
+      if (!checkedLastScreen.current) {
+        checkedLastScreen.current = true;
+        const firstOpen = !window.sessionStorage.getItem(OPENED_KEY);
+        window.sessionStorage.setItem(OPENED_KEY, "1");
+        const last = window.localStorage.getItem(LAST_SCREEN_KEY);
+        if (firstOpen && tutorialDone && pathname === "/" && last && RESTORABLE.includes(last)) {
+          router.replace(last);
+          return;
+        }
+      }
+      window.localStorage.setItem(LAST_SCREEN_KEY, pathname);
+    } catch {
+      // Storage may be unavailable; Bloom simply opens on Today.
+    }
+  }, [hydrated, onboardingCompleted, tutorialDone, pathname, router]);
 
   React.useEffect(() => {
     void hydrate();
@@ -43,6 +74,7 @@ export function BloomProvider({ children }: { children: React.ReactNode }) {
       {/* Bottom padding clears the phone bottom nav. Feedback lives in Settings
           and About, not as a floating button over the content. */}
       <main className="max-w-5xl mx-auto px-5 pb-28 md:pb-20 pt-2">{children}</main>
+      {!tutorialDone && <Tutorial />}
     </>
   );
 }

@@ -13,7 +13,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Clock, Flame, Share2, Sparkles, TrendingUp } from "lucide-react";
+import { Clock, Share2, Sparkles, TrendingUp } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { useLocale, useTranslations } from "next-intl";
 import { useBloomStore } from "@/lib/store";
@@ -30,9 +30,9 @@ function Card({ icon, label, value }: { icon: React.ReactNode; label: string; va
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
         <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
-        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
+        <span className="text-[13px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
-      <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
+      <div className="text-3xl font-bold font-mono tracking-tight">{value}</div>
     </div>
   );
 }
@@ -47,10 +47,8 @@ export function Analytics() {
   const [shareOpen, setShareOpen] = React.useState(false);
   const [shareContent, setShareContent] = React.useState<ShareCardContent | null>(null);
 
-  const { streak, longestStreak, focuses, history } = useBloomStore(
+  const { focuses, history } = useBloomStore(
     useShallow((s) => ({
-      streak: s.streak,
-      longestStreak: s.longestStreak,
       focuses: s.focuses,
       history: s.history,
     }))
@@ -108,31 +106,29 @@ export function Analytics() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div>
-          <div className="text-xl font-display font-medium">{t("title")}</div>
-          <div className="text-sm text-ink-soft mt-0.5">
-            {t("suggestionLabel")} - {t("suggestion")}
+          <div className="text-3xl md:text-4xl font-display font-semibold">{t("title")}</div>
+          <div className="text-base text-ink-soft mt-0.5">
+            {t("suggestion")}
           </div>
         </div>
         <button
           onClick={shareWeekly}
-          className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium"
+          className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium"
         >
           <Share2 size={13} /> {tShare("shareWeekly")}
         </button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card icon={<Clock size={16} className="text-rose" />} label={t("focusHours")} value={`${weekHours.toFixed(1)}h`} />
         <Card icon={<Sparkles size={16} className="text-amber-400" />} label={t("balanceEarned")} value={formatVND(weekEarned)} />
         <Card icon={<Sparkles size={16} className="text-stone-400" />} label={t("balanceLost")} value={formatVND(weekLost)} />
-        <Card icon={<Flame size={16} className="text-orange-400" />} label={t("streak")} value={`${streak}`} />
-        <Card icon={<Flame size={16} className="text-orange-300" />} label={t("longestStreak")} value={`${longestStreak}`} />
         <Card icon={<TrendingUp size={16} className="text-green-500" />} label={t("completionRate")} value={`${Math.round(ratio * 100)}%`} />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
         <div className="rounded-2xl glass p-5">
-          <div className="text-sm font-medium mb-3">{t("hoursByDay")}</div>
+          <div className="text-base font-medium mb-3">{t("hoursByDay")}</div>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={weekData}>
               <CartesianGrid strokeDasharray="3 3" stroke={dark ? "#3a2a30" : "#fce7f3"} vertical={false} />
@@ -144,7 +140,7 @@ export function Analytics() {
           </ResponsiveContainer>
         </div>
         <div className="rounded-2xl glass p-5">
-          <div className="text-sm font-medium mb-3">{t("timeByCategory")}</div>
+          <div className="text-base font-medium mb-3">{t("timeByCategory")}</div>
           {pieData.length > 0 ? (
             <>
               <ResponsiveContainer width="100%" height={220}>
@@ -159,7 +155,7 @@ export function Analytics() {
               </ResponsiveContainer>
               <div className="flex flex-wrap gap-3 justify-center mt-2">
                 {pieData.map((d) => (
-                  <div key={d.key} className="flex items-center gap-1 text-xs">
+                  <div key={d.key} className="flex items-center gap-1 text-sm">
                     <span className="w-2 h-2 rounded-full" style={{ background: CATEGORY_CHART_COLOR[d.key] }} />
                     {d.name}
                   </div>
@@ -167,7 +163,7 @@ export function Analytics() {
               </div>
             </>
           ) : (
-            <div className="h-[220px] grid place-items-center text-sm text-ink-soft text-center px-6">
+            <div className="h-[220px] grid place-items-center text-base text-ink-soft text-center px-6">
               {t("noCategoryData")}
             </div>
           )}
@@ -176,8 +172,8 @@ export function Analytics() {
 
       {strongest && (
         <div className="rounded-2xl glass p-5">
-          <div className="text-sm font-medium mb-1">{t("strongestCategory")}</div>
-          <div className="text-sm text-rose-deep">
+          <div className="text-base font-medium mb-1">{t("strongestCategory")}</div>
+          <div className="text-base text-rose-deep">
             {tCat(`${strongest}.label`)} - {tCat(`${strongest}.desc`)}
           </div>
         </div>

@@ -1,74 +1,47 @@
 "use client";
 
-import { Sparkles, X } from "lucide-react";
-import { formatVND } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { useBloomStore } from "@/lib/store";
+import { useBloomBalance, useBloomStore } from "@/lib/store";
+import { formatVND } from "@/lib/utils";
+import { AnimatedNumber } from "./animated-number";
 import { Flower } from "./flower";
 
+/** Top of the dashboard: what the person's focused time has added up to,
+ *  and the garden it has grown. */
 export function GardenHero() {
   const t = useTranslations("home");
   const garden = useBloomStore((s) => s.garden);
-  const displayName = useBloomStore((s) => s.displayName);
-  const rolloverEvents = useBloomStore((s) => s.rolloverEvents);
-  const clearRolloverEvents = useBloomStore((s) => s.clearRolloverEvents);
-  const hasHistory = useBloomStore((s) => s.history.length > 0 || s.focuses.some((f) => f.checklist.some((c) => c.done)));
+  const balance = useBloomBalance();
 
   const blooming = garden.filter((f) => f.stage === "bloom").length;
   const wilting = garden.filter((f) => f.stage === "wilt").length;
   const fading = garden.filter((f) => f.stage === "fade").length;
 
   return (
-    <div className="space-y-3">
-      {rolloverEvents.length > 0 && (
-        <div role="status" className="rounded-2xl border border-warning/40 bg-warning/10 px-4 py-3 text-sm flex items-start gap-3">
-          <ul className="flex-1 space-y-1">
-            {rolloverEvents.map((e, i) => (
-              <li key={i}>
-                {e.kind === "quiet"
-                  ? `${t("quietNotice")}${e.amount > 0 ? ` ${t("quietLost", { amount: formatVND(e.amount) })}` : ""}`
-                  : t("lateNotice", { title: e.label ?? "", amount: formatVND(e.amount) })}
-              </li>
-            ))}
-          </ul>
-          <button onClick={clearRolloverEvents} aria-label={t("dismiss")} className="grid place-items-center w-8 h-8 rounded-lg hover:bg-blush text-ink-soft shrink-0">
-            <X size={15} />
-          </button>
-        </div>
-      )}
-    <div className="relative overflow-hidden rounded-[28px] p-7 md:p-10 border border-petal/50 shadow-[0_24px_64px_-28px_rgba(214,41,112,0.4)] bg-gradient-to-br from-white via-blush/60 to-petal/30 dark:from-night-card dark:via-night dark:to-night">
+    <section className="relative overflow-hidden rounded-[28px] p-6 md:p-9 border border-petal/60 shadow-[0_24px_64px_-28px_rgba(214,41,112,0.45)] bg-gradient-to-br from-white via-blush/70 to-petal/40 dark:from-night-card dark:via-night dark:to-night">
       <div className="pointer-events-none absolute -top-24 -right-20 w-72 h-72 rounded-full bg-rose/25 blur-[100px]" />
-      <div className="pointer-events-none absolute -bottom-24 -left-16 w-64 h-64 rounded-full bg-rose-light/25 blur-[90px]" />
-
-      <div className="relative flex items-start justify-between gap-4 mb-8">
-        <div>
-          <div className="text-[12px] uppercase tracking-[0.16em] text-rose-deep font-semibold mb-2">
-            {t(hasHistory ? "welcomeBack" : "welcomeNew", { name: displayName || "" })}
-          </div>
-          <h1 className="text-2xl md:text-[28px] font-display font-medium tracking-tight text-ink leading-snug max-w-md">
-            {t("gardenWaiting")}
-          </h1>
+      <div className="relative">
+        <div className="text-base font-semibold text-rose-deep">{t("balance")}</div>
+        <div className="text-5xl md:text-6xl font-bold font-mono tracking-tight mt-1 text-ink">
+          <AnimatedNumber value={balance} format={formatVND} />
         </div>
-        <span className="shrink-0 grid place-items-center w-12 h-12 rounded-2xl gradient-primary text-white shadow-lg shadow-rose/30">
-          <Sparkles size={20} />
-        </span>
-      </div>
+        <p className="text-base text-ink-soft mt-2">{t("balanceNote")}</p>
 
-      {garden.length > 0 ? (
-        <>
-          <div className="relative flex flex-wrap items-end gap-1 justify-center py-4">
-            {garden.map((f, i) => (
-              <Flower key={f.id} stage={f.stage} kind={f.kind} delay={i * 0.03} />
-            ))}
-          </div>
-          <div className="relative text-center text-xs text-ink-soft mt-2">
-            {t("gardenState")}: {blooming} {t("blooming")} · {wilting} {t("wilting")} · {fading} {t("fading")}
-          </div>
-        </>
-      ) : (
-        <div className="relative text-center py-12 text-sm text-ink-soft">{t("gardenEmpty")}</div>
-      )}
-    </div>
-    </div>
+        {garden.length > 0 ? (
+          <>
+            <div className="flex flex-wrap items-end gap-1 justify-center pt-6 pb-2">
+              {garden.map((f, i) => (
+                <Flower key={f.id} stage={f.stage} kind={f.kind} delay={i * 0.03} />
+              ))}
+            </div>
+            <div className="text-center text-sm text-ink-soft">
+              {blooming} {t("blooming")} · {wilting} {t("wilting")} · {fading} {t("fading")}
+            </div>
+          </>
+        ) : (
+          <p className="text-base text-ink-soft pt-6">{t("gardenEmpty")}</p>
+        )}
+      </div>
+    </section>
   );
 }

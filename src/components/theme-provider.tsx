@@ -24,10 +24,10 @@ export const LEGACY_PALETTES: Record<string, Palette> = {
 export const PALETTE_META: Record<Palette, { from: string; to: string }> = {
   pink: { from: "#ff7fb5", to: "#f54f93" },
   stone: { from: "#6f7a86", to: "#38424c" },
-  sage: { from: "#7a9478", to: "#455b44" },
+  sage: { from: "#4ade80", to: "#15803d" },
   clay: { from: "#a98470", to: "#6d5041" },
   slate: { from: "#6a8a94", to: "#3b545d" },
-  lavender: { from: "#8a82a4", to: "#554d6d" },
+  lavender: { from: "#c084fc", to: "#7c3aed" },
 };
 
 interface ThemeContextValue {

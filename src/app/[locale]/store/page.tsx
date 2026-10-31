@@ -1,5 +1,7 @@
-import { RewardStore } from "@/components/bloom/reward-store";
+import { redirect } from "@/i18n/navigation";
 
-export default function StorePage() {
-  return <RewardStore />;
+// This screen was merged into Today; old links and saved tabs land there.
+export default async function StorePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  redirect({ href: "/", locale });
 }

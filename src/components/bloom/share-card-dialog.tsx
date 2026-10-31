@@ -86,7 +86,7 @@ export function ShareCardDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogTitle className="text-lg font-display font-medium mb-4">{t("title")}</DialogTitle>
+        <DialogTitle className="text-2xl font-display font-semibold mb-4">{t("title")}</DialogTitle>
         {dataUrl ? (
           // eslint-disable-next-line @next/next/no-img-element -- this is a generated data: URL, not an optimizable remote asset
           <img src={dataUrl} alt="" className="w-full rounded-2xl border border-petal/50 mb-4" />
@@ -95,14 +95,14 @@ export function ShareCardDialog({
         )}
         <div className="flex flex-wrap gap-2 justify-end">
           {canNativeShare && (
-            <button onClick={handleShare} className="btn-secondary px-4 py-2 rounded-full text-sm font-medium">
+            <button onClick={handleShare} className="btn-secondary px-4 py-2 rounded-full text-base font-medium">
               {t("share")}
             </button>
           )}
-          <button onClick={handleCopy} className="btn-secondary px-4 py-2 rounded-full text-sm font-medium">
+          <button onClick={handleCopy} className="btn-secondary px-4 py-2 rounded-full text-base font-medium">
             {copyStatus === "copied" ? t("copied") : copyStatus === "error" ? t("copyFailed") : t("copyImage")}
           </button>
-          <button onClick={handleDownload} className="btn-primary px-4 py-2 rounded-full text-sm font-medium">
+          <button onClick={handleDownload} className="btn-primary px-4 py-2 rounded-full text-base font-medium">
             {t("download")}
           </button>
         </div>

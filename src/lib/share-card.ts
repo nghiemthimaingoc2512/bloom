@@ -185,8 +185,8 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
         const cx = cardX + colW * i + colW / 2;
         const available = colW - colPadding;
 
-        const valueSize = fitFontSize(ctx, stat.value, available, 50, (s) => `700 ${s}px 'Space Mono', monospace`, 26);
-        ctx.font = `700 ${valueSize}px 'Space Mono', monospace`;
+        const valueSize = fitFontSize(ctx, stat.value, available, 50, (s) => `700 ${s}px Inter, sans-serif`, 26);
+        ctx.font = `700 ${valueSize}px Inter, sans-serif`;
         ctx.fillStyle = "#2f2f2f";
         ctx.fillText(stat.value, cx, rowY);
 

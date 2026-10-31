@@ -51,18 +51,18 @@ export function FeedbackDialog({ open, onOpenChange }: { open: boolean; onOpenCh
           <div className="text-center py-6 space-y-2">
             <div className="text-3xl">🌸</div>
             <div className="font-display text-lg font-medium">{t("thankYouTitle")}</div>
-            <p className="text-sm text-ink-soft">{t("thankYouBody")}</p>
+            <p className="text-base text-ink-soft">{t("thankYouBody")}</p>
             <button
               onClick={() => handleOpenChange(false)}
-              className="btn-primary px-5 py-2.5 rounded-full text-sm font-medium mt-4"
+              className="btn-primary px-5 py-2.5 rounded-full text-base font-medium mt-4"
             >
               {t("close")}
             </button>
           </div>
         ) : (
           <>
-            <DialogTitle className="text-lg font-display font-medium mb-1">{t("title")}</DialogTitle>
-            <p className="text-sm text-ink-soft mb-5">{t("subtitle")}</p>
+            <DialogTitle className="text-2xl font-display font-semibold mb-1">{t("title")}</DialogTitle>
+            <p className="text-base text-ink-soft mb-5">{t("subtitle")}</p>
             <div className="space-y-4">
               <div>
                 <Label>{t("ratingLabel")}</Label>
@@ -114,17 +114,17 @@ export function FeedbackDialog({ open, onOpenChange }: { open: boolean; onOpenCh
               <div>
                 <Label>{t("emailLabel")}</Label>
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("emailPlaceholder")} />
-                <p className="text-xs text-ink-soft mt-1">{t("emailHint")}</p>
+                <p className="text-sm text-ink-soft mt-1">{t("emailHint")}</p>
               </div>
             </div>
             <div className="flex justify-end gap-2 mt-6">
-              <button onClick={() => handleOpenChange(false)} className="btn-secondary px-4 py-2.5 rounded-full text-sm font-medium">
+              <button onClick={() => handleOpenChange(false)} className="btn-secondary px-4 py-2.5 rounded-full text-base font-medium">
                 {t("cancel")}
               </button>
               <button
                 onClick={submit}
                 disabled={rating === 0}
-                className="btn-primary px-5 py-2.5 rounded-full text-sm font-medium"
+                className="btn-primary px-5 py-2.5 rounded-full text-base font-medium"
               >
                 {t("submit")}
               </button>

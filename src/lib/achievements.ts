@@ -20,7 +20,6 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: "firstFocus", emoji: "🎯", rarity: "common", isUnlocked: (s) => s.focuses.length >= 1 },
   { id: "firstFlower", emoji: "🌸", rarity: "common", isUnlocked: (s) => s.garden.length >= 1 },
   { id: "firstReflection", emoji: "🌱", rarity: "common", isUnlocked: (s) => s.memory.length >= 1 },
-  { id: "firstReward", emoji: "☕", rarity: "common", isUnlocked: (s) => s.redemptions.length >= 1 },
   { id: "quoteCollector", emoji: "❤️", rarity: "common", isUnlocked: (s) => s.savedQuotes.length >= 5 },
   { id: "streak7", emoji: "🔥", rarity: "rare", isUnlocked: (s) => s.longestStreak >= 7 },
   { id: "hours10", emoji: "⏱️", rarity: "rare", isUnlocked: (s) => s.lifetimeFocusMinutes >= 600 },

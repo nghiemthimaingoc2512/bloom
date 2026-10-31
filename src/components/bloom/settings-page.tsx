@@ -78,30 +78,30 @@ export function SettingsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <div className="text-xl font-display font-medium">{t("title")}</div>
-        <div className="text-sm text-ink-soft mt-0.5">{t("subtitle")}</div>
+        <div className="text-3xl md:text-4xl font-display font-semibold">{t("title")}</div>
+        <div className="text-base text-ink-soft mt-0.5">{t("subtitle")}</div>
       </div>
 
       <section className="rounded-2xl glass p-6 space-y-3">
-        <div className="font-medium text-sm">{t("profileSection")}</div>
+        <div className="font-medium text-base">{t("profileSection")}</div>
         <div>
           <Label>{t("displayName")}</Label>
           <Input value={name} onChange={(e) => setName(e.target.value)} />
         </div>
-        <button onClick={saveProfile} className="btn-primary px-5 py-2 rounded-full text-sm font-medium">
+        <button onClick={saveProfile} className="btn-primary px-5 py-2 rounded-full text-base font-medium">
           {t("save")}
         </button>
       </section>
 
       <section className="rounded-2xl glass p-6 space-y-4">
         <div>
-          <div className="font-medium text-sm">{t("hourlyValueSection")}</div>
-          <div className="text-xs text-ink-soft mt-0.5">{t("hourlyValueHint")}</div>
+          <div className="font-medium text-base">{t("hourlyValueSection")}</div>
+          <div className="text-sm text-ink-soft mt-0.5">{t("hourlyValueHint")}</div>
         </div>
         <div className="flex gap-2">
           <button
             onClick={() => setMode("direct")}
-            className={`flex-1 py-2 rounded-full text-xs font-medium border transition-all ${
+            className={`flex-1 py-2 rounded-full text-sm font-medium border transition-all ${
               mode === "direct" ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent" : "border-petal text-ink-soft"
             }`}
           >
@@ -109,7 +109,7 @@ export function SettingsPage() {
           </button>
           <button
             onClick={() => setMode("salary")}
-            className={`flex-1 py-2 rounded-full text-xs font-medium border transition-all ${
+            className={`flex-1 py-2 rounded-full text-sm font-medium border transition-all ${
               mode === "salary" ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent" : "border-petal text-ink-soft"
             }`}
           >
@@ -139,17 +139,17 @@ export function SettingsPage() {
           </div>
         )}
 
-        <div className="text-sm text-ink-soft">
+        <div className="text-base text-ink-soft">
           {t("computedHourlyValue")}: <span className="font-mono font-medium text-ink">{formatVND(previewHourlyValue)}</span>
         </div>
 
-        <button onClick={saveHourlyValue} className="btn-primary px-5 py-2 rounded-full text-sm font-medium">
+        <button onClick={saveHourlyValue} className="btn-primary px-5 py-2 rounded-full text-base font-medium">
           {t("save")}
         </button>
       </section>
 
       <section className="rounded-2xl glass p-6 space-y-3">
-        <div className="font-medium text-sm">{t("growthAreasSection")}</div>
+        <div className="font-medium text-base">{t("growthAreasSection")}</div>
         <div className="flex flex-wrap gap-2">
           {GROWTH_AREAS.map((area) => {
             const active = growthAreas.includes(area);
@@ -157,7 +157,7 @@ export function SettingsPage() {
               <button
                 key={area}
                 onClick={() => toggleGrowthArea(area)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium border transition-all flex items-center gap-1.5 ${
+                className={`px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all flex items-center gap-1.5 ${
                   active
                     ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent"
                     : "border-petal hover:border-rose text-ink-soft"
@@ -172,7 +172,7 @@ export function SettingsPage() {
       </section>
 
       <section className="rounded-2xl glass p-6 space-y-4">
-        <div className="font-medium text-sm">{t("appearanceSection")}</div>
+        <div className="font-medium text-base">{t("appearanceSection")}</div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
           {PALETTES.map((p) => {
             const swatch = PALETTE_META[p];
@@ -189,7 +189,7 @@ export function SettingsPage() {
                   className="w-6 h-6 rounded-full shrink-0"
                   style={{ background: `linear-gradient(135deg, ${swatch.from}, ${swatch.to})` }}
                 />
-                <span className="text-xs font-medium flex-1">{tOnboarding(`themes.${p}`)}</span>
+                <span className="text-sm font-medium flex-1">{tOnboarding(`themes.${p}`)}</span>
                 {active && <Check size={14} className="text-rose-deep animate-[checkmark-pop_0.3s_cubic-bezier(0.34,1.56,0.64,1)]" />}
               </button>
             );
@@ -197,10 +197,10 @@ export function SettingsPage() {
         </div>
 
         <div className="flex items-center justify-between pt-2 border-t border-petal/40">
-          <span className="text-sm text-ink-soft">{t("theme")}</span>
+          <span className="text-base text-ink-soft">{t("theme")}</span>
           <button
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="btn-secondary flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium"
+            className="btn-secondary flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-medium"
           >
             {resolvedTheme === "dark" ? <Moon size={13} /> : <Sun size={13} />}
             {resolvedTheme === "dark" ? t("dark") : t("light")}
@@ -208,14 +208,14 @@ export function SettingsPage() {
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="text-sm text-ink-soft">{t("language")}</span>
+          <span className="text-base text-ink-soft">{t("language")}</span>
           <LanguageToggle />
         </div>
       </section>
 
       <section className="rounded-2xl glass p-6 flex items-center justify-between gap-4">
-        <div className="font-medium text-sm">✨ {tFeedback("trigger")}</div>
-        <button onClick={() => setFeedbackOpen(true)} className="btn-secondary px-4 py-2 rounded-full text-xs font-medium shrink-0">
+        <div className="font-medium text-base">✨ {tFeedback("trigger")}</div>
+        <button onClick={() => setFeedbackOpen(true)} className="btn-secondary px-4 py-2 rounded-full text-sm font-medium shrink-0">
           {tFeedback("trigger")}
         </button>
       </section>
@@ -223,25 +223,25 @@ export function SettingsPage() {
       <InstallCard />
 
       <section className="rounded-2xl glass p-6 space-y-3">
-        <div className="font-medium text-sm">{t("dataSection")}</div>
-        <p className="text-xs text-ink-soft">{t("dataHint")}</p>
+        <div className="font-medium text-base">{t("dataSection")}</div>
+        <p className="text-sm text-ink-soft">{t("dataHint")}</p>
         {confirmReset ? (
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-sm">{t("resetConfirm")}</span>
+            <span className="text-base">{t("resetConfirm")}</span>
             <button
               onClick={() => {
                 void resetAll();
               }}
-              className="bg-error text-white px-4 py-2 rounded-full text-xs font-medium"
+              className="bg-error text-white px-4 py-2 rounded-full text-sm font-medium"
             >
               {t("resetYes")}
             </button>
-            <button onClick={() => setConfirmReset(false)} className="btn-secondary px-4 py-2 rounded-full text-xs font-medium">
+            <button onClick={() => setConfirmReset(false)} className="btn-secondary px-4 py-2 rounded-full text-sm font-medium">
               {t("resetNo")}
             </button>
           </div>
         ) : (
-          <button onClick={() => setConfirmReset(true)} className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium text-error">
+          <button onClick={() => setConfirmReset(true)} className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-error">
             <Trash2 size={13} /> {t("reset")}
           </button>
         )}

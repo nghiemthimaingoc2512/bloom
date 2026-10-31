@@ -57,29 +57,29 @@ export function FocusCard({
           <span className={`p-1.5 rounded-lg ${CATEGORY_BG[focus.category]}`}>
             <Icon size={14} />
           </span>
-          <span className="text-xs text-ink-soft font-medium">{tCat(`${focus.category}.label`)}</span>
+          <span className="text-sm text-ink-soft font-medium">{tCat(`${focus.category}.label`)}</span>
         </div>
         <div className="flex items-center gap-2.5">
           {pct >= 100 && <Sparkles size={16} className="text-success" />}
           <button
             onClick={() => onEdit(focus)}
             aria-label={t("edit")}
-            className="flex items-center gap-1 text-xs text-ink-soft hover:text-rose-deep px-2 py-1 rounded-lg hover:bg-blush transition-colors"
+            className="flex items-center gap-1 text-sm text-ink-soft hover:text-rose-deep px-2 py-1 rounded-lg hover:bg-blush transition-colors"
           >
             <Pencil size={13} /> {t("edit")}
           </button>
           <button
             onClick={() => onDelete(focus)}
             aria-label={t("delete")}
-            className="flex items-center gap-1 text-xs text-ink-soft hover:text-error px-2 py-1 rounded-lg hover:bg-blush transition-colors"
+            className="flex items-center gap-1 text-sm text-ink-soft hover:text-error px-2 py-1 rounded-lg hover:bg-blush transition-colors"
           >
             <Trash2 size={13} /> {t("delete")}
           </button>
         </div>
       </div>
-      <div className="font-medium tracking-tight">{focus.title}</div>
-      {focus.purpose && <div className="text-xs text-ink-soft mb-3 mt-0.5">{focus.purpose}</div>}
-      <div className="w-full h-1.5 rounded-full bg-petal/30 overflow-hidden mb-4 mt-3">
+      <div className="text-xl font-semibold tracking-tight">{focus.title}</div>
+      {focus.purpose && <div className="text-sm text-ink-soft mb-3 mt-0.5">{focus.purpose}</div>}
+      <div className="w-full h-2.5 rounded-full bg-petal/40 overflow-hidden mb-4 mt-3">
         <motion.div className={`h-full ${barColor}`} initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.5 }} />
       </div>
       <div className="space-y-1.5">
@@ -88,8 +88,9 @@ export function FocusCard({
             key={c.id}
             onClick={() => handleToggle(c.id)}
             aria-pressed={c.done}
+            data-tour={c.done ? undefined : "step"}
             aria-label={`${c.title}: ${c.done ? t("markUndone") : t("markDone")}`}
-            className={`w-full flex items-center justify-between text-sm px-3.5 py-2.5 rounded-xl border transition-all text-left min-h-11 ${
+            className={`w-full flex items-center justify-between text-base px-4 py-3 rounded-xl border-2 font-medium transition-all text-left min-h-14 ${
               c.done
                 ? "border-success/40 bg-success/10 text-ink-soft line-through"
                 : "border-petal hover:border-rose hover:bg-blush"
@@ -97,15 +98,15 @@ export function FocusCard({
           >
             <span className="flex items-center gap-2">
               <span
-                className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
+                className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
                   c.done ? "bg-success border-success" : "border-ink-muted"
                 }`}
               >
-                {c.done && <Check size={10} className="text-white" />}
+                {c.done && <Check size={15} className="text-white" />}
               </span>
               {c.title}
             </span>
-            <span className="text-xs text-ink-soft shrink-0 ml-2">
+            <span className="text-sm text-ink-soft shrink-0 ml-2">
               {c.estimatedMinutes} {t("minutes")} · {c.reward > 0 ? formatVND(c.reward) : t("noReward")}
             </span>
           </button>

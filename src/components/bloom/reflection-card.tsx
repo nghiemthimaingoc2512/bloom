@@ -46,7 +46,7 @@ export function ReflectionCard() {
         <Sparkles size={20} className="text-rose-deep shrink-0" />
         <div>
           <div className="font-medium">{t("doneTitle")}</div>
-          <div className="text-sm text-ink-soft">{t("doneSubtitle")}</div>
+          <div className="text-base text-ink-soft">{t("doneSubtitle")}</div>
         </div>
       </div>
     );
@@ -54,7 +54,7 @@ export function ReflectionCard() {
 
   if (!doneToday) {
     if (focuses.length === 0) return null;
-    return <p className="text-sm text-ink-soft px-1">{t("locked")}</p>;
+    return <p className="text-base text-ink-soft px-1">{t("locked")}</p>;
   }
 
   function submit() {
@@ -66,7 +66,7 @@ export function ReflectionCard() {
   return (
     <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} className="rounded-2xl glass p-6">
       <div className="font-medium mb-1">{t("unlocked")}</div>
-      <div className="text-sm text-ink-soft mb-4">
+      <div className="text-base text-ink-soft mb-4">
         {t("subtitle", { count: planted })}
         {perfect ? ` ${t("perfectBonus", { amount: formatVND(hourlyValue) })}` : ""}
       </div>
@@ -79,18 +79,18 @@ export function ReflectionCard() {
         onChange={(e) => setText(e.target.value)}
         placeholder={t("placeholder")}
         rows={3}
-        className="w-full rounded-xl p-3 text-sm outline-none border border-petal bg-blush/40 focus:border-rose transition dark:bg-night"
+        className="w-full rounded-xl p-3 text-base outline-none border border-petal bg-blush/40 focus:border-rose transition dark:bg-night"
       />
       <div className="mt-4 space-y-3">
         <div>
-          <div className="text-xs text-ink-soft mb-1.5">{t("mood")}</div>
+          <div className="text-sm text-ink-soft mb-1.5">{t("mood")}</div>
           <div className="flex gap-1.5 flex-wrap">
             {MOODS.map((m) => (
               <button
                 key={m.emoji}
                 onClick={() => setMood(m.emoji)}
                 aria-pressed={mood === m.emoji}
-                className={`text-sm px-3 py-1.5 rounded-full border transition-all flex items-center gap-1.5 ${
+                className={`text-base px-3 py-1.5 rounded-full border transition-all flex items-center gap-1.5 ${
                   mood === m.emoji ? "border-rose bg-blush" : "border-petal hover:border-rose"
                 }`}
               >
@@ -99,7 +99,7 @@ export function ReflectionCard() {
             ))}
           </div>
         </div>
-        <button onClick={submit} className="btn-primary px-5 py-2.5 rounded-full text-sm font-medium">
+        <button onClick={submit} className="btn-primary px-5 py-2.5 rounded-full text-base font-medium">
           {t("save")}
         </button>
       </div>

@@ -1,5 +1,7 @@
-import { FocusBoard } from "@/components/bloom/focus-board";
+import { redirect } from "@/i18n/navigation";
 
-export default function BoardPage() {
-  return <FocusBoard />;
+// This screen was merged into Today; old links and saved tabs land there.
+export default async function BoardPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  redirect({ href: "/", locale });
 }

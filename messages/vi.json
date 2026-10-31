@@ -5,26 +5,24 @@
   },
   "nav": {
     "home": "Hôm nay",
-    "board": "Công việc",
-    "analytics": "Thống kê",
-    "store": "Phần thưởng",
+    "analytics": "Tổng quan",
     "memory": "Nhật ký",
     "profile": "Hồ Sơ",
     "settings": "Cài Đặt",
     "about": "Giới Thiệu",
-    "balance": "Số dư Bloom"
+    "balance": "Tiền đã kiếm"
   },
   "about": {
     "title": "Bloom",
     "tagline": "Lớn lên thật đẹp.",
-    "description": "Bloom là nền tảng năng suất kiểu trò chơi hoá, giúp mọi người biến thời gian tập trung thành phần thưởng ý nghĩa, thói quen bền vững và sự trưởng thành cá nhân.",
+    "description": "Bloom là ứng dụng năng suất kiểu trò chơi hoá, biến thời gian tập trung thành tiến bộ nhìn thấy được, thói quen bền vững và sự trưởng thành cá nhân.",
     "whyTitle": "Vì sao chọn Bloom?",
     "whyIntro": "Bloom được thiết kế để giúp bạn:",
     "why1": "Giữ sự tập trung",
     "why2": "Xây dựng những thói quen ý nghĩa",
     "why3": "Nhìn thấy tiến bộ của mình",
     "why4": "Ăn mừng những thành tựu",
-    "why5": "Tự thưởng cho bản thân một cách có chủ đích",
+    "why5": "Thấy thời gian tập trung của bạn đáng giá bao nhiêu",
     "why6": "Trưởng thành đều đặn theo thời gian",
     "philosophyTitle": "Triết Lý Cốt Lõi",
     "philosophyBody": "Những hành động nhỏ cộng dồn thành kết quả phi thường. Bloom khuyến khích sự đều đặn hơn là sự hoàn hảo.",
@@ -64,7 +62,7 @@
       "slate": "Xanh đá",
       "lavender": "Oải hương"
     },
-    "intro": "Làm xong việc, tích số dư, trồng vườn hoa và đổi lấy phần thưởng do bạn tự chọn.",
+    "intro": "Làm xong việc, xem thời gian tập trung của bạn đáng giá bao nhiêu và trồng một khu vườn trên đường đi.",
     "customValueError": "Nhập số từ 1.000₫ trở lên.",
     "step3Hint": "Chọn bao nhiêu tuỳ thích. Câu truyền cảm hứng mỗi ngày sẽ theo lựa chọn này.",
     "skip": "Bỏ qua",
@@ -74,7 +72,7 @@
     "welcomeBack": "Chào mừng bạn trở lại, {name}",
     "gardenWaiting": "Mỗi giờ tập trung đều được cộng dồn.",
     "gardenEmpty": "Viết nhật ký cuối ngày để trồng bông hoa đầu tiên.",
-    "balance": "Số dư Bloom",
+    "balance": "Tiền bạn kiếm được từ sự tập trung",
     "streak": "Chuỗi ngày hiện tại",
     "tasks": "Việc hôm nay",
     "remaining": "Bước còn lại",
@@ -85,13 +83,18 @@
     "fading": "phai nhạt",
     "days": "ngày",
     "welcomeNew": "Chào {name}",
-    "balanceNote": "Tiền ảo để đổi thưởng, không phải tiền thật",
+    "balanceNote": "Giá trị của thời gian tập trung và việc đã xong. Không phải tiền thật.",
     "earnedToday": "Kiếm hôm nay",
     "stepsDone": "bước đã xong hôm nay",
     "quietNotice": "Đã một thời gian bạn chưa quay lại. Khu vườn vừa nghỉ ngơi và đang chờ bạn.",
     "quietLost": "Chuỗi đã kết thúc: -{amount}.",
     "lateNotice": "\"{title}\" đã quá hạn hơn 3 ngày: -{amount}.",
-    "dismiss": "Đóng"
+    "dismiss": "Đóng",
+    "heroEmpty": "Hôm nay bạn sẽ hoàn thành việc gì?",
+    "heroLeft": "Hôm nay còn {count} bước, khoảng {time}",
+    "heroDone": "Xong hết rồi. Làm tốt lắm!",
+    "quickPlaceholder": "Nhập việc cần làm, ví dụ: Viết báo cáo",
+    "moreOptions": "Thêm bước, thời gian và chi tiết"
   },
   "companion": {
     "save": "Lưu câu nói",
@@ -320,7 +323,7 @@
     "titlePlaceholder": "Ví dụ: Hoàn thành báo cáo quý 3",
     "titleRequired": "Hãy đặt tên cho việc này.",
     "consumeHint": "Thời gian giải trí thụ động được ghi lại nhưng không cộng số dư.",
-    "stepsHint": "Phần thưởng được tự tính từ thời gian và giá trị giờ của bạn ({amount}/giờ).",
+    "stepsHint": "Số tiền được tự tính từ thời gian và giá trị giờ của bạn ({amount}/giờ).",
     "stepField": "Tên bước",
     "singleStepHint": "Để trống thì việc này sẽ thành một bước 30 phút.",
     "minutesError": "Nhập từ {min} đến {max} phút.",
@@ -366,7 +369,7 @@
     "low": "Thấp"
   },
   "analytics": {
-    "title": "Thống kê",
+    "title": "7 ngày gần nhất",
     "focusHours": "Thời gian tập trung",
     "balanceEarned": "Kiếm tuần này",
     "balanceLost": "Mất tuần này",
@@ -380,52 +383,6 @@
     "hoursByDay": "Thời gian tập trung theo ngày",
     "timeByCategory": "Thời gian của bạn đi đâu",
     "noCategoryData": "Hoàn thành một bước để xem biểu đồ này."
-  },
-  "store": {
-    "title": "Phần thưởng",
-    "subtitle": "Chọn những món quà đáng để cố gắng, rồi đổi bằng số dư của bạn.",
-    "newReward": "Thêm phần thưởng",
-    "createReward": "Phần thưởng mới",
-    "editReward": "Sửa phần thưởng",
-    "rewardName": "Tên phần thưởng",
-    "rewardNamePlaceholder": "vd: Cà phê với bạn bè",
-    "cost": "Giá",
-    "icon": "Biểu tượng",
-    "cancel": "Huỷ",
-    "save": "Lưu",
-    "create": "Thêm phần thưởng",
-    "edit": "Sửa",
-    "delete": "Xoá",
-    "unlocked": "Đã mở khoá",
-    "locked": "Chưa mở · tiếp tục cố gắng",
-    "redeem": "Đổi",
-    "redeemed": "Tận hưởng nhé",
-    "empty": "Chưa có phần thưởng. Tự thêm hoặc chọn một gợi ý bên dưới.",
-    "inspiration": "Gợi ý để bắt đầu",
-    "inspirationSubtitle": "Chọn một gợi ý, rồi tự đặt tên và giá trước khi thêm.",
-    "useTemplate": "Dùng và tự đặt giá",
-    "templates": {
-      "coffee": "Hẹn Cà Phê",
-      "movie": "Đêm Xem Phim",
-      "trip": "Chuyến Đi Cuối Tuần",
-      "book": "Mua Một Cuốn Sách",
-      "spa": "Ngày Spa",
-      "dinner": "Bữa Tối Ngon"
-    },
-    "nameRequired": "Hãy đặt tên cho phần thưởng.",
-    "costRequired": "Nhập giá lớn hơn 0.",
-    "costHint": "{amount} tương đương khoảng {hours} giờ làm việc tập trung.",
-    "balanceLabel": "Số dư Bloom",
-    "balanceNote": "Tiền ảo để tự thưởng, không phải tiền thật.",
-    "mine": "Phần thưởng của tôi",
-    "ready": "Có thể đổi ngay",
-    "need": "Còn thiếu {amount}",
-    "history": "Đã đổi",
-    "suggestedPrice": "Gợi ý: {amount}",
-    "confirmRedeemTitle": "Đổi \"{name}\"?",
-    "confirmRedeemBody": "Số dư sẽ trừ {amount}, còn lại {left}.",
-    "confirmDeleteTitle": "Xoá \"{name}\"?",
-    "confirmDeleteBody": "Phần thưởng sẽ bị xoá khỏi danh sách. Lịch sử đã đổi vẫn được giữ."
   },
   "memory": {
     "title": "Nhật ký",
@@ -461,7 +418,7 @@
     "dataSection": "Dữ liệu của bạn",
     "dataHint": "Bloom chỉ lưu dữ liệu trên trình duyệt này.",
     "reset": "Xoá toàn bộ dữ liệu",
-    "resetConfirm": "Việc, phần thưởng, vườn và nhật ký sẽ mất vĩnh viễn.",
+    "resetConfirm": "Việc, vườn và nhật ký sẽ mất vĩnh viễn.",
     "resetYes": "Có, xoá",
     "resetNo": "Giữ lại"
   },
@@ -500,7 +457,7 @@
     "wrappedStreak": "Chuỗi Dài Nhất",
     "wrappedFavoriteCategory": "Danh Mục Yêu Thích",
     "wrappedTopAchievement": "Thành Tựu Nổi Bật",
-    "rewardsRedeemed": "Phần thưởng đã đổi"
+    "tasksFinished": "Việc đã xong"
   },
   "achievements": {
     "rarity": {
@@ -520,10 +477,6 @@
     "firstReflection": {
       "name": "Suy Ngẫm Đầu Tiên",
       "desc": "Viết suy ngẫm hằng ngày đầu tiên"
-    },
-    "firstReward": {
-      "name": "Phần Thưởng Đầu Tiên",
-      "desc": "Đổi phần thưởng đầu tiên của bạn"
     },
     "quoteCollector": {
       "name": "Người Sưu Tầm Câu Nói",
@@ -630,5 +583,23 @@
     "androidStep2": "Chọn “Thêm vào Màn hình chính” hoặc “Cài đặt ứng dụng”",
     "desktopStep1": "Trong Chrome hoặc Edge, bấm biểu tượng cài đặt trên thanh địa chỉ",
     "desktopStep2": "Trên điện thoại, mở trang này bằng Safari hoặc Chrome rồi thêm vào màn hình chính"
+  },
+  "tutorial": {
+    "progress": "Bước {current}/{total}",
+    "skip": "Bỏ qua hướng dẫn",
+    "next": "Tiếp",
+    "done": "Đã hiểu",
+    "tryIt": "Thử ngay nhé",
+    "backToToday": "Về Hôm nay",
+    "addTitle": "Thêm việc đầu tiên",
+    "addBody": "Gõ một việc bạn muốn làm xong hôm nay, rồi bấm Thêm việc.",
+    "tickTitle": "Làm xong thì đánh dấu",
+    "tickBody": "Bấm vào bước này để đánh dấu xong, bạn sẽ thấy số tiền kiếm được. Thử ngay nhé.",
+    "balanceTitle": "Tiền của bạn tăng ở đây",
+    "balanceBody": "Mỗi bước xong được cộng số phút × giá trị giờ của bạn. Đây không phải tiền thật, chỉ là giá trị của sự tập trung.",
+    "dashboardTitle": "Xem tiến bộ của bạn",
+    "dashboardBody": "Tổng quan cho thấy số tiền, thời gian tập trung, chuỗi ngày và khu vườn của bạn.",
+    "journalTitle": "Cuối ngày viết vài dòng",
+    "journalBody": "Sau khi xong một bước, viết nhật ký ở Hôm nay để trồng hoa. Các trang cũ nằm ở đây, trong mục Nhật ký."
   }
 }

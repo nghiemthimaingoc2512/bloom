@@ -13,7 +13,7 @@ export function FeedbackLauncher() {
       <button
         onClick={() => setOpen(true)}
         aria-label={t("trigger")}
-        className="fixed bottom-6 right-5 z-40 btn-primary flex items-center gap-1.5 px-4 py-3 sm:py-2.5 rounded-full text-xs font-medium shadow-lg"
+        className="fixed bottom-6 right-5 z-40 btn-primary flex items-center gap-1.5 px-4 py-3 sm:py-2.5 rounded-full text-sm font-medium shadow-lg"
       >
         <span>✨</span>
         <span className="hidden sm:inline">{t("trigger")}</span>

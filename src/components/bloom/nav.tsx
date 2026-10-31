@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart3, BookOpen, Flower2, Gift, Info, ListChecks, Settings, Sun } from "lucide-react";
+import { BarChart3, BookOpen, Flower2, Info, Settings, Sun, Wallet } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useBloomBalance, useBloomStore } from "@/lib/store";
@@ -16,78 +16,77 @@ export function Nav() {
   const balance = useBloomBalance();
 
   const tabs = [
-    { href: "/", label: t("home"), icon: Sun },
-    { href: "/board", label: t("board"), icon: ListChecks },
-    { href: "/store", label: t("store"), icon: Gift },
-    { href: "/analytics", label: t("analytics"), icon: BarChart3 },
-    { href: "/memory", label: t("memory"), icon: BookOpen },
+    { href: "/", label: t("home"), icon: Sun, tour: "nav-home" },
+    { href: "/analytics", label: t("analytics"), icon: BarChart3, tour: "nav-dashboard" },
+    { href: "/memory", label: t("memory"), icon: BookOpen, tour: "nav-journal" },
   ];
 
   const initial = displayName.trim().charAt(0).toUpperCase() || "B";
 
   return (
     <>
-      <header className="max-w-5xl mx-auto px-5 pt-6">
-        <div className="flex items-center justify-between mb-6">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="grid place-items-center w-10 h-10 rounded-2xl gradient-primary text-white shadow-md shadow-rose/25">
-              <Flower2 size={20} />
+      <header className="max-w-5xl mx-auto px-5 pt-5">
+        <div className="flex items-center justify-between gap-2 mb-5">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <span className="grid place-items-center w-11 h-11 rounded-2xl gradient-primary text-white shadow-md shadow-rose/25">
+              <Flower2 size={22} />
             </span>
-            <div className="hidden sm:block">
-              <div className="font-display text-xl font-medium tracking-tight leading-none">Bloom</div>
-              <div className="text-[11px] text-ink-soft mt-0.5">Grow beautifully</div>
-            </div>
+            <div className="hidden sm:block font-display text-2xl font-semibold tracking-tight leading-none">Bloom</div>
           </Link>
           <div className="flex items-center gap-1.5">
             <Link
-              href="/store"
+              href="/analytics"
+              data-tour="balance"
               aria-label={`${t("balance")}: ${formatVND(balance)}`}
               title={t("balance")}
-              className="flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-full border border-petal bg-surface text-xs sm:text-sm font-medium font-mono hover:border-rose transition-colors"
+              className="flex items-center gap-1.5 h-11 px-4 rounded-full border-2 border-petal bg-surface text-base font-bold font-mono text-rose-deep hover:border-rose transition-colors"
             >
-              <Gift size={14} className="text-ink-soft" />
+              <Wallet size={17} />
               {formatVND(balance)}
             </Link>
-            <LanguageToggle />
-            <ThemeToggle />
-            <Link
-              href="/about"
-              aria-label={t("about")}
-              className="hidden sm:grid place-items-center w-9 h-9 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush transition-all"
-            >
-              <Info size={16} />
-            </Link>
+            <div className="hidden sm:flex items-center gap-1.5">
+              <LanguageToggle />
+              <ThemeToggle />
+              <Link
+                href="/about"
+                aria-label={t("about")}
+                className="grid place-items-center w-10 h-10 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush transition-all"
+              >
+                <Info size={18} />
+              </Link>
+            </div>
             <Link
               href="/settings"
               aria-label={t("settings")}
-              className="grid place-items-center w-9 h-9 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush transition-all"
+              className="grid place-items-center w-10 h-10 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush transition-all"
             >
-              <Settings size={16} />
+              <Settings size={18} />
             </Link>
             <Link
               href="/profile"
               aria-label={t("profile")}
-              className="grid place-items-center w-9 h-9 rounded-full gradient-primary text-white shadow-md shadow-rose/25 text-xs font-semibold"
+              className="grid place-items-center w-10 h-10 rounded-full gradient-primary text-white shadow-md shadow-rose/25 text-sm font-bold"
             >
               {initial}
             </Link>
           </div>
         </div>
 
-        <nav aria-label="Bloom" className="hidden md:flex gap-1 mb-2">
+        <nav aria-label="Bloom" className="hidden md:flex gap-1.5 mb-3">
           {tabs.map((tab) => {
             const active = pathname === tab.href;
             return (
               <Link
                 key={tab.href}
                 href={tab.href}
+                data-tour={tab.tour}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all",
+                  "flex items-center gap-2 px-5 py-2.5 rounded-full text-base font-semibold whitespace-nowrap transition-all",
                   active ? "gradient-primary text-white shadow-md shadow-rose/25" : "text-ink-soft hover:text-rose-deep hover:bg-blush/60"
                 )}
               >
-                <tab.icon size={15} />
+                <tab.icon size={18} />
                 {tab.label}
               </Link>
             );
@@ -95,11 +94,10 @@ export function Nav() {
         </nav>
       </header>
 
-      {/* On phones every section stays one tap away in a bottom bar, instead
-          of a horizontal strip that hides the last two tabs offscreen. */}
+      {/* On phones every section stays one tap away in a bottom bar. */}
       <nav
         aria-label="Bloom"
-        className="md:hidden fixed bottom-0 inset-x-0 z-40 grid grid-cols-5 border-t border-petal bg-surface px-1 pt-1 pb-[max(4px,env(safe-area-inset-bottom))]"
+        className="md:hidden fixed bottom-0 inset-x-0 z-40 grid grid-cols-3 border-t border-petal bg-surface px-1 pt-1 pb-[max(4px,env(safe-area-inset-bottom))]"
       >
         {tabs.map((tab) => {
           const active = pathname === tab.href;
@@ -107,13 +105,14 @@ export function Nav() {
             <Link
               key={tab.href}
               href={tab.href}
+              data-tour={tab.tour}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-[11px] font-medium leading-tight transition-colors",
+                "flex flex-col items-center gap-0.5 rounded-xl py-2 text-[13px] font-semibold leading-tight transition-colors",
                 active ? "text-rose-deep bg-blush" : "text-ink-soft"
               )}
             >
-              <tab.icon size={18} />
+              <tab.icon size={22} />
               <span className="truncate max-w-full px-0.5">{tab.label}</span>
             </Link>
           );

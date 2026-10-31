@@ -24,9 +24,9 @@ function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
         <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
-        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
+        <span className="text-[13px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
-      <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
+      <div className="text-3xl font-bold font-mono tracking-tight">{value}</div>
     </div>
   );
 }
@@ -112,12 +112,12 @@ export function ProfilePage() {
           {initial}
         </span>
         <div className="min-w-0 flex-1">
-          <div className="text-xl font-display font-medium truncate">{displayName || "-"}</div>
-          <div className="text-xs text-ink-soft mt-0.5">
+          <div className="text-3xl md:text-4xl font-display font-semibold truncate">{displayName || "-"}</div>
+          <div className="text-sm text-ink-soft mt-0.5">
             {t("joined")} {joinedLabel}
           </div>
           <div className="mt-3">
-            <div className="flex items-center justify-between text-xs text-ink-soft mb-1">
+            <div className="flex items-center justify-between text-sm text-ink-soft mb-1">
               <span>
                 {t("level")} {level} · {t(`levelTitle.${levelTitleKey(level)}`)}
               </span>
@@ -138,17 +138,17 @@ export function ProfilePage() {
         <StatCard icon={<Clock size={16} className="text-rose" />} label={t("lifetimeFocusHours")} value={`${(lifetimeFocusMinutes / 60).toFixed(1)}h`} />
         <StatCard icon={<Sparkles size={16} className="text-amber-400" />} label={t("lifetimeBalance")} value={formatVND(lifetimeBalanceEarned)} />
         <StatCard icon={<Flower2 size={16} className="text-rose" />} label={t("flowersCollected")} value={garden.length} />
-        <StatCard icon={<Trophy size={16} className="text-amber-500" />} label={t("rewardsRedeemed")} value={redemptions.length} />
+        <StatCard icon={<Trophy size={16} className="text-amber-500" />} label={t("tasksFinished")} value={focuses.filter((f) => f.checklist.length > 0 && f.checklist.every((c) => c.done)).length} />
       </div>
 
       <div className="rounded-[28px] p-7 gradient-primary text-white shadow-md shadow-rose/25 flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <div className="text-lg font-display font-medium">🌸 {t("wrappedTitle", { year: new Date().getFullYear() })}</div>
-          <div className="text-sm opacity-90 mt-0.5">{t("wrappedSubtitle")}</div>
+          <div className="text-2xl font-display font-semibold">🌸 {t("wrappedTitle", { year: new Date().getFullYear() })}</div>
+          <div className="text-base opacity-90 mt-0.5">{t("wrappedSubtitle")}</div>
         </div>
         <button
           onClick={shareWrapped}
-          className="bg-surface text-rose-deep flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium shrink-0"
+          className="bg-surface text-rose-deep flex items-center gap-1.5 px-5 py-2.5 rounded-full text-base font-medium shrink-0"
         >
           <Share2 size={14} /> {t("viewWrapped")}
         </button>
@@ -157,8 +157,8 @@ export function ProfilePage() {
       <div className="rounded-2xl glass p-6">
         <div className="flex items-center gap-2 mb-4">
           <Award size={16} className="text-amber-400" />
-          <div className="font-medium text-sm">{t("achievements")}</div>
-          <span className="text-xs text-ink-soft ml-auto font-mono">
+          <div className="font-medium text-base">{t("achievements")}</div>
+          <span className="text-sm text-ink-soft ml-auto font-mono">
             {unlockedCount}/{achievements.length}
           </span>
         </div>
@@ -166,8 +166,8 @@ export function ProfilePage() {
           {achievements.map((a) => (
             <div key={a.id} className={`flex flex-col items-center text-center gap-1.5 ${a.unlocked ? "" : "opacity-40 grayscale"}`}>
               <span className={`grid place-items-center w-12 h-12 rounded-2xl text-xl ${RARITY_STYLES[a.rarity]}`}>{a.emoji}</span>
-              <div className="text-[11px] font-medium leading-tight">{tAch(`${a.id}.name`)}</div>
-              <div className="text-[9px] uppercase tracking-wide text-ink-soft">{tAch(`rarity.${a.rarity}`)}</div>
+              <div className="text-[13px] font-medium leading-tight">{tAch(`${a.id}.name`)}</div>
+              <div className="text-xs uppercase tracking-wide text-ink-soft">{tAch(`rarity.${a.rarity}`)}</div>
             </div>
           ))}
         </div>
@@ -176,14 +176,14 @@ export function ProfilePage() {
       <div className="rounded-2xl glass p-6">
         <div className="flex items-center gap-2 mb-4">
           <Heart size={16} className="text-rose" />
-          <div className="font-medium text-sm">{t("savedQuotes")}</div>
+          <div className="font-medium text-base">{t("savedQuotes")}</div>
         </div>
         {savedQuotes.length === 0 ? (
-          <div className="text-sm text-ink-soft text-center py-8">{t("noSavedQuotes")}</div>
+          <div className="text-base text-ink-soft text-center py-8">{t("noSavedQuotes")}</div>
         ) : (
           <div className="space-y-2">
             {savedQuotes.map((q) => (
-              <div key={q.id} className="flex items-center gap-3 text-sm px-3.5 py-2.5 rounded-xl border border-petal/50">
+              <div key={q.id} className="flex items-center gap-3 text-base px-3.5 py-2.5 rounded-xl border border-petal/50">
                 <div className="min-w-0 flex-1 italic text-ink-soft">&ldquo;{q.text}&rdquo;</div>
                 <button
                   onClick={() => toggleSavedQuote(q.text)}
@@ -199,18 +199,18 @@ export function ProfilePage() {
       </div>
 
       <div className="rounded-2xl glass p-6">
-        <div className="font-medium text-sm mb-4">{t("recentActivity")}</div>
+        <div className="font-medium text-base mb-4">{t("recentActivity")}</div>
         {memory.length === 0 ? (
-          <div className="text-sm text-ink-soft text-center py-8">{t("noActivity")}</div>
+          <div className="text-base text-ink-soft text-center py-8">{t("noActivity")}</div>
         ) : (
           <div className="space-y-2">
             {memory.slice(0, 5).map((m) => (
-              <div key={m.id} className="flex items-center gap-3 text-sm px-3 py-2.5 rounded-xl border border-petal/50">
+              <div key={m.id} className="flex items-center gap-3 text-base px-3 py-2.5 rounded-xl border border-petal/50">
                 <span className="text-lg shrink-0">{m.mood}</span>
                 <div className="min-w-0 flex-1">
                   <div className="truncate italic text-ink-soft">{m.quote ? <>&ldquo;{m.quote}&rdquo;</> : "-"}</div>
                 </div>
-                <div className="text-xs text-ink-soft shrink-0">{m.date === "Today" ? m.date : formatDayKey(m.date, locale)}</div>
+                <div className="text-sm text-ink-soft shrink-0">{m.date === "Today" ? m.date : formatDayKey(m.date, locale)}</div>
               </div>
             ))}
           </div>

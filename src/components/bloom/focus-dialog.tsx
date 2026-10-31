@@ -29,10 +29,12 @@ export function FocusDialog({
   open,
   onOpenChange,
   focus,
+  initialTitle,
 }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   focus?: Focus | null;
+  initialTitle?: string;
 }) {
   const t = useTranslations("board");
   const tCat = useTranslations("categories");
@@ -43,7 +45,7 @@ export function FocusDialog({
   const hourlyValue = useBloomStore((s) => s.hourlyValue.hourlyValue);
   const encourageNew = t.raw("encourageNew") as string[];
 
-  const [title, setTitle] = React.useState(focus?.title ?? "");
+  const [title, setTitle] = React.useState(focus?.title ?? initialTitle ?? "");
   const [purpose, setPurpose] = React.useState(focus?.purpose ?? "");
   const [category, setCategory] = React.useState<Category>(focus?.category ?? "create");
   const [priority, setPriority] = React.useState<Priority>(focus?.priority ?? "medium");
@@ -158,7 +160,7 @@ export function FocusDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogTitle className="text-lg font-display font-medium mb-5">
+        <DialogTitle className="text-2xl font-display font-semibold mb-5">
           {focus ? t("editFocus") : t("newFocus")}
         </DialogTitle>
         <div className="space-y-4">
@@ -177,7 +179,7 @@ export function FocusDialog({
               onKeyDown={(e) => e.key === "Enter" && submit()}
               className={errors.title ? "border-error" : undefined}
             />
-            {errors.title && <p className="text-xs text-error mt-1">{t("titleRequired")}</p>}
+            {errors.title && <p className="text-sm text-error mt-1">{t("titleRequired")}</p>}
           </div>
 
           <div>
@@ -189,12 +191,12 @@ export function FocusDialog({
                 </option>
               ))}
             </Select>
-            {category === "consume" && <p className="text-xs text-ink-soft mt-1">{t("consumeHint")}</p>}
+            {category === "consume" && <p className="text-sm text-ink-soft mt-1">{t("consumeHint")}</p>}
           </div>
 
           <div>
             <Label>{t("steps")}</Label>
-            <p className="text-xs text-ink-soft mb-2">{t("stepsHint", { amount: formatVND(hourlyValue) })}</p>
+            <p className="text-sm text-ink-soft mb-2">{t("stepsHint", { amount: formatVND(hourlyValue) })}</p>
             <div className="space-y-2">
               {steps.map((s, i) => {
                 const minutes = Number(s.estimatedMinutes) || 0;
@@ -233,7 +235,7 @@ export function FocusDialog({
                         <Trash2 size={15} />
                       </button>
                     </div>
-                    <div className={`text-[11px] mt-1 px-1 ${invalid ? "text-error" : "text-ink-soft"}`}>
+                    <div className={`text-[13px] mt-1 px-1 ${invalid ? "text-error" : "text-ink-soft"}`}>
                       {invalid
                         ? t("minutesError", { min: MIN_MINUTES, max: MAX_MINUTES })
                         : `${minutes} ${t("minutes")} · ${s.locked ? `${t("doneStep")} · ${formatVND(s.locked.reward)}` : rewardFor(minutes) ? formatVND(rewardFor(minutes)) : t("noReward")}`}
@@ -245,12 +247,12 @@ export function FocusDialog({
             <button
               type="button"
               onClick={() => setSteps((s) => [...s, newDraftStep()])}
-              className="text-xs font-medium text-rose-deep mt-2 flex items-center gap-1 min-h-8"
+              className="text-sm font-medium text-rose-deep mt-2 flex items-center gap-1 min-h-8"
             >
               <Plus size={13} /> {t("addStep")}
             </button>
             {steps.length === 1 && !steps[0].title.trim() && !steps[0].locked && (
-              <p className="text-xs text-ink-soft mt-1">{t("singleStepHint")}</p>
+              <p className="text-sm text-ink-soft mt-1">{t("singleStepHint")}</p>
             )}
           </div>
 
@@ -258,7 +260,7 @@ export function FocusDialog({
             type="button"
             onClick={() => setShowMore((v) => !v)}
             aria-expanded={showMore}
-            className="text-xs font-medium text-rose-deep min-h-8"
+            className="text-sm font-medium text-rose-deep min-h-8"
           >
             {showMore ? t("lessDetails") : t("moreDetails")}
           </button>
@@ -296,7 +298,7 @@ export function FocusDialog({
                   />
                 </div>
               </div>
-              {errors.dates && <p className="text-xs text-error -mt-2">{t("dateError")}</p>}
+              {errors.dates && <p className="text-sm text-error -mt-2">{t("dateError")}</p>}
               <div>
                 <Label htmlFor="focus-output">{t("expectedOutput")}</Label>
                 <Input id="focus-output" value={expectedOutput} onChange={(e) => setExpectedOutput(e.target.value)} />
@@ -313,10 +315,10 @@ export function FocusDialog({
           )}
         </div>
         <div className="flex justify-end gap-2 mt-6">
-          <button onClick={() => onOpenChange(false)} className="btn-secondary px-4 py-2.5 rounded-full text-sm font-medium">
+          <button onClick={() => onOpenChange(false)} className="btn-secondary px-4 py-2.5 rounded-full text-base font-medium">
             {t("cancel")}
           </button>
-          <button onClick={submit} className="btn-primary px-5 py-2.5 rounded-full text-sm font-medium">
+          <button onClick={submit} className="btn-primary px-5 py-2.5 rounded-full text-base font-medium">
             {focus ? t("save") : t("create")}
           </button>
         </div>

@@ -28,7 +28,7 @@ export function LanguageToggle() {
     <SelectPrimitive.Root value={locale} onValueChange={handleChange}>
       <SelectPrimitive.Trigger
         aria-label={t("selectLanguage")}
-        className="flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush/60 transition-all outline-none data-[state=open]:bg-blush/60 data-[state=open]:text-rose-deep"
+        className="flex items-center gap-1 text-sm font-medium px-3 py-1.5 rounded-full text-ink-soft hover:text-rose-deep hover:bg-blush/60 transition-all outline-none data-[state=open]:bg-blush/60 data-[state=open]:text-rose-deep"
       >
         <SelectPrimitive.Value>{LOCALE_META[locale]?.flag ?? "🌐"}</SelectPrimitive.Value>
         <SelectPrimitive.Icon>
@@ -47,7 +47,7 @@ export function LanguageToggle() {
               <SelectPrimitive.Item
                 key={l}
                 value={l}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm cursor-pointer outline-none select-none data-[highlighted]:bg-blush/60 data-[state=checked]:text-rose-deep data-[state=checked]:font-medium"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-base cursor-pointer outline-none select-none data-[highlighted]:bg-blush/60 data-[state=checked]:text-rose-deep data-[state=checked]:font-medium"
               >
                 <span className="text-base leading-none">{LOCALE_META[l].flag}</span>
                 <SelectPrimitive.ItemText>{LOCALE_META[l].label}</SelectPrimitive.ItemText>

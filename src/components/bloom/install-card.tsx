@@ -79,15 +79,15 @@ export function InstallCard({ compact = false }: { compact?: boolean }) {
     <section className={`rounded-2xl glass ${compact ? "p-4" : "p-6"} space-y-3`}>
       <div className="flex items-center gap-2">
         <Smartphone size={16} className="text-rose-deep" />
-        <div className="font-medium text-sm">{t("title")}</div>
+        <div className="font-medium text-base">{t("title")}</div>
       </div>
-      <p className="text-sm text-ink-soft">{t("body")}</p>
+      <p className="text-base text-ink-soft">{t("body")}</p>
       {prompt ? (
-        <button onClick={install} className="btn-primary flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium">
+        <button onClick={install} className="btn-primary flex items-center gap-1.5 px-5 py-2.5 rounded-full text-base font-medium">
           <Download size={15} /> {t("installButton")}
         </button>
       ) : (
-        <ol className="text-sm text-ink-soft space-y-1.5 list-decimal pl-5">
+        <ol className="text-base text-ink-soft space-y-1.5 list-decimal pl-5">
           {steps.map((s, i) => (
             <li key={i} className="flex gap-2 items-start">
               <span className="w-4 shrink-0 text-ink-muted">{i + 1}.</span>

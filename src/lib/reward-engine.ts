@@ -108,3 +108,12 @@ export function lifetimeMinutesTotal(state: Pick<BloomState, "focuses" | "histor
     state.history.filter((h) => h.kind === "archived").reduce((sum, h) => sum + h.focusMinutes, 0)
   );
 }
+
+/** Everything earned on a given local day, from steps and ledger bonuses. */
+export function earnedOnDay(state: Pick<BloomState, "focuses" | "history">, day: string): number {
+  const fromSteps = state.focuses.reduce(
+    (sum, f) => sum + f.checklist.filter((c) => c.done && c.doneAt === day).reduce((a, c) => a + c.reward, 0),
+    0
+  );
+  return fromSteps + state.history.filter((h) => h.date === day && h.balanceDelta > 0).reduce((a, h) => a + h.balanceDelta, 0);
+}

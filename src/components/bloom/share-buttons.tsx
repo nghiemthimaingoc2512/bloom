@@ -52,13 +52,13 @@ export function DailyShareButtons() {
     <div className="flex flex-wrap gap-2">
       <button
         onClick={shareStreak}
-        className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium"
+        className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium"
       >
         <Flame size={13} /> {t("shareStreak")}
       </button>
       <button
         onClick={shareToday}
-        className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium"
+        className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium"
       >
         <Sparkles size={13} /> {t("shareToday")}
       </button>

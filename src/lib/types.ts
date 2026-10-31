@@ -16,18 +16,6 @@ export interface HourlyValueSettings {
   workingDaysPerMonth?: number;
   workingHoursPerDay?: number;
 }
-export type RewardIcon =
-  | "coffee"
-  | "movie"
-  | "travel"
-  | "book"
-  | "spa"
-  | "dinner"
-  | "music"
-  | "shopping"
-  | "heart"
-  | "gift";
-
 export interface ChecklistStep {
   id: string;
   title: string;
@@ -54,14 +42,6 @@ export interface Focus {
   createdAt: string;
   /** Set once the overdue penalty has been charged, so it is never charged twice. */
   latePenaltyAt?: string | null;
-}
-
-export interface Reward {
-  id: string;
-  name: string;
-  cost: number;
-  icon: RewardIcon;
-  createdAt: string;
 }
 
 export interface Redemption {
@@ -132,7 +112,6 @@ export interface BloomState {
   longestStreak: number;
   lastActiveDate: string | null;
   focuses: Focus[];
-  rewards: Reward[];
   redemptions: Redemption[];
   garden: GardenFlower[];
   memory: MemoryEntry[];
@@ -145,4 +124,6 @@ export interface BloomState {
   lastRolloverDate: string | null;
   feedback: FeedbackEntry[];
   betaBannerDismissed: boolean;
+  /** False only for a brand-new person who has not finished or skipped the walkthrough. */
+  tutorialDone: boolean;
 }

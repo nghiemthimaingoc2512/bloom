@@ -10,8 +10,6 @@ import type {
   GrowthArea,
   HourlyValueSettings,
   MemoryEntry,
-  Redemption,
-  Reward,
 } from "./types";
 import { bloomRepository } from "./storage";
 import {
@@ -39,7 +37,6 @@ function defaultState(): BloomState {
     longestStreak: 0,
     lastActiveDate: null,
     focuses: [],
-    rewards: [],
     redemptions: [],
     garden: [],
     memory: [],
@@ -50,6 +47,7 @@ function defaultState(): BloomState {
     lastRolloverDate: null,
     feedback: [],
     betaBannerDismissed: false,
+    tutorialDone: false,
   };
 }
 
@@ -201,10 +199,6 @@ interface BloomStore extends BloomState {
   deleteFocus: (id: string) => void;
   toggleStep: (focusId: string, stepId: string) => void;
   submitReflection: (quote: string, mood: string) => { perfect: boolean; planted: number; bonus: number };
-  redeem: (reward: Pick<Reward, "id" | "name" | "cost">) => boolean;
-  addReward: (reward: Omit<Reward, "id" | "createdAt">) => void;
-  updateReward: (id: string, patch: Partial<Omit<Reward, "id" | "createdAt">>) => void;
-  deleteReward: (id: string) => void;
   toggleSavedQuote: (text: string) => void;
   toggleMemoryLiked: (id: string) => void;
   toggleMemoryFavorited: (id: string) => void;
@@ -213,6 +207,7 @@ interface BloomStore extends BloomState {
   showToast: (message: string) => void;
   submitFeedback: (entry: Omit<FeedbackEntry, "id" | "submittedAt">) => void;
   dismissBetaBanner: () => void;
+  finishTutorial: () => void;
   resetAll: () => Promise<void>;
 }
 
@@ -259,6 +254,8 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
       focuses: merged.focuses.map((f) => normalizeFocus(f, hourlyValue)),
       memory: merged.memory.map(normalizeMemoryEntry),
       reflectedOn: merged.reflectedOn ?? (merged.reflectedToday ? merged.lastActiveDate : null),
+      // People who were already using Bloom never see the first-run walkthrough.
+      tutorialDone: saved?.onboardingCompleted && saved.tutorialDone === undefined ? true : merged.tutorialDone,
     };
     const { state, events } = rollover(withLifetime(normalized));
     const today = todayKey();
@@ -470,50 +467,6 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
     return { perfect, planted, bonus };
   },
 
-  redeem: (reward) => {
-    const s = get();
-    const balance = computeBalance(s);
-    if (balance < reward.cost) return false;
-    set((state) => {
-      const redemption: Redemption = {
-        id: uid(),
-        rewardId: reward.id,
-        rewardName: reward.name,
-        cost: reward.cost,
-        redeemedAt: new Date().toISOString(),
-      };
-      const next = { ...state, redemptions: [...state.redemptions, redemption] };
-      persist(next);
-      return next;
-    });
-    return true;
-  },
-
-  addReward: (reward) => {
-    const newReward: Reward = { ...reward, id: uid(), createdAt: new Date().toISOString() };
-    set((s) => {
-      const next = { ...s, rewards: [...s.rewards, newReward] };
-      persist(next);
-      return next;
-    });
-  },
-
-  updateReward: (id, patch) => {
-    set((s) => {
-      const next = { ...s, rewards: s.rewards.map((r) => (r.id === id ? { ...r, ...patch } : r)) };
-      persist(next);
-      return next;
-    });
-  },
-
-  deleteReward: (id) => {
-    set((s) => {
-      const next = { ...s, rewards: s.rewards.filter((r) => r.id !== id) };
-      persist(next);
-      return next;
-    });
-  },
-
   toggleSavedQuote: (text) => {
     set((s) => {
       const existing = s.savedQuotes.find((q) => q.text === text);
@@ -557,6 +510,14 @@ export const useBloomStore = create<BloomStore>((set, get) => ({
   dismissBetaBanner: () => {
     set((s) => {
       const next = { ...s, betaBannerDismissed: true };
+      persist(next);
+      return next;
+    });
+  },
+
+  finishTutorial: () => {
+    set((s) => {
+      const next = { ...s, tutorialDone: true };
       persist(next);
       return next;
     });
