@@ -1,7 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#FDF8F4"/>
-  <g transform="translate(32,32)">
-    <path d="M0,-18 C10,-13 10,5 0,13 C-10,5 -10,-13 0,-18 Z" fill="#EF9FBB"/>
-    <path d="M0,-14 C6,-10 7,3 0,9 C-7,3 -6,-10 0,-14 Z" fill="#F6C453" opacity="0.55"/>
+  <rect width="64" height="64" rx="16" fill="#4d5863"/>
+  <g transform="translate(32,33)" fill="#f6f5f2">
+    <ellipse cx="0" cy="-11" rx="6.5" ry="9"/>
+    <ellipse cx="0" cy="-11" rx="6.5" ry="9" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-11" rx="6.5" ry="9" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-11" rx="6.5" ry="9" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-11" rx="6.5" ry="9" transform="rotate(288)"/>
   </g>
+  <circle cx="32" cy="33" r="5" fill="#d8b86a"/>
 </svg>

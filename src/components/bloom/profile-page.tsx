@@ -24,7 +24,7 @@ function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
         <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush text-rose-deep">{icon}</span>
-        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
+        <span className="label">{label}</span>
       </div>
       <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
     </div>
@@ -167,7 +167,7 @@ export function ProfilePage() {
             <div key={a.id} className={`flex flex-col items-center text-center gap-1.5 ${a.unlocked ? "" : "opacity-40 grayscale"}`}>
               <span className={`grid place-items-center w-12 h-12 rounded-2xl text-xl ${RARITY_STYLES[a.rarity]}`}>{a.emoji}</span>
               <div className="text-[11px] font-medium leading-tight">{tAch(`${a.id}.name`)}</div>
-              <div className="text-[9px] uppercase tracking-wide text-ink-soft">{tAch(`rarity.${a.rarity}`)}</div>
+              <div className="text-[11px] text-ink-soft">{tAch(`rarity.${a.rarity}`)}</div>
             </div>
           ))}
         </div>

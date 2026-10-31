@@ -3,15 +3,17 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* CJK fallbacks come before the generic serif/sans-serif keywords so
-     Fraunces/Inter still render every Latin glyph exactly as before -
-     browsers only reach for these, per character, for glyphs neither
-     web font covers (Chinese, Korean, Japanese). */
-  --font-display: "Fraunces", "Noto Serif SC", "Noto Serif KR", "Noto Serif JP", ui-serif, Georgia, serif;
+  /* One typeface for everything, the way Apple and ChatGPT set type: the
+     platform's own UI font first (SF on Apple, Segoe on Windows, Roboto on
+     Android), Inter as the web fallback. Headings differ from body only by
+     weight and tracking, never by family. CJK fallbacks sit before the
+     generic keywords so browsers only reach for them per glyph. */
   --font-sans:
-    "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo",
-    "Noto Sans JP", "Hiragino Kaku Gothic Pro", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI Variable", "Segoe UI", Roboto, "Inter",
+    "PingFang SC", "Noto Sans SC", "Microsoft YaHei", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    "Hiragino Kaku Gothic Pro", "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: var(--font-sans);
 
   /* Stone - the default palette. Warm off-white ground, graphite ink and a
      single muted slate accent, so the app reads calm and gender-neutral.
@@ -132,15 +134,36 @@ body {
   background-color: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Headings: same family, tighter and heavier - no serif, no uppercase. */
 .font-display {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
+/* Numbers: same family with lining, tabular figures so columns line up. */
 .font-mono {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Small labels stay sentence case; a little extra weight carries them. */
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink-soft);
+  letter-spacing: 0;
 }
 
 /* flat card, the recurring surface across Bloom */

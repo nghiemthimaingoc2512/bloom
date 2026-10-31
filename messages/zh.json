@@ -618,5 +618,17 @@
     "delete": "删除",
     "toggleTheme": "切换明暗模式",
     "selectLanguage": "选择语言"
+  },
+  "install": {
+    "title": "把 Bloom 当作应用使用",
+    "body": "把 Bloom 添加到主屏幕：全屏打开、可离线使用、完全免费，无需应用商店。",
+    "installButton": "安装 Bloom",
+    "iosStep1": "在 Safari 中点按“分享”按钮",
+    "iosStep2": "选择“添加到主屏幕”",
+    "iosStep3": "点按“添加”，Bloom 就会像普通应用一样打开。",
+    "androidStep1": "在 Chrome 中打开 ⋮ 菜单",
+    "androidStep2": "选择“添加到主屏幕”或“安装应用”",
+    "desktopStep1": "在 Chrome 或 Edge 的地址栏点击安装图标",
+    "desktopStep2": "在手机上用 Safari 或 Chrome 打开本站并添加到主屏幕"
   }
 }

@@ -618,5 +618,17 @@
     "delete": "削除",
     "toggleTheme": "テーマを切り替え",
     "selectLanguage": "言語を選択"
+  },
+  "install": {
+    "title": "Bloom をアプリとして使う",
+    "body": "Bloom をホーム画面に追加しましょう。全画面で開き、オフラインでも動き、無料です。アプリストアは不要です。",
+    "installButton": "Bloom をインストール",
+    "iosStep1": "Safari で共有ボタンをタップ",
+    "iosStep2": "「ホーム画面に追加」を選ぶ",
+    "iosStep3": "「追加」をタップすると、Bloom がアプリのように開きます。",
+    "androidStep1": "Chrome で ⋮ メニューを開く",
+    "androidStep2": "「ホーム画面に追加」または「アプリをインストール」を選ぶ",
+    "desktopStep1": "Chrome または Edge のアドレスバーにあるインストールアイコンをクリック",
+    "desktopStep2": "スマホでは Safari か Chrome でこのサイトを開き、ホーム画面に追加"
   }
 }

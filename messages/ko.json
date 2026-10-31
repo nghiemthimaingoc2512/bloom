@@ -618,5 +618,17 @@
     "delete": "삭제",
     "toggleTheme": "테마 전환",
     "selectLanguage": "언어 선택"
+  },
+  "install": {
+    "title": "Bloom을 앱처럼 사용하기",
+    "body": "Bloom을 홈 화면에 추가하세요. 전체 화면으로 열리고 오프라인에서도 동작하며 무료입니다. 앱 스토어가 필요 없습니다.",
+    "installButton": "Bloom 설치",
+    "iosStep1": "Safari에서 공유 버튼을 누르세요",
+    "iosStep2": "“홈 화면에 추가”를 선택하세요",
+    "iosStep3": "추가를 누르면 Bloom이 앱처럼 열립니다.",
+    "androidStep1": "Chrome에서 ⋮ 메뉴를 여세요",
+    "androidStep2": "“홈 화면에 추가” 또는 “앱 설치”를 선택하세요",
+    "desktopStep1": "Chrome 또는 Edge 주소창의 설치 아이콘을 클릭하세요",
+    "desktopStep2": "휴대폰에서 Safari나 Chrome으로 이 사이트를 열고 홈 화면에 추가하세요"
   }
 }

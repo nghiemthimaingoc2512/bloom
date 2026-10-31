@@ -40,10 +40,10 @@ export function GardenHero() {
 
       <div className="relative flex items-start justify-between gap-4 mb-8">
         <div>
-          <div className="text-[12px] uppercase tracking-[0.16em] text-rose-deep font-semibold mb-2">
+          <div className="text-[15px] font-medium text-ink-soft mb-1.5">
             {t(hasHistory ? "welcomeBack" : "welcomeNew", { name: displayName || "" })}
           </div>
-          <h1 className="text-2xl md:text-[28px] font-display font-medium tracking-tight text-ink leading-snug max-w-md">
+          <h1 className="text-[28px] md:text-[34px] font-semibold tracking-[-0.025em] text-ink leading-[1.15] max-w-md text-balance">
             {t("gardenWaiting")}
           </h1>
         </div>

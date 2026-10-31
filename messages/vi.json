@@ -618,5 +618,17 @@
     "delete": "Xoá",
     "toggleTheme": "Chuyển giao diện sáng/tối",
     "selectLanguage": "Chọn ngôn ngữ"
+  },
+  "install": {
+    "title": "Dùng Bloom như một ứng dụng",
+    "body": "Thêm Bloom vào màn hình chính: mở toàn màn hình, dùng được khi mất mạng, hoàn toàn miễn phí, không cần App Store hay CH Play.",
+    "installButton": "Cài Bloom",
+    "iosStep1": "Trong Safari, bấm nút Chia sẻ",
+    "iosStep2": "Chọn “Thêm vào MH chính”",
+    "iosStep3": "Bấm Thêm. Bloom sẽ mở như một app bình thường.",
+    "androidStep1": "Trong Chrome, mở menu ⋮",
+    "androidStep2": "Chọn “Thêm vào Màn hình chính” hoặc “Cài đặt ứng dụng”",
+    "desktopStep1": "Trong Chrome hoặc Edge, bấm biểu tượng cài đặt trên thanh địa chỉ",
+    "desktopStep2": "Trên điện thoại, mở trang này bằng Safari hoặc Chrome rồi thêm vào màn hình chính"
   }
 }

@@ -4,6 +4,7 @@ import { SummaryCards } from "@/components/bloom/summary-cards";
 import { DailyShareButtons } from "@/components/bloom/share-buttons";
 import { ReflectionCard } from "@/components/bloom/reflection-card";
 import { MomentumRules } from "@/components/bloom/momentum-rules";
+import { InstallCard } from "@/components/bloom/install-card";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <DailyShareButtons />
       <ReflectionCard />
       <MomentumRules />
+      <InstallCard compact />
     </div>
   );
 }

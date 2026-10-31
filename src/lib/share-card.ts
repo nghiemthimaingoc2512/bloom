@@ -18,7 +18,6 @@ const EMOJI_FONT_STACK = "'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emo
 // Fraunces/Inter exactly as before - canvas text falls back per-glyph
 // just like DOM text, so this only ever engages for CJK characters.
 const CJK_SANS_FALLBACK = "'Noto Sans SC', 'Noto Sans KR', 'Noto Sans JP', sans-serif";
-const CJK_SERIF_FALLBACK = "'Noto Serif SC', 'Noto Serif KR', 'Noto Serif JP', Georgia, serif";
 
 export interface ShareCardStat {
   label: string;
@@ -164,7 +163,7 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
   ctx.fillText(content.eyebrow.toUpperCase(), WIDTH / 2, cardY + 290);
 
   ctx.fillStyle = "#26282b";
-  ctx.font = `600 58px Fraunces, ${CJK_SERIF_FALLBACK}`;
+  ctx.font = `700 58px Inter, ${CJK_SANS_FALLBACK}`;
   const maxTextWidth = cardW - 160;
   const headlineLines = wrapText(ctx, content.headline, maxTextWidth).slice(0, 6);
   const lineHeight = 72;
@@ -185,8 +184,8 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
         const cx = cardX + colW * i + colW / 2;
         const available = colW - colPadding;
 
-        const valueSize = fitFontSize(ctx, stat.value, available, 50, (s) => `700 ${s}px 'Space Mono', monospace`, 26);
-        ctx.font = `700 ${valueSize}px 'Space Mono', monospace`;
+        const valueSize = fitFontSize(ctx, stat.value, available, 50, (s) => `700 ${s}px Inter, ${CJK_SANS_FALLBACK}`, 26);
+        ctx.font = `700 ${valueSize}px Inter, ${CJK_SANS_FALLBACK}`;
         ctx.fillStyle = "#26282b";
         ctx.fillText(stat.value, cx, rowY);
 
