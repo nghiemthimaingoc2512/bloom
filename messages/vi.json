@@ -4,14 +4,15 @@
     "description": "Bloom là khu vườn phát triển bản thân. Mỗi nỗ lực ý nghĩa là một hạt giống. Mỗi giờ tập trung giúp khu vườn của bạn nở hoa."
   },
   "nav": {
-    "home": "Khu vườn",
-    "board": "Bảng Tập Trung",
-    "analytics": "Vườn Tuần Này",
-    "store": "Phần Thưởng",
-    "memory": "Vườn Ký Ức",
+    "home": "Hôm nay",
+    "board": "Công việc",
+    "analytics": "Thống kê",
+    "store": "Phần thưởng",
+    "memory": "Nhật ký",
     "profile": "Hồ Sơ",
     "settings": "Cài Đặt",
-    "about": "Giới Thiệu"
+    "about": "Giới Thiệu",
+    "balance": "Số dư Bloom"
   },
   "about": {
     "title": "Bloom",
@@ -37,15 +38,15 @@
     "welcomeTitle": "Chào mừng đến với Bloom 🌸",
     "step1Question": "Chúng tôi nên gọi bạn là gì?",
     "namePlaceholder": "Tên của bạn",
-    "step2Question": "Một giờ tập trung làm việc của bạn đáng giá bao nhiêu?",
-    "step2Hint": "Đây là nền tảng cho Bloom Balance, phần thưởng và biểu đồ của bạn. Bạn có thể thay đổi bất cứ lúc nào trong Cài Đặt.",
-    "customValue": "Giá Trị Tuỳ Chỉnh",
-    "customValuePlaceholder": "Nhập số tiền của riêng bạn",
+    "step2Question": "Một giờ làm việc tập trung của bạn đáng giá bao nhiêu?",
+    "step2Hint": "Bloom dùng con số này để tính mỗi việc được bao nhiêu: một bước 30 phút được một nửa số này. Bạn có thể đổi sau trong Cài đặt.",
+    "customValue": "Số khác",
+    "customValuePlaceholder": "Số tiền mỗi giờ, ví dụ 100000",
     "step3Question": "Bạn đang phát triển điều gì?",
-    "step4Title": "Chọn giao diện của bạn",
+    "step4Title": "Chọn màu bạn thích",
     "back": "Quay lại",
     "continue": "Tiếp tục",
-    "getStarted": "Bắt Đầu",
+    "getStarted": "Bắt đầu dùng Bloom",
     "growthAreas": {
       "career": "Sự nghiệp",
       "study": "Học tập",
@@ -56,28 +57,41 @@
       "personalGrowth": "Phát triển bản thân"
     },
     "themes": {
-      "pink": "Bloom Pink",
-      "lime": "Lime Glow",
-      "mango": "Mango Orange",
-      "island": "Island Paradise",
-      "indigo": "Indigo",
-      "cherryCola": "Cherry Cola"
-    }
+      "stone": "Xám đá",
+      "sage": "Xanh xô thơm",
+      "clay": "Đất nung",
+      "slate": "Xanh đá",
+      "lavender": "Oải hương",
+      "rose": "Hồng tro"
+    },
+    "intro": "Làm xong việc, tích số dư, trồng vườn hoa và đổi lấy phần thưởng do bạn tự chọn.",
+    "customValueError": "Nhập số từ 1.000₫ trở lên.",
+    "step3Hint": "Chọn bao nhiêu tuỳ thích. Câu truyền cảm hứng mỗi ngày sẽ theo lựa chọn này.",
+    "skip": "Bỏ qua",
+    "step4Hint": "Ứng dụng đổi màu ngay khi bạn chọn."
   },
   "home": {
     "welcomeBack": "Chào mừng bạn trở lại, {name}",
-    "gardenWaiting": "Mỗi giờ tập trung đều cộng dồn thành tiến bộ thực sự.",
-    "gardenEmpty": "Khu vườn của bạn đang trống - hoàn thành một Focus để gieo bông hoa đầu tiên.",
-    "balance": "Bloom Balance hôm nay",
+    "gardenWaiting": "Mỗi giờ tập trung đều được cộng dồn.",
+    "gardenEmpty": "Viết nhật ký cuối ngày để trồng bông hoa đầu tiên.",
+    "balance": "Số dư Bloom",
     "streak": "Chuỗi ngày hiện tại",
     "tasks": "Việc hôm nay",
-    "remaining": "Còn lại",
-    "focusHours": "Giờ tập trung hôm nay",
-    "gardenState": "Khu vườn hiện tại",
+    "remaining": "Bước còn lại",
+    "focusHours": "Tập trung hôm nay",
+    "gardenState": "Hoa đang nở",
     "blooming": "đang nở",
     "wilting": "hơi héo",
     "fading": "phai nhạt",
-    "days": "ngày"
+    "days": "ngày",
+    "welcomeNew": "Chào {name}",
+    "balanceNote": "Tiền ảo để đổi thưởng, không phải tiền thật",
+    "earnedToday": "Kiếm hôm nay",
+    "stepsDone": "bước đã xong hôm nay",
+    "quietNotice": "Đã một thời gian bạn chưa quay lại. Khu vườn vừa nghỉ ngơi và đang chờ bạn.",
+    "quietLost": "Chuỗi đã kết thúc: -{amount}.",
+    "lateNotice": "\"{title}\" đã quá hạn hơn 3 ngày: -{amount}.",
+    "dismiss": "Đóng"
   },
   "companion": {
     "save": "Lưu câu nói",
@@ -238,50 +252,61 @@
     }
   },
   "reflection": {
-    "unlocked": "Suy Ngẫm Hôm Nay",
-    "subtitle": "Bạn đã cố gắng hôm nay. Hãy viết vài dòng cho chính mình trong tương lai.",
+    "unlocked": "Nhật ký hôm nay",
+    "subtitle": "Viết một dòng cho bạn của tương lai. Hôm nay bạn sẽ trồng {count} bông hoa.",
     "placeholder": "Gửi tôi của tương lai...",
-    "save": "Gieo suy ngẫm này",
+    "save": "Lưu và trồng hoa",
     "mood": "Hôm nay bạn cảm thấy thế nào?",
     "perfectTitle": "Ngày Nở Rộ Hoàn Hảo",
-    "perfectSubtitle": "Mọi việc đều hoàn thành. Khu vườn hôm nay rực rỡ hơn."
+    "perfectSubtitle": "Mọi việc đều hoàn thành. Khu vườn hôm nay rực rỡ hơn.",
+    "perfectBonus": "Bạn đã xong mọi bước nên còn nhận thêm thưởng trọn ngày {amount}.",
+    "locked": "Hoàn thành một bước hôm nay để mở nhật ký và trồng hoa.",
+    "doneTitle": "Đã lưu nhật ký hôm nay",
+    "doneSubtitle": "Ngày mai quay lại viết tiếp nhé.",
+    "plantedToast": "Đã trồng {count} bông hoa",
+    "moods": {
+      "good": "Rất vui",
+      "okay": "Ổn",
+      "hard": "Hơi nặng",
+      "calm": "Bình yên"
+    }
   },
   "momentum": {
-    "title": "Nguyên Tắc Động Lực",
-    "subtitle": "Những hành động nhỏ cộng dồn thành kết quả phi thường.",
-    "preview": "Xem trước một ngày yên tĩnh",
-    "quietMessage": "Đã yên tĩnh một chút rồi. Không sao cả - khu vườn chỉ đang nghỉ ngơi, chờ bạn quay lại.",
-    "rule1": "Mỗi ngày giữ chuỗi liên tục, bạn nhận được +1,200,000 Bloom Balance.",
-    "rule2": "Mỗi ngày làm mất chuỗi, bạn bị trừ -600,000 Bloom Balance.",
-    "rule3": "Một công việc bị trì hoãn hơn 3 ngày liên tiếp sẽ nhận huy hiệu cảnh báo màu đỏ và bị trừ -3,600,000 Bloom Balance.",
-    "rule4": "Trong khi tăng trưởng 1% mỗi ngày giúp giá trị của bạn nhân lên khoảng 37 lần sau một năm (1.01^365 ≈ 37.78), suy giảm 1% mỗi ngày sẽ khiến giá trị của bạn gần như về 0 (0.99^365 ≈ 0.03)."
+    "title": "Cách tính số dư",
+    "show": "Xem",
+    "hide": "Ẩn",
+    "ruleStep": "Xong một bước: nhận số phút × giá trị giờ của bạn ({amount}/giờ).",
+    "ruleStreak": "Giữ chuỗi từ ngày thứ 2 trở đi: +{amount} mỗi ngày.",
+    "ruleFullDay": "Xong mọi bước rồi viết nhật ký: thưởng +{amount}.",
+    "ruleLostStreak": "Mất chuỗi do bỏ lỡ ngày: -{amount}, một lần. Một số hoa sẽ héo và nở lại khi bạn làm xong các bước.",
+    "ruleLate": "Việc quá hạn hơn 3 ngày: -{amount}, mỗi việc một lần.",
+    "ruleRefund": "Bỏ đánh dấu một bước sẽ trừ lại số đã nhận. Số dư không bao giờ âm.",
+    "ruleMath": "Vì sao nên đều đặn: mỗi ngày tốt hơn 1%, sau một năm gấp khoảng 37 lần (1,01^365 ≈ 37,78)."
   },
   "board": {
-    "title": "Bảng Tập Trung",
-    "subtitle": "Không phải danh sách việc cần làm. Đây là nơi ý định lớn lên thành kết quả.",
-    "newFocus": "Tạo Focus mới",
-    "editFocus": "Sửa Focus",
+    "title": "Công việc",
+    "subtitle": "Chia việc thành từng bước và đánh dấu khi làm xong.",
+    "newFocus": "Thêm việc",
+    "editFocus": "Sửa việc",
     "purpose": "Mục đích",
-    "purposeHint": "Điều này quan trọng vì sao?",
-    "category": "Danh mục",
+    "purposeHint": "Vì sao việc này quan trọng?",
+    "category": "Loại việc",
     "priority": "Ưu tiên",
     "stakeholders": "Người liên quan",
     "startDate": "Ngày bắt đầu",
     "deadline": "Hạn chót",
-    "estimatedDuration": "Thời lượng dự kiến",
-    "expectedOutput": "Kết quả mong đợi",
+    "expectedOutput": "Kết quả mong muốn",
     "notes": "Ghi chú",
     "steps": "Các bước",
     "addStep": "Thêm bước",
-    "create": "Gieo Focus này",
+    "create": "Tạo việc",
     "save": "Lưu thay đổi",
     "cancel": "Huỷ",
     "edit": "Sửa",
     "delete": "Xoá",
-    "titleField": "Tiêu đề",
+    "titleField": "Bạn muốn hoàn thành việc gì?",
     "minutes": "phút",
-    "reward": "Phần thưởng",
-    "empty": "Chưa có Focus nào. Thêm cái đầu tiên và bắt đầu tạo đà.",
+    "empty": "Chưa có việc nào. Thêm một việc muốn hoàn thành, chia thành các bước, rồi đánh dấu từng bước để nhận số dư.",
     "encourageNew": [
       "Những bước nhỏ tạo nên cuộc đời đẹp đẽ.",
       "Mỗi bông hoa đều bắt đầu từ một hạt giống.",
@@ -291,13 +316,49 @@
       "Hãy ăn mừng chiến thắng nhỏ hôm nay.",
       "Bạn vừa nuôi dưỡng thêm một bông hoa.",
       "Sự tiến bộ luôn đẹp đẽ."
-    ]
+    ],
+    "titlePlaceholder": "Ví dụ: Hoàn thành báo cáo quý 3",
+    "titleRequired": "Hãy đặt tên cho việc này.",
+    "consumeHint": "Thời gian giải trí thụ động được ghi lại nhưng không cộng số dư.",
+    "stepsHint": "Phần thưởng được tự tính từ thời gian và giá trị giờ của bạn ({amount}/giờ).",
+    "stepField": "Tên bước",
+    "singleStepHint": "Để trống thì việc này sẽ thành một bước 30 phút.",
+    "minutesError": "Nhập từ {min} đến {max} phút.",
+    "removeStep": "Xoá bước",
+    "doneStep": "Đã xong",
+    "noReward": "không cộng",
+    "moreDetails": "Thêm chi tiết (không bắt buộc)",
+    "lessDetails": "Ẩn chi tiết",
+    "dateError": "Hạn chót phải từ ngày bắt đầu trở đi.",
+    "tabActive": "Đang làm",
+    "tabDone": "Đã xong",
+    "emptyDone": "Việc đã xong sẽ hiện ở đây.",
+    "markDone": "Đánh dấu đã xong",
+    "markUndone": "Bỏ đánh dấu",
+    "undoneToast": "Đã mở lại bước. Đã trừ lại {amount}.",
+    "undoneFree": "Đã mở lại bước.",
+    "taskDone": "Đã hoàn thành việc: {title}",
+    "loggedOnly": "Đã ghi thời gian. Loại việc này không cộng số dư.",
+    "confirmDeleteTitle": "Xoá việc này?",
+    "confirmDeleteBody": "\"{title}\" và các bước sẽ bị xoá. Số dư đã nhận vẫn được giữ."
   },
   "categories": {
-    "create": { "label": "Create", "desc": "Tạo ra giá trị" },
-    "grow": { "label": "Grow", "desc": "Học tập, sức khoẻ, kỹ năng" },
-    "enjoy": { "label": "Enjoy", "desc": "Nghỉ ngơi, chăm sóc bản thân" },
-    "consume": { "label": "Consume", "desc": "Lướt mạng, giải trí thụ động" }
+    "create": {
+      "label": "Tạo giá trị",
+      "desc": "Công việc, dự án tạo ra giá trị"
+    },
+    "grow": {
+      "label": "Học hỏi & phát triển",
+      "desc": "Học tập, sức khoẻ, kỹ năng"
+    },
+    "enjoy": {
+      "label": "Nghỉ ngơi & tận hưởng",
+      "desc": "Chăm sóc bản thân, trải nghiệm"
+    },
+    "consume": {
+      "label": "Giải trí thụ động",
+      "desc": "Lướt mạng, xem phim; có ghi giờ, không cộng số dư"
+    }
   },
   "priorities": {
     "high": "Cao",
@@ -305,45 +366,44 @@
     "low": "Thấp"
   },
   "analytics": {
-    "title": "Tổng Kết Vườn Tuần",
-    "focusHours": "Giờ tập trung",
-    "balanceEarned": "Bloom Balance kiếm được",
-    "balanceLost": "Bloom Balance đã mất",
+    "title": "Thống kê",
+    "focusHours": "Thời gian tập trung",
+    "balanceEarned": "Kiếm tuần này",
+    "balanceLost": "Mất tuần này",
     "streak": "Chuỗi ngày hiện tại",
     "longestStreak": "Chuỗi dài nhất",
     "completionRate": "Tỷ lệ hoàn thành",
     "avgFocus": "Trung bình mỗi ngày",
-    "strongestCategory": "Danh mục mạnh nhất",
-    "suggestionLabel": "Gợi ý nhẹ nhàng cho tuần sau",
-    "suggestion": "Hãy thử thêm một khoảnh khắc Grow - chỉ mười phút yên tĩnh cũng đáng giá.",
-    "hoursByDay": "Giờ tập trung theo ngày",
-    "timeByCategory": "Thời gian của bạn đã dùng vào đâu",
-    "noCategoryData": "Hoàn thành một Focus để xem thời gian của bạn dùng vào đâu."
+    "strongestCategory": "Bạn dành nhiều thời gian nhất cho",
+    "suggestionLabel": "7 ngày gần nhất của bạn",
+    "suggestion": "Thử thêm một bước Học hỏi & phát triển. Chỉ 10 phút cũng tính.",
+    "hoursByDay": "Thời gian tập trung theo ngày",
+    "timeByCategory": "Thời gian của bạn đi đâu",
+    "noCategoryData": "Hoàn thành một bước để xem biểu đồ này."
   },
   "store": {
-    "title": "Cửa Hàng Phần Thưởng",
-    "subtitle": "Tạo những phần thưởng tạo động lực cho bạn, và đổi chúng bằng Bloom Balance.",
-    "newReward": "Phần Thưởng Mới",
-    "createReward": "Tạo Phần Thưởng",
-    "editReward": "Sửa Phần Thưởng",
-    "rewardName": "Tên Phần Thưởng",
+    "title": "Phần thưởng",
+    "subtitle": "Chọn những món quà đáng để cố gắng, rồi đổi bằng số dư của bạn.",
+    "newReward": "Thêm phần thưởng",
+    "createReward": "Phần thưởng mới",
+    "editReward": "Sửa phần thưởng",
+    "rewardName": "Tên phần thưởng",
     "rewardNamePlaceholder": "vd: Cà phê với bạn bè",
-    "cost": "Chi phí",
+    "cost": "Giá",
     "icon": "Biểu tượng",
     "cancel": "Huỷ",
     "save": "Lưu",
-    "create": "Thêm Phần Thưởng",
+    "create": "Thêm phần thưởng",
     "edit": "Sửa",
     "delete": "Xoá",
     "unlocked": "Đã mở khoá",
     "locked": "Chưa mở · tiếp tục cố gắng",
     "redeem": "Đổi",
-    "redeemed": "Tận hưởng khoảnh khắc này 🎉",
-    "empty": "Cửa hàng phần thưởng của bạn đang trống. Hãy tạo phần thưởng đầu tiên - thứ bạn thực sự muốn đạt được.",
-    "inspiration": "Bộ Sưu Tập Gợi Ý",
-    "inspirationSubtitle": "Ý tưởng từ cộng đồng Bloom. Dùng thử, rồi biến nó thành của riêng bạn.",
-    "useTemplate": "Dùng Mẫu Này",
-    "templateAdded": "Đã thêm vào Cửa Hàng Phần Thưởng",
+    "redeemed": "Tận hưởng nhé",
+    "empty": "Chưa có phần thưởng. Tự thêm hoặc chọn một gợi ý bên dưới.",
+    "inspiration": "Gợi ý để bắt đầu",
+    "inspirationSubtitle": "Chọn một gợi ý, rồi tự đặt tên và giá trước khi thêm.",
+    "useTemplate": "Dùng và tự đặt giá",
     "templates": {
       "coffee": "Hẹn Cà Phê",
       "movie": "Đêm Xem Phim",
@@ -351,16 +411,31 @@
       "book": "Mua Một Cuốn Sách",
       "spa": "Ngày Spa",
       "dinner": "Bữa Tối Ngon"
-    }
+    },
+    "nameRequired": "Hãy đặt tên cho phần thưởng.",
+    "costRequired": "Nhập giá lớn hơn 0.",
+    "costHint": "{amount} tương đương khoảng {hours} giờ làm việc tập trung.",
+    "balanceLabel": "Số dư Bloom",
+    "balanceNote": "Tiền ảo để tự thưởng, không phải tiền thật.",
+    "mine": "Phần thưởng của tôi",
+    "ready": "Có thể đổi ngay",
+    "need": "Còn thiếu {amount}",
+    "history": "Đã đổi",
+    "suggestedPrice": "Gợi ý: {amount}",
+    "confirmRedeemTitle": "Đổi \"{name}\"?",
+    "confirmRedeemBody": "Số dư sẽ trừ {amount}, còn lại {left}.",
+    "confirmDeleteTitle": "Xoá \"{name}\"?",
+    "confirmDeleteBody": "Phần thưởng sẽ bị xoá khỏi danh sách. Lịch sử đã đổi vẫn được giữ."
   },
   "memory": {
-    "title": "Vườn Ký Ức",
-    "subtitle": "Mỗi suy ngẫm trở thành một bông hoa. Theo thời gian, đây là câu chuyện của bạn.",
-    "empty": "Những suy ngẫm của bạn sẽ xuất hiện ở đây sau khi bạn hoàn thành một ngày.",
+    "title": "Nhật ký",
+    "subtitle": "Mỗi ngày một trang. Theo thời gian, đây sẽ là câu chuyện của bạn.",
+    "empty": "Chưa có trang nào. Hoàn thành một bước hôm nay rồi viết trang đầu tiên ở mục Hôm nay.",
     "tasksCompleted": "việc hoàn thành",
     "like": "Thích",
     "favorite": "Yêu thích",
-    "today": "Hôm nay"
+    "today": "Hôm nay",
+    "noNote": "Hôm đó không ghi gì"
   },
   "settings": {
     "title": "Cài Đặt",
@@ -368,7 +443,7 @@
     "profileSection": "Hồ Sơ",
     "displayName": "Tên Hiển Thị",
     "hourlyValueSection": "Giá Trị Giờ Làm",
-    "hourlyValueHint": "Đây là nền tảng cho Bloom Balance, phần thưởng và biểu đồ của bạn.",
+    "hourlyValueHint": "Thay đổi chỉ áp dụng cho các bước chưa xong. Số đã nhận giữ nguyên.",
     "modeDirect": "Nhập trực tiếp",
     "modeSalary": "Tính từ lương",
     "monthlySalary": "Lương Hàng Tháng",
@@ -382,7 +457,13 @@
     "light": "Sáng",
     "dark": "Tối",
     "save": "Lưu",
-    "saved": "Đã lưu cài đặt"
+    "saved": "Đã lưu cài đặt",
+    "dataSection": "Dữ liệu của bạn",
+    "dataHint": "Bloom chỉ lưu dữ liệu trên trình duyệt này.",
+    "reset": "Xoá toàn bộ dữ liệu",
+    "resetConfirm": "Việc, phần thưởng, vườn và nhật ký sẽ mất vĩnh viễn.",
+    "resetYes": "Có, xoá",
+    "resetNo": "Giữ lại"
   },
   "profile": {
     "joined": "Tham gia",
@@ -393,7 +474,6 @@
     "lifetimeFocusHours": "Tổng Giờ Tập Trung",
     "lifetimeBalance": "Tổng Bloom Balance",
     "flowersCollected": "Hoa Đã Thu Thập",
-    "challengesCompleted": "Thử Thách Đã Hoàn Thành",
     "achievements": "Thành Tựu",
     "badges": "Huy Hiệu",
     "recentActivity": "Hoạt Động Gần Đây",
@@ -419,7 +499,8 @@
     "wrappedFlowers": "Hoa Đã Nở",
     "wrappedStreak": "Chuỗi Dài Nhất",
     "wrappedFavoriteCategory": "Danh Mục Yêu Thích",
-    "wrappedTopAchievement": "Thành Tựu Nổi Bật"
+    "wrappedTopAchievement": "Thành Tựu Nổi Bật",
+    "rewardsRedeemed": "Phần thưởng đã đổi"
   },
   "achievements": {
     "rarity": {
@@ -428,19 +509,58 @@
       "epic": "Sử Thi",
       "legendary": "Huyền Thoại"
     },
-    "firstFocus": { "name": "Focus Đầu Tiên", "desc": "Tạo Focus đầu tiên của bạn" },
-    "firstFlower": { "name": "Bông Hoa Đầu Tiên", "desc": "Nở bông hoa đầu tiên của bạn" },
-    "firstReflection": { "name": "Suy Ngẫm Đầu Tiên", "desc": "Viết suy ngẫm hằng ngày đầu tiên" },
-    "firstReward": { "name": "Phần Thưởng Đầu Tiên", "desc": "Đổi phần thưởng đầu tiên của bạn" },
-    "quoteCollector": { "name": "Người Sưu Tầm Câu Nói", "desc": "Lưu 5 câu nói" },
-    "streak7": { "name": "Chuỗi 7 Ngày", "desc": "Đạt chuỗi 7 ngày" },
-    "hours10": { "name": "10 Giờ Tập Trung", "desc": "Ghi nhận 10 giờ tập trung trọn đời" },
-    "flowers10": { "name": "Khu Vườn Nở Rộ", "desc": "Trồng 10 bông hoa" },
-    "memoryKeeper": { "name": "Người Giữ Ký Ức", "desc": "Yêu thích 3 suy ngẫm" },
-    "balance1m": { "name": "Triệu Đầu Tiên", "desc": "Kiếm được 1.000.000₫ Bloom Balance" },
-    "streak30": { "name": "Chuỗi 30 Ngày", "desc": "Đạt chuỗi 30 ngày" },
-    "hours100": { "name": "100 Giờ Tập Trung", "desc": "Ghi nhận 100 giờ tập trung trọn đời" },
-    "balance10m": { "name": "Câu Lạc Bộ 10 Triệu", "desc": "Kiếm được 10.000.000₫ Bloom Balance" }
+    "firstFocus": {
+      "name": "Việc đầu tiên",
+      "desc": "Tạo việc đầu tiên của bạn"
+    },
+    "firstFlower": {
+      "name": "Bông Hoa Đầu Tiên",
+      "desc": "Nở bông hoa đầu tiên của bạn"
+    },
+    "firstReflection": {
+      "name": "Suy Ngẫm Đầu Tiên",
+      "desc": "Viết suy ngẫm hằng ngày đầu tiên"
+    },
+    "firstReward": {
+      "name": "Phần Thưởng Đầu Tiên",
+      "desc": "Đổi phần thưởng đầu tiên của bạn"
+    },
+    "quoteCollector": {
+      "name": "Người Sưu Tầm Câu Nói",
+      "desc": "Lưu 5 câu nói"
+    },
+    "streak7": {
+      "name": "Chuỗi 7 Ngày",
+      "desc": "Đạt chuỗi 7 ngày"
+    },
+    "hours10": {
+      "name": "10 Giờ Tập Trung",
+      "desc": "Ghi nhận 10 giờ tập trung trọn đời"
+    },
+    "flowers10": {
+      "name": "Khu Vườn Nở Rộ",
+      "desc": "Trồng 10 bông hoa"
+    },
+    "memoryKeeper": {
+      "name": "Người Giữ Ký Ức",
+      "desc": "Yêu thích 3 suy ngẫm"
+    },
+    "balance1m": {
+      "name": "Triệu Đầu Tiên",
+      "desc": "Kiếm được 1.000.000₫ Bloom Balance"
+    },
+    "streak30": {
+      "name": "Chuỗi 30 Ngày",
+      "desc": "Đạt chuỗi 30 ngày"
+    },
+    "hours100": {
+      "name": "100 Giờ Tập Trung",
+      "desc": "Ghi nhận 100 giờ tập trung trọn đời"
+    },
+    "balance10m": {
+      "name": "Câu Lạc Bộ 10 Triệu",
+      "desc": "Kiếm được 10.000.000₫ Bloom Balance"
+    }
   },
   "share": {
     "title": "Chia Sẻ",

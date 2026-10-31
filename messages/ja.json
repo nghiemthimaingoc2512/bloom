@@ -4,14 +4,15 @@
     "description": "Bloomは、あなたの成長を育てる庭です。意味のある努力はすべて種となり、集中した一時間一時間が庭を花開かせます。"
   },
   "nav": {
-    "home": "庭",
-    "board": "フォーカスボード",
-    "analytics": "週間の庭",
-    "store": "リワード",
-    "memory": "思い出の庭",
+    "home": "今日",
+    "board": "タスク",
+    "analytics": "統計",
+    "store": "ごほうび",
+    "memory": "日記",
     "profile": "プロフィール",
     "settings": "設定",
-    "about": "Bloomについて"
+    "about": "Bloomについて",
+    "balance": "Bloom 残高"
   },
   "about": {
     "title": "Bloom",
@@ -37,15 +38,15 @@
     "welcomeTitle": "Bloomへようこそ 🌸",
     "step1Question": "お名前を教えてください",
     "namePlaceholder": "お名前",
-    "step2Question": "あなたの集中した1時間には、どれくらいの価値がありますか?",
-    "step2Hint": "この値は、Bloom Balance、リワード、グラフの基準になります。設定からいつでも変更できます。",
-    "customValue": "カスタム金額",
-    "customValuePlaceholder": "自分で金額を入力",
+    "step2Question": "集中した 1 時間の価値はいくらですか？",
+    "step2Hint": "Bloom はこの値で各タスクの獲得額を計算します。30 分のステップならその半分です。あとで設定から変更できます。",
+    "customValue": "その他の金額",
+    "customValuePlaceholder": "1 時間あたりの金額（例: 100000）",
     "step3Question": "何を育てていますか?",
-    "step4Title": "テーマを選択",
+    "step4Title": "色を選ぶ",
     "back": "戻る",
     "continue": "次へ",
-    "getStarted": "はじめる",
+    "getStarted": "Bloom をはじめる",
     "growthAreas": {
       "career": "キャリア",
       "study": "学習",
@@ -56,28 +57,41 @@
       "personalGrowth": "自己成長"
     },
     "themes": {
-      "pink": "Bloom Pink",
-      "lime": "Lime Glow",
-      "mango": "Mango Orange",
-      "island": "Island Paradise",
-      "indigo": "Indigo",
-      "cherryCola": "Cherry Cola"
-    }
+      "stone": "ストーン",
+      "sage": "セージ",
+      "clay": "クレイ",
+      "slate": "スレート",
+      "lavender": "ラベンダー",
+      "rose": "ローズ"
+    },
+    "intro": "タスクを終えて残高をため、庭を育て、自分で選んだごほうびと交換しましょう。",
+    "customValueError": "1,000₫ 以上を入力してください。",
+    "step3Hint": "いくつでも選べます。毎日の言葉が選択に合わせて変わります。",
+    "skip": "スキップ",
+    "step4Hint": "選ぶとすぐにアプリの色が変わります。"
   },
   "home": {
     "welcomeBack": "おかえりなさい、{name}さん",
-    "gardenWaiting": "集中した一時間一時間が、確かな成長へと積み重なっていきます。",
-    "gardenEmpty": "庭はまだ空っぽです - Focusを完了して最初の花を植えましょう。",
-    "balance": "今日のBloom Balance",
+    "gardenWaiting": "集中した時間はすべて積み重なります。",
+    "gardenEmpty": "一日の終わりに日記を書くと、最初の花が咲きます。",
+    "balance": "Bloom 残高",
     "streak": "現在の連続記録",
     "tasks": "今日のタスク",
-    "remaining": "残り",
-    "focusHours": "今日の集中時間",
-    "gardenState": "現在の庭の様子",
+    "remaining": "残りのステップ",
+    "focusHours": "今日の集中",
+    "gardenState": "咲いている花",
     "blooming": "満開",
     "wilting": "少ししおれ気味",
     "fading": "色あせ気味",
-    "days": "日"
+    "days": "日",
+    "welcomeNew": "こんにちは、{name} さん",
+    "balanceNote": "ごほうび用の仮想通貨で、本物のお金ではありません",
+    "earnedToday": "今日の獲得",
+    "stepsDone": "今日完了したステップ",
+    "quietNotice": "しばらくぶりですね。庭は休みながら待っていました。",
+    "quietLost": "連続が途切れました: -{amount}。",
+    "lateNotice": "「{title}」は期限を 3 日超えました: -{amount}。",
+    "dismiss": "閉じる"
   },
   "companion": {
     "save": "この言葉を保存",
@@ -238,50 +252,61 @@
     }
   },
   "reflection": {
-    "unlocked": "今日のふりかえり",
-    "subtitle": "今日も一日、よく頑張りました。未来の自分へ、短いメッセージを書いてみましょう。",
+    "unlocked": "今日の日記",
+    "subtitle": "未来の自分に一言どうぞ。今日は {count} 本の花が咲きます。",
     "placeholder": "未来の自分へ...",
-    "save": "このふりかえりを植える",
+    "save": "保存して花を植える",
     "mood": "今日はどんな一日でしたか?",
     "perfectTitle": "パーフェクトな満開の日",
-    "perfectSubtitle": "すべてのタスクが完了しました。今日は庭が少し明るく輝いています。"
+    "perfectSubtitle": "すべてのタスクが完了しました。今日は庭が少し明るく輝いています。",
+    "perfectBonus": "全ステップ完了なので完走ボーナス {amount} も獲得します。",
+    "locked": "今日 1 ステップ終えると日記が開き、花を植えられます。",
+    "doneTitle": "今日の日記を保存しました",
+    "doneSubtitle": "また明日、新しい日記を書きましょう。",
+    "plantedToast": "{count} 本の花を植えました",
+    "moods": {
+      "good": "最高",
+      "okay": "まあまあ",
+      "hard": "つらい",
+      "calm": "穏やか"
+    }
   },
   "momentum": {
-    "title": "モメンタムのルール",
-    "subtitle": "小さな行動の積み重ねが、やがて大きな成果になります。",
-    "preview": "静かな一日をプレビュー",
-    "quietMessage": "しばらく静かでしたね。大丈夫、庭はただ休みながらあなたを待っています。",
-    "rule1": "連続記録を続けるごとに +1,200,000 Bloom Balanceを獲得します。",
-    "rule2": "連続記録が途切れるごとに -600,000 Bloom Balanceが差し引かれます。",
-    "rule3": "3日以上連続で遅延したタスクには赤い警告バッジが付き、-3,600,000 Bloom Balanceが差し引かれます。",
-    "rule4": "毎日1%の成長は1年でおよそ37倍の価値になりますが(1.01^365 ≈ 37.78)、毎日1%の低下は1年でほぼゼロになります(0.99^365 ≈ 0.03)。"
+    "title": "残高のしくみ",
+    "show": "表示",
+    "hide": "隠す",
+    "ruleStep": "ステップ完了: 時間 × 時間価値（{amount}/時）を獲得。",
+    "ruleStreak": "2 日目以降も連続: 1 日 +{amount}。",
+    "ruleFullDay": "全ステップ完了後に日記を書く: ボーナス +{amount}。",
+    "ruleLostStreak": "1 日空いて連続が途切れると -{amount}（1 回のみ）。一部の花がしおれますが、ステップを終えるとまた咲きます。",
+    "ruleLate": "期限を 3 日超えたタスク: タスクごとに -{amount}（1 回）。",
+    "ruleRefund": "チェックを外すと獲得分が戻されます。残高が 0 未満になることはありません。",
+    "ruleMath": "続ける意味: 毎日 1% の成長で 1 年後に約 37 倍（1.01^365 ≈ 37.78）。"
   },
   "board": {
-    "title": "フォーカスボード",
-    "subtitle": "ただのToDoリストではなく、意図が成果へと育つ場所です。",
-    "newFocus": "新しいFocus",
-    "editFocus": "Focusを編集",
+    "title": "タスク",
+    "subtitle": "仕事をステップに分け、終わるごとにチェックしましょう。",
+    "newFocus": "タスクを追加",
+    "editFocus": "タスクを編集",
     "purpose": "目的",
-    "purposeHint": "これがなぜ大切なのですか?",
-    "category": "カテゴリー",
+    "purposeHint": "なぜ大切ですか？",
+    "category": "タスクの種類",
     "priority": "優先度",
     "stakeholders": "関係者",
     "startDate": "開始日",
     "deadline": "締め切り",
-    "estimatedDuration": "所要時間の見積もり",
-    "expectedOutput": "期待される成果",
+    "expectedOutput": "期待する成果",
     "notes": "メモ",
-    "steps": "チェックリストのステップ",
+    "steps": "ステップ",
     "addStep": "ステップを追加",
-    "create": "このFocusを植える",
+    "create": "タスクを作成",
     "save": "変更を保存",
     "cancel": "キャンセル",
     "edit": "編集",
     "delete": "削除",
-    "titleField": "タイトル",
+    "titleField": "何を終わらせたいですか？",
     "minutes": "分",
-    "reward": "報酬",
-    "empty": "まだFocusがありません。最初の一つを追加して、勢いをつけましょう。",
+    "empty": "タスクはまだありません。やりたいことを追加してステップに分け、チェックするたびに残高がたまります。",
     "encourageNew": [
       "小さな一歩が、美しい人生を作る。",
       "すべての花は種から始まる。",
@@ -291,13 +316,49 @@
       "今日の小さな勝利を祝おう。",
       "また一つ、花を育てましたね。",
       "前進すること自体が、美しい。"
-    ]
+    ],
+    "titlePlaceholder": "例: 第 3 四半期レポートを仕上げる",
+    "titleRequired": "タスク名を入力してください。",
+    "consumeHint": "受け身の時間は記録されますが、残高は増えません。",
+    "stepsHint": "報酬は時間と時間価値（{amount}/時）から自動で計算されます。",
+    "stepField": "ステップ名",
+    "singleStepHint": "空欄の場合、30 分のステップ 1 つになります。",
+    "minutesError": "{min}〜{max} 分で入力してください。",
+    "removeStep": "ステップを削除",
+    "doneStep": "完了",
+    "noReward": "残高なし",
+    "moreDetails": "詳細（任意）",
+    "lessDetails": "詳細を隠す",
+    "dateError": "期限は開始日以降にしてください。",
+    "tabActive": "進行中",
+    "tabDone": "完了",
+    "emptyDone": "完了したタスクはここに表示されます。",
+    "markDone": "完了にする",
+    "markUndone": "未完了に戻す",
+    "undoneToast": "ステップを戻しました。{amount} を差し引きました。",
+    "undoneFree": "ステップを戻しました。",
+    "taskDone": "タスク完了: {title}",
+    "loggedOnly": "時間を記録しました。この種類は残高に加算されません。",
+    "confirmDeleteTitle": "このタスクを削除しますか？",
+    "confirmDeleteBody": "「{title}」とステップを削除します。獲得済みの残高はそのままです。"
   },
   "categories": {
-    "create": { "label": "創造", "desc": "価値を生み出す" },
-    "grow": { "label": "成長", "desc": "学習、健康、スキル" },
-    "enjoy": { "label": "楽しむ", "desc": "休息、セルフケア、体験" },
-    "consume": { "label": "消費", "desc": "受動的なスクロール、娯楽" }
+    "create": {
+      "label": "つくる",
+      "desc": "価値を生む仕事やプロジェクト"
+    },
+    "grow": {
+      "label": "学びと成長",
+      "desc": "勉強、健康、スキル"
+    },
+    "enjoy": {
+      "label": "休息と楽しみ",
+      "desc": "セルフケアと体験"
+    },
+    "consume": {
+      "label": "受け身の時間",
+      "desc": "SNS やテレビ。時間のみ記録し残高は増えない"
+    }
   },
   "priorities": {
     "high": "高",
@@ -305,45 +366,44 @@
     "low": "低"
   },
   "analytics": {
-    "title": "週間の庭レビュー",
+    "title": "統計",
     "focusHours": "集中時間",
-    "balanceEarned": "獲得したBloom Balance",
-    "balanceLost": "失ったBloom Balance",
+    "balanceEarned": "今週の獲得",
+    "balanceLost": "今週の損失",
     "streak": "現在の連続記録",
     "longestStreak": "最長連続記録",
     "completionRate": "タスク完了率",
     "avgFocus": "1日の平均集中時間",
-    "strongestCategory": "最も強いカテゴリー",
-    "suggestionLabel": "来週へのやさしい提案",
-    "suggestion": "「成長」の瞬間をもう一つ加えてみましょう - たった10分の静かな時間でも意味があります。",
-    "hoursByDay": "曜日別の集中時間",
+    "strongestCategory": "最も時間を使ったこと",
+    "suggestionLabel": "直近 7 日間",
+    "suggestion": "学びと成長のステップを足してみましょう。10 分でも十分です。",
+    "hoursByDay": "日別の集中時間",
     "timeByCategory": "時間の使い道",
-    "noCategoryData": "Focusを完了すると、時間の使い道が見えるようになります。"
+    "noCategoryData": "ステップを終えると表示されます。"
   },
   "store": {
-    "title": "リワードストア",
-    "subtitle": "自分のやる気につながるリワードを作り、Bloom Balanceで交換しましょう。",
-    "newReward": "新しいリワード",
-    "createReward": "リワードを作成",
-    "editReward": "リワードを編集",
-    "rewardName": "リワード名",
+    "title": "ごほうび",
+    "subtitle": "頑張りたくなるごほうびを選び、残高で交換しましょう。",
+    "newReward": "ごほうびを追加",
+    "createReward": "新しいごほうび",
+    "editReward": "ごほうびを編集",
+    "rewardName": "ごほうびの名前",
     "rewardNamePlaceholder": "例:友達とのコーヒータイム",
-    "cost": "コスト",
+    "cost": "価格",
     "icon": "アイコン",
     "cancel": "キャンセル",
     "save": "保存",
-    "create": "リワードを追加",
+    "create": "ごほうびを追加",
     "edit": "編集",
     "delete": "削除",
     "unlocked": "解除済み",
     "locked": "未解除 · 成長を続けよう",
     "redeem": "交換する",
-    "redeemed": "この瞬間を楽しんで 🎉",
-    "empty": "リワードストアはまだ空です。本当に手に入れたい最初のリワードを作ってみましょう。",
-    "inspiration": "インスピレーションギャラリー",
-    "inspirationSubtitle": "Bloomコミュニティからのアイデアです。使ってみて、自分らしくアレンジしましょう。",
-    "useTemplate": "テンプレートを使う",
-    "templateAdded": "リワードストアに追加されました",
+    "redeemed": "楽しんでください",
+    "empty": "まだありません。自分で追加するか、下のアイデアから選びましょう。",
+    "inspiration": "はじめのアイデア",
+    "inspirationSubtitle": "1 つ選び、追加する前に名前と価格を自分で決めましょう。",
+    "useTemplate": "使って価格を決める",
     "templates": {
       "coffee": "コーヒーデート",
       "movie": "映画の夜",
@@ -351,16 +411,31 @@
       "book": "本を一冊買う",
       "spa": "スパの日",
       "dinner": "素敵なディナー"
-    }
+    },
+    "nameRequired": "名前を入力してください。",
+    "costRequired": "0 より大きい価格を入力してください。",
+    "costHint": "{amount} は集中作業 約 {hours} 時間分です。",
+    "balanceLabel": "Bloom 残高",
+    "balanceNote": "自分へのごほうび用の仮想通貨で、本物のお金ではありません。",
+    "mine": "マイごほうび",
+    "ready": "交換できます",
+    "need": "あと {amount}",
+    "history": "交換履歴",
+    "suggestedPrice": "目安: {amount}",
+    "confirmRedeemTitle": "「{name}」を交換しますか？",
+    "confirmRedeemBody": "残高から {amount} を差し引き、残りは {left} です。",
+    "confirmDeleteTitle": "「{name}」を削除しますか？",
+    "confirmDeleteBody": "リストから削除します。交換履歴は残ります。"
   },
   "memory": {
-    "title": "思い出の庭",
-    "subtitle": "すべてのふりかえりは一輪の花になります。積み重ねが、やがてあなたの物語になります。",
-    "empty": "一日を完了すると、ここにふりかえりが表示されます。",
+    "title": "日記",
+    "subtitle": "1 日 1 ページ。やがてあなたの物語になります。",
+    "empty": "まだ日記はありません。今日 1 ステップ終えて、「今日」ページで最初の日記を書きましょう。",
     "tasksCompleted": "件のタスクを完了",
     "like": "いいね",
     "favorite": "お気に入り",
-    "today": "今日"
+    "today": "今日",
+    "noNote": "その日はメモなし"
   },
   "settings": {
     "title": "設定",
@@ -368,7 +443,7 @@
     "profileSection": "プロフィール",
     "displayName": "表示名",
     "hourlyValueSection": "時給価値",
-    "hourlyValueHint": "これはBloom Balance、リワード、グラフの基準になります。",
+    "hourlyValueHint": "未完了のステップにのみ適用され、獲得済みの額は変わりません。",
     "modeDirect": "直接入力",
     "modeSalary": "給与から計算",
     "monthlySalary": "月給",
@@ -382,7 +457,13 @@
     "light": "ライト",
     "dark": "ダーク",
     "save": "保存",
-    "saved": "設定を保存しました"
+    "saved": "設定を保存しました",
+    "dataSection": "データ",
+    "dataHint": "Bloom はこのブラウザにのみ保存されます。",
+    "reset": "すべてのデータを削除",
+    "resetConfirm": "タスク、ごほうび、庭、日記が完全に消えます。",
+    "resetYes": "削除する",
+    "resetNo": "残す"
   },
   "profile": {
     "joined": "登録日",
@@ -393,7 +474,6 @@
     "lifetimeFocusHours": "累計集中時間",
     "lifetimeBalance": "累計Bloom Balance",
     "flowersCollected": "集めた花の数",
-    "challengesCompleted": "達成したチャレンジ数",
     "achievements": "実績",
     "badges": "バッジ",
     "recentActivity": "最近のアクティビティ",
@@ -419,7 +499,8 @@
     "wrappedFlowers": "咲かせた花",
     "wrappedStreak": "最長連続記録",
     "wrappedFavoriteCategory": "お気に入りのカテゴリー",
-    "wrappedTopAchievement": "トップの実績"
+    "wrappedTopAchievement": "トップの実績",
+    "rewardsRedeemed": "交換したごほうび"
   },
   "achievements": {
     "rarity": {
@@ -428,19 +509,58 @@
       "epic": "エピック",
       "legendary": "レジェンダリー"
     },
-    "firstFocus": { "name": "はじめてのFocus", "desc": "最初のFocusを作成しよう" },
-    "firstFlower": { "name": "はじめての花", "desc": "最初の花を咲かせよう" },
-    "firstReflection": { "name": "はじめてのふりかえり", "desc": "最初の日々のふりかえりを書こう" },
-    "firstReward": { "name": "はじめてのリワード", "desc": "最初のリワードを交換しよう" },
-    "quoteCollector": { "name": "言葉のコレクター", "desc": "言葉を5つ保存する" },
-    "streak7": { "name": "7日間の連続記録", "desc": "7日間の連続記録を達成する" },
-    "hours10": { "name": "集中10時間", "desc": "累計集中時間10時間を記録する" },
-    "flowers10": { "name": "満開の庭", "desc": "花を10輪育てる" },
-    "memoryKeeper": { "name": "思い出の番人", "desc": "ふりかえりを3件お気に入りにする" },
-    "balance1m": { "name": "はじめての100万", "desc": "Bloom Balance 1,000,000₫を達成する" },
-    "streak30": { "name": "30日間の連続記録", "desc": "30日間の連続記録を達成する" },
-    "hours100": { "name": "集中100時間", "desc": "累計集中時間100時間を記録する" },
-    "balance10m": { "name": "1000万クラブ", "desc": "Bloom Balance 10,000,000₫を達成する" }
+    "firstFocus": {
+      "name": "最初のタスク",
+      "desc": "最初のタスクを作成"
+    },
+    "firstFlower": {
+      "name": "はじめての花",
+      "desc": "最初の花を咲かせよう"
+    },
+    "firstReflection": {
+      "name": "はじめてのふりかえり",
+      "desc": "最初の日々のふりかえりを書こう"
+    },
+    "firstReward": {
+      "name": "はじめてのリワード",
+      "desc": "最初のリワードを交換しよう"
+    },
+    "quoteCollector": {
+      "name": "言葉のコレクター",
+      "desc": "言葉を5つ保存する"
+    },
+    "streak7": {
+      "name": "7日間の連続記録",
+      "desc": "7日間の連続記録を達成する"
+    },
+    "hours10": {
+      "name": "集中10時間",
+      "desc": "累計集中時間10時間を記録する"
+    },
+    "flowers10": {
+      "name": "満開の庭",
+      "desc": "花を10輪育てる"
+    },
+    "memoryKeeper": {
+      "name": "思い出の番人",
+      "desc": "ふりかえりを3件お気に入りにする"
+    },
+    "balance1m": {
+      "name": "はじめての100万",
+      "desc": "Bloom Balance 1,000,000₫を達成する"
+    },
+    "streak30": {
+      "name": "30日間の連続記録",
+      "desc": "30日間の連続記録を達成する"
+    },
+    "hours100": {
+      "name": "集中100時間",
+      "desc": "累計集中時間100時間を記録する"
+    },
+    "balance10m": {
+      "name": "1000万クラブ",
+      "desc": "Bloom Balance 10,000,000₫を達成する"
+    }
   },
   "share": {
     "title": "シェア",

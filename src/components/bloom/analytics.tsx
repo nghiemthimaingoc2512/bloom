@@ -16,10 +16,10 @@ import {
 import { Clock, Flame, Share2, Sparkles, TrendingUp } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { useLocale, useTranslations } from "next-intl";
-import { useBloomBalance, useBloomStore } from "@/lib/store";
-import { formatVND, todayKey } from "@/lib/utils";
+import { useBloomStore } from "@/lib/store";
+import { formatVND, shiftDay, todayKey } from "@/lib/utils";
 import { CATEGORY_CHART_COLOR } from "@/lib/category-meta";
-import { categoryMinutesTotal } from "@/lib/reward-engine";
+import { categoryMinutesTotal, minutesOnDay } from "@/lib/reward-engine";
 import { ShareCardDialog } from "./share-card-dialog";
 import type { ShareCardContent } from "@/lib/share-card";
 import type { Category } from "@/lib/types";
@@ -29,7 +29,7 @@ function Card({ icon, label, value }: { icon: React.ReactNode; label: string; va
   return (
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
-        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
+        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush text-rose-deep">{icon}</span>
         <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
       <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
@@ -55,25 +55,25 @@ export function Analytics() {
       history: s.history,
     }))
   );
-  const balance = useBloomBalance();
   const categoryMinutes = categoryMinutesTotal(focuses);
 
   const total = focuses.length;
   const completed = focuses.filter((f) => f.checklist.every((c) => c.done)).length;
   const ratio = total ? completed / total : 0;
-  const todayMinutes = focuses.reduce(
-    (sum, f) => sum + f.checklist.filter((c) => c.done).reduce((a, c) => a + c.estimatedMinutes, 0),
-    0
-  );
-
   const today = todayKey();
-  const weekData = Array.from({ length: 7 }).map((_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - (6 - i));
-    const key = d.toISOString().slice(0, 10);
-    const minutes = key === today ? todayMinutes : history.find((h) => h.date === key)?.focusMinutes ?? 0;
-    return { day: d.toLocaleDateString(locale, { weekday: "short" }), hours: Number((minutes / 60).toFixed(1)) };
+  const weekKeys = Array.from({ length: 7 }).map((_, i) => shiftDay(today, i - 6));
+  const weekData = weekKeys.map((key) => {
+    const [y, m, d] = key.split("-").map(Number);
+    const minutes = minutesOnDay({ focuses, history }, key);
+    return { day: new Date(y, m - 1, d).toLocaleDateString(locale, { weekday: "short" }), hours: Number((minutes / 60).toFixed(1)) };
   });
+  const weekSet = new Set(weekKeys);
+  const weekEarned =
+    focuses.reduce(
+      (sum, f) => sum + f.checklist.filter((c) => c.done && c.doneAt && weekSet.has(c.doneAt)).reduce((a, c) => a + c.reward, 0),
+      0
+    ) + history.filter((h) => weekSet.has(h.date) && h.balanceDelta > 0).reduce((a, h) => a + h.balanceDelta, 0);
+  const weekLost = -history.filter((h) => weekSet.has(h.date) && h.balanceDelta < 0).reduce((a, h) => a + h.balanceDelta, 0);
   const weekHours = weekData.reduce((s, d) => s + d.hours, 0);
 
   const pieData = (Object.entries(categoryMinutes) as [Category, number][])
@@ -95,7 +95,7 @@ export function Analytics() {
       headline: tShare("weeklyHeadline"),
       stats: [
         { label: t("focusHours"), value: `${weekHours.toFixed(1)}h` },
-        { label: t("balanceEarned"), value: formatVND(balance) },
+        { label: t("balanceEarned"), value: formatVND(weekEarned) },
         ...(strongest ? [{ label: tShare("topCategoryLabel"), value: tCat(`${strongest}.label`) }] : []),
         { label: tShare("bestDayLabel"), value: bestDay.day },
         { label: tShare("longestSessionLabel"), value: `${longestSessionMinutes}m` },
@@ -121,12 +121,13 @@ export function Analytics() {
         </button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        <Card icon={<Clock size={16} className="text-rose" />} label={t("focusHours")} value={`${weekHours.toFixed(1)}h`} />
-        <Card icon={<Sparkles size={16} className="text-amber-400" />} label={t("balanceEarned")} value={formatVND(balance)} />
-        <Card icon={<Flame size={16} className="text-orange-400" />} label={t("streak")} value={`${streak}`} />
-        <Card icon={<Flame size={16} className="text-orange-300" />} label={t("longestStreak")} value={`${longestStreak}`} />
-        <Card icon={<TrendingUp size={16} className="text-green-500" />} label={t("completionRate")} value={`${Math.round(ratio * 100)}%`} />
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <Card icon={<Clock size={16} />} label={t("focusHours")} value={`${weekHours.toFixed(1)}h`} />
+        <Card icon={<Sparkles size={16} />} label={t("balanceEarned")} value={formatVND(weekEarned)} />
+        <Card icon={<Sparkles size={16} />} label={t("balanceLost")} value={formatVND(weekLost)} />
+        <Card icon={<Flame size={16} />} label={t("streak")} value={`${streak}`} />
+        <Card icon={<Flame size={16} />} label={t("longestStreak")} value={`${longestStreak}`} />
+        <Card icon={<TrendingUp size={16} />} label={t("completionRate")} value={`${Math.round(ratio * 100)}%`} />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -134,10 +135,10 @@ export function Analytics() {
           <div className="text-sm font-medium mb-3">{t("hoursByDay")}</div>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={weekData}>
-              <CartesianGrid strokeDasharray="3 3" stroke={dark ? "#3a2a30" : "#fce7f3"} vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke={dark ? "#3a3e43" : "#e4e2dc"} vertical={false} />
               <XAxis dataKey="day" tick={{ fontSize: 12, fill: dark ? "#a8a29e" : "#78716c" }} axisLine={false} tickLine={false} />
               <YAxis hide />
-              <Tooltip cursor={{ fill: "rgba(245,79,147,0.08)" }} contentStyle={{ borderRadius: 12, border: "none", fontSize: 12 }} formatter={(v) => [`${v}h`, ""]} />
+              <Tooltip cursor={{ fill: "rgba(77,88,99,0.08)" }} contentStyle={{ borderRadius: 12, border: "none", fontSize: 12 }} formatter={(v) => [`${v}h`, ""]} />
               <Bar dataKey="hours" radius={[8, 8, 8, 8]} fill="var(--color-rose)" label={{ position: "top", fontSize: 11, fill: dark ? "#e7e5e4" : "#57534e" }} />
             </BarChart>
           </ResponsiveContainer>
@@ -148,7 +149,7 @@ export function Analytics() {
             <>
               <ResponsiveContainer width="100%" height={220}>
                 <PieChart>
-                  <Pie data={pieData} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={3}>
+                  <Pie data={pieData} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={pieData.length > 1 ? 3 : 0}>
                     {pieData.map((d) => (
                       <Cell key={d.key} fill={CATEGORY_CHART_COLOR[d.key]} />
                     ))}
@@ -176,7 +177,7 @@ export function Analytics() {
       {strongest && (
         <div className="rounded-2xl glass p-5">
           <div className="text-sm font-medium mb-1">{t("strongestCategory")}</div>
-          <div className="text-sm text-rose-deep">
+          <div className="text-sm text-ink-soft">
             {tCat(`${strongest}.label`)} - {tCat(`${strongest}.desc`)}
           </div>
         </div>

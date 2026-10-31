@@ -5,7 +5,6 @@ import { useBloomStore } from "@/lib/store";
 import { Nav } from "@/components/bloom/nav";
 import { Onboarding } from "@/components/bloom/onboarding";
 import { BetaBanner } from "@/components/bloom/beta-banner";
-import { FeedbackLauncher } from "@/components/bloom/feedback-launcher";
 
 export function BloomProvider({ children }: { children: React.ReactNode }) {
   const hydrate = useBloomStore((s) => s.hydrate);
@@ -14,13 +13,19 @@ export function BloomProvider({ children }: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     void hydrate();
+    // Re-run the day-change checks whenever the tab comes back after midnight.
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void hydrate();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!hydrated) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-cream text-ink/40 text-sm">
-        <span className="animate-pulse">🌸</span>
+        <span className="animate-pulse">Bloom</span>
       </div>
     );
   }
@@ -35,8 +40,9 @@ export function BloomProvider({ children }: { children: React.ReactNode }) {
     <>
       <BetaBanner />
       <Nav />
-      <main className="max-w-5xl mx-auto px-5 pb-20 pt-2">{children}</main>
-      <FeedbackLauncher />
+      {/* Bottom padding clears the phone bottom nav. Feedback lives in Settings
+          and About, not as a floating button over the content. */}
+      <main className="max-w-5xl mx-auto px-5 pb-28 md:pb-20 pt-2">{children}</main>
     </>
   );
 }

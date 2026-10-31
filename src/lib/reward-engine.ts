@@ -71,3 +71,40 @@ export function completionStats(focuses: Focus[]): CompletionStats {
   const ratio = total ? completed / total : 0;
   return { total, completed, ratio };
 }
+
+/** Steps ticked on a given local day. */
+export function stepsDoneOnDay(focuses: Focus[], day: string): number {
+  return focuses.reduce((n, f) => n + f.checklist.filter((c) => c.done && c.doneAt === day).length, 0);
+}
+
+/** Focus minutes logged on a given local day, including minutes archived
+ *  from tasks that were deleted afterwards. */
+export function minutesOnDay(state: Pick<BloomState, "focuses" | "history">, day: string): number {
+  const fromSteps = state.focuses.reduce(
+    (sum, f) => sum + f.checklist.filter((c) => c.done && c.doneAt === day).reduce((a, c) => a + c.estimatedMinutes, 0),
+    0
+  );
+  const archived = state.history
+    .filter((h) => h.kind === "archived" && h.date === day)
+    .reduce((a, h) => a + h.focusMinutes, 0);
+  return fromSteps + archived;
+}
+
+/** The tasks that belong to "today": anything still open, plus anything
+ *  finished today. Older finished tasks no longer count against the day. */
+export function todaysFocuses(focuses: Focus[], day: string): Focus[] {
+  return focuses.filter((f) => f.checklist.some((c) => !c.done) || f.checklist.some((c) => c.doneAt === day));
+}
+
+/** Everything ever earned (never reduced by redemptions or penalties). */
+export function lifetimeEarnedTotal(state: Pick<BloomState, "focuses" | "history">): number {
+  return taskRewardTotal(state.focuses) + state.history.reduce((sum, h) => sum + Math.max(0, h.balanceDelta), 0);
+}
+
+/** Every focused minute ever logged, including archived tasks. */
+export function lifetimeMinutesTotal(state: Pick<BloomState, "focuses" | "history">): number {
+  return (
+    completedMinutesTotal(state.focuses) +
+    state.history.filter((h) => h.kind === "archived").reduce((sum, h) => sum + h.focusMinutes, 0)
+  );
+}

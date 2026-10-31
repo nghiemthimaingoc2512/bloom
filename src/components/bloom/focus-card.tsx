@@ -29,8 +29,7 @@ export function FocusCard({
   const pct = total ? Math.round((done / total) * 100) : 0;
   const Icon = CATEGORY_ICON[focus.category];
 
-  const barColor =
-    pct >= 100 ? "bg-green-400" : pct >= 66 ? "bg-lime-400" : pct >= 33 ? "bg-yellow-400" : pct > 0 ? "bg-orange-400" : "bg-red-300";
+  const barColor = pct >= 100 ? "bg-success" : "bg-rose";
 
   function handleToggle(stepId: string) {
     toggleStep(focus.id, stepId);
@@ -38,8 +37,15 @@ export function FocusCard({
     // right after so we only toast when a step was newly completed.
     const reward = useBloomStore.getState().lastReward;
     if (reward) {
-      const msg = pickRandom(encourageDone);
-      showToast(`+${formatVND(reward.amount)} · ${msg}`);
+      if (reward.undone) {
+        showToast(reward.amount > 0 ? t("undoneToast", { amount: formatVND(reward.amount) }) : t("undoneFree"));
+      } else if (reward.finishedTask) {
+        showToast(`${t("taskDone", { title: focus.title })}${reward.amount > 0 ? ` · +${formatVND(reward.amount)}` : ""}`);
+      } else if (reward.amount > 0) {
+        showToast(`+${formatVND(reward.amount)} · ${pickRandom(encourageDone)}`);
+      } else {
+        showToast(t("loggedOnly"));
+      }
       clearLastReward();
     }
   }
@@ -54,20 +60,20 @@ export function FocusCard({
           <span className="text-xs text-ink-soft font-medium">{tCat(`${focus.category}.label`)}</span>
         </div>
         <div className="flex items-center gap-2.5">
-          {pct >= 100 && <Sparkles size={16} className="text-amber-400" />}
+          {pct >= 100 && <Sparkles size={16} className="text-success" />}
           <button
             onClick={() => onEdit(focus)}
             aria-label={t("edit")}
-            className="text-stone-300 hover:text-rose-deep transition-colors"
+            className="flex items-center gap-1 text-xs text-ink-soft hover:text-rose-deep px-2 py-1 rounded-lg hover:bg-blush transition-colors"
           >
-            <Pencil size={13} />
+            <Pencil size={13} /> {t("edit")}
           </button>
           <button
             onClick={() => onDelete(focus)}
             aria-label={t("delete")}
-            className="text-stone-300 hover:text-rose transition-colors"
+            className="flex items-center gap-1 text-xs text-ink-soft hover:text-error px-2 py-1 rounded-lg hover:bg-blush transition-colors"
           >
-            <Trash2 size={13} />
+            <Trash2 size={13} /> {t("delete")}
           </button>
         </div>
       </div>
@@ -81,16 +87,18 @@ export function FocusCard({
           <button
             key={c.id}
             onClick={() => handleToggle(c.id)}
-            className={`w-full flex items-center justify-between text-sm px-3.5 py-2.5 rounded-xl border transition-all text-left ${
+            aria-pressed={c.done}
+            aria-label={`${c.title}: ${c.done ? t("markUndone") : t("markDone")}`}
+            className={`w-full flex items-center justify-between text-sm px-3.5 py-2.5 rounded-xl border transition-all text-left min-h-11 ${
               c.done
-                ? "border-green-200/70 bg-green-50/60 text-stone-400 line-through dark:bg-green-950/10 dark:border-green-800/30"
-                : "border-petal/60 hover:border-rose hover:bg-blush/25"
+                ? "border-success/40 bg-success/10 text-ink-soft line-through"
+                : "border-petal hover:border-rose hover:bg-blush"
             }`}
           >
             <span className="flex items-center gap-2">
               <span
                 className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
-                  c.done ? "bg-green-400 border-green-400" : "border-stone-300"
+                  c.done ? "bg-success border-success" : "border-ink-muted"
                 }`}
               >
                 {c.done && <Check size={10} className="text-white" />}
@@ -98,7 +106,7 @@ export function FocusCard({
               {c.title}
             </span>
             <span className="text-xs text-ink-soft shrink-0 ml-2">
-              {c.estimatedMinutes} {t("minutes")} · {formatVND(c.reward)}
+              {c.estimatedMinutes} {t("minutes")} · {c.reward > 0 ? formatVND(c.reward) : t("noReward")}
             </span>
           </button>
         ))}

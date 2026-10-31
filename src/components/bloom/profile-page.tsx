@@ -8,22 +8,22 @@ import { useShallow } from "zustand/react/shallow";
 import { computeLevel, levelTitleKey } from "@/lib/leveling";
 import { evaluateAchievements, type Rarity } from "@/lib/achievements";
 import { computeWrapped } from "@/lib/bloom-wrapped";
-import { formatVND } from "@/lib/utils";
+import { formatDayKey, formatVND } from "@/lib/utils";
 import { ShareCardDialog } from "./share-card-dialog";
 import type { ShareCardContent } from "@/lib/share-card";
 
 const RARITY_STYLES: Record<Rarity, string> = {
-  common: "bg-stone-100 text-stone-500 dark:bg-white/5",
+  common: "bg-blush text-ink-soft",
   rare: "bg-blush text-rose-deep",
-  epic: "bg-purple-100 text-purple-600 dark:bg-purple-950/30 dark:text-purple-300",
-  legendary: "gradient-primary text-white shadow-md shadow-rose/25",
+  epic: "bg-rose/15 text-rose-deep",
+  legendary: "bg-rose text-white dark:text-night",
 };
 
 function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: React.ReactNode }) {
   return (
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
-        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
+        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush text-rose-deep">{icon}</span>
         <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
       <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
@@ -78,7 +78,7 @@ export function ProfilePage() {
   const { level, currentLevelXp, xpForNextLevel } = computeLevel(lifetimeFocusMinutes);
   const levelPct = xpForNextLevel > 0 ? Math.min(100, Math.round((currentLevelXp / xpForNextLevel) * 100)) : 0;
 
-  const initial = displayName.trim().charAt(0).toUpperCase() || "🌸";
+  const initial = displayName.trim().charAt(0).toUpperCase() || "B";
   const joinedLabel = joinedAt
     ? new Intl.DateTimeFormat(locale, { year: "numeric", month: "long", day: "numeric" }).format(new Date(joinedAt))
     : "-";
@@ -108,7 +108,7 @@ export function ProfilePage() {
   return (
     <div className="space-y-8">
       <div className="rounded-[28px] glass p-7 md:p-8 flex items-center gap-5">
-        <span className="grid place-items-center w-16 h-16 rounded-2xl gradient-primary text-white text-2xl font-semibold shadow-lg shadow-rose/25 shrink-0">
+        <span className="grid place-items-center w-16 h-16 rounded-2xl bg-rose text-white dark:text-night text-2xl font-semibold shrink-0">
           {initial}
         </span>
         <div className="min-w-0 flex-1">
@@ -133,22 +133,22 @@ export function ProfilePage() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <StatCard icon={<Flame size={16} className="text-orange-400" />} label={t("currentStreak")} value={streak} />
-        <StatCard icon={<Flame size={16} className="text-orange-300" />} label={t("longestStreak")} value={longestStreak} />
-        <StatCard icon={<Clock size={16} className="text-rose" />} label={t("lifetimeFocusHours")} value={`${(lifetimeFocusMinutes / 60).toFixed(1)}h`} />
-        <StatCard icon={<Sparkles size={16} className="text-amber-400" />} label={t("lifetimeBalance")} value={formatVND(lifetimeBalanceEarned)} />
-        <StatCard icon={<Flower2 size={16} className="text-rose" />} label={t("flowersCollected")} value={garden.length} />
-        <StatCard icon={<Trophy size={16} className="text-amber-500" />} label={t("challengesCompleted")} value={0} />
+        <StatCard icon={<Flame size={16} />} label={t("currentStreak")} value={streak} />
+        <StatCard icon={<Flame size={16} />} label={t("longestStreak")} value={longestStreak} />
+        <StatCard icon={<Clock size={16} />} label={t("lifetimeFocusHours")} value={`${(lifetimeFocusMinutes / 60).toFixed(1)}h`} />
+        <StatCard icon={<Sparkles size={16} />} label={t("lifetimeBalance")} value={formatVND(lifetimeBalanceEarned)} />
+        <StatCard icon={<Flower2 size={16} />} label={t("flowersCollected")} value={garden.length} />
+        <StatCard icon={<Trophy size={16} />} label={t("rewardsRedeemed")} value={redemptions.length} />
       </div>
 
-      <div className="rounded-[28px] p-7 gradient-primary text-white flex items-center justify-between gap-4 flex-wrap shadow-lg shadow-rose/25">
+      <div className="rounded-[28px] p-7 bg-rose text-white dark:text-night flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <div className="text-lg font-display font-medium">🌸 {t("wrappedTitle", { year: new Date().getFullYear() })}</div>
+          <div className="text-lg font-display font-medium">{t("wrappedTitle", { year: new Date().getFullYear() })}</div>
           <div className="text-sm opacity-90 mt-0.5">{t("wrappedSubtitle")}</div>
         </div>
         <button
           onClick={shareWrapped}
-          className="bg-white text-rose-deep flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium shrink-0"
+          className="bg-surface text-rose-deep flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium shrink-0"
         >
           <Share2 size={14} /> {t("viewWrapped")}
         </button>
@@ -156,7 +156,7 @@ export function ProfilePage() {
 
       <div className="rounded-2xl glass p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Award size={16} className="text-amber-400" />
+          <Award size={16} className="text-rose-deep" />
           <div className="font-medium text-sm">{t("achievements")}</div>
           <span className="text-xs text-ink-soft ml-auto font-mono">
             {unlockedCount}/{achievements.length}
@@ -175,7 +175,7 @@ export function ProfilePage() {
 
       <div className="rounded-2xl glass p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Heart size={16} className="text-rose" />
+          <Heart size={16} className="text-rose-deep" />
           <div className="font-medium text-sm">{t("savedQuotes")}</div>
         </div>
         {savedQuotes.length === 0 ? (
@@ -188,7 +188,7 @@ export function ProfilePage() {
                 <button
                   onClick={() => toggleSavedQuote(q.text)}
                   aria-label={t("removeQuote")}
-                  className="text-rose hover:text-rose-deep transition-colors shrink-0"
+                  className="text-rose-deep hover:text-ink transition-colors shrink-0"
                 >
                   <Heart size={15} fill="currentColor" />
                 </button>
@@ -208,9 +208,9 @@ export function ProfilePage() {
               <div key={m.id} className="flex items-center gap-3 text-sm px-3 py-2.5 rounded-xl border border-petal/50">
                 <span className="text-lg shrink-0">{m.mood}</span>
                 <div className="min-w-0 flex-1">
-                  <div className="truncate italic text-ink-soft">&ldquo;{m.quote}&rdquo;</div>
+                  <div className="truncate italic text-ink-soft">{m.quote ? <>&ldquo;{m.quote}&rdquo;</> : "-"}</div>
                 </div>
-                <div className="text-xs text-ink-soft shrink-0">{m.date}</div>
+                <div className="text-xs text-ink-soft shrink-0">{m.date === "Today" ? m.date : formatDayKey(m.date, locale)}</div>
               </div>
             ))}
           </div>

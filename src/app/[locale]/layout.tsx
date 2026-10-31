@@ -25,8 +25,13 @@ const THEME_INIT_SCRIPT = `
     if (mode === "dark") {
       document.documentElement.classList.add("dark");
     }
+    var legacy = { pink: "rose", lime: "sage", mango: "clay", island: "slate", indigo: "lavender", cherryCola: "rose" };
     var palette = localStorage.getItem("bloom-palette");
-    if (palette && palette !== "pink") {
+    if (palette && legacy[palette]) {
+      palette = legacy[palette];
+      localStorage.setItem("bloom-palette", palette);
+    }
+    if (palette && palette !== "stone") {
       document.documentElement.setAttribute("data-theme", palette);
     }
   } catch (e) {}

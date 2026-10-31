@@ -14,9 +14,12 @@ export function Flower({
   delay?: number;
   size?: number;
 }) {
-  const petalColor = stage === "bloom" ? "#F4A7C2" : stage === "wilt" ? "#D7A9B4" : "#E6D3D8";
-  const centerColor = stage === "bloom" ? "#F6C453" : "#D9C79A";
-  const stemColor = stage === "fade" ? "#CBB9BD" : "#8FAE86";
+  // Colours come from the palette tokens in globals.css, so the garden
+  // follows whichever accent the person picked instead of staying pink.
+  const petalColor =
+    stage === "bloom" ? "var(--flower-bloom)" : stage === "wilt" ? "var(--flower-wilt)" : "var(--flower-fade)";
+  const centerColor = stage === "bloom" ? "var(--flower-center)" : "var(--flower-fade)";
+  const stemColor = stage === "fade" ? "var(--flower-fade)" : "var(--flower-stem)";
   const scale = stage === "fade" ? 0.7 : stage === "wilt" ? 0.85 : 1;
   const rotate = stage === "wilt" ? 8 : stage === "fade" ? 14 : 0;
 
@@ -28,9 +31,6 @@ export function Flower({
       initial={{ opacity: 0, y: 8, scale: 0.6 }}
       animate={{ opacity: stage === "fade" ? 0.55 : 1, y: 0, scale, rotate }}
       transition={{ duration: 0.6, delay }}
-      style={{
-        filter: stage === "bloom" ? "drop-shadow(0 2px 6px rgba(244,167,194,0.35))" : "none",
-      }}
     >
       <line x1="20" y1="60" x2="20" y2="26" stroke={stemColor} strokeWidth="2" strokeLinecap="round" />
       {kind === "sakura" ? (

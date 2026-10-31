@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useTranslations } from "next-intl";
-import { Check, Moon, Sun } from "lucide-react";
+import { Check, Moon, Sun, Trash2 } from "lucide-react";
 import { useBloomStore } from "@/lib/store";
 import { useTheme, PALETTES, PALETTE_META } from "@/components/theme-provider";
 import { computeHourlyValue } from "@/lib/hourly-value";
@@ -33,6 +33,8 @@ export function SettingsPage() {
   const updateProfile = useBloomStore((s) => s.updateProfile);
   const setHourlyValue = useBloomStore((s) => s.setHourlyValue);
   const showToast = useBloomStore((s) => s.showToast);
+  const resetAll = useBloomStore((s) => s.resetAll);
+  const [confirmReset, setConfirmReset] = React.useState(false);
   const { resolvedTheme, setTheme, palette, setPalette } = useTheme();
 
   const [name, setName] = React.useState(displayName);
@@ -99,7 +101,7 @@ export function SettingsPage() {
           <button
             onClick={() => setMode("direct")}
             className={`flex-1 py-2 rounded-full text-xs font-medium border transition-all ${
-              mode === "direct" ? "gradient-primary text-white border-transparent shadow-sm" : "border-petal/60 text-ink-soft"
+              mode === "direct" ? "bg-rose text-white dark:text-night border-transparent" : "border-petal text-ink-soft"
             }`}
           >
             {t("modeDirect")}
@@ -107,7 +109,7 @@ export function SettingsPage() {
           <button
             onClick={() => setMode("salary")}
             className={`flex-1 py-2 rounded-full text-xs font-medium border transition-all ${
-              mode === "salary" ? "gradient-primary text-white border-transparent shadow-sm" : "border-petal/60 text-ink-soft"
+              mode === "salary" ? "bg-rose text-white dark:text-night border-transparent" : "border-petal text-ink-soft"
             }`}
           >
             {t("modeSalary")}
@@ -156,8 +158,8 @@ export function SettingsPage() {
                 onClick={() => toggleGrowthArea(area)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium border transition-all flex items-center gap-1.5 ${
                   active
-                    ? "gradient-primary text-white border-transparent shadow-sm"
-                    : "border-petal/60 hover:border-rose text-ink-soft"
+                    ? "bg-rose text-white dark:text-night border-transparent"
+                    : "border-petal hover:border-rose text-ink-soft"
                 }`}
               >
                 {active && <Check size={11} />}
@@ -179,16 +181,14 @@ export function SettingsPage() {
                 key={p}
                 onClick={() => setPalette(p)}
                 className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border transition-all text-left ${
-                  active ? "border-rose bg-blush/40 shadow-sm" : "border-petal/60 hover:border-rose"
+                  active ? "border-rose bg-blush" : "border-petal hover:border-rose"
                 }`}
               >
                 <span
                   className="w-6 h-6 rounded-full shrink-0"
                   style={{ background: `linear-gradient(135deg, ${swatch.from}, ${swatch.to})` }}
                 />
-                <span className="text-xs font-medium flex-1">
-                  {swatch.emoji} {tOnboarding(`themes.${p}`)}
-                </span>
+                <span className="text-xs font-medium flex-1">{tOnboarding(`themes.${p}`)}</span>
                 {active && <Check size={14} className="text-rose-deep animate-[checkmark-pop_0.3s_cubic-bezier(0.34,1.56,0.64,1)]" />}
               </button>
             );
@@ -217,6 +217,31 @@ export function SettingsPage() {
         <button onClick={() => setFeedbackOpen(true)} className="btn-secondary px-4 py-2 rounded-full text-xs font-medium shrink-0">
           {tFeedback("trigger")}
         </button>
+      </section>
+
+      <section className="rounded-2xl glass p-6 space-y-3">
+        <div className="font-medium text-sm">{t("dataSection")}</div>
+        <p className="text-xs text-ink-soft">{t("dataHint")}</p>
+        {confirmReset ? (
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-sm">{t("resetConfirm")}</span>
+            <button
+              onClick={() => {
+                void resetAll();
+              }}
+              className="bg-error text-white px-4 py-2 rounded-full text-xs font-medium"
+            >
+              {t("resetYes")}
+            </button>
+            <button onClick={() => setConfirmReset(false)} className="btn-secondary px-4 py-2 rounded-full text-xs font-medium">
+              {t("resetNo")}
+            </button>
+          </div>
+        ) : (
+          <button onClick={() => setConfirmReset(true)} className="btn-secondary flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium text-error">
+            <Trash2 size={13} /> {t("reset")}
+          </button>
+        )}
       </section>
 
       <FeedbackDialog open={feedbackOpen} onOpenChange={setFeedbackOpen} />

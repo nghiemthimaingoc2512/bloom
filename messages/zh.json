@@ -4,14 +4,15 @@
     "description": "Bloom 是一座个人成长花园。每一次用心的努力都会种下一颗种子,每一小时的专注都会让你的花园绽放。"
   },
   "nav": {
-    "home": "花园",
-    "board": "专注看板",
-    "analytics": "每周花园",
+    "home": "今天",
+    "board": "任务",
+    "analytics": "统计",
     "store": "奖励",
-    "memory": "记忆花园",
+    "memory": "日记",
     "profile": "个人资料",
     "settings": "设置",
-    "about": "关于"
+    "about": "关于",
+    "balance": "Bloom 余额"
   },
   "about": {
     "title": "Bloom",
@@ -37,15 +38,15 @@
     "welcomeTitle": "欢迎来到 Bloom 🌸",
     "step1Question": "我们该如何称呼你?",
     "namePlaceholder": "你的名字",
-    "step2Question": "你一小时的专注工作值多少钱?",
-    "step2Hint": "这将成为你的 Bloom Balance、奖励和图表的基础,你可以随时在设置中修改。",
-    "customValue": "自定义金额",
-    "customValuePlaceholder": "输入你自己的金额",
+    "step2Question": "一小时专注工作对你值多少？",
+    "step2Hint": "Bloom 用它计算每项任务能赚多少：30 分钟的步骤可得一半。之后可在设置中修改。",
+    "customValue": "其他金额",
+    "customValuePlaceholder": "每小时金额，如 100000",
     "step3Question": "你正在培养什么?",
-    "step4Title": "选择你的外观",
+    "step4Title": "选择颜色",
     "back": "返回",
     "continue": "继续",
-    "getStarted": "开始使用",
+    "getStarted": "开始使用 Bloom",
     "growthAreas": {
       "career": "职业发展",
       "study": "学习",
@@ -56,28 +57,41 @@
       "personalGrowth": "个人成长"
     },
     "themes": {
-      "pink": "Bloom Pink",
-      "lime": "Lime Glow",
-      "mango": "Mango Orange",
-      "island": "Island Paradise",
-      "indigo": "Indigo",
-      "cherryCola": "Cherry Cola"
-    }
+      "stone": "石灰",
+      "sage": "鼠尾草",
+      "clay": "陶土",
+      "slate": "青灰",
+      "lavender": "薰衣草",
+      "rose": "灰玫瑰"
+    },
+    "intro": "完成任务，累积余额，培育花园，再兑换你自己选的奖励。",
+    "customValueError": "请输入不少于 1,000₫ 的金额。",
+    "step3Hint": "可多选，每日语录会与之匹配。",
+    "skip": "暂时跳过",
+    "step4Hint": "选择后应用立即变色。"
   },
   "home": {
     "welcomeBack": "欢迎回来,{name}",
-    "gardenWaiting": "每一小时的专注都会累积成真实的进步。",
-    "gardenEmpty": "你的花园还是空的 - 完成一个 Focus,种下你的第一朵花。",
-    "balance": "今日 Bloom Balance",
+    "gardenWaiting": "每一个专注的小时都在累积。",
+    "gardenEmpty": "每天结束时写日记，种下第一朵花。",
+    "balance": "Bloom 余额",
     "streak": "当前连续天数",
     "tasks": "今日任务",
-    "remaining": "剩余",
-    "focusHours": "今日专注时长",
-    "gardenState": "当前花园状态",
+    "remaining": "剩余步骤",
+    "focusHours": "今日专注",
+    "gardenState": "盛开的花",
     "blooming": "绽放中",
     "wilting": "略显萎靡",
     "fading": "正在凋零",
-    "days": "天"
+    "days": "天",
+    "welcomeNew": "你好，{name}",
+    "balanceNote": "用于奖励的虚拟币，不是真钱",
+    "earnedToday": "今日赚取",
+    "stepsDone": "今日完成步骤",
+    "quietNotice": "你有一阵子没来了。花园休息了一下，正等着你。",
+    "quietLost": "连续中断：-{amount}。",
+    "lateNotice": "“{title}”已逾期超过 3 天：-{amount}。",
+    "dismiss": "关闭"
   },
   "companion": {
     "save": "保存这句话",
@@ -238,50 +252,61 @@
     }
   },
   "reflection": {
-    "unlocked": "今日反思",
-    "subtitle": "你今天已经努力出现过了,写一段给未来自己的话吧。",
+    "unlocked": "今日日记",
+    "subtitle": "给未来的自己写一句话。今天可以种 {count} 朵花。",
     "placeholder": "亲爱的未来的我...",
-    "save": "种下这段反思",
+    "save": "保存并种花",
     "mood": "今天感觉怎么样?",
     "perfectTitle": "完美绽放日",
-    "perfectSubtitle": "所有任务都已完成,你的花园今天格外明亮。"
+    "perfectSubtitle": "所有任务都已完成,你的花园今天格外明亮。",
+    "perfectBonus": "所有步骤都完成了，还能获得全勤奖励 {amount}。",
+    "locked": "今天完成一步即可解锁日记并种花。",
+    "doneTitle": "今日日记已保存",
+    "doneSubtitle": "明天再来写新的一篇。",
+    "plantedToast": "种下了 {count} 朵花",
+    "moods": {
+      "good": "很棒",
+      "okay": "还好",
+      "hard": "有点难",
+      "calm": "平静"
+    }
   },
   "momentum": {
-    "title": "动力法则",
-    "subtitle": "微小的行动会累积成非凡的结果。",
-    "preview": "预览一个平静的日子",
-    "quietMessage": "已经安静了一段时间,没关系 - 你的花园只是在休息,等待你回来。",
-    "rule1": "每保持一天连续记录,可获得 +1,200,000 Bloom Balance。",
-    "rule2": "每中断一天连续记录,将扣除 -600,000 Bloom Balance。",
-    "rule3": "一项任务连续延误超过 3 天,将获得红色警告标记,并扣除 -3,600,000 Bloom Balance。",
-    "rule4": "每天 1% 的增长,一年后能让你的价值增长约 37 倍(1.01^365 ≈ 37.78);而每天 1% 的下降,会让你的价值在一年后趋近于零(0.99^365 ≈ 0.03)。"
+    "title": "余额如何计算",
+    "show": "展开",
+    "hide": "收起",
+    "ruleStep": "完成步骤：获得时长 × 每小时价值（{amount}/小时）。",
+    "ruleStreak": "连续第 2 天起：每天 +{amount}。",
+    "ruleFullDay": "完成全部步骤并写日记：奖励 +{amount}。",
+    "ruleLostStreak": "因漏掉一天而中断：-{amount}（仅一次）。部分花会枯萎，完成步骤后可重新盛开。",
+    "ruleLate": "任务逾期超过 3 天：-{amount}，每个任务一次。",
+    "ruleRefund": "取消勾选会扣回所得，余额不会低于 0。",
+    "ruleMath": "坚持的意义：每天进步 1%，一年约 37 倍（1.01^365 ≈ 37.78）。"
   },
   "board": {
-    "title": "专注看板",
-    "subtitle": "这不是待办清单,而是意图成长为结果的地方。",
-    "newFocus": "新建 Focus",
-    "editFocus": "编辑 Focus",
+    "title": "任务",
+    "subtitle": "把工作拆成步骤，完成一项勾选一项。",
+    "newFocus": "添加任务",
+    "editFocus": "编辑任务",
     "purpose": "目的",
-    "purposeHint": "这件事为什么重要?",
-    "category": "分类",
+    "purposeHint": "为什么重要？",
+    "category": "任务类型",
     "priority": "优先级",
     "stakeholders": "相关人员",
     "startDate": "开始日期",
     "deadline": "截止日期",
-    "estimatedDuration": "预计时长",
     "expectedOutput": "预期成果",
     "notes": "备注",
-    "steps": "清单步骤",
-    "addStep": "添加步骤",
-    "create": "种下这个 Focus",
+    "steps": "步骤",
+    "addStep": "再加一步",
+    "create": "创建任务",
     "save": "保存更改",
     "cancel": "取消",
     "edit": "编辑",
     "delete": "删除",
-    "titleField": "标题",
+    "titleField": "你想完成什么？",
     "minutes": "分钟",
-    "reward": "奖励",
-    "empty": "还没有任何 Focus,添加第一个,开始积累动力。",
+    "empty": "还没有任务。添加想完成的事，拆成步骤，每勾选一步就能获得余额。",
     "encourageNew": [
       "微小的步伐,造就美好的人生。",
       "每一朵花都始于一颗种子。",
@@ -291,13 +316,49 @@
       "为今天的小胜利庆祝一下。",
       "你又养育了一朵花。",
       "进步本身就很美。"
-    ]
+    ],
+    "titlePlaceholder": "例如：完成第三季度报告",
+    "titleRequired": "请为任务命名。",
+    "consumeHint": "被动娱乐会记录时间，但不计余额。",
+    "stepsHint": "奖励根据时长和每小时价值自动计算（{amount}/小时）。",
+    "stepField": "步骤名称",
+    "singleStepHint": "留空则该任务成为一个 30 分钟的步骤。",
+    "minutesError": "请输入 {min} 到 {max} 分钟。",
+    "removeStep": "删除步骤",
+    "doneStep": "已完成",
+    "noReward": "不计余额",
+    "moreDetails": "更多详情（可选）",
+    "lessDetails": "收起详情",
+    "dateError": "截止日期不能早于开始日期。",
+    "tabActive": "进行中",
+    "tabDone": "已完成",
+    "emptyDone": "已完成的任务会显示在这里。",
+    "markDone": "标记为完成",
+    "markUndone": "标记为未完成",
+    "undoneToast": "步骤已重新打开，已扣回 {amount}。",
+    "undoneFree": "步骤已重新打开。",
+    "taskDone": "任务完成：{title}",
+    "loggedOnly": "已记录时间，此类型不计余额。",
+    "confirmDeleteTitle": "删除此任务？",
+    "confirmDeleteBody": "“{title}”及其步骤将被删除，已获得的余额会保留。"
   },
   "categories": {
-    "create": { "label": "创造", "desc": "创造价值" },
-    "grow": { "label": "成长", "desc": "学习、健康、技能" },
-    "enjoy": { "label": "享受", "desc": "休息、自我关怀、体验" },
-    "consume": { "label": "消耗", "desc": "被动刷屏、娱乐" }
+    "create": {
+      "label": "创造",
+      "desc": "创造价值的工作和项目"
+    },
+    "grow": {
+      "label": "学习成长",
+      "desc": "学习、健康、技能"
+    },
+    "enjoy": {
+      "label": "休息享受",
+      "desc": "自我关怀与体验"
+    },
+    "consume": {
+      "label": "被动娱乐",
+      "desc": "刷手机、看剧；记录时间，不计余额"
+    }
   },
   "priorities": {
     "high": "高",
@@ -305,30 +366,30 @@
     "low": "低"
   },
   "analytics": {
-    "title": "每周花园回顾",
+    "title": "统计",
     "focusHours": "专注时长",
-    "balanceEarned": "获得的 Bloom Balance",
-    "balanceLost": "失去的 Bloom Balance",
+    "balanceEarned": "本周赚取",
+    "balanceLost": "本周损失",
     "streak": "当前连续天数",
     "longestStreak": "最长连续天数",
     "completionRate": "任务完成率",
     "avgFocus": "日均专注时长",
-    "strongestCategory": "最强分类",
-    "suggestionLabel": "给下周的一个温柔建议",
-    "suggestion": "试着多安排一次「成长」时刻 - 哪怕只有安静的十分钟,也算数。",
+    "strongestCategory": "用时最多",
+    "suggestionLabel": "最近 7 天",
+    "suggestion": "试着添加一个学习成长步骤，十分钟也算。",
     "hoursByDay": "每日专注时长",
-    "timeByCategory": "你的时间都去了哪里",
-    "noCategoryData": "完成一个 Focus,即可查看你的时间去向。"
+    "timeByCategory": "时间分布",
+    "noCategoryData": "完成一步后即可查看。"
   },
   "store": {
-    "title": "奖励商店",
-    "subtitle": "创建能激励你的奖励,并用 Bloom Balance 兑换它们。",
-    "newReward": "新建奖励",
-    "createReward": "创建奖励",
+    "title": "奖励",
+    "subtitle": "选择值得努力的奖励，再用余额兑换。",
+    "newReward": "添加奖励",
+    "createReward": "新奖励",
     "editReward": "编辑奖励",
     "rewardName": "奖励名称",
     "rewardNamePlaceholder": "例如:和朋友喝杯咖啡",
-    "cost": "花费",
+    "cost": "价格",
     "icon": "图标",
     "cancel": "取消",
     "save": "保存",
@@ -338,12 +399,11 @@
     "unlocked": "已解锁",
     "locked": "未解锁 · 继续加油",
     "redeem": "兑换",
-    "redeemed": "好好享受这一刻 🎉",
-    "empty": "你的奖励商店还是空的,创建第一个奖励吧 - 一件你真心想要赢得的东西。",
-    "inspiration": "灵感画廊",
-    "inspirationSubtitle": "来自 Bloom 社区的点子,拿去用,再变成属于你自己的样子。",
-    "useTemplate": "使用此模板",
-    "templateAdded": "已添加到你的奖励商店",
+    "redeemed": "好好享受",
+    "empty": "还没有奖励。自己添加或选择下方的灵感。",
+    "inspiration": "入门灵感",
+    "inspirationSubtitle": "选一个，添加前先设置你自己的名称和价格。",
+    "useTemplate": "使用并自定价格",
     "templates": {
       "coffee": "咖啡约会",
       "movie": "电影之夜",
@@ -351,16 +411,31 @@
       "book": "买一本书",
       "spa": "SPA 放松日",
       "dinner": "一顿美好的晚餐"
-    }
+    },
+    "nameRequired": "请为奖励命名。",
+    "costRequired": "请输入大于 0 的价格。",
+    "costHint": "{amount} 约相当于 {hours} 小时专注工作。",
+    "balanceLabel": "Bloom 余额",
+    "balanceNote": "用于奖励自己的虚拟币，不是真钱。",
+    "mine": "我的奖励",
+    "ready": "可以兑换",
+    "need": "还差 {amount}",
+    "history": "已兑换",
+    "suggestedPrice": "建议：{amount}",
+    "confirmRedeemTitle": "兑换“{name}”？",
+    "confirmRedeemBody": "将从余额扣除 {amount}，剩余 {left}。",
+    "confirmDeleteTitle": "删除“{name}”？",
+    "confirmDeleteBody": "将从列表移除，兑换记录会保留。"
   },
   "memory": {
-    "title": "记忆花园",
-    "subtitle": "每一次反思都会成为一朵花,久而久之,这将成为你的故事。",
-    "empty": "完成一天之后,你的反思就会出现在这里。",
+    "title": "日记",
+    "subtitle": "每天一篇，日积月累成为你的故事。",
+    "empty": "还没有日记。今天完成一步，然后在“今天”页写下第一篇。",
     "tasksCompleted": "项任务已完成",
     "like": "喜欢",
     "favorite": "收藏",
-    "today": "今天"
+    "today": "今天",
+    "noNote": "当天没有留言"
   },
   "settings": {
     "title": "设置",
@@ -368,7 +443,7 @@
     "profileSection": "个人资料",
     "displayName": "显示名称",
     "hourlyValueSection": "时薪价值",
-    "hourlyValueHint": "这是你的 Bloom Balance、奖励和图表的基础。",
+    "hourlyValueHint": "仅影响未完成的步骤，已获得的金额不变。",
     "modeDirect": "直接输入",
     "modeSalary": "从薪资计算",
     "monthlySalary": "月薪",
@@ -382,7 +457,13 @@
     "light": "浅色",
     "dark": "深色",
     "save": "保存",
-    "saved": "设置已保存"
+    "saved": "设置已保存",
+    "dataSection": "你的数据",
+    "dataHint": "Bloom 仅保存在此浏览器。",
+    "reset": "删除我的全部数据",
+    "resetConfirm": "任务、奖励、花园和日记将永久删除。",
+    "resetYes": "确认删除",
+    "resetNo": "保留"
   },
   "profile": {
     "joined": "加入时间",
@@ -393,7 +474,6 @@
     "lifetimeFocusHours": "累计专注时长",
     "lifetimeBalance": "累计 Bloom Balance",
     "flowersCollected": "已收集花朵数",
-    "challengesCompleted": "已完成挑战数",
     "achievements": "成就",
     "badges": "徽章",
     "recentActivity": "最近动态",
@@ -419,7 +499,8 @@
     "wrappedFlowers": "绽放的花朵",
     "wrappedStreak": "最长连续天数",
     "wrappedFavoriteCategory": "最爱的分类",
-    "wrappedTopAchievement": "最佳成就"
+    "wrappedTopAchievement": "最佳成就",
+    "rewardsRedeemed": "已兑换奖励"
   },
   "achievements": {
     "rarity": {
@@ -428,19 +509,58 @@
       "epic": "史诗",
       "legendary": "传说"
     },
-    "firstFocus": { "name": "第一个 Focus", "desc": "创建你的第一个 Focus" },
-    "firstFlower": { "name": "第一朵花", "desc": "让你的第一朵花绽放" },
-    "firstReflection": { "name": "第一次反思", "desc": "写下你的第一篇每日反思" },
-    "firstReward": { "name": "第一个奖励", "desc": "兑换你的第一个奖励" },
-    "quoteCollector": { "name": "语录收藏家", "desc": "保存 5 条语录" },
-    "streak7": { "name": "连续 7 天", "desc": "达成连续 7 天记录" },
-    "hours10": { "name": "专注 10 小时", "desc": "累计记录 10 小时专注时长" },
-    "flowers10": { "name": "繁花盛开的花园", "desc": "培育 10 朵花" },
-    "memoryKeeper": { "name": "记忆守护者", "desc": "收藏 3 篇反思" },
-    "balance1m": { "name": "百万里程碑", "desc": "累计获得 1,000,000₫ Bloom Balance" },
-    "streak30": { "name": "连续 30 天", "desc": "达成连续 30 天记录" },
-    "hours100": { "name": "专注 100 小时", "desc": "累计记录 100 小时专注时长" },
-    "balance10m": { "name": "千万俱乐部", "desc": "累计获得 10,000,000₫ Bloom Balance" }
+    "firstFocus": {
+      "name": "第一个任务",
+      "desc": "创建第一个任务"
+    },
+    "firstFlower": {
+      "name": "第一朵花",
+      "desc": "让你的第一朵花绽放"
+    },
+    "firstReflection": {
+      "name": "第一次反思",
+      "desc": "写下你的第一篇每日反思"
+    },
+    "firstReward": {
+      "name": "第一个奖励",
+      "desc": "兑换你的第一个奖励"
+    },
+    "quoteCollector": {
+      "name": "语录收藏家",
+      "desc": "保存 5 条语录"
+    },
+    "streak7": {
+      "name": "连续 7 天",
+      "desc": "达成连续 7 天记录"
+    },
+    "hours10": {
+      "name": "专注 10 小时",
+      "desc": "累计记录 10 小时专注时长"
+    },
+    "flowers10": {
+      "name": "繁花盛开的花园",
+      "desc": "培育 10 朵花"
+    },
+    "memoryKeeper": {
+      "name": "记忆守护者",
+      "desc": "收藏 3 篇反思"
+    },
+    "balance1m": {
+      "name": "百万里程碑",
+      "desc": "累计获得 1,000,000₫ Bloom Balance"
+    },
+    "streak30": {
+      "name": "连续 30 天",
+      "desc": "达成连续 30 天记录"
+    },
+    "hours100": {
+      "name": "专注 100 小时",
+      "desc": "累计记录 100 小时专注时长"
+    },
+    "balance10m": {
+      "name": "千万俱乐部",
+      "desc": "累计获得 10,000,000₫ Bloom Balance"
+    }
   },
   "share": {
     "title": "分享",

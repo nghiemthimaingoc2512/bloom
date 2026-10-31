@@ -34,6 +34,8 @@ export interface ChecklistStep {
   estimatedMinutes: number;
   reward: number;
   done: boolean;
+  /** Local day (YYYY-MM-DD) the step was ticked; null while open. */
+  doneAt?: string | null;
 }
 
 export interface Focus {
@@ -50,6 +52,8 @@ export interface Focus {
   notes: string;
   checklist: ChecklistStep[];
   createdAt: string;
+  /** Set once the overdue penalty has been charged, so it is never charged twice. */
+  latePenaltyAt?: string | null;
 }
 
 export interface Reward {
@@ -103,10 +107,15 @@ export interface FeedbackEntry {
   submittedAt: string;
 }
 
+export type LedgerKind = "reflection" | "streak" | "streakLost" | "late" | "archived";
+
 export interface DayRecord {
   date: string; // YYYY-MM-DD
   focusMinutes: number;
   balanceDelta: number;
+  /** Why the balance moved; absent on records from before the ledger had kinds. */
+  kind?: LedgerKind;
+  label?: string;
   categoryMinutes: Record<Category, number>;
   completionRatio: number;
 }
@@ -129,7 +138,11 @@ export interface BloomState {
   memory: MemoryEntry[];
   savedQuotes: SavedQuote[];
   history: DayRecord[];
+  /** Kept for old saves; the live flag is reflectedOn === todayKey(). */
   reflectedToday: boolean;
+  reflectedOn: string | null;
+  /** Day the app last ran its day-change checks (streak loss, overdue tasks). */
+  lastRolloverDate: string | null;
   feedback: FeedbackEntry[];
   betaBannerDismissed: boolean;
 }

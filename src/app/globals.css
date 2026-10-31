@@ -13,20 +13,24 @@
     "Noto Sans JP", "Hiragino Kaku Gothic Pro", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
-  /* Bloom Pink - the default palette */
-  --color-cream: #fff5f8;
-  --color-surface: #ffffff;
-  --color-blush: #ffe5ef;
-  --color-petal: #f7c8d8;
-  --color-rose-light: #ff7fb5;
-  --color-rose: #f54f93;
-  --color-rose-deep: #e73c84;
-  --color-ink: #2f2f2f;
-  --color-ink-soft: #6b6b6b;
+  /* Stone - the default palette. Warm off-white ground, graphite ink and a
+     single muted slate accent, so the app reads calm and gender-neutral.
+     The token names (cream/blush/petal/rose) are kept from the original
+     pink design so no component needs to change: cream = page, blush =
+     tint, petal = border, rose = accent. */
+  --color-cream: #f6f5f2;
+  --color-surface: #fdfdfc;
+  --color-blush: #ecebe6;
+  --color-petal: #d9d7d0;
+  --color-rose-light: #6f7a86;
+  --color-rose: #4d5863;
+  --color-rose-deep: #38424c;
+  --color-ink: #26282b;
+  --color-ink-soft: #6b6f74;
 
   /* dark mode surface */
-  --color-night: #1b1218;
-  --color-night-card: #251920;
+  --color-night: #17181a;
+  --color-night-card: #202225;
 }
 
 /* Tailwind's @theme block only keeps tokens an actual utility class (bg-*,
@@ -42,84 +46,93 @@
   --color-border: var(--color-petal);
   --color-hover: var(--color-rose-deep);
   --color-selected: var(--color-blush);
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-ink-muted: #9b9b9b;
+  --color-success: #3f8f5f;
+  --color-warning: #b07d2a;
+  --color-error: #b4524a;
+  --color-ink-muted: #9a9ea3;
+
+  /* flower colours follow the accent so every palette grows its own garden */
+  --flower-bloom: var(--color-rose-light);
+  --flower-wilt: color-mix(in srgb, var(--color-rose-light) 45%, #b9b3ad);
+  --flower-fade: #c9c5bf;
+  --flower-center: #d8b86a;
+  --flower-stem: #7f9a7a;
 }
 
 /* Every palette below only overrides the accent + wash tokens above -
    every component keeps using bg-rose / text-rose-deep / border-petal /
-   etc., so switching themes never requires touching component code. */
-[data-theme="lime"] {
-  --color-cream: #f8fbf0;
-  --color-surface: #fdfef9;
-  --color-blush: #eef7d9;
-  --color-petal: #d9eea8;
-  --color-rose-light: #c3ea4f;
-  --color-rose: #558b2f;
-  --color-rose-deep: #3f6b1f;
+   etc., so switching themes never requires touching component code.
+   All six are low-saturation on purpose: one quiet accent on a neutral
+   ground, never a coloured page. */
+[data-theme="sage"] {
+  --color-cream: #f4f6f2;
+  --color-surface: #fcfdfb;
+  --color-blush: #e8ede4;
+  --color-petal: #d3dbcd;
+  --color-rose-light: #7a9478;
+  --color-rose: #5b7559;
+  --color-rose-deep: #455b44;
 }
 
-[data-theme="mango"] {
-  --color-cream: #fff8f0;
-  --color-surface: #fffcf8;
-  --color-blush: #ffedd8;
-  --color-petal: #fbd9ae;
-  --color-rose-light: #ffad4f;
-  --color-rose: #b3650a;
-  --color-rose-deep: #954f06;
+[data-theme="clay"] {
+  --color-cream: #f7f4f0;
+  --color-surface: #fdfcfa;
+  --color-blush: #eee7df;
+  --color-petal: #dfd3c6;
+  --color-rose-light: #a98470;
+  --color-rose: #8a6752;
+  --color-rose-deep: #6d5041;
 }
 
-[data-theme="island"] {
-  --color-cream: #f3fbfc;
-  --color-surface: #f9fefe;
-  --color-blush: #e3f7fa;
-  --color-petal: #c7ebf0;
-  --color-rose-light: #95d8e6;
-  --color-rose: #0e6e7c;
-  --color-rose-deep: #0a5761;
+[data-theme="slate"] {
+  --color-cream: #f2f5f6;
+  --color-surface: #fbfcfd;
+  --color-blush: #e3e9eb;
+  --color-petal: #ccd6d9;
+  --color-rose-light: #6a8a94;
+  --color-rose: #4e6c76;
+  --color-rose-deep: #3b545d;
 }
 
-[data-theme="indigo"] {
-  --color-cream: #f8f7ff;
-  --color-surface: #fcfcff;
-  --color-blush: #edecff;
-  --color-petal: #dad6ff;
-  --color-rose-light: #c8c3ff;
-  --color-rose: #5b52d6;
-  --color-rose-deep: #453cb8;
+[data-theme="lavender"] {
+  --color-cream: #f5f4f7;
+  --color-surface: #fcfcfd;
+  --color-blush: #e9e7ee;
+  --color-petal: #d6d2df;
+  --color-rose-light: #8a82a4;
+  --color-rose: #6d6488;
+  --color-rose-deep: #554d6d;
 }
 
-[data-theme="cherryCola"] {
-  --color-cream: #fff6f6;
-  --color-surface: #fffafa;
-  --color-blush: #fbe3e5;
-  --color-petal: #f0c4c8;
-  --color-rose-light: #c2242f;
-  --color-rose: #9a0002;
-  --color-rose-deep: #7a0002;
+[data-theme="rose"] {
+  --color-cream: #f7f4f4;
+  --color-surface: #fdfbfb;
+  --color-blush: #eee5e6;
+  --color-petal: #ddcfd1;
+  --color-rose-light: #a8808a;
+  --color-rose: #8a636d;
+  --color-rose-deep: #6d4c55;
 }
 
 .dark {
   --color-cream: var(--color-night);
-  --color-ink-soft: #ab8f99;
-  --color-ink-muted: #8a7680;
+  --color-surface: var(--color-night-card);
+  --color-blush: #2a2d31;
+  --color-petal: #3a3e43;
+  --color-ink: #ececea;
+  --color-ink-soft: #a3a7ab;
+  --color-ink-muted: #7e8287;
+  --color-rose-light: color-mix(in srgb, var(--color-rose) 55%, #ffffff);
+  --color-rose-deep: color-mix(in srgb, var(--color-rose) 70%, #ffffff);
+  --flower-fade: #5a5c60;
+  --flower-wilt: color-mix(in srgb, var(--color-rose-light) 40%, #6b6b6b);
 }
 
 body {
   background-color: var(--color-cream);
-  background-image: radial-gradient(circle at 15% 0%, color-mix(in srgb, var(--color-rose) 7%, transparent), transparent 55%),
-    radial-gradient(circle at 100% 20%, color-mix(in srgb, var(--color-rose) 5%, transparent), transparent 45%);
-  background-attachment: fixed;
   color: var(--color-ink);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dark body {
-  color: #f6e9ee;
-  background-image: none;
 }
 
 .font-display {
@@ -130,76 +143,64 @@ body {
   font-family: var(--font-mono);
 }
 
-/* glass card, the recurring surface across Bloom */
+/* flat card, the recurring surface across Bloom */
 .glass {
-  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-petal) 55%, transparent);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--color-rose-deep) 4%, transparent),
-    0 10px 28px -16px color-mix(in srgb, var(--color-rose-deep) 18%, transparent);
-  backdrop-filter: blur(20px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-petal);
+  box-shadow: 0 1px 2px rgba(20, 20, 20, 0.04);
   transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease, background-color 0.3s ease;
 }
 
 .dark .glass {
-  background: color-mix(in srgb, var(--color-night-card) 85%, transparent);
-  border: 1px solid color-mix(in srgb, #3a2a30 90%, transparent);
-  box-shadow: 0 10px 28px -16px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 
 /* soft hover lift for interactive cards */
 .glass-hover:hover {
-  transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--color-rose) 40%, transparent);
-  box-shadow: 0 4px 10px color-mix(in srgb, var(--color-rose-deep) 6%, transparent),
-    0 20px 36px -18px color-mix(in srgb, var(--color-rose-deep) 28%, transparent);
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--color-rose) 45%, var(--color-petal));
+  box-shadow: 0 6px 18px -12px rgba(20, 20, 20, 0.25);
 }
 
-.dark .glass-hover:hover {
-  box-shadow: 0 20px 36px -18px rgba(0, 0, 0, 0.6);
-}
-
-/* rich gradient, used for the hero and primary accents */
+/* the single accent fill, used for the active tab and primary buttons */
 .gradient-primary {
-  background: linear-gradient(135deg, var(--color-rose-light), var(--color-rose));
+  background: var(--color-rose);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-rose-light), var(--color-rose));
+  background: var(--color-rose);
   color: white;
-  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-rose) 60%, transparent);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, opacity 0.2s ease, background 0.3s ease;
+  transition: transform 0.15s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-primary:hover:not(:disabled) {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--color-rose) 65%, transparent);
+  background: var(--color-rose-deep);
 }
 
 .btn-primary:active:not(:disabled) {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .btn-primary:disabled {
   opacity: 0.45;
-  box-shadow: none;
   cursor: not-allowed;
+}
+
+.dark .btn-primary,
+.dark .gradient-primary {
+  color: var(--color-night);
 }
 
 .btn-secondary {
   background: var(--color-surface);
-  color: var(--color-rose-deep);
+  color: var(--color-ink);
   border: 1px solid var(--color-petal);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.3s ease;
 }
 
 .btn-secondary:hover {
   border-color: var(--color-rose);
-  box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--color-rose) 30%, transparent);
-  transform: translateY(-1px);
-}
-
-.dark .btn-secondary {
-  background: color-mix(in srgb, var(--color-night-card) 90%, transparent);
+  background: var(--color-blush);
 }
 
 ::selection {

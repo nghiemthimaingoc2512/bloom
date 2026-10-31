@@ -4,14 +4,15 @@
     "description": "Bloom은 개인의 성장을 위한 정원입니다. 의미 있는 모든 노력은 씨앗이 되고, 집중한 모든 시간은 당신의 정원을 꽃피웁니다."
   },
   "nav": {
-    "home": "정원",
-    "board": "포커스 보드",
-    "analytics": "주간 정원",
+    "home": "오늘",
+    "board": "할 일",
+    "analytics": "통계",
     "store": "보상",
-    "memory": "추억 정원",
+    "memory": "일기",
     "profile": "프로필",
     "settings": "설정",
-    "about": "소개"
+    "about": "소개",
+    "balance": "Bloom 잔액"
   },
   "about": {
     "title": "Bloom",
@@ -37,15 +38,15 @@
     "welcomeTitle": "Bloom에 오신 것을 환영합니다 🌸",
     "step1Question": "무엇이라고 불러드릴까요?",
     "namePlaceholder": "이름",
-    "step2Question": "집중해서 일하는 한 시간은 얼마의 가치가 있나요?",
-    "step2Hint": "이 값은 Bloom Balance, 보상, 차트의 기준이 됩니다. 설정에서 언제든지 변경할 수 있어요.",
-    "customValue": "직접 입력",
-    "customValuePlaceholder": "원하는 금액을 입력하세요",
+    "step2Question": "집중한 1시간의 가치는 얼마인가요?",
+    "step2Hint": "Bloom은 이 값으로 할 일마다 얻는 금액을 계산합니다. 30분 단계는 절반을 받습니다. 나중에 설정에서 바꿀 수 있습니다.",
+    "customValue": "다른 금액",
+    "customValuePlaceholder": "시간당 금액, 예: 100000",
     "step3Question": "무엇을 키워가고 있나요?",
-    "step4Title": "테마를 선택하세요",
+    "step4Title": "색상 선택",
     "back": "이전",
     "continue": "계속",
-    "getStarted": "시작하기",
+    "getStarted": "Bloom 시작하기",
     "growthAreas": {
       "career": "커리어",
       "study": "학습",
@@ -56,28 +57,41 @@
       "personalGrowth": "자기계발"
     },
     "themes": {
-      "pink": "Bloom Pink",
-      "lime": "Lime Glow",
-      "mango": "Mango Orange",
-      "island": "Island Paradise",
-      "indigo": "Indigo",
-      "cherryCola": "Cherry Cola"
-    }
+      "stone": "스톤",
+      "sage": "세이지",
+      "clay": "클레이",
+      "slate": "슬레이트",
+      "lavender": "라벤더",
+      "rose": "로즈"
+    },
+    "intro": "할 일을 끝내고 잔액을 모아 정원을 가꾸고, 직접 고른 보상으로 바꿔 보세요.",
+    "customValueError": "1,000₫ 이상을 입력하세요.",
+    "step3Hint": "원하는 만큼 고르세요. 오늘의 문구가 여기에 맞춰집니다.",
+    "skip": "건너뛰기",
+    "step4Hint": "고르는 즉시 앱 색상이 바뀝니다."
   },
   "home": {
     "welcomeBack": "다시 오신 것을 환영해요, {name}님",
-    "gardenWaiting": "집중한 매 순간이 모여 진짜 성장이 됩니다.",
-    "gardenEmpty": "정원이 아직 비어 있어요 - Focus를 완료하고 첫 꽃을 심어보세요.",
-    "balance": "오늘의 Bloom Balance",
+    "gardenWaiting": "집중한 시간은 모두 쌓입니다.",
+    "gardenEmpty": "하루를 마치며 일기를 쓰면 첫 꽃이 심어집니다.",
+    "balance": "Bloom 잔액",
     "streak": "현재 연속 기록",
     "tasks": "오늘의 할 일",
-    "remaining": "남은 일",
-    "focusHours": "오늘의 집중 시간",
-    "gardenState": "현재 정원 상태",
+    "remaining": "남은 단계",
+    "focusHours": "오늘 집중",
+    "gardenState": "활짝 핀 꽃",
     "blooming": "만개 중",
     "wilting": "시들해짐",
     "fading": "희미해짐",
-    "days": "일"
+    "days": "일",
+    "welcomeNew": "안녕하세요, {name}님",
+    "balanceNote": "보상용 가상 화폐이며 실제 돈이 아닙니다",
+    "earnedToday": "오늘 획득",
+    "stepsDone": "오늘 완료한 단계",
+    "quietNotice": "한동안 조용했네요. 정원이 쉬면서 기다리고 있었어요.",
+    "quietLost": "연속 기록 종료: -{amount}.",
+    "lateNotice": "\"{title}\" 마감이 3일 넘게 지났습니다: -{amount}.",
+    "dismiss": "닫기"
   },
   "companion": {
     "save": "문구 저장",
@@ -238,50 +252,61 @@
     }
   },
   "reflection": {
-    "unlocked": "오늘의 회고",
-    "subtitle": "오늘 하루도 잘 해냈어요. 미래의 나에게 짧은 메시지를 남겨보세요.",
+    "unlocked": "오늘의 일기",
+    "subtitle": "미래의 나에게 한 줄 남겨 보세요. 오늘 꽃 {count}송이를 심습니다.",
     "placeholder": "미래의 나에게...",
-    "save": "이 회고 심기",
+    "save": "저장하고 꽃 심기",
     "mood": "오늘 하루는 어땠나요?",
     "perfectTitle": "완벽한 만개의 날",
-    "perfectSubtitle": "모든 일이 완료되었어요. 오늘 정원이 조금 더 밝게 빛나고 있어요."
+    "perfectSubtitle": "모든 일이 완료되었어요. 오늘 정원이 조금 더 밝게 빛나고 있어요.",
+    "perfectBonus": "모든 단계를 끝내서 완주 보너스 {amount}도 받습니다.",
+    "locked": "오늘 한 단계를 끝내면 일기가 열리고 꽃을 심을 수 있어요.",
+    "doneTitle": "오늘의 일기를 저장했어요",
+    "doneSubtitle": "내일 또 새 일기를 써 주세요.",
+    "plantedToast": "꽃 {count}송이를 심었어요",
+    "moods": {
+      "good": "아주 좋음",
+      "okay": "괜찮음",
+      "hard": "힘듦",
+      "calm": "차분함"
+    }
   },
   "momentum": {
-    "title": "모멘텀의 법칙",
-    "subtitle": "작은 행동들이 모여 놀라운 결과를 만듭니다.",
-    "preview": "조용한 하루 미리보기",
-    "quietMessage": "잠시 조용했네요. 괜찮아요 - 정원은 그저 쉬면서 당신을 기다리고 있어요.",
-    "rule1": "연속 기록을 유지할 때마다 +1,200,000 Bloom Balance를 얻습니다.",
-    "rule2": "연속 기록이 끊길 때마다 -600,000 Bloom Balance가 차감됩니다.",
-    "rule3": "3일 이상 연속으로 지연된 작업은 빨간 경고 배지를 받고 -3,600,000 Bloom Balance가 차감됩니다.",
-    "rule4": "하루 1%의 성장은 1년 후 가치를 약 37배로 만들지만(1.01^365 ≈ 37.78), 하루 1%의 하락은 1년 후 가치를 거의 0에 가깝게 만듭니다(0.99^365 ≈ 0.03)."
+    "title": "잔액 계산 방법",
+    "show": "보기",
+    "hide": "숨기기",
+    "ruleStep": "단계 완료: 시간 × 시간당 가치({amount}/시간)를 받습니다.",
+    "ruleStreak": "2일째부터 연속 유지: 하루 +{amount}.",
+    "ruleFullDay": "모든 단계를 끝내고 일기 쓰기: 보너스 +{amount}.",
+    "ruleLostStreak": "하루를 놓쳐 연속이 끊기면 -{amount}(1회). 일부 꽃이 시들지만 단계를 끝내면 다시 핍니다.",
+    "ruleLate": "마감을 3일 넘긴 할 일: 할 일마다 -{amount}(1회).",
+    "ruleRefund": "체크를 해제하면 받은 금액이 차감됩니다. 잔액은 0 아래로 내려가지 않습니다.",
+    "ruleMath": "꾸준함의 힘: 매일 1%씩 나아지면 1년 뒤 약 37배입니다(1.01^365 ≈ 37.78)."
   },
   "board": {
-    "title": "포커스 보드",
-    "subtitle": "할 일 목록이 아니라, 의도가 결과로 자라나는 공간입니다.",
-    "newFocus": "새 Focus",
-    "editFocus": "Focus 수정",
+    "title": "할 일",
+    "subtitle": "일을 단계로 나누고 끝낼 때마다 체크하세요.",
+    "newFocus": "할 일 추가",
+    "editFocus": "할 일 수정",
     "purpose": "목적",
-    "purposeHint": "이 일이 왜 중요한가요?",
-    "category": "카테고리",
+    "purposeHint": "왜 중요한가요?",
+    "category": "유형",
     "priority": "우선순위",
-    "stakeholders": "관계자",
+    "stakeholders": "관련된 사람",
     "startDate": "시작일",
     "deadline": "마감일",
-    "estimatedDuration": "예상 소요 시간",
-    "expectedOutput": "예상 결과물",
+    "expectedOutput": "기대 결과",
     "notes": "메모",
-    "steps": "체크리스트 단계",
+    "steps": "단계",
     "addStep": "단계 추가",
-    "create": "이 Focus 심기",
-    "save": "변경사항 저장",
+    "create": "할 일 만들기",
+    "save": "변경 사항 저장",
     "cancel": "취소",
     "edit": "수정",
     "delete": "삭제",
-    "titleField": "제목",
+    "titleField": "무엇을 끝내고 싶나요?",
     "minutes": "분",
-    "reward": "보상",
-    "empty": "아직 Focus가 없어요. 첫 번째를 추가하고 모멘텀을 만들어보세요.",
+    "empty": "아직 할 일이 없어요. 끝내고 싶은 일을 추가하고 단계로 나눈 뒤, 단계마다 체크하면 잔액을 받습니다.",
     "encourageNew": [
       "작은 걸음이 아름다운 삶을 만듭니다.",
       "모든 꽃은 씨앗에서 시작됩니다.",
@@ -291,13 +316,49 @@
       "오늘의 작은 승리를 축하하세요.",
       "당신은 또 하나의 꽃을 피웠어요.",
       "발전 그 자체가 아름답습니다."
-    ]
+    ],
+    "titlePlaceholder": "예: 3분기 보고서 끝내기",
+    "titleRequired": "할 일 이름을 입력하세요.",
+    "consumeHint": "수동적 시간은 기록되지만 잔액은 쌓이지 않습니다.",
+    "stepsHint": "보상은 시간과 시간당 가치({amount}/시간)로 자동 계산됩니다.",
+    "stepField": "단계 이름",
+    "singleStepHint": "비워 두면 30분짜리 단계 하나로 만들어집니다.",
+    "minutesError": "{min}~{max}분으로 입력하세요.",
+    "removeStep": "단계 삭제",
+    "doneStep": "완료",
+    "noReward": "잔액 없음",
+    "moreDetails": "자세한 내용(선택)",
+    "lessDetails": "자세한 내용 숨기기",
+    "dateError": "마감일은 시작일 이후여야 합니다.",
+    "tabActive": "진행 중",
+    "tabDone": "완료",
+    "emptyDone": "완료한 할 일이 여기에 표시됩니다.",
+    "markDone": "완료로 표시",
+    "markUndone": "완료 취소",
+    "undoneToast": "단계를 다시 열었습니다. {amount}를 돌려놓았어요.",
+    "undoneFree": "단계를 다시 열었습니다.",
+    "taskDone": "할 일 완료: {title}",
+    "loggedOnly": "시간을 기록했습니다. 이 유형은 잔액이 쌓이지 않습니다.",
+    "confirmDeleteTitle": "이 할 일을 삭제할까요?",
+    "confirmDeleteBody": "\"{title}\"와 단계가 삭제됩니다. 이미 받은 잔액은 유지됩니다."
   },
   "categories": {
-    "create": { "label": "창조", "desc": "가치를 만들어요" },
-    "grow": { "label": "성장", "desc": "학습, 건강, 기술" },
-    "enjoy": { "label": "휴식", "desc": "휴식, 자기 관리, 경험" },
-    "consume": { "label": "소비", "desc": "수동적인 스크롤, 오락" }
+    "create": {
+      "label": "만들기",
+      "desc": "가치를 만드는 일과 프로젝트"
+    },
+    "grow": {
+      "label": "배움과 성장",
+      "desc": "공부, 건강, 기술"
+    },
+    "enjoy": {
+      "label": "휴식과 즐거움",
+      "desc": "자기 돌봄과 경험"
+    },
+    "consume": {
+      "label": "수동적 시간",
+      "desc": "스크롤, TV; 시간만 기록되고 잔액은 없음"
+    }
   },
   "priorities": {
     "high": "높음",
@@ -305,30 +366,30 @@
     "low": "낮음"
   },
   "analytics": {
-    "title": "주간 정원 리뷰",
+    "title": "통계",
     "focusHours": "집중 시간",
-    "balanceEarned": "획득한 Bloom Balance",
-    "balanceLost": "잃은 Bloom Balance",
+    "balanceEarned": "이번 주 획득",
+    "balanceLost": "이번 주 손실",
     "streak": "현재 연속 기록",
     "longestStreak": "최장 연속 기록",
-    "completionRate": "작업 완료율",
+    "completionRate": "할 일 완료율",
     "avgFocus": "일일 평균 집중 시간",
-    "strongestCategory": "가장 강한 카테고리",
-    "suggestionLabel": "다음 주를 위한 작은 제안",
-    "suggestion": "성장 순간을 하나 더 추가해 보세요 - 단 10분의 조용한 시간도 의미가 있습니다.",
-    "hoursByDay": "요일별 집중 시간",
-    "timeByCategory": "당신의 시간이 어디로 갔는지",
-    "noCategoryData": "Focus를 완료하면 시간이 어디로 갔는지 확인할 수 있어요."
+    "strongestCategory": "가장 많은 시간",
+    "suggestionLabel": "최근 7일",
+    "suggestion": "배움과 성장 단계를 하나 추가해 보세요. 10분도 충분합니다.",
+    "hoursByDay": "날짜별 집중 시간",
+    "timeByCategory": "시간 분포",
+    "noCategoryData": "단계를 끝내면 볼 수 있습니다."
   },
   "store": {
-    "title": "보상 상점",
-    "subtitle": "당신에게 동기를 주는 보상을 만들고, Bloom Balance로 교환하세요.",
-    "newReward": "새 보상",
-    "createReward": "보상 만들기",
+    "title": "보상",
+    "subtitle": "노력할 만한 보상을 고르고 잔액으로 교환하세요.",
+    "newReward": "보상 추가",
+    "createReward": "새 보상",
     "editReward": "보상 수정",
     "rewardName": "보상 이름",
     "rewardNamePlaceholder": "예: 친구와의 커피 타임",
-    "cost": "비용",
+    "cost": "가격",
     "icon": "아이콘",
     "cancel": "취소",
     "save": "저장",
@@ -338,12 +399,11 @@
     "unlocked": "잠금 해제됨",
     "locked": "잠김 · 계속 성장하세요",
     "redeem": "교환",
-    "redeemed": "이 순간을 즐기세요 🎉",
-    "empty": "보상 상점이 비어 있어요. 진심으로 얻고 싶은 첫 번째 보상을 만들어보세요.",
-    "inspiration": "영감 갤러리",
-    "inspirationSubtitle": "Bloom 커뮤니티의 아이디어예요. 하나를 사용해보고, 나만의 것으로 만들어보세요.",
-    "useTemplate": "템플릿 사용",
-    "templateAdded": "보상 상점에 추가되었어요",
+    "redeemed": "즐기세요",
+    "empty": "아직 보상이 없습니다. 직접 추가하거나 아래 아이디어를 고르세요.",
+    "inspiration": "시작 아이디어",
+    "inspirationSubtitle": "하나를 고른 뒤 추가하기 전에 이름과 가격을 직접 정하세요.",
+    "useTemplate": "사용하고 가격 정하기",
     "templates": {
       "coffee": "커피 데이트",
       "movie": "영화의 밤",
@@ -351,16 +411,31 @@
       "book": "책 한 권 사기",
       "spa": "스파 데이",
       "dinner": "근사한 저녁 식사"
-    }
+    },
+    "nameRequired": "보상 이름을 입력하세요.",
+    "costRequired": "0보다 큰 가격을 입력하세요.",
+    "costHint": "{amount}은(는) 집중 업무 약 {hours}시간에 해당합니다.",
+    "balanceLabel": "Bloom 잔액",
+    "balanceNote": "스스로에게 보상하는 가상 화폐이며 실제 돈이 아닙니다.",
+    "mine": "내 보상",
+    "ready": "교환 가능",
+    "need": "{amount} 더 필요",
+    "history": "교환 내역",
+    "suggestedPrice": "제안: {amount}",
+    "confirmRedeemTitle": "\"{name}\"을(를) 교환할까요?",
+    "confirmRedeemBody": "잔액에서 {amount}가 차감되어 {left}가 남습니다.",
+    "confirmDeleteTitle": "\"{name}\"을(를) 삭제할까요?",
+    "confirmDeleteBody": "목록에서 삭제됩니다. 교환 내역은 유지됩니다."
   },
   "memory": {
-    "title": "추억 정원",
-    "subtitle": "모든 회고는 한 송이 꽃이 됩니다. 시간이 지나면 이것이 당신의 이야기가 됩니다.",
-    "empty": "하루를 완료하면 이곳에 회고가 나타납니다.",
+    "title": "일기",
+    "subtitle": "하루 한 편, 시간이 지나면 나의 이야기가 됩니다.",
+    "empty": "아직 일기가 없습니다. 오늘 한 단계를 끝내고 오늘 페이지에서 첫 일기를 써 보세요.",
     "tasksCompleted": "개 작업 완료",
     "like": "좋아요",
     "favorite": "즐겨찾기",
-    "today": "오늘"
+    "today": "오늘",
+    "noNote": "그날은 메모 없음"
   },
   "settings": {
     "title": "설정",
@@ -368,7 +443,7 @@
     "profileSection": "프로필",
     "displayName": "표시 이름",
     "hourlyValueSection": "시간당 가치",
-    "hourlyValueHint": "이는 Bloom Balance, 보상, 차트의 기준이 됩니다.",
+    "hourlyValueHint": "아직 끝내지 않은 단계에만 적용됩니다. 받은 금액은 그대로입니다.",
     "modeDirect": "직접 입력",
     "modeSalary": "급여로 계산",
     "monthlySalary": "월급",
@@ -382,7 +457,13 @@
     "light": "라이트",
     "dark": "다크",
     "save": "저장",
-    "saved": "설정이 저장되었습니다"
+    "saved": "설정이 저장되었습니다",
+    "dataSection": "내 데이터",
+    "dataHint": "Bloom은 이 브라우저에만 저장됩니다.",
+    "reset": "모든 데이터 삭제",
+    "resetConfirm": "할 일, 보상, 정원, 일기가 영구 삭제됩니다.",
+    "resetYes": "삭제",
+    "resetNo": "유지"
   },
   "profile": {
     "joined": "가입일",
@@ -393,7 +474,6 @@
     "lifetimeFocusHours": "누적 집중 시간",
     "lifetimeBalance": "누적 Bloom Balance",
     "flowersCollected": "수집한 꽃",
-    "challengesCompleted": "완료한 챌린지",
     "achievements": "업적",
     "badges": "배지",
     "recentActivity": "최근 활동",
@@ -419,7 +499,8 @@
     "wrappedFlowers": "피운 꽃",
     "wrappedStreak": "최장 연속 기록",
     "wrappedFavoriteCategory": "가장 좋아한 카테고리",
-    "wrappedTopAchievement": "최고의 업적"
+    "wrappedTopAchievement": "최고의 업적",
+    "rewardsRedeemed": "교환한 보상"
   },
   "achievements": {
     "rarity": {
@@ -428,19 +509,58 @@
       "epic": "영웅",
       "legendary": "전설"
     },
-    "firstFocus": { "name": "첫 Focus", "desc": "첫 번째 Focus를 만들어보세요" },
-    "firstFlower": { "name": "첫 꽃", "desc": "첫 번째 꽃을 피워보세요" },
-    "firstReflection": { "name": "첫 회고", "desc": "첫 번째 일일 회고를 작성해보세요" },
-    "firstReward": { "name": "첫 보상", "desc": "첫 번째 보상을 교환해보세요" },
-    "quoteCollector": { "name": "문구 수집가", "desc": "문구 5개 저장하기" },
-    "streak7": { "name": "7일 연속", "desc": "7일 연속 기록 달성하기" },
-    "hours10": { "name": "집중 10시간", "desc": "누적 집중 시간 10시간 기록하기" },
-    "flowers10": { "name": "만개한 정원", "desc": "꽃 10송이 키우기" },
-    "memoryKeeper": { "name": "추억 지킴이", "desc": "회고 3개 즐겨찾기하기" },
-    "balance1m": { "name": "첫 백만", "desc": "Bloom Balance 1,000,000₫ 달성하기" },
-    "streak30": { "name": "30일 연속", "desc": "30일 연속 기록 달성하기" },
-    "hours100": { "name": "집중 100시간", "desc": "누적 집중 시간 100시간 기록하기" },
-    "balance10m": { "name": "천만 클럽", "desc": "Bloom Balance 10,000,000₫ 달성하기" }
+    "firstFocus": {
+      "name": "첫 할 일",
+      "desc": "첫 할 일 만들기"
+    },
+    "firstFlower": {
+      "name": "첫 꽃",
+      "desc": "첫 번째 꽃을 피워보세요"
+    },
+    "firstReflection": {
+      "name": "첫 회고",
+      "desc": "첫 번째 일일 회고를 작성해보세요"
+    },
+    "firstReward": {
+      "name": "첫 보상",
+      "desc": "첫 번째 보상을 교환해보세요"
+    },
+    "quoteCollector": {
+      "name": "문구 수집가",
+      "desc": "문구 5개 저장하기"
+    },
+    "streak7": {
+      "name": "7일 연속",
+      "desc": "7일 연속 기록 달성하기"
+    },
+    "hours10": {
+      "name": "집중 10시간",
+      "desc": "누적 집중 시간 10시간 기록하기"
+    },
+    "flowers10": {
+      "name": "만개한 정원",
+      "desc": "꽃 10송이 키우기"
+    },
+    "memoryKeeper": {
+      "name": "추억 지킴이",
+      "desc": "회고 3개 즐겨찾기하기"
+    },
+    "balance1m": {
+      "name": "첫 백만",
+      "desc": "Bloom Balance 1,000,000₫ 달성하기"
+    },
+    "streak30": {
+      "name": "30일 연속",
+      "desc": "30일 연속 기록 달성하기"
+    },
+    "hours100": {
+      "name": "집중 100시간",
+      "desc": "누적 집중 시간 100시간 기록하기"
+    },
+    "balance10m": {
+      "name": "천만 클럽",
+      "desc": "Bloom Balance 10,000,000₫ 달성하기"
+    }
   },
   "share": {
     "title": "공유",

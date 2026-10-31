@@ -4,14 +4,15 @@
     "description": "Bloom is a personal growth garden. Every meaningful effort plants a seed. Every focused hour helps your garden bloom."
   },
   "nav": {
-    "home": "Garden",
-    "board": "Focus Board",
-    "analytics": "Weekly Garden",
+    "home": "Today",
+    "board": "Tasks",
+    "analytics": "Stats",
     "store": "Rewards",
-    "memory": "Memory Garden",
+    "memory": "Journal",
     "profile": "Profile",
     "settings": "Settings",
-    "about": "About"
+    "about": "About",
+    "balance": "Bloom balance"
   },
   "about": {
     "title": "Bloom",
@@ -37,15 +38,15 @@
     "welcomeTitle": "Welcome to Bloom 🌸",
     "step1Question": "What should we call you?",
     "namePlaceholder": "Your name",
-    "step2Question": "What is one hour of your focused work worth?",
-    "step2Hint": "This becomes the foundation of your Bloom Balance, rewards, and charts. You can change it anytime in Settings.",
-    "customValue": "Custom Value",
-    "customValuePlaceholder": "Enter your own amount",
+    "step2Question": "How much is one focused hour worth to you?",
+    "step2Hint": "Bloom uses this to work out how much each task earns: a 30-minute step earns half of it. You can change it later in Settings.",
+    "customValue": "Other amount",
+    "customValuePlaceholder": "Amount per hour, e.g. 100000",
     "step3Question": "What are you growing?",
-    "step4Title": "Choose your look",
+    "step4Title": "Pick a color",
     "back": "Back",
     "continue": "Continue",
-    "getStarted": "Get Started",
+    "getStarted": "Start using Bloom",
     "growthAreas": {
       "career": "Career",
       "study": "Study",
@@ -56,28 +57,41 @@
       "personalGrowth": "Personal Growth"
     },
     "themes": {
-      "pink": "Bloom Pink",
-      "lime": "Lime Glow",
-      "mango": "Mango Orange",
-      "island": "Island Paradise",
-      "indigo": "Indigo",
-      "cherryCola": "Cherry Cola"
-    }
+      "stone": "Stone",
+      "sage": "Sage",
+      "clay": "Clay",
+      "slate": "Slate",
+      "lavender": "Lavender",
+      "rose": "Rose"
+    },
+    "intro": "Finish tasks, earn a balance, grow a garden, and spend it on rewards you choose.",
+    "customValueError": "Enter an amount of at least 1,000₫.",
+    "step3Hint": "Pick any that fit. Your daily quotes will match them.",
+    "skip": "Skip for now",
+    "step4Hint": "The app changes as you pick."
   },
   "home": {
     "welcomeBack": "Welcome back, {name}",
-    "gardenWaiting": "Every focused hour compounds into real progress.",
-    "gardenEmpty": "Your garden is empty - complete a focus to plant your first flower.",
-    "balance": "Today's Bloom Balance",
+    "gardenWaiting": "Every focused hour adds up.",
+    "gardenEmpty": "Write a journal entry at the end of the day to plant your first flower.",
+    "balance": "Bloom balance",
     "streak": "Current Streak",
-    "tasks": "Today's Tasks",
-    "remaining": "Remaining",
-    "focusHours": "Focus Hours Today",
-    "gardenState": "Current Bloom Garden",
+    "tasks": "Today's tasks",
+    "remaining": "Steps left",
+    "focusHours": "Focused today",
+    "gardenState": "Flowers blooming",
     "blooming": "blooming",
     "wilting": "wilting",
     "fading": "fading",
-    "days": "days"
+    "days": "days",
+    "welcomeNew": "Hi, {name}",
+    "balanceNote": "Play money for rewards, not real money",
+    "earnedToday": "Earned today",
+    "stepsDone": "steps done today",
+    "quietNotice": "It has been quiet for a while. Your garden rested and is waiting for you.",
+    "quietLost": "Streak ended: -{amount}.",
+    "lateNotice": "\"{title}\" is over 3 days late: -{amount}.",
+    "dismiss": "Dismiss"
   },
   "companion": {
     "save": "Save quote",
@@ -238,50 +252,61 @@
     }
   },
   "reflection": {
-    "unlocked": "Today's Reflection",
-    "subtitle": "You've shown up today. Write a small message to your future self.",
+    "unlocked": "Today's journal",
+    "subtitle": "Write a line to your future self. You plant {count} flowers today.",
     "placeholder": "Dear future me...",
-    "save": "Plant this reflection",
+    "save": "Save and plant flowers",
     "mood": "How did today feel?",
     "perfectTitle": "Perfect Bloom Day",
-    "perfectSubtitle": "Every task, complete. Your garden glows a little brighter today."
+    "perfectSubtitle": "Every task, complete. Your garden glows a little brighter today.",
+    "perfectBonus": "Every step is done, so you also earn a {amount} full-day bonus.",
+    "locked": "Finish one step today to unlock your journal and plant flowers.",
+    "doneTitle": "Journal saved for today",
+    "doneSubtitle": "Come back tomorrow for a new entry.",
+    "plantedToast": "{count} flowers planted",
+    "moods": {
+      "good": "Great",
+      "okay": "Okay",
+      "hard": "Hard",
+      "calm": "Calm"
+    }
   },
   "momentum": {
-    "title": "Momentum's Rules",
-    "subtitle": "Small actions compound into extraordinary results.",
-    "preview": "Preview a quiet day",
-    "quietMessage": "It's been quiet for a little while. That's alright - your garden simply rests, waiting for you.",
-    "rule1": "Every streak day earns +1,200,000 Bloom Balance.",
-    "rule2": "Every lost streak day reduces -600,000 Bloom Balance.",
-    "rule3": "A task delayed for more than 3 consecutive days receives a red warning badge and deducts -3,600,000 Bloom Balance.",
-    "rule4": "While 1% daily growth multiplies your value approximately 37x by the end of one year (1.01^365 ≈ 37.78), a 1% daily decline shrinks your value close to zero (0.99^365 ≈ 0.03)."
+    "title": "How your balance works",
+    "show": "Show",
+    "hide": "Hide",
+    "ruleStep": "Finish a step: earn its time × your hourly value ({amount} per hour).",
+    "ruleStreak": "Keep your streak going to day 2 and beyond: +{amount} a day.",
+    "ruleFullDay": "Finish every step, then write your journal: +{amount} bonus.",
+    "ruleLostStreak": "Lose a streak after a missed day: -{amount}, once. Some flowers wilt, then bloom again as you finish steps.",
+    "ruleLate": "A task more than 3 days past its deadline: -{amount}, once per task.",
+    "ruleRefund": "Unticking a step takes back what it earned. Your balance never drops below 0.",
+    "ruleMath": "Why it matters: 1% better every day is about 37× in a year (1.01^365 ≈ 37.78)."
   },
   "board": {
-    "title": "Focus Board",
-    "subtitle": "Not a to-do list. A place where intentions grow into outcomes.",
-    "newFocus": "New Focus",
-    "editFocus": "Edit Focus",
+    "title": "Tasks",
+    "subtitle": "Break work into steps and tick them off as you go.",
+    "newFocus": "Add task",
+    "editFocus": "Edit task",
     "purpose": "Purpose",
     "purposeHint": "Why does this matter?",
-    "category": "Category",
+    "category": "Type of task",
     "priority": "Priority",
-    "stakeholders": "Stakeholders",
+    "stakeholders": "People involved",
     "startDate": "Start Date",
     "deadline": "Deadline",
-    "estimatedDuration": "Estimated Duration",
-    "expectedOutput": "Expected Output",
+    "expectedOutput": "Expected result",
     "notes": "Notes",
-    "steps": "Checklist Steps",
-    "addStep": "Add step",
-    "create": "Plant this Focus",
-    "save": "Save Changes",
+    "steps": "Steps",
+    "addStep": "Add another step",
+    "create": "Create task",
+    "save": "Save changes",
     "cancel": "Cancel",
     "edit": "Edit",
     "delete": "Delete",
-    "titleField": "Title",
+    "titleField": "What do you want to finish?",
     "minutes": "min",
-    "reward": "Reward",
-    "empty": "No focuses yet. Add your first one and start building momentum.",
+    "empty": "Nothing planned yet. Add something you want to finish, break it into steps, then tick each step to earn your balance.",
     "encourageNew": [
       "Small steps create beautiful lives.",
       "Every bloom starts as a seed.",
@@ -291,13 +316,49 @@
       "Celebrate today's small victory.",
       "You nurtured another bloom.",
       "Progress is beautiful."
-    ]
+    ],
+    "titlePlaceholder": "e.g. Finish the Q3 report",
+    "titleRequired": "Give the task a name.",
+    "consumeHint": "Passive time is logged but earns no balance.",
+    "stepsHint": "The reward is worked out from the time and your hourly value ({amount} per hour).",
+    "stepField": "Step name",
+    "singleStepHint": "Leave this blank and the task becomes one 30-minute step.",
+    "minutesError": "Use {min} to {max} minutes.",
+    "removeStep": "Remove step",
+    "doneStep": "Done",
+    "noReward": "no balance",
+    "moreDetails": "More details (optional)",
+    "lessDetails": "Hide details",
+    "dateError": "The deadline must be on or after the start date.",
+    "tabActive": "In progress",
+    "tabDone": "Finished",
+    "emptyDone": "Finished tasks will appear here.",
+    "markDone": "Mark as done",
+    "markUndone": "Mark as not done",
+    "undoneToast": "Step reopened. {amount} returned.",
+    "undoneFree": "Step reopened.",
+    "taskDone": "Task finished: {title}",
+    "loggedOnly": "Time logged. This type earns no balance.",
+    "confirmDeleteTitle": "Delete this task?",
+    "confirmDeleteBody": "\"{title}\" and its steps will be removed. Anything you already earned stays in your balance."
   },
   "categories": {
-    "create": { "label": "Create", "desc": "Build value" },
-    "grow": { "label": "Grow", "desc": "Learning, health, skills" },
-    "enjoy": { "label": "Enjoy", "desc": "Rest, self-care, experiences" },
-    "consume": { "label": "Consume", "desc": "Passive scrolling, entertainment" }
+    "create": {
+      "label": "Create",
+      "desc": "Work and projects that build value"
+    },
+    "grow": {
+      "label": "Learn & grow",
+      "desc": "Study, health and new skills"
+    },
+    "enjoy": {
+      "label": "Rest & enjoy",
+      "desc": "Self-care and experiences"
+    },
+    "consume": {
+      "label": "Passive time",
+      "desc": "Scrolling and TV, logged but not rewarded"
+    }
   },
   "priorities": {
     "high": "High",
@@ -305,45 +366,44 @@
     "low": "Low"
   },
   "analytics": {
-    "title": "Weekly Garden Review",
-    "focusHours": "Focus Hours",
-    "balanceEarned": "Bloom Balance Earned",
-    "balanceLost": "Bloom Balance Lost",
+    "title": "Stats",
+    "focusHours": "Focus time",
+    "balanceEarned": "Earned this week",
+    "balanceLost": "Lost this week",
     "streak": "Current Streak",
     "longestStreak": "Longest Streak",
-    "completionRate": "Task Completion Rate",
+    "completionRate": "Tasks finished",
     "avgFocus": "Average Daily Focus",
-    "strongestCategory": "Strongest Category",
-    "suggestionLabel": "A gentle suggestion for next week",
-    "suggestion": "Try adding one more Grow moment - even ten quiet minutes counts.",
-    "hoursByDay": "Focus Hours by Day",
-    "timeByCategory": "Where your hours went",
-    "noCategoryData": "Complete a focus to see where your time goes."
+    "strongestCategory": "Most of your time went to",
+    "suggestionLabel": "Your last 7 days",
+    "suggestion": "Try adding one Learn & grow step. Even ten minutes counts.",
+    "hoursByDay": "Focus time by day",
+    "timeByCategory": "Where your time went",
+    "noCategoryData": "Finish a step to see this."
   },
   "store": {
-    "title": "Reward Store",
-    "subtitle": "Create rewards that motivate you, and redeem them with your Bloom Balance.",
-    "newReward": "New Reward",
-    "createReward": "Create a Reward",
-    "editReward": "Edit Reward",
-    "rewardName": "Reward Name",
+    "title": "Rewards",
+    "subtitle": "Choose treats worth working for, then redeem them with your balance.",
+    "newReward": "Add reward",
+    "createReward": "New reward",
+    "editReward": "Edit reward",
+    "rewardName": "Reward name",
     "rewardNamePlaceholder": "e.g. Coffee with a friend",
-    "cost": "Cost",
+    "cost": "Price",
     "icon": "Icon",
     "cancel": "Cancel",
     "save": "Save",
-    "create": "Add Reward",
+    "create": "Add reward",
     "edit": "Edit",
     "delete": "Delete",
     "unlocked": "Unlocked",
     "locked": "Locked · keep growing",
     "redeem": "Redeem",
-    "redeemed": "Enjoy this moment 🎉",
-    "empty": "Your reward store is empty. Create your first reward - something you'll genuinely want to earn.",
-    "inspiration": "Inspiration Gallery",
-    "inspirationSubtitle": "Ideas from the Bloom community. Use one, then make it your own.",
-    "useTemplate": "Use Template",
-    "templateAdded": "Added to your Reward Store",
+    "redeemed": "Enjoy it",
+    "empty": "No rewards yet. Add your own or pick an idea below.",
+    "inspiration": "Ideas to start with",
+    "inspirationSubtitle": "Pick one, then set your own name and price before it is added.",
+    "useTemplate": "Use and set my price",
     "templates": {
       "coffee": "Coffee Date",
       "movie": "Movie Night",
@@ -351,16 +411,31 @@
       "book": "Buy a Book",
       "spa": "Spa Day",
       "dinner": "Nice Dinner Out"
-    }
+    },
+    "nameRequired": "Give the reward a name.",
+    "costRequired": "Enter a price above 0.",
+    "costHint": "{amount} is about {hours} hours of focused work.",
+    "balanceLabel": "Bloom balance",
+    "balanceNote": "Play money for rewarding yourself. It is not real money.",
+    "mine": "My rewards",
+    "ready": "Ready to redeem",
+    "need": "{amount} more to go",
+    "history": "Redeemed so far",
+    "suggestedPrice": "Suggested: {amount}",
+    "confirmRedeemTitle": "Redeem \"{name}\"?",
+    "confirmRedeemBody": "{amount} will come off your balance, leaving {left}.",
+    "confirmDeleteTitle": "Delete \"{name}\"?",
+    "confirmDeleteBody": "It will be removed from your list. Past redemptions stay in your history."
   },
   "memory": {
-    "title": "Memory Garden",
-    "subtitle": "Every reflection becomes a flower. Over time, this becomes your story.",
-    "empty": "Your reflections will appear here once you complete a day.",
+    "title": "Journal",
+    "subtitle": "One entry a day. Over time, this becomes your story.",
+    "empty": "No entries yet. Finish a step today, then write your first one on the Today page.",
     "tasksCompleted": "tasks completed",
     "like": "Like",
     "favorite": "Favorite",
-    "today": "Today"
+    "today": "Today",
+    "noNote": "No note that day"
   },
   "settings": {
     "title": "Settings",
@@ -368,7 +443,7 @@
     "profileSection": "Profile",
     "displayName": "Display Name",
     "hourlyValueSection": "Hourly Value",
-    "hourlyValueHint": "This is the foundation of your Bloom Balance, rewards, and charts.",
+    "hourlyValueHint": "Changing this affects steps you have not finished yet. Earned amounts stay the same.",
     "modeDirect": "Enter directly",
     "modeSalary": "Calculate from salary",
     "monthlySalary": "Monthly Salary",
@@ -382,7 +457,13 @@
     "light": "Light",
     "dark": "Dark",
     "save": "Save",
-    "saved": "Settings saved"
+    "saved": "Settings saved",
+    "dataSection": "Your data",
+    "dataHint": "Bloom is saved in this browser only.",
+    "reset": "Delete all my data",
+    "resetConfirm": "Tasks, rewards, garden and journal will be gone for good.",
+    "resetYes": "Yes, delete",
+    "resetNo": "Keep my data"
   },
   "profile": {
     "joined": "Joined",
@@ -393,7 +474,6 @@
     "lifetimeFocusHours": "Lifetime Focus Hours",
     "lifetimeBalance": "Lifetime Bloom Balance",
     "flowersCollected": "Flowers Collected",
-    "challengesCompleted": "Challenges Completed",
     "achievements": "Achievements",
     "badges": "Badges",
     "recentActivity": "Recent Activity",
@@ -419,7 +499,8 @@
     "wrappedFlowers": "Flowers Bloomed",
     "wrappedStreak": "Longest Streak",
     "wrappedFavoriteCategory": "Favorite Category",
-    "wrappedTopAchievement": "Top Achievement"
+    "wrappedTopAchievement": "Top Achievement",
+    "rewardsRedeemed": "Rewards redeemed"
   },
   "achievements": {
     "rarity": {
@@ -428,19 +509,58 @@
       "epic": "Epic",
       "legendary": "Legendary"
     },
-    "firstFocus": { "name": "First Focus", "desc": "Create your first Focus" },
-    "firstFlower": { "name": "First Flower", "desc": "Bloom your first flower" },
-    "firstReflection": { "name": "First Reflection", "desc": "Write your first daily reflection" },
-    "firstReward": { "name": "First Reward", "desc": "Redeem your first reward" },
-    "quoteCollector": { "name": "Quote Collector", "desc": "Save 5 quotes" },
-    "streak7": { "name": "7-Day Streak", "desc": "Reach a 7-day streak" },
-    "hours10": { "name": "10 Focus Hours", "desc": "Log 10 lifetime focus hours" },
-    "flowers10": { "name": "Blooming Garden", "desc": "Grow 10 flowers" },
-    "memoryKeeper": { "name": "Memory Keeper", "desc": "Favorite 3 reflections" },
-    "balance1m": { "name": "First Million", "desc": "Earn 1,000,000d in Bloom Balance" },
-    "streak30": { "name": "30-Day Streak", "desc": "Reach a 30-day streak" },
-    "hours100": { "name": "100 Focus Hours", "desc": "Log 100 lifetime focus hours" },
-    "balance10m": { "name": "Ten Million Club", "desc": "Earn 10,000,000d in Bloom Balance" }
+    "firstFocus": {
+      "name": "First task",
+      "desc": "Create your first task"
+    },
+    "firstFlower": {
+      "name": "First Flower",
+      "desc": "Bloom your first flower"
+    },
+    "firstReflection": {
+      "name": "First Reflection",
+      "desc": "Write your first daily reflection"
+    },
+    "firstReward": {
+      "name": "First Reward",
+      "desc": "Redeem your first reward"
+    },
+    "quoteCollector": {
+      "name": "Quote Collector",
+      "desc": "Save 5 quotes"
+    },
+    "streak7": {
+      "name": "7-Day Streak",
+      "desc": "Reach a 7-day streak"
+    },
+    "hours10": {
+      "name": "10 Focus Hours",
+      "desc": "Log 10 lifetime focus hours"
+    },
+    "flowers10": {
+      "name": "Blooming Garden",
+      "desc": "Grow 10 flowers"
+    },
+    "memoryKeeper": {
+      "name": "Memory Keeper",
+      "desc": "Favorite 3 reflections"
+    },
+    "balance1m": {
+      "name": "First Million",
+      "desc": "Earn 1,000,000d in Bloom Balance"
+    },
+    "streak30": {
+      "name": "30-Day Streak",
+      "desc": "Reach a 30-day streak"
+    },
+    "hours100": {
+      "name": "100 Focus Hours",
+      "desc": "Log 100 lifetime focus hours"
+    },
+    "balance10m": {
+      "name": "Ten Million Club",
+      "desc": "Earn 10,000,000d in Bloom Balance"
+    }
   },
   "share": {
     "title": "Share",

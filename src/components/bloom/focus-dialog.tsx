@@ -6,20 +6,24 @@ import { useTranslations } from "next-intl";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input, Label, Select, Textarea } from "@/components/ui/field";
 import { useBloomStore } from "@/lib/store";
-import { minutesToReward, pickRandom, uid } from "@/lib/utils";
+import { formatVND, minutesToReward, pickRandom, uid } from "@/lib/utils";
 import type { Category, ChecklistStep, Focus, Priority } from "@/lib/types";
 
 interface DraftStep {
   id: string;
   title: string;
-  estimatedMinutes: number;
-  reward: number;
+  estimatedMinutes: string;
+  /** Carried over for steps that are already done, so editing a task
+   *  never changes what was earned. */
+  locked?: { reward: number; doneAt: string | null };
 }
 
-function newDraftStep(hourlyValue: number): DraftStep {
-  const estimatedMinutes = 30;
-  return { id: uid(), title: "", estimatedMinutes, reward: minutesToReward(estimatedMinutes, hourlyValue) };
+function newDraftStep(): DraftStep {
+  return { id: uid(), title: "", estimatedMinutes: "30" };
 }
+
+const MIN_MINUTES = 1;
+const MAX_MINUTES = 600;
 
 export function FocusDialog({
   open,
@@ -45,7 +49,6 @@ export function FocusDialog({
   const [priority, setPriority] = React.useState<Priority>(focus?.priority ?? "medium");
   const [startDate, setStartDate] = React.useState(focus?.startDate ?? "");
   const [deadline, setDeadline] = React.useState(focus?.deadline ?? "");
-  const [estimatedDuration, setEstimatedDuration] = React.useState(focus?.estimatedDuration ?? "");
   const [stakeholders, setStakeholders] = React.useState(focus?.stakeholders ?? "");
   const [expectedOutput, setExpectedOutput] = React.useState(focus?.expectedOutput ?? "");
   const [notes, setNotes] = React.useState(focus?.notes ?? "");
@@ -54,9 +57,13 @@ export function FocusDialog({
       focus?.checklist.map((c) => ({
         id: c.id,
         title: c.title,
-        estimatedMinutes: c.estimatedMinutes,
-        reward: c.reward,
-      })) ?? [newDraftStep(hourlyValue)]
+        estimatedMinutes: String(c.estimatedMinutes),
+        locked: c.done ? { reward: c.reward, doneAt: c.doneAt ?? null } : undefined,
+      })) ?? [newDraftStep()]
+  );
+  const [errors, setErrors] = React.useState<{ title?: boolean; dates?: boolean; steps?: Record<string, boolean> }>({});
+  const [showMore, setShowMore] = React.useState(
+    Boolean(focus && (focus.purpose || focus.startDate || focus.deadline || focus.stakeholders || focus.expectedOutput || focus.notes))
   );
 
   function reset() {
@@ -66,11 +73,11 @@ export function FocusDialog({
     setPriority("medium");
     setStartDate("");
     setDeadline("");
-    setEstimatedDuration("");
     setStakeholders("");
     setExpectedOutput("");
     setNotes("");
-    setSteps([newDraftStep(hourlyValue)]);
+    setSteps([newDraftStep()]);
+    setErrors({});
   }
 
   function updateStep(id: string, patch: Partial<DraftStep>) {
@@ -78,39 +85,63 @@ export function FocusDialog({
   }
 
   function removeStep(id: string) {
-    setSteps((s) => s.filter((st) => st.id !== id));
+    setSteps((s) => {
+      const rest = s.filter((st) => st.id !== id);
+      return rest.length ? rest : [newDraftStep()];
+    });
+  }
+
+  function rewardFor(minutes: number) {
+    return category === "consume" ? 0 : minutesToReward(minutes, hourlyValue);
   }
 
   function submit() {
-    if (!title.trim()) return;
+    const nextErrors: typeof errors = {};
+    if (!title.trim()) nextErrors.title = true;
+    if (startDate && deadline && deadline < startDate) nextErrors.dates = true;
 
-    // Editing a task must preserve each step's completion state unless the
-    // user explicitly changes it elsewhere (the checklist buttons on the
-    // card) - this form never exposes a "done" toggle, so matching by id
-    // against the task's current checklist is how that's guaranteed. Steps
-    // that are new (no matching id) start incomplete, same as on create.
-    const originalDoneById = new Map((focus?.checklist ?? []).map((c) => [c.id, c.done]));
-    const checklist: ChecklistStep[] = steps
-      .filter((s) => s.title.trim())
-      .map((s) => ({
+    const kept = steps.filter((s) => s.title.trim() || s.locked);
+    const stepErrors: Record<string, boolean> = {};
+    for (const s of kept) {
+      const m = Number(s.estimatedMinutes);
+      if (!s.locked && !(m >= MIN_MINUTES && m <= MAX_MINUTES)) stepErrors[s.id] = true;
+    }
+    if (Object.keys(stepErrors).length) nextErrors.steps = stepErrors;
+    if (nextErrors.dates) setShowMore(true);
+    if (Object.keys(nextErrors).length) {
+      setErrors(nextErrors);
+      return;
+    }
+
+    // A task with no named steps becomes a single step, so it can still be
+    // ticked off and still earns its time.
+    const source = kept.length
+      ? kept
+      : [{ ...newDraftStep(), title: title.trim(), estimatedMinutes: Number(steps[0]?.estimatedMinutes) >= 1 ? steps[0].estimatedMinutes : "30" }];
+
+    const checklist: ChecklistStep[] = source.map((s) => {
+      const minutes = Math.round(Number(s.estimatedMinutes));
+      return {
         id: s.id,
-        title: s.title,
-        estimatedMinutes: s.estimatedMinutes,
-        reward: s.reward,
-        done: originalDoneById.get(s.id) ?? false,
-      }));
+        title: s.title.trim(),
+        estimatedMinutes: minutes,
+        reward: s.locked ? s.locked.reward : rewardFor(minutes),
+        done: Boolean(s.locked),
+        doneAt: s.locked?.doneAt ?? null,
+      };
+    });
 
     const payload = {
-      title,
-      purpose,
+      title: title.trim(),
+      purpose: purpose.trim(),
       category,
       priority,
       startDate: startDate || null,
       deadline: deadline || null,
-      estimatedDuration,
-      stakeholders,
-      expectedOutput,
-      notes,
+      estimatedDuration: "",
+      stakeholders: stakeholders.trim(),
+      expectedOutput: expectedOutput.trim(),
+      notes: notes.trim(),
       checklist,
     };
 
@@ -132,105 +163,154 @@ export function FocusDialog({
         </DialogTitle>
         <div className="space-y-4">
           <div>
-            <Label>{t("titleField")}</Label>
-            <Input value={title} onChange={(e) => setTitle(e.target.value)} />
+            <Label htmlFor="focus-title">{t("titleField")}</Label>
+            <Input
+              id="focus-title"
+              autoFocus
+              value={title}
+              placeholder={t("titlePlaceholder")}
+              aria-invalid={errors.title || undefined}
+              onChange={(e) => {
+                setTitle(e.target.value);
+                if (errors.title) setErrors((er) => ({ ...er, title: false }));
+              }}
+              onKeyDown={(e) => e.key === "Enter" && submit()}
+              className={errors.title ? "border-error" : undefined}
+            />
+            {errors.title && <p className="text-xs text-error mt-1">{t("titleRequired")}</p>}
           </div>
+
           <div>
-            <Label>{t("purpose")} · {t("purposeHint")}</Label>
-            <Input value={purpose} onChange={(e) => setPurpose(e.target.value)} />
+            <Label htmlFor="focus-category">{t("category")}</Label>
+            <Select id="focus-category" value={category} onChange={(e) => setCategory(e.target.value as Category)}>
+              {(["create", "grow", "enjoy", "consume"] as Category[]).map((k) => (
+                <option key={k} value={k}>
+                  {tCat(`${k}.label`)} · {tCat(`${k}.desc`)}
+                </option>
+              ))}
+            </Select>
+            {category === "consume" && <p className="text-xs text-ink-soft mt-1">{t("consumeHint")}</p>}
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <Label>{t("category")}</Label>
-              <Select value={category} onChange={(e) => setCategory(e.target.value as Category)}>
-                {(["create", "grow", "enjoy", "consume"] as Category[]).map((k) => (
-                  <option key={k} value={k}>
-                    {tCat(`${k}.label`)}
-                  </option>
-                ))}
-              </Select>
-            </div>
-            <div>
-              <Label>{t("priority")}</Label>
-              <Select value={priority} onChange={(e) => setPriority(e.target.value as Priority)}>
-                <option value="high">{tPri("high")}</option>
-                <option value="medium">{tPri("medium")}</option>
-                <option value="low">{tPri("low")}</option>
-              </Select>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <Label>{t("startDate")}</Label>
-              <Input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-            </div>
-            <div>
-              <Label>{t("deadline")}</Label>
-              <Input type="date" value={deadline} onChange={(e) => setDeadline(e.target.value)} />
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <Label>{t("estimatedDuration")}</Label>
-              <Input placeholder="e.g. 2h" value={estimatedDuration} onChange={(e) => setEstimatedDuration(e.target.value)} />
-            </div>
-            <div>
-              <Label>{t("stakeholders")}</Label>
-              <Input value={stakeholders} onChange={(e) => setStakeholders(e.target.value)} />
-            </div>
-          </div>
-          <div>
-            <Label>{t("expectedOutput")}</Label>
-            <Input value={expectedOutput} onChange={(e) => setExpectedOutput(e.target.value)} />
-          </div>
-          <div>
-            <Label>{t("notes")}</Label>
-            <Textarea rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} />
-          </div>
+
           <div>
             <Label>{t("steps")}</Label>
-            <div className="flex gap-2 items-center text-[10px] uppercase tracking-wide text-ink-soft px-1 mb-1">
-              <span className="flex-1">{t("titleField")}</span>
-              <span className="w-16 text-center">{t("minutes")}</span>
-              <span className="w-24 text-center">{t("reward")}</span>
-              <span className="w-[15px]" />
-            </div>
+            <p className="text-xs text-ink-soft mb-2">{t("stepsHint", { amount: formatVND(hourlyValue) })}</p>
             <div className="space-y-2">
-              {steps.map((s) => (
-                <div key={s.id} className="flex gap-2 items-center">
-                  <Input
-                    placeholder={t("titleField")}
-                    value={s.title}
-                    onChange={(e) => updateStep(s.id, { title: e.target.value })}
-                    className="flex-1 min-w-0"
-                  />
-                  <Input
-                    type="number"
-                    value={s.estimatedMinutes}
-                    onChange={(e) => updateStep(s.id, { estimatedMinutes: Number(e.target.value) })}
-                    className="w-16"
-                    title={t("estimatedDuration")}
-                  />
-                  <Input
-                    type="number"
-                    value={s.reward}
-                    onChange={(e) => updateStep(s.id, { reward: Number(e.target.value) })}
-                    className="w-24"
-                    title={t("reward")}
-                  />
-                  <button onClick={() => removeStep(s.id)} aria-label={t("cancel")}>
-                    <Trash2 size={15} className="text-stone-300 hover:text-rose" />
-                  </button>
-                </div>
-              ))}
+              {steps.map((s, i) => {
+                const minutes = Number(s.estimatedMinutes) || 0;
+                const invalid = errors.steps?.[s.id];
+                return (
+                  <div key={s.id}>
+                    <div className="flex gap-2 items-center">
+                      <Input
+                        aria-label={`${t("stepField")} ${i + 1}`}
+                        placeholder={t("stepField")}
+                        value={s.title}
+                        onChange={(e) => updateStep(s.id, { title: e.target.value })}
+                        className="flex-1 min-w-0"
+                      />
+                      <Input
+                        type="number"
+                        min={MIN_MINUTES}
+                        max={MAX_MINUTES}
+                        inputMode="numeric"
+                        aria-label={t("minutes")}
+                        aria-invalid={invalid || undefined}
+                        value={s.estimatedMinutes}
+                        disabled={Boolean(s.locked)}
+                        onChange={(e) => {
+                          updateStep(s.id, { estimatedMinutes: e.target.value });
+                          if (invalid) setErrors((er) => ({ ...er, steps: { ...er.steps, [s.id]: false } }));
+                        }}
+                        className={`w-20 ${invalid ? "border-error" : ""}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeStep(s.id)}
+                        aria-label={t("removeStep")}
+                        className="grid place-items-center w-9 h-9 rounded-lg text-ink-muted hover:text-error hover:bg-blush transition-colors"
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                    <div className={`text-[11px] mt-1 px-1 ${invalid ? "text-error" : "text-ink-soft"}`}>
+                      {invalid
+                        ? t("minutesError", { min: MIN_MINUTES, max: MAX_MINUTES })
+                        : `${minutes} ${t("minutes")} · ${s.locked ? `${t("doneStep")} · ${formatVND(s.locked.reward)}` : rewardFor(minutes) ? formatVND(rewardFor(minutes)) : t("noReward")}`}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
             <button
-              onClick={() => setSteps((s) => [...s, newDraftStep(hourlyValue)])}
-              className="text-xs text-rose mt-2 flex items-center gap-1"
+              type="button"
+              onClick={() => setSteps((s) => [...s, newDraftStep()])}
+              className="text-xs font-medium text-rose-deep mt-2 flex items-center gap-1 min-h-8"
             >
               <Plus size={13} /> {t("addStep")}
             </button>
+            {steps.length === 1 && !steps[0].title.trim() && !steps[0].locked && (
+              <p className="text-xs text-ink-soft mt-1">{t("singleStepHint")}</p>
+            )}
           </div>
+
+          <button
+            type="button"
+            onClick={() => setShowMore((v) => !v)}
+            aria-expanded={showMore}
+            className="text-xs font-medium text-rose-deep min-h-8"
+          >
+            {showMore ? t("lessDetails") : t("moreDetails")}
+          </button>
+
+          {showMore && (
+            <div className="space-y-4 pt-1">
+              <div>
+                <Label htmlFor="focus-purpose">{t("purposeHint")}</Label>
+                <Input id="focus-purpose" value={purpose} onChange={(e) => setPurpose(e.target.value)} />
+              </div>
+              <div>
+                <Label htmlFor="focus-priority">{t("priority")}</Label>
+                <Select id="focus-priority" value={priority} onChange={(e) => setPriority(e.target.value as Priority)}>
+                  <option value="high">{tPri("high")}</option>
+                  <option value="medium">{tPri("medium")}</option>
+                  <option value="low">{tPri("low")}</option>
+                </Select>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label htmlFor="focus-start">{t("startDate")}</Label>
+                  <Input id="focus-start" type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                </div>
+                <div>
+                  <Label htmlFor="focus-deadline">{t("deadline")}</Label>
+                  <Input
+                    id="focus-deadline"
+                    type="date"
+                    value={deadline}
+                    aria-invalid={errors.dates || undefined}
+                    onChange={(e) => {
+                      setDeadline(e.target.value);
+                      if (errors.dates) setErrors((er) => ({ ...er, dates: false }));
+                    }}
+                  />
+                </div>
+              </div>
+              {errors.dates && <p className="text-xs text-error -mt-2">{t("dateError")}</p>}
+              <div>
+                <Label htmlFor="focus-output">{t("expectedOutput")}</Label>
+                <Input id="focus-output" value={expectedOutput} onChange={(e) => setExpectedOutput(e.target.value)} />
+              </div>
+              <div>
+                <Label htmlFor="focus-people">{t("stakeholders")}</Label>
+                <Input id="focus-people" value={stakeholders} onChange={(e) => setStakeholders(e.target.value)} />
+              </div>
+              <div>
+                <Label htmlFor="focus-notes">{t("notes")}</Label>
+                <Textarea id="focus-notes" rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} />
+              </div>
+            </div>
+          )}
         </div>
         <div className="flex justify-end gap-2 mt-6">
           <button onClick={() => onOpenChange(false)} className="btn-secondary px-4 py-2.5 rounded-full text-sm font-medium">
