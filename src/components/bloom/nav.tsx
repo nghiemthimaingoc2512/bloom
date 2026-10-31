@@ -30,10 +30,13 @@ export function Nav() {
       <header className="max-w-5xl mx-auto px-5 pt-6">
         <div className="flex items-center justify-between mb-6">
           <Link href="/" className="flex items-center gap-3">
-            <span className="grid place-items-center w-10 h-10 rounded-2xl bg-rose text-white dark:text-night">
+            <span className="grid place-items-center w-10 h-10 rounded-2xl gradient-primary text-white shadow-md shadow-rose/25">
               <Flower2 size={20} />
             </span>
-            <div className="hidden sm:block font-display text-xl font-medium tracking-tight leading-none">Bloom</div>
+            <div className="hidden sm:block">
+              <div className="font-display text-xl font-medium tracking-tight leading-none">Bloom</div>
+              <div className="text-[11px] text-ink-soft mt-0.5">Grow beautifully</div>
+            </div>
           </Link>
           <div className="flex items-center gap-1.5">
             <Link
@@ -64,7 +67,7 @@ export function Nav() {
             <Link
               href="/profile"
               aria-label={t("profile")}
-              className="grid place-items-center w-9 h-9 rounded-full bg-rose text-white dark:text-night text-xs font-semibold"
+              className="grid place-items-center w-9 h-9 rounded-full gradient-primary text-white shadow-md shadow-rose/25 text-xs font-semibold"
             >
               {initial}
             </Link>
@@ -81,7 +84,7 @@ export function Nav() {
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all",
-                  active ? "bg-rose text-white dark:text-night" : "text-ink-soft hover:text-ink hover:bg-blush"
+                  active ? "gradient-primary text-white shadow-md shadow-rose/25" : "text-ink-soft hover:text-rose-deep hover:bg-blush/60"
                 )}
               >
                 <tab.icon size={15} />

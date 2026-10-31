@@ -29,7 +29,7 @@ export function FocusCard({
   const pct = total ? Math.round((done / total) * 100) : 0;
   const Icon = CATEGORY_ICON[focus.category];
 
-  const barColor = pct >= 100 ? "bg-success" : "bg-rose";
+  const barColor = pct >= 100 ? "bg-success" : "gradient-primary";
 
   function handleToggle(stepId: string) {
     toggleStep(focus.id, stepId);

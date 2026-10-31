@@ -20,10 +20,10 @@ function Card({
   hint?: string;
 }) {
   return (
-    <div className="rounded-2xl glass p-5">
+    <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
-        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush text-rose-deep">{icon}</span>
-        <span className="label">{label}</span>
+        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
+        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
       <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
       {hint && <div className="text-[11px] text-ink-soft mt-1">{hint}</div>}
@@ -57,16 +57,16 @@ export function SummaryCards() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
       <Card
-        icon={<Sparkles size={16} />}
+        icon={<Sparkles size={16} className="text-amber-400" />}
         label={t("balance")}
         value={<AnimatedNumber value={balance} format={formatVND} />}
         hint={t("balanceNote")}
       />
-      <Card icon={<Flame size={16} />} label={t("streak")} value={`${streak} ${t("days")}`} />
-      <Card icon={<Clock size={16} />} label={t("focusHours")} value={`${(todayMinutes / 60).toFixed(1)}h`} hint={`${t("earnedToday")}: ${formatVND(earnedToday)}`} />
-      <Card icon={<Check size={16} />} label={t("tasks")} value={`${completed}/${todays.length}`} hint={`${stepsDoneOnDay(focuses, today)} ${t("stepsDone")}`} />
-      <Card icon={<Leaf size={16} />} label={t("remaining")} value={openSteps} />
-      <Card icon={<Flower2 size={16} />} label={t("gardenState")} value={`${blooming}/${garden.length}`} />
+      <Card icon={<Flame size={16} className="text-orange-400" />} label={t("streak")} value={`${streak} ${t("days")}`} />
+      <Card icon={<Clock size={16} className="text-rose" />} label={t("focusHours")} value={`${(todayMinutes / 60).toFixed(1)}h`} hint={`${t("earnedToday")}: ${formatVND(earnedToday)}`} />
+      <Card icon={<Check size={16} className="text-green-500" />} label={t("tasks")} value={`${completed}/${todays.length}`} hint={`${stepsDoneOnDay(focuses, today)} ${t("stepsDone")}`} />
+      <Card icon={<Leaf size={16} className="text-pink-400" />} label={t("remaining")} value={openSteps} />
+      <Card icon={<Flower2 size={16} className="text-rose" />} label={t("gardenState")} value={`${blooming}/${garden.length}`} />
     </div>
   );
 }

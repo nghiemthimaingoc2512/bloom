@@ -13,18 +13,18 @@ import { ShareCardDialog } from "./share-card-dialog";
 import type { ShareCardContent } from "@/lib/share-card";
 
 const RARITY_STYLES: Record<Rarity, string> = {
-  common: "bg-blush text-ink-soft",
+  common: "bg-stone-100 text-stone-500 dark:bg-white/5",
   rare: "bg-blush text-rose-deep",
-  epic: "bg-rose/15 text-rose-deep",
-  legendary: "bg-rose text-white dark:text-night",
+  epic: "bg-purple-100 text-purple-600 dark:bg-purple-950/30 dark:text-purple-300",
+  legendary: "gradient-primary text-white shadow-md shadow-rose/25",
 };
 
 function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: React.ReactNode }) {
   return (
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
-        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush text-rose-deep">{icon}</span>
-        <span className="label">{label}</span>
+        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
+        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
       <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
     </div>
@@ -108,7 +108,7 @@ export function ProfilePage() {
   return (
     <div className="space-y-8">
       <div className="rounded-[28px] glass p-7 md:p-8 flex items-center gap-5">
-        <span className="grid place-items-center w-16 h-16 rounded-2xl bg-rose text-white dark:text-night text-2xl font-semibold shrink-0">
+        <span className="grid place-items-center w-16 h-16 rounded-2xl gradient-primary text-white shadow-md shadow-rose/25 text-2xl font-semibold shrink-0">
           {initial}
         </span>
         <div className="min-w-0 flex-1">
@@ -133,17 +133,17 @@ export function ProfilePage() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <StatCard icon={<Flame size={16} />} label={t("currentStreak")} value={streak} />
-        <StatCard icon={<Flame size={16} />} label={t("longestStreak")} value={longestStreak} />
-        <StatCard icon={<Clock size={16} />} label={t("lifetimeFocusHours")} value={`${(lifetimeFocusMinutes / 60).toFixed(1)}h`} />
-        <StatCard icon={<Sparkles size={16} />} label={t("lifetimeBalance")} value={formatVND(lifetimeBalanceEarned)} />
-        <StatCard icon={<Flower2 size={16} />} label={t("flowersCollected")} value={garden.length} />
-        <StatCard icon={<Trophy size={16} />} label={t("rewardsRedeemed")} value={redemptions.length} />
+        <StatCard icon={<Flame size={16} className="text-orange-400" />} label={t("currentStreak")} value={streak} />
+        <StatCard icon={<Flame size={16} className="text-orange-300" />} label={t("longestStreak")} value={longestStreak} />
+        <StatCard icon={<Clock size={16} className="text-rose" />} label={t("lifetimeFocusHours")} value={`${(lifetimeFocusMinutes / 60).toFixed(1)}h`} />
+        <StatCard icon={<Sparkles size={16} className="text-amber-400" />} label={t("lifetimeBalance")} value={formatVND(lifetimeBalanceEarned)} />
+        <StatCard icon={<Flower2 size={16} className="text-rose" />} label={t("flowersCollected")} value={garden.length} />
+        <StatCard icon={<Trophy size={16} className="text-amber-500" />} label={t("rewardsRedeemed")} value={redemptions.length} />
       </div>
 
-      <div className="rounded-[28px] p-7 bg-rose text-white dark:text-night flex items-center justify-between gap-4 flex-wrap">
+      <div className="rounded-[28px] p-7 gradient-primary text-white shadow-md shadow-rose/25 flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <div className="text-lg font-display font-medium">{t("wrappedTitle", { year: new Date().getFullYear() })}</div>
+          <div className="text-lg font-display font-medium">🌸 {t("wrappedTitle", { year: new Date().getFullYear() })}</div>
           <div className="text-sm opacity-90 mt-0.5">{t("wrappedSubtitle")}</div>
         </div>
         <button
@@ -156,7 +156,7 @@ export function ProfilePage() {
 
       <div className="rounded-2xl glass p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Award size={16} className="text-rose-deep" />
+          <Award size={16} className="text-amber-400" />
           <div className="font-medium text-sm">{t("achievements")}</div>
           <span className="text-xs text-ink-soft ml-auto font-mono">
             {unlockedCount}/{achievements.length}
@@ -167,7 +167,7 @@ export function ProfilePage() {
             <div key={a.id} className={`flex flex-col items-center text-center gap-1.5 ${a.unlocked ? "" : "opacity-40 grayscale"}`}>
               <span className={`grid place-items-center w-12 h-12 rounded-2xl text-xl ${RARITY_STYLES[a.rarity]}`}>{a.emoji}</span>
               <div className="text-[11px] font-medium leading-tight">{tAch(`${a.id}.name`)}</div>
-              <div className="text-[11px] text-ink-soft">{tAch(`rarity.${a.rarity}`)}</div>
+              <div className="text-[9px] uppercase tracking-wide text-ink-soft">{tAch(`rarity.${a.rarity}`)}</div>
             </div>
           ))}
         </div>
@@ -175,7 +175,7 @@ export function ProfilePage() {
 
       <div className="rounded-2xl glass p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Heart size={16} className="text-rose-deep" />
+          <Heart size={16} className="text-rose" />
           <div className="font-medium text-sm">{t("savedQuotes")}</div>
         </div>
         {savedQuotes.length === 0 ? (

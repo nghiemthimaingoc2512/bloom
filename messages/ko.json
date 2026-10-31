@@ -57,12 +57,12 @@
       "personalGrowth": "자기계발"
     },
     "themes": {
+      "pink": "블룸 핑크",
       "stone": "스톤",
       "sage": "세이지",
       "clay": "클레이",
       "slate": "슬레이트",
-      "lavender": "라벤더",
-      "rose": "로즈"
+      "lavender": "라벤더"
     },
     "intro": "할 일을 끝내고 잔액을 모아 정원을 가꾸고, 직접 고른 보상으로 바꿔 보세요.",
     "customValueError": "1,000₫ 이상을 입력하세요.",

@@ -29,8 +29,8 @@ function Card({ icon, label, value }: { icon: React.ReactNode; label: string; va
   return (
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
-        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush text-rose-deep">{icon}</span>
-        <span className="label">{label}</span>
+        <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
+        <span className="text-[11px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
       <div className="text-xl font-semibold font-mono tracking-tight">{value}</div>
     </div>
@@ -122,12 +122,12 @@ export function Analytics() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <Card icon={<Clock size={16} />} label={t("focusHours")} value={`${weekHours.toFixed(1)}h`} />
-        <Card icon={<Sparkles size={16} />} label={t("balanceEarned")} value={formatVND(weekEarned)} />
-        <Card icon={<Sparkles size={16} />} label={t("balanceLost")} value={formatVND(weekLost)} />
-        <Card icon={<Flame size={16} />} label={t("streak")} value={`${streak}`} />
-        <Card icon={<Flame size={16} />} label={t("longestStreak")} value={`${longestStreak}`} />
-        <Card icon={<TrendingUp size={16} />} label={t("completionRate")} value={`${Math.round(ratio * 100)}%`} />
+        <Card icon={<Clock size={16} className="text-rose" />} label={t("focusHours")} value={`${weekHours.toFixed(1)}h`} />
+        <Card icon={<Sparkles size={16} className="text-amber-400" />} label={t("balanceEarned")} value={formatVND(weekEarned)} />
+        <Card icon={<Sparkles size={16} className="text-stone-400" />} label={t("balanceLost")} value={formatVND(weekLost)} />
+        <Card icon={<Flame size={16} className="text-orange-400" />} label={t("streak")} value={`${streak}`} />
+        <Card icon={<Flame size={16} className="text-orange-300" />} label={t("longestStreak")} value={`${longestStreak}`} />
+        <Card icon={<TrendingUp size={16} className="text-green-500" />} label={t("completionRate")} value={`${Math.round(ratio * 100)}%`} />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -135,10 +135,10 @@ export function Analytics() {
           <div className="text-sm font-medium mb-3">{t("hoursByDay")}</div>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={weekData}>
-              <CartesianGrid strokeDasharray="3 3" stroke={dark ? "#3a3e43" : "#e4e2dc"} vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke={dark ? "#3a2a30" : "#fce7f3"} vertical={false} />
               <XAxis dataKey="day" tick={{ fontSize: 12, fill: dark ? "#a8a29e" : "#78716c" }} axisLine={false} tickLine={false} />
               <YAxis hide />
-              <Tooltip cursor={{ fill: "rgba(77,88,99,0.08)" }} contentStyle={{ borderRadius: 12, border: "none", fontSize: 12 }} formatter={(v) => [`${v}h`, ""]} />
+              <Tooltip cursor={{ fill: "rgba(245,79,147,0.08)" }} contentStyle={{ borderRadius: 12, border: "none", fontSize: 12 }} formatter={(v) => [`${v}h`, ""]} />
               <Bar dataKey="hours" radius={[8, 8, 8, 8]} fill="var(--color-rose)" label={{ position: "top", fontSize: 11, fill: dark ? "#e7e5e4" : "#57534e" }} />
             </BarChart>
           </ResponsiveContainer>
@@ -177,7 +177,7 @@ export function Analytics() {
       {strongest && (
         <div className="rounded-2xl glass p-5">
           <div className="text-sm font-medium mb-1">{t("strongestCategory")}</div>
-          <div className="text-sm text-ink-soft">
+          <div className="text-sm text-rose-deep">
             {tCat(`${strongest}.label`)} - {tCat(`${strongest}.desc`)}
           </div>
         </div>

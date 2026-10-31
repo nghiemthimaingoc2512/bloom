@@ -57,12 +57,12 @@
       "personalGrowth": "Phát triển bản thân"
     },
     "themes": {
+      "pink": "Hồng Bloom",
       "stone": "Xám đá",
       "sage": "Xanh xô thơm",
       "clay": "Đất nung",
       "slate": "Xanh đá",
-      "lavender": "Oải hương",
-      "rose": "Hồng tro"
+      "lavender": "Oải hương"
     },
     "intro": "Làm xong việc, tích số dư, trồng vườn hoa và đổi lấy phần thưởng do bạn tự chọn.",
     "customValueError": "Nhập số từ 1.000₫ trở lên.",

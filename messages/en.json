@@ -57,12 +57,12 @@
       "personalGrowth": "Personal Growth"
     },
     "themes": {
+      "pink": "Bloom Pink",
       "stone": "Stone",
       "sage": "Sage",
       "clay": "Clay",
       "slate": "Slate",
-      "lavender": "Lavender",
-      "rose": "Rose"
+      "lavender": "Lavender"
     },
     "intro": "Finish tasks, earn a balance, grow a garden, and spend it on rewards you choose.",
     "customValueError": "Enter an amount of at least 1,000₫.",

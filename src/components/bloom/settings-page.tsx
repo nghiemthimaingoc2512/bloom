@@ -102,7 +102,7 @@ export function SettingsPage() {
           <button
             onClick={() => setMode("direct")}
             className={`flex-1 py-2 rounded-full text-xs font-medium border transition-all ${
-              mode === "direct" ? "bg-rose text-white dark:text-night border-transparent" : "border-petal text-ink-soft"
+              mode === "direct" ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent" : "border-petal text-ink-soft"
             }`}
           >
             {t("modeDirect")}
@@ -110,7 +110,7 @@ export function SettingsPage() {
           <button
             onClick={() => setMode("salary")}
             className={`flex-1 py-2 rounded-full text-xs font-medium border transition-all ${
-              mode === "salary" ? "bg-rose text-white dark:text-night border-transparent" : "border-petal text-ink-soft"
+              mode === "salary" ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent" : "border-petal text-ink-soft"
             }`}
           >
             {t("modeSalary")}
@@ -159,7 +159,7 @@ export function SettingsPage() {
                 onClick={() => toggleGrowthArea(area)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium border transition-all flex items-center gap-1.5 ${
                   active
-                    ? "bg-rose text-white dark:text-night border-transparent"
+                    ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent"
                     : "border-petal hover:border-rose text-ink-soft"
                 }`}
               >

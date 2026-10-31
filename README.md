@@ -9,10 +9,10 @@ productive day makes your life a little more beautiful.
 ## Tech stack
 
 - **Next.js 16** (App Router, TypeScript)
-- **Tailwind CSS v4** — Bloom's neutral design system (a warm off-white ground,
-  graphite ink and one muted accent per palette: Stone, Sage, Clay, Slate,
-  Lavender, Rose) lives in `src/app/globals.css` as CSS theme tokens
-  (`--color-cream`, `--color-rose`, etc.), with a class-based dark mode variant.
+- **Tailwind CSS v4** — Bloom's soft pink/rose/cream design system lives in
+  `src/app/globals.css` as CSS theme tokens (`--color-cream`, `--color-rose`,
+  etc.), with a class-based dark mode variant and neutral alternative palettes
+  (Stone, Sage, Clay, Slate, Lavender).
 - **next-intl** — English and Vietnamese, with locale-prefixed routing
   (`/`, `/vi`, `/board`, `/vi/board`, ...).
 - **next-themes** — light/dark mode.

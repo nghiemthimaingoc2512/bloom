@@ -3,31 +3,31 @@
 import * as React from "react";
 
 export type Theme = "light" | "dark";
-export type Palette = "stone" | "sage" | "clay" | "slate" | "lavender" | "rose";
+export type Palette = "pink" | "stone" | "sage" | "clay" | "slate" | "lavender";
 
-export const PALETTES: Palette[] = ["stone", "sage", "clay", "slate", "lavender", "rose"];
+export const PALETTES: Palette[] = ["pink", "stone", "sage", "clay", "slate", "lavender"];
 
 /** Palettes saved by the earlier, more saturated design map onto their
  *  closest neutral so nobody's stored choice turns into a broken attribute. */
 export const LEGACY_PALETTES: Record<string, Palette> = {
-  pink: "rose",
+  rose: "pink",
+  cherryCola: "pink",
   lime: "sage",
   mango: "clay",
   island: "slate",
   indigo: "lavender",
-  cherryCola: "rose",
 };
 
 /** Single source of truth for each palette's preview swatch, so the
  *  onboarding flow and Settings page render identical swatches instead
  *  of keeping their own copies in sync by hand. */
 export const PALETTE_META: Record<Palette, { from: string; to: string }> = {
+  pink: { from: "#ff7fb5", to: "#f54f93" },
   stone: { from: "#6f7a86", to: "#38424c" },
   sage: { from: "#7a9478", to: "#455b44" },
   clay: { from: "#a98470", to: "#6d5041" },
   slate: { from: "#6a8a94", to: "#3b545d" },
   lavender: { from: "#8a82a4", to: "#554d6d" },
-  rose: { from: "#a8808a", to: "#6d4c55" },
 };
 
 interface ThemeContextValue {
@@ -66,11 +66,11 @@ function getModeServerSnapshot(): Theme {
 
 function getPaletteSnapshot(): Palette {
   const attr = document.documentElement.getAttribute("data-theme");
-  return (PALETTES as string[]).includes(attr ?? "") ? (attr as Palette) : "stone";
+  return (PALETTES as string[]).includes(attr ?? "") ? (attr as Palette) : "pink";
 }
 
 function getPaletteServerSnapshot(): Palette {
-  return "stone";
+  return "pink";
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -89,7 +89,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setPalette = React.useCallback((next: Palette) => {
-    if (next === "stone") {
+    if (next === "pink") {
       document.documentElement.removeAttribute("data-theme");
     } else {
       document.documentElement.setAttribute("data-theme", next);

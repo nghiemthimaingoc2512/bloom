@@ -57,12 +57,12 @@
       "personalGrowth": "自己成長"
     },
     "themes": {
+      "pink": "Bloom ピンク",
       "stone": "ストーン",
       "sage": "セージ",
       "clay": "クレイ",
       "slate": "スレート",
-      "lavender": "ラベンダー",
-      "rose": "ローズ"
+      "lavender": "ラベンダー"
     },
     "intro": "タスクを終えて残高をため、庭を育て、自分で選んだごほうびと交換しましょう。",
     "customValueError": "1,000₫ 以上を入力してください。",

@@ -64,7 +64,7 @@ export function Onboarding() {
         <div className="rounded-[28px] glass p-8">
           {step === 1 && (
             <div className="text-center space-y-5">
-              <span className="inline-grid place-items-center w-14 h-14 rounded-2xl bg-rose text-white dark:text-night mx-auto">
+              <span className="inline-grid place-items-center w-14 h-14 rounded-2xl gradient-primary text-white shadow-md shadow-rose/25 mx-auto">
                 <Flower2 size={26} />
               </span>
               <div>
@@ -96,7 +96,7 @@ export function Onboarding() {
                     }}
                     className={`py-3 rounded-xl text-sm font-medium font-mono border transition-all ${
                       !useCustom && preset === p
-                        ? "bg-rose text-white dark:text-night border-transparent"
+                        ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent"
                         : "border-petal hover:border-rose text-ink"
                     }`}
                   >
@@ -107,7 +107,7 @@ export function Onboarding() {
                   onClick={() => setUseCustom(true)}
                   className={`py-3 rounded-xl text-sm font-medium border transition-all ${
                     useCustom
-                      ? "bg-rose text-white dark:text-night border-transparent"
+                      ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent"
                       : "border-petal hover:border-rose text-ink"
                   }`}
                 >
@@ -147,7 +147,7 @@ export function Onboarding() {
                       onClick={() => toggleGrowthArea(area)}
                       className={`px-4 py-2 rounded-full text-sm font-medium border transition-all flex items-center gap-1.5 ${
                         active
-                          ? "bg-rose text-white dark:text-night border-transparent"
+                          ? "gradient-primary text-white shadow-md shadow-rose/25 border-transparent"
                           : "border-petal hover:border-rose text-ink"
                       }`}
                     >

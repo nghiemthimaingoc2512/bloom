@@ -99,7 +99,7 @@ export function RewardStore() {
               return (
                 <div key={reward.id} className="rounded-2xl glass glass-hover p-5 flex flex-col gap-3">
                   <div className="flex items-center gap-3">
-                    <span className="grid place-items-center w-10 h-10 rounded-xl bg-blush text-rose-deep shrink-0">
+                    <span className={`grid place-items-center w-10 h-10 rounded-xl shrink-0 ${unlocked ? "gradient-primary text-white shadow-md shadow-rose/25" : "bg-blush text-rose-deep"}`}>
                       <Icon size={18} />
                     </span>
                     <div className="min-w-0 flex-1">
@@ -109,7 +109,7 @@ export function RewardStore() {
                   </div>
                   <div className="w-full h-1.5 rounded-full bg-blush overflow-hidden">
                     <div
-                      className={`h-full transition-all duration-500 ${unlocked ? "bg-success" : "bg-rose"}`}
+                      className={`h-full transition-all duration-500 ${unlocked ? "bg-success" : "gradient-primary"}`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -119,7 +119,7 @@ export function RewardStore() {
                   <button
                     disabled={!unlocked}
                     onClick={() => setConfirm({ kind: "redeem", reward })}
-                    className={`w-full py-2.5 rounded-full text-sm font-medium ${unlocked ? "btn-primary" : "btn-secondary"}`}
+                    className={`w-full py-2.5 rounded-full text-sm font-medium ${unlocked ? "btn-primary" : "bg-stone-100 text-stone-400 cursor-not-allowed dark:bg-white/5"}`}
                   >
                     {t("redeem")}
                   </button>

@@ -124,7 +124,7 @@ export function NewRewardDialog({
                     aria-pressed={active}
                     className={`grid place-items-center w-10 h-10 rounded-xl border transition-all ${
                       active
-                        ? "bg-rose text-white border-transparent dark:text-night"
+                        ? "gradient-primary text-white border-transparent shadow-md shadow-rose/25"
                         : "border-petal text-ink-soft hover:border-rose hover:text-rose-deep"
                     }`}
                   >

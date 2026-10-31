@@ -18,6 +18,7 @@ const EMOJI_FONT_STACK = "'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emo
 // Fraunces/Inter exactly as before - canvas text falls back per-glyph
 // just like DOM text, so this only ever engages for CJK characters.
 const CJK_SANS_FALLBACK = "'Noto Sans SC', 'Noto Sans KR', 'Noto Sans JP', sans-serif";
+const CJK_SERIF_FALLBACK = "'Noto Serif SC', 'Noto Serif KR', 'Noto Serif JP', Georgia, serif";
 
 export interface ShareCardStat {
   label: string;
@@ -118,18 +119,18 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
   if (!ctx) return canvas;
 
   const bg = ctx.createLinearGradient(0, 0, WIDTH, HEIGHT);
-  bg.addColorStop(0, "#ecebe6");
-  bg.addColorStop(1, "#f6f5f2");
+  bg.addColorStop(0, "#ffe5ef");
+  bg.addColorStop(1, "#fff5f8");
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
   ctx.save();
   ctx.filter = "blur(90px)";
-  ctx.fillStyle = "rgba(77, 88, 99, 0.18)";
+  ctx.fillStyle = "rgba(245, 79, 147, 0.35)";
   ctx.beginPath();
   ctx.arc(WIDTH - 60, 100, 220, 0, Math.PI * 2);
   ctx.fill();
-  ctx.fillStyle = "rgba(111, 122, 134, 0.16)";
+  ctx.fillStyle = "rgba(255, 127, 181, 0.3)";
   ctx.beginPath();
   ctx.arc(60, HEIGHT - 100, 200, 0, Math.PI * 2);
   ctx.fill();
@@ -141,7 +142,7 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
   const cardH = HEIGHT - cardY - MARGIN;
 
   ctx.save();
-  ctx.shadowColor = "rgba(20, 20, 20, 0.12)";
+  ctx.shadowColor = "rgba(214, 41, 112, 0.25)";
   ctx.shadowBlur = 60;
   ctx.shadowOffsetY = 30;
   ctx.fillStyle = "rgba(255,255,255,0.94)";
@@ -150,7 +151,7 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
   ctx.restore();
 
   ctx.textAlign = "left";
-  ctx.fillStyle = "#38424c";
+  ctx.fillStyle = "#e73c84";
   ctx.font = `700 34px ${EMOJI_FONT_STACK}, Inter, sans-serif`;
   ctx.fillText("🌸 Bloom", cardX + 8, cardY - 44);
 
@@ -158,12 +159,12 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
   ctx.font = `140px ${EMOJI_FONT_STACK}, serif`;
   ctx.fillText(content.emoji, WIDTH / 2, cardY + 220);
 
-  ctx.fillStyle = "#38424c";
+  ctx.fillStyle = "#e73c84";
   ctx.font = `600 30px Inter, ${CJK_SANS_FALLBACK}`;
   ctx.fillText(content.eyebrow.toUpperCase(), WIDTH / 2, cardY + 290);
 
-  ctx.fillStyle = "#26282b";
-  ctx.font = `700 58px Inter, ${CJK_SANS_FALLBACK}`;
+  ctx.fillStyle = "#2f2f2f";
+  ctx.font = `600 58px Fraunces, ${CJK_SERIF_FALLBACK}`;
   const maxTextWidth = cardW - 160;
   const headlineLines = wrapText(ctx, content.headline, maxTextWidth).slice(0, 6);
   const lineHeight = 72;
@@ -184,22 +185,22 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
         const cx = cardX + colW * i + colW / 2;
         const available = colW - colPadding;
 
-        const valueSize = fitFontSize(ctx, stat.value, available, 50, (s) => `700 ${s}px Inter, ${CJK_SANS_FALLBACK}`, 26);
-        ctx.font = `700 ${valueSize}px Inter, ${CJK_SANS_FALLBACK}`;
-        ctx.fillStyle = "#26282b";
+        const valueSize = fitFontSize(ctx, stat.value, available, 50, (s) => `700 ${s}px 'Space Mono', monospace`, 26);
+        ctx.font = `700 ${valueSize}px 'Space Mono', monospace`;
+        ctx.fillStyle = "#2f2f2f";
         ctx.fillText(stat.value, cx, rowY);
 
         const label = stat.label.toUpperCase();
         const labelSize = fitFontSize(ctx, label, available, 22, (s) => `500 ${s}px Inter, ${CJK_SANS_FALLBACK}`, 13);
         ctx.font = `500 ${labelSize}px Inter, ${CJK_SANS_FALLBACK}`;
-        ctx.fillStyle = "#6b6f74";
+        ctx.fillStyle = "#6b6b6b";
         ctx.fillText(label, cx, rowY + 42);
       });
     });
   }
 
   const tagline = FOOTER_TAGLINE[locale] ?? FOOTER_TAGLINE.en;
-  ctx.fillStyle = "#6b6f74";
+  ctx.fillStyle = "#6b6b6b";
   ctx.font = `500 26px Inter, "Noto Sans SC", "Noto Sans KR", "Noto Sans JP", sans-serif`;
   ctx.fillText(`${tagline} · bloomdaily.com`, WIDTH / 2, cardY + cardH - 60);
 

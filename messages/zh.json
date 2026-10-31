@@ -57,12 +57,12 @@
       "personalGrowth": "个人成长"
     },
     "themes": {
+      "pink": "Bloom 粉",
       "stone": "石灰",
       "sage": "鼠尾草",
       "clay": "陶土",
       "slate": "青灰",
-      "lavender": "薰衣草",
-      "rose": "灰玫瑰"
+      "lavender": "薰衣草"
     },
     "intro": "完成任务，累积余额，培育花园，再兑换你自己选的奖励。",
     "customValueError": "请输入不少于 1,000₫ 的金额。",

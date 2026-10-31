@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 export const fieldClass =
-  "w-full rounded-xl p-2.5 text-sm outline-none border border-petal bg-surface focus:border-rose transition min-h-10 dark:bg-night";
+  "w-full rounded-xl p-2.5 text-sm outline-none border border-petal/60 bg-blush/15 focus:border-rose focus:ring-2 focus:ring-rose/10 transition dark:bg-night dark:border-ink-soft/30";
 
 export function Label({ className, ...props }: React.LabelHTMLAttributes<HTMLLabelElement>) {
   return <label className={cn("text-xs text-ink-soft mb-1 block", className)} {...props} />;
