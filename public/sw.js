@@ -1,7 +1,7 @@
 // Bloom offline cache. Pages are served network-first so a deploy shows up
 // on the next open; static build assets are cached forever (they are hashed);
 // when the network is down the last page seen is served from cache.
-const VERSION = "bloom-sw-v2";
+const VERSION = "bloom-sw-v3";
 const PAGE_CACHE = VERSION + "-pages";
 const ASSET_CACHE = VERSION + "-assets";
 

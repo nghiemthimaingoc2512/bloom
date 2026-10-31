@@ -6,6 +6,7 @@ import { Star } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input, Label, Textarea } from "@/components/ui/field";
 import { useBloomStore } from "@/lib/store";
+import { BloomLogo } from "./logo";
 
 export function FeedbackDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
   const t = useTranslations("feedback");
@@ -49,8 +50,8 @@ export function FeedbackDialog({ open, onOpenChange }: { open: boolean; onOpenCh
       <DialogContent>
         {submitted ? (
           <div className="text-center py-6 space-y-2">
-            <div className="text-3xl">🌸</div>
-            <div className="font-display text-lg font-medium">{t("thankYouTitle")}</div>
+            <BloomLogo size={56} className="mx-auto" />
+            <div className="font-display text-base font-medium">{t("thankYouTitle")}</div>
             <p className="text-base text-ink-soft">{t("thankYouBody")}</p>
             <button
               onClick={() => handleOpenChange(false)}
@@ -61,7 +62,7 @@ export function FeedbackDialog({ open, onOpenChange }: { open: boolean; onOpenCh
           </div>
         ) : (
           <>
-            <DialogTitle className="text-2xl font-display font-semibold mb-1">{t("title")}</DialogTitle>
+            <DialogTitle className="text-xl font-display font-semibold mb-1">{t("title")}</DialogTitle>
             <p className="text-base text-ink-soft mb-5">{t("subtitle")}</p>
             <div className="space-y-4">
               <div>

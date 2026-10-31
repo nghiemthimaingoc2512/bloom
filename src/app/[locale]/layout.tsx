@@ -41,6 +41,11 @@ const THEME_INIT_SCRIPT = `
 // Registers the offline cache so the installed app opens without a network.
 const SW_REGISTER_SCRIPT = `
 (function () {
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    window.__bloomInstallPrompt = e;
+    window.dispatchEvent(new Event("bloom-install-ready"));
+  });
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("/sw.js").catch(function () {});
@@ -94,7 +99,7 @@ export default async function LocaleLayout({
         {/* eslint-disable-next-line @next/next/no-page-custom-font -- this layout is the App Router document root */}
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..600&family=Lora:ital,wght@0,400..600;1,400..600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Bloom" />

@@ -77,7 +77,7 @@ export function FocusCard({
           </button>
         </div>
       </div>
-      <div className="text-xl font-semibold tracking-tight">{focus.title}</div>
+      <div className="text-base font-semibold tracking-tight">{focus.title}</div>
       {focus.purpose && <div className="text-sm text-ink-soft mb-3 mt-0.5">{focus.purpose}</div>}
       <div className="w-full h-2.5 rounded-full bg-petal/40 overflow-hidden mb-4 mt-3">
         <motion.div className={`h-full ${barColor}`} initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.5 }} />
@@ -90,7 +90,7 @@ export function FocusCard({
             aria-pressed={c.done}
             data-tour={c.done ? undefined : "step"}
             aria-label={`${c.title}: ${c.done ? t("markUndone") : t("markDone")}`}
-            className={`w-full flex items-center justify-between text-base px-4 py-3 rounded-xl border-2 font-medium transition-all text-left min-h-14 ${
+            className={`w-full flex items-center justify-between text-sm px-3.5 py-2.5 rounded-xl border-2 font-medium transition-all text-left min-h-12 ${
               c.done
                 ? "border-success/40 bg-success/10 text-ink-soft line-through"
                 : "border-petal hover:border-rose hover:bg-blush"
@@ -98,11 +98,11 @@ export function FocusCard({
           >
             <span className="flex items-center gap-2">
               <span
-                className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
                   c.done ? "bg-success border-success" : "border-ink-muted"
                 }`}
               >
-                {c.done && <Check size={15} className="text-white" />}
+                {c.done && <Check size={13} className="text-white" />}
               </span>
               {c.title}
             </span>

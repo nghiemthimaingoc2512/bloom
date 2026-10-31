@@ -147,18 +147,18 @@ export function Tutorial() {
         <div className="text-sm font-semibold text-rose-deep">
           {t("progress", { current: ORDER.indexOf(step) + 1, total: ORDER.length })}
         </div>
-        <div className="font-display text-xl font-semibold leading-snug">{t(`${step}Title`)}</div>
-        <p className="text-base text-ink-soft">{t(`${step}Body`)}</p>
+        <div className="font-display text-lg font-semibold leading-snug">{t(`${step}Title`)}</div>
+        <p className="text-sm text-ink-soft">{t(`${step}Body`)}</p>
         <div className="flex items-center justify-between gap-2 pt-1">
           <button onClick={finishTutorial} className="text-sm font-semibold text-ink-soft hover:text-ink px-1 py-2">
             {t("skip")}
           </button>
           {needsToday ? (
-            <Link href="/" className="btn-primary px-5 py-2.5 rounded-full text-base">
+            <Link href="/" className="btn-primary px-5 py-2.5 rounded-full text-sm">
               {t("backToToday")}
             </Link>
           ) : manual ? (
-            <button onClick={next} className="btn-primary px-5 py-2.5 rounded-full text-base">
+            <button onClick={next} className="btn-primary px-5 py-2.5 rounded-full text-sm">
               {isLast ? t("done") : t("next")}
             </button>
           ) : (

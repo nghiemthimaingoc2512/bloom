@@ -86,7 +86,7 @@ export function ShareCardDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogTitle className="text-2xl font-display font-semibold mb-4">{t("title")}</DialogTitle>
+        <DialogTitle className="text-xl font-display font-semibold mb-4">{t("title")}</DialogTitle>
         {dataUrl ? (
           // eslint-disable-next-line @next/next/no-img-element -- this is a generated data: URL, not an optimizable remote asset
           <img src={dataUrl} alt="" className="w-full rounded-2xl border border-petal/50 mb-4" />

@@ -4,6 +4,7 @@ import * as React from "react";
 import { useBloomStore } from "@/lib/store";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { Tutorial } from "@/components/bloom/tutorial";
+import { InstallButton } from "@/components/bloom/install-button";
 import { Nav } from "@/components/bloom/nav";
 import { Onboarding } from "@/components/bloom/onboarding";
 import { BetaBanner } from "@/components/bloom/beta-banner";
@@ -73,7 +74,10 @@ export function BloomProvider({ children }: { children: React.ReactNode }) {
       <Nav />
       {/* Bottom padding clears the phone bottom nav. Feedback lives in Settings
           and About, not as a floating button over the content. */}
-      <main className="max-w-5xl mx-auto px-5 pb-28 md:pb-20 pt-2">{children}</main>
+      <main className="max-w-5xl mx-auto px-5 pb-28 md:pb-16 pt-2">
+        {children}
+        <InstallButton />
+      </main>
       {!tutorialDone && <Tutorial />}
     </>
   );

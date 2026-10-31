@@ -34,7 +34,7 @@ export function MemoryGarden() {
   return (
     <div className="space-y-6">
       <div>
-        <div className="text-3xl md:text-4xl font-display font-semibold">{t("title")}</div>
+        <div className="text-2xl md:text-3xl font-display font-semibold">{t("title")}</div>
         <div className="text-base text-ink-soft mt-0.5">{t("subtitle")}</div>
       </div>
       {memory.length === 0 ? (
@@ -46,7 +46,7 @@ export function MemoryGarden() {
               <Flower stage={m.bloomLevel} kind={m.mood === "🌸" ? "sakura" : "tulip"} />
               <div className="text-sm text-ink-soft mt-1">{dateLabel(m.date)}</div>
               <div className="text-base italic">{m.quote ? <>&ldquo;{m.quote}&rdquo;</> : <span className="text-ink-soft not-italic">{t("noNote")}</span>}</div>
-              <div className="text-lg">{m.mood}</div>
+              <div className="text-base">{m.mood}</div>
               <div className="text-[13px] text-ink-soft">
                 {m.completedTasks} {t("tasksCompleted")}
               </div>

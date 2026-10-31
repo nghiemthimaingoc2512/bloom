@@ -17,7 +17,7 @@ function Stat({ icon, label, value, wide }: { icon: React.ReactNode; label: stri
         {icon}
         <span>{label}</span>
       </div>
-      <div className="text-2xl md:text-3xl font-bold font-mono tracking-tight mt-0.5">{value}</div>
+      <div className="text-xl md:text-2xl font-bold font-mono tracking-tight mt-0.5">{value}</div>
     </div>
   );
 }
@@ -127,14 +127,14 @@ export function FocusBoard() {
         </div>
       )}
 
-      <section className="relative overflow-hidden rounded-[28px] p-6 md:p-9 border border-petal/60 shadow-[0_24px_64px_-28px_rgba(214,41,112,0.45)] bg-gradient-to-br from-white via-blush/70 to-petal/40 dark:from-night-card dark:via-night dark:to-night">
+      <section className="relative overflow-hidden rounded-[28px] p-5 md:p-7 border border-petal/60 shadow-[0_24px_64px_-28px_rgba(214,41,112,0.45)] bg-gradient-to-br from-white via-blush/70 to-petal/40 dark:from-night-card dark:via-night dark:to-night">
         <div className="pointer-events-none absolute -top-24 -right-20 w-72 h-72 rounded-full bg-rose/25 blur-[100px]" />
         <div className="relative space-y-5">
           <div>
-            <div className="text-base font-semibold text-rose-deep mb-1">
+            <div className="text-sm font-semibold text-rose-deep mb-1">
               {tHome(focuses.length === 0 && history.length === 0 ? "welcomeNew" : "welcomeBack", { name: displayName })}
             </div>
-            <h1 className="text-3xl md:text-[42px] font-display font-semibold tracking-tight text-ink leading-[1.15]">{headline}</h1>
+            <h1 className="text-2xl md:text-[32px] font-display font-semibold tracking-tight text-ink leading-[1.15]">{headline}</h1>
           </div>
 
           <form onSubmit={quickAdd} data-tour="quick-add" className="flex flex-col sm:flex-row gap-2.5">
@@ -147,13 +147,13 @@ export function FocusBoard() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder={tHome("quickPlaceholder")}
-              className="w-full sm:flex-1 min-w-0 h-14 shrink-0 sm:shrink rounded-2xl px-5 text-lg outline-none border-2 border-petal bg-surface focus:border-rose transition shadow-sm"
+              className="w-full sm:flex-1 min-w-0 h-12 shrink-0 sm:shrink rounded-2xl px-4 text-base outline-none border-2 border-petal bg-surface focus:border-rose transition shadow-sm"
             />
-            <button type="submit" className="btn-primary h-14 flex items-center justify-center gap-2 px-7 rounded-2xl text-lg shrink-0">
-              <Plus size={22} /> {t("newFocus")}
+            <button type="submit" className="btn-primary h-12 flex items-center justify-center gap-2 px-6 rounded-2xl text-base shrink-0">
+              <Plus size={18} /> {t("newFocus")}
             </button>
           </form>
-          <button type="button" onClick={openDetails} className="text-base font-semibold text-rose-deep underline-offset-4 hover:underline">
+          <button type="button" onClick={openDetails} className="text-sm font-semibold text-rose-deep underline-offset-4 hover:underline">
             {tHome("moreOptions")}
           </button>
 
@@ -172,7 +172,7 @@ export function FocusBoard() {
             role="tab"
             aria-selected={tab === k}
             onClick={() => setTab(k)}
-            className={`px-5 py-2 rounded-full text-base font-semibold transition-colors ${tab === k ? "bg-surface text-rose-deep shadow-sm" : "text-ink-soft"}`}
+            className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${tab === k ? "bg-surface text-rose-deep shadow-sm" : "text-ink-soft"}`}
           >
             {k === "active" ? t("tabActive") : t("tabDone")} ({k === "active" ? active.length : finished.length})
           </button>
@@ -200,7 +200,7 @@ export function FocusBoard() {
           onClick={() => setPendingDelete(null)}
         >
           <div className="w-full max-w-sm rounded-2xl glass p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
-            <div id="focus-delete-title" className="font-display text-xl font-semibold">{t("confirmDeleteTitle")}</div>
+            <div id="focus-delete-title" className="font-display text-lg font-semibold">{t("confirmDeleteTitle")}</div>
             <p className="text-base text-ink-soft">{t("confirmDeleteBody", { title: pendingDelete.title })}</p>
             <div className="flex justify-end gap-2">
               <button onClick={() => setPendingDelete(null)} className="btn-secondary px-5 py-2.5 rounded-full text-base">{t("cancel")}</button>

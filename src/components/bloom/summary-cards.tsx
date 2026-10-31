@@ -23,9 +23,9 @@ function Card({
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
         <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
-        <span className="text-[13px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
+        <span className="text-xs font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
-      <div className="text-3xl font-bold font-mono tracking-tight">{value}</div>
+      <div className="text-2xl font-bold font-mono tracking-tight">{value}</div>
       {hint && <div className="text-[13px] text-ink-soft mt-1">{hint}</div>}
     </div>
   );

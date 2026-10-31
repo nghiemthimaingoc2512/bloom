@@ -29,11 +29,11 @@
     "visionTitle": "プロダクトビジョン",
     "visionBody": "集中した努力を、目に見える成長、意味のある達成、そして支え合えるコミュニティへと変えていきます。",
     "statusTitle": "現在のステータス",
-    "statusBadge": "🌸 Bloomは現在ベータ版です。",
+    "statusBadge": "Bloomは現在ベータ版です。",
     "statusBody": "実際のユーザーの声をもとに、日々プロダクトの改善を続けています。"
   },
   "onboarding": {
-    "welcomeTitle": "Bloomへようこそ 🌸",
+    "welcomeTitle": "Bloomへようこそ",
     "step1Question": "お名前を教えてください",
     "namePlaceholder": "お名前",
     "step2Question": "集中した 1 時間の価値はいくらですか？",
@@ -557,7 +557,7 @@
     "emailHint": "こちらからご連絡してもよい場合はご記入ください。",
     "submit": "フィードバックを送信",
     "cancel": "キャンセル",
-    "thankYouTitle": "Bloomの成長を助けてくださり、ありがとうございます 🌸",
+    "thankYouTitle": "Bloomの成長を助けてくださり、ありがとうございます",
     "thankYouBody": "あなたのフィードバックは、みんなのより良い体験づくりに役立ちます。",
     "close": "閉じる"
   },
@@ -573,16 +573,21 @@
     "selectLanguage": "言語を選択"
   },
   "install": {
-    "title": "Bloom をアプリとして使う",
-    "body": "Bloom をホーム画面に追加しましょう。全画面で開き、オフラインでも動き、無料です。アプリストアは不要です。",
     "installButton": "Bloom をインストール",
-    "iosStep1": "Safari で共有ボタンをタップ",
-    "iosStep2": "「ホーム画面に追加」を選ぶ",
-    "iosStep3": "「追加」をタップすると、Bloom がアプリのように開きます。",
+    "iosStep1": "Safari 右下の ••• をタップします（共有ボタンが見えればそれでも構いません）。",
+    "iosStep2": "「共有」をタップし、下にスクロールして「ホーム画面に追加」を選びます。",
+    "iosStep3": "「追加」をタップすると、Bloom がホーム画面に表示されます。",
     "androidStep1": "Chrome で ⋮ メニューを開く",
     "androidStep2": "「ホーム画面に追加」または「アプリをインストール」を選ぶ",
     "desktopStep1": "Chrome または Edge のアドレスバーにあるインストールアイコンをクリック",
-    "desktopStep2": "スマホでは Safari か Chrome でこのサイトを開き、ホーム画面に追加"
+    "desktopStep2": "スマホでは Safari か Chrome でこのサイトを開き、ホーム画面に追加",
+    "installHint": "無料で、アプリストアは不要です。",
+    "dialogTitle": "Bloom をホーム画面に追加",
+    "iosArrow": "これを閉じて、ここから始めます",
+    "inAppTitle": "まずブラウザで Bloom を開いてください",
+    "inAppBody": "このアプリ内ブラウザではインストールできません。リンクをコピーして Safari か Chrome に貼り付け、もう一度インストールを押してください。",
+    "copyLink": "リンクをコピー",
+    "copied": "コピーしました"
   },
   "tutorial": {
     "progress": "ステップ {current}/{total}",

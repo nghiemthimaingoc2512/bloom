@@ -29,11 +29,11 @@
     "visionTitle": "제품 비전",
     "visionBody": "집중한 노력을 눈에 보이는 성장, 의미 있는 성취, 그리고 서로를 응원하는 커뮤니티로 바꿉니다.",
     "statusTitle": "현재 상태",
-    "statusBadge": "🌸 Bloom은 현재 베타 버전입니다.",
+    "statusBadge": "Bloom은 현재 베타 버전입니다.",
     "statusBody": "저희는 실제 사용자 피드백을 바탕으로 제품을 꾸준히 개선하고 있습니다."
   },
   "onboarding": {
-    "welcomeTitle": "Bloom에 오신 것을 환영합니다 🌸",
+    "welcomeTitle": "Bloom에 오신 것을 환영합니다",
     "step1Question": "무엇이라고 불러드릴까요?",
     "namePlaceholder": "이름",
     "step2Question": "집중한 1시간의 가치는 얼마인가요?",
@@ -557,7 +557,7 @@
     "emailHint": "저희가 다시 연락드리길 원하신다면요.",
     "submit": "피드백 제출",
     "cancel": "취소",
-    "thankYouTitle": "Bloom의 성장을 도와주셔서 감사합니다 🌸",
+    "thankYouTitle": "Bloom의 성장을 도와주셔서 감사합니다",
     "thankYouBody": "당신의 피드백은 모두를 위한 더 나은 경험을 만드는 데 도움이 됩니다.",
     "close": "닫기"
   },
@@ -573,16 +573,21 @@
     "selectLanguage": "언어 선택"
   },
   "install": {
-    "title": "Bloom을 앱처럼 사용하기",
-    "body": "Bloom을 홈 화면에 추가하세요. 전체 화면으로 열리고 오프라인에서도 동작하며 무료입니다. 앱 스토어가 필요 없습니다.",
     "installButton": "Bloom 설치",
-    "iosStep1": "Safari에서 공유 버튼을 누르세요",
-    "iosStep2": "“홈 화면에 추가”를 선택하세요",
-    "iosStep3": "추가를 누르면 Bloom이 앱처럼 열립니다.",
+    "iosStep1": "Safari 오른쪽 아래의 •••을 누르세요(공유 버튼이 보이면 그것을 눌러도 됩니다).",
+    "iosStep2": "공유를 누른 뒤 아래로 내려 “홈 화면에 추가”를 선택하세요.",
+    "iosStep3": "추가를 누르면 Bloom이 홈 화면에 나타납니다.",
     "androidStep1": "Chrome에서 ⋮ 메뉴를 여세요",
     "androidStep2": "“홈 화면에 추가” 또는 “앱 설치”를 선택하세요",
     "desktopStep1": "Chrome 또는 Edge 주소창의 설치 아이콘을 클릭하세요",
-    "desktopStep2": "휴대폰에서 Safari나 Chrome으로 이 사이트를 열고 홈 화면에 추가하세요"
+    "desktopStep2": "휴대폰에서 Safari나 Chrome으로 이 사이트를 열고 홈 화면에 추가하세요",
+    "installHint": "무료이며 앱 스토어가 필요 없습니다.",
+    "dialogTitle": "Bloom을 홈 화면에 추가",
+    "iosArrow": "이 창을 닫고 여기서 시작하세요",
+    "inAppTitle": "먼저 브라우저에서 Bloom을 여세요",
+    "inAppBody": "이 앱의 내장 브라우저로는 설치할 수 없습니다. 링크를 복사해 Safari나 Chrome에 붙여 넣고 다시 설치를 누르세요.",
+    "copyLink": "링크 복사",
+    "copied": "복사됨"
   },
   "tutorial": {
     "progress": "{current}/{total}단계",

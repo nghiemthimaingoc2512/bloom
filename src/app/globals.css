@@ -133,7 +133,7 @@ html[lang="vi"] {
 
 /* A slightly larger root makes every rem-based size and gap easier to read. */
 html {
-  font-size: 17px;
+  font-size: 16px;
 }
 
 body {

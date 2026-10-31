@@ -30,9 +30,9 @@ function Card({ icon, label, value }: { icon: React.ReactNode; label: string; va
     <div className="rounded-2xl glass glass-hover p-5">
       <div className="flex items-center gap-2 mb-2.5">
         <span className="grid place-items-center w-7 h-7 rounded-lg bg-blush/80 dark:bg-white/5">{icon}</span>
-        <span className="text-[13px] font-medium uppercase tracking-wide text-ink-soft">{label}</span>
+        <span className="text-xs font-medium uppercase tracking-wide text-ink-soft">{label}</span>
       </div>
-      <div className="text-3xl font-bold font-mono tracking-tight">{value}</div>
+      <div className="text-2xl font-bold font-mono tracking-tight">{value}</div>
     </div>
   );
 }
@@ -106,7 +106,7 @@ export function Analytics() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div>
-          <div className="text-3xl md:text-4xl font-display font-semibold">{t("title")}</div>
+          <div className="text-2xl md:text-3xl font-display font-semibold">{t("title")}</div>
           <div className="text-base text-ink-soft mt-0.5">
             {t("suggestion")}
           </div>

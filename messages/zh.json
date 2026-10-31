@@ -29,11 +29,11 @@
     "visionTitle": "产品愿景",
     "visionBody": "将专注的努力转化为可见的进步、有意义的成就,以及一个互相支持的社区。",
     "statusTitle": "当前状态",
-    "statusBadge": "🌸 Bloom 目前处于 Beta 测试阶段。",
+    "statusBadge": "Bloom 目前处于 Beta 测试阶段。",
     "statusBody": "我们正根据真实用户的反馈不断改进产品。"
   },
   "onboarding": {
-    "welcomeTitle": "欢迎来到 Bloom 🌸",
+    "welcomeTitle": "欢迎来到 Bloom",
     "step1Question": "我们该如何称呼你?",
     "namePlaceholder": "你的名字",
     "step2Question": "一小时专注工作对你值多少？",
@@ -557,7 +557,7 @@
     "emailHint": "如果你希望我们与你取得联系。",
     "submit": "提交反馈",
     "cancel": "取消",
-    "thankYouTitle": "感谢你帮助 Bloom 成长 🌸",
+    "thankYouTitle": "感谢你帮助 Bloom 成长",
     "thankYouBody": "你的反馈将帮助我们为每个人打造更好的体验。",
     "close": "关闭"
   },
@@ -573,16 +573,21 @@
     "selectLanguage": "选择语言"
   },
   "install": {
-    "title": "把 Bloom 当作应用使用",
-    "body": "把 Bloom 添加到主屏幕：全屏打开、可离线使用、完全免费，无需应用商店。",
     "installButton": "安装 Bloom",
-    "iosStep1": "在 Safari 中点按“分享”按钮",
-    "iosStep2": "选择“添加到主屏幕”",
-    "iosStep3": "点按“添加”，Bloom 就会像普通应用一样打开。",
+    "iosStep1": "点按 Safari 右下角的 •••（如果看到“分享”按钮，也可以点它）。",
+    "iosStep2": "点按“分享”，向下滚动并选择“添加到主屏幕”。",
+    "iosStep3": "点按“添加”，Bloom 就出现在主屏幕上了。",
     "androidStep1": "在 Chrome 中打开 ⋮ 菜单",
     "androidStep2": "选择“添加到主屏幕”或“安装应用”",
     "desktopStep1": "在 Chrome 或 Edge 的地址栏点击安装图标",
-    "desktopStep2": "在手机上用 Safari 或 Chrome 打开本站并添加到主屏幕"
+    "desktopStep2": "在手机上用 Safari 或 Chrome 打开本站并添加到主屏幕",
+    "installHint": "免费，无需应用商店。",
+    "dialogTitle": "把 Bloom 添加到主屏幕",
+    "iosArrow": "关闭此框后从这里开始",
+    "inAppTitle": "请先在浏览器中打开 Bloom",
+    "inAppBody": "此应用的内置浏览器无法安装 Bloom。请复制链接，粘贴到 Safari 或 Chrome，再次点击安装。",
+    "copyLink": "复制链接",
+    "copied": "已复制"
   },
   "tutorial": {
     "progress": "第 {current}/{total} 步",

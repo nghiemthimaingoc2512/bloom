@@ -10,7 +10,6 @@ import { formatVND } from "@/lib/utils";
 import { Input, Label } from "@/components/ui/field";
 import { FeedbackDialog } from "@/components/bloom/feedback-dialog";
 import { LanguageToggle } from "@/components/bloom/language-toggle";
-import { InstallCard } from "@/components/bloom/install-card";
 import type { GrowthArea, HourlyValueMode } from "@/lib/types";
 
 const GROWTH_AREAS: GrowthArea[] = [
@@ -78,7 +77,7 @@ export function SettingsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <div className="text-3xl md:text-4xl font-display font-semibold">{t("title")}</div>
+        <div className="text-2xl md:text-3xl font-display font-semibold">{t("title")}</div>
         <div className="text-base text-ink-soft mt-0.5">{t("subtitle")}</div>
       </div>
 
@@ -219,8 +218,6 @@ export function SettingsPage() {
           {tFeedback("trigger")}
         </button>
       </section>
-
-      <InstallCard />
 
       <section className="rounded-2xl glass p-6 space-y-3">
         <div className="font-medium text-base">{t("dataSection")}</div>

@@ -1,4 +1,5 @@
 "use client";
+import { BloomLogo } from "./logo";
 
 import { useTranslations } from "next-intl";
 import { Compass, Rocket, Target } from "lucide-react";
@@ -11,8 +12,8 @@ export function AboutPage() {
   return (
     <div className="space-y-8">
       <div className="text-center space-y-3 py-4">
-        <div className="text-3xl">🌸</div>
-        <div className="text-2xl font-display font-medium">{t("title")}</div>
+        <BloomLogo size={56} className="mx-auto" />
+        <div className="text-xl font-display font-medium">{t("title")}</div>
         <div className="text-rose-deep font-medium text-base">{t("tagline")}</div>
         <p className="text-base text-ink-soft max-w-md mx-auto">{t("description")}</p>
       </div>

@@ -160,7 +160,7 @@ export function FocusDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogTitle className="text-2xl font-display font-semibold mb-5">
+        <DialogTitle className="text-xl font-display font-semibold mb-5">
           {focus ? t("editFocus") : t("newFocus")}
         </DialogTitle>
         <div className="space-y-4">

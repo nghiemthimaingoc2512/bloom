@@ -95,6 +95,31 @@ function fitFontSize(
   return size;
 }
 
+/** Canvas copy of components/bloom/logo.tsx. */
+function drawLogo(ctx: CanvasRenderingContext2D, x: number, y: number, size: number) {
+  const unit = size / 64;
+  ctx.save();
+  const bg = ctx.createLinearGradient(x, y, x + size, y + size);
+  bg.addColorStop(0, "#ff6fb0");
+  bg.addColorStop(1, "#ee2d85");
+  ctx.fillStyle = bg;
+  roundRectPath(ctx, x, y, size, size, 15 * unit);
+  ctx.fill();
+  ctx.translate(x + size / 2, y + size / 2);
+  ctx.fillStyle = "#ffffff";
+  for (let i = 0; i < 5; i++) {
+    ctx.beginPath();
+    ctx.ellipse(0, -10.9 * unit, 6.7 * unit, 9 * unit, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.rotate((72 * Math.PI) / 180);
+  }
+  ctx.fillStyle = "#f6c453";
+  ctx.beginPath();
+  ctx.arc(0, 0, 4.8 * unit, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
 function chunk<T>(items: T[], size: number): T[][] {
   const rows: T[][] = [];
   for (let i = 0; i < items.length; i += size) {
@@ -153,11 +178,13 @@ export async function renderShareCard(content: ShareCardContent, locale = "en"):
   ctx.textAlign = "left";
   ctx.fillStyle = "#e73c84";
   ctx.font = `700 34px ${EMOJI_FONT_STACK}, Inter, sans-serif`;
-  ctx.fillText("🌸 Bloom", cardX + 8, cardY - 44);
+  drawLogo(ctx, cardX + 8, cardY - 86, 56);
+  ctx.fillText("Bloom", cardX + 78, cardY - 44);
 
   ctx.textAlign = "center";
   ctx.font = `140px ${EMOJI_FONT_STACK}, serif`;
-  ctx.fillText(content.emoji, WIDTH / 2, cardY + 220);
+  if (content.emoji === "🌸") drawLogo(ctx, WIDTH / 2 - 75, cardY + 90, 150);
+  else ctx.fillText(content.emoji, WIDTH / 2, cardY + 220);
 
   ctx.fillStyle = "#e73c84";
   ctx.font = `600 30px Inter, ${CJK_SANS_FALLBACK}`;

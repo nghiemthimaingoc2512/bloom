@@ -18,14 +18,14 @@ export function GardenHero() {
   const fading = garden.filter((f) => f.stage === "fade").length;
 
   return (
-    <section className="relative overflow-hidden rounded-[28px] p-6 md:p-9 border border-petal/60 shadow-[0_24px_64px_-28px_rgba(214,41,112,0.45)] bg-gradient-to-br from-white via-blush/70 to-petal/40 dark:from-night-card dark:via-night dark:to-night">
+    <section className="relative overflow-hidden rounded-[28px] p-5 md:p-7 border border-petal/60 shadow-[0_24px_64px_-28px_rgba(214,41,112,0.45)] bg-gradient-to-br from-white via-blush/70 to-petal/40 dark:from-night-card dark:via-night dark:to-night">
       <div className="pointer-events-none absolute -top-24 -right-20 w-72 h-72 rounded-full bg-rose/25 blur-[100px]" />
       <div className="relative">
-        <div className="text-base font-semibold text-rose-deep">{t("balance")}</div>
-        <div className="text-5xl md:text-6xl font-bold font-mono tracking-tight mt-1 text-ink">
+        <div className="text-sm font-semibold text-rose-deep">{t("balance")}</div>
+        <div className="text-4xl md:text-5xl font-bold font-mono tracking-tight mt-1 text-ink">
           <AnimatedNumber value={balance} format={formatVND} />
         </div>
-        <p className="text-base text-ink-soft mt-2">{t("balanceNote")}</p>
+        <p className="text-sm text-ink-soft mt-2">{t("balanceNote")}</p>
 
         {garden.length > 0 ? (
           <>
@@ -39,7 +39,7 @@ export function GardenHero() {
             </div>
           </>
         ) : (
-          <p className="text-base text-ink-soft pt-6">{t("gardenEmpty")}</p>
+          <p className="text-sm text-ink-soft pt-6">{t("gardenEmpty")}</p>
         )}
       </div>
     </section>

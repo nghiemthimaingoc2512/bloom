@@ -29,11 +29,11 @@
     "visionTitle": "Tầm Nhìn Sản Phẩm",
     "visionBody": "Biến thời gian tập trung thành tiến bộ nhìn thấy được, những thành tựu ý nghĩa và một cộng đồng luôn ủng hộ bạn.",
     "statusTitle": "Trạng Thái Hiện Tại",
-    "statusBadge": "🌸 Bloom hiện đang trong giai đoạn Beta.",
+    "statusBadge": "Bloom hiện đang trong giai đoạn Beta.",
     "statusBody": "Chúng tôi không ngừng cải thiện sản phẩm dựa trên phản hồi thực tế từ người dùng."
   },
   "onboarding": {
-    "welcomeTitle": "Chào mừng đến với Bloom 🌸",
+    "welcomeTitle": "Chào mừng đến với Bloom",
     "step1Question": "Chúng tôi nên gọi bạn là gì?",
     "namePlaceholder": "Tên của bạn",
     "step2Question": "Một giờ làm việc tập trung của bạn đáng giá bao nhiêu?",
@@ -557,7 +557,7 @@
     "emailHint": "Nếu bạn muốn chúng tôi liên hệ lại.",
     "submit": "Gửi Phản Hồi",
     "cancel": "Huỷ",
-    "thankYouTitle": "Cảm ơn bạn đã giúp Bloom lớn lên 🌸",
+    "thankYouTitle": "Cảm ơn bạn đã giúp Bloom lớn lên",
     "thankYouBody": "Phản hồi của bạn giúp chúng tôi xây dựng trải nghiệm tốt hơn cho tất cả mọi người.",
     "close": "Đóng"
   },
@@ -573,16 +573,21 @@
     "selectLanguage": "Chọn ngôn ngữ"
   },
   "install": {
-    "title": "Dùng Bloom như một ứng dụng",
-    "body": "Thêm Bloom vào màn hình chính: mở toàn màn hình, dùng được khi mất mạng, hoàn toàn miễn phí, không cần App Store hay CH Play.",
-    "installButton": "Cài Bloom",
-    "iosStep1": "Trong Safari, bấm nút Chia sẻ",
-    "iosStep2": "Chọn “Thêm vào MH chính”",
-    "iosStep3": "Bấm Thêm. Bloom sẽ mở như một app bình thường.",
+    "installButton": "Cài Bloom về máy",
+    "iosStep1": "Bấm nút ••• ở góc dưới bên phải Safari (hoặc nút Chia sẻ nếu bạn thấy nút đó).",
+    "iosStep2": "Bấm Chia sẻ, kéo xuống và chọn “Thêm vào MH chính”.",
+    "iosStep3": "Bấm Thêm. Bloom sẽ nằm trên màn hình chính của bạn.",
     "androidStep1": "Trong Chrome, mở menu ⋮",
     "androidStep2": "Chọn “Thêm vào Màn hình chính” hoặc “Cài đặt ứng dụng”",
     "desktopStep1": "Trong Chrome hoặc Edge, bấm biểu tượng cài đặt trên thanh địa chỉ",
-    "desktopStep2": "Trên điện thoại, mở trang này bằng Safari hoặc Chrome rồi thêm vào màn hình chính"
+    "desktopStep2": "Trên điện thoại, mở trang này bằng Safari hoặc Chrome rồi thêm vào màn hình chính",
+    "installHint": "Miễn phí, không cần App Store hay CH Play.",
+    "dialogTitle": "Thêm Bloom vào màn hình chính",
+    "iosArrow": "Đóng hộp này rồi bắt đầu từ đây",
+    "inAppTitle": "Mở Bloom bằng trình duyệt trước",
+    "inAppBody": "Trình duyệt trong ứng dụng này không cài được Bloom. Hãy sao chép link, dán vào Safari hoặc Chrome, rồi bấm Cài Bloom lần nữa.",
+    "copyLink": "Sao chép link",
+    "copied": "Đã sao chép"
   },
   "tutorial": {
     "progress": "Bước {current}/{total}",
